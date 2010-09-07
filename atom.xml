@@ -1,0 +1,27 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>techfreak.net</title>
+ <link href="http://www.techfreak.net/atom.xml" rel="self"/>
+ <link href="http://www.techfreak.net/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://www.techfreak.net/</id>
+ <author>
+   <name>Brendon Murphy</name>
+ </author>
+ {% for post in site.posts limit:10 %}
+ <entry>
+   <title>{{ post.title }}</title>
+   <link href="http://www.techfreak.net{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>http://www.techfreak.net{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ {% endfor %}
+</feed>
