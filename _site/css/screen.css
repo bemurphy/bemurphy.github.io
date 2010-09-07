@@ -1,0 +1,182 @@
+/* elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #EDF1F3;
+  color: #666677;
+  font-family: 'Lucida Grande', Tahoma, Arial, sans-serif;
+  line-height: 1.4em;
+  margin: 20px auto 18px 10%;
+}
+
+a:link, a:visited {
+  color: #336699;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3399CC;
+  text-decoration: underline;
+}
+
+a img { border-width: 0; }
+
+blockquote {
+  border-left: 1px solid #222;
+  line-height: 18px;
+  font-size: 11pt;
+  font-style: italic;
+  margin: 20px;
+  padding-left: 10px;
+}
+
+code {
+  font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+  font-size: 12pt;
+}
+
+h1, h2, h3, #footer {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bolder;
+  letter-spacing: -1px;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+  margin-bottom: 18px;
+  color: #669933;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 22px;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+li { margin-bottom: 4px; }
+
+p, ul, ol { margin-bottom: 18px; }
+
+ul, ol {
+  margin-left: 2em;
+}
+
+ul { list-style-type: square; }
+
+#tweet ul { list-style: none; }
+
+/* html5 */
+header, footer, nav, article { display: block; }
+
+header { float: left; }
+
+sidebar  { 
+  float: right;
+/*  width: 18em;*/
+  width: 265px;
+  margin-top: 0.5em;
+  margin-right: 5%;
+}
+
+sidebar .sidebar-item {
+  background-color: #ffffcc;
+  border:1px solid #fc0;
+  padding: 0.5em;
+  font-size: 10pt;
+  line-height: 1.2em;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+sidebar .avatar {
+  float: right;
+  padding: 0.2em;
+  padding-top: 0.5em;
+}
+
+sidebar #twitter {
+  background: #ffffcc url(http://twitter-badges.s3.amazonaws.com/t_logo-b.png) no-repeat 1em 0.5em;  
+  padding: 50px 10px 5px;
+}
+
+#working-with-rails {
+  background: #ffffcc url(/images/working-with-rails.png) no-repeat center 0.5em;
+  margin: 10px 0px 0px 0px;
+  padding: 50px 10px 5px;
+  text-align: center;
+}
+
+
+/* classes */
+.book-cover {
+  float: left;
+  margin-right: 10px;
+}
+
+.post {
+  border-bottom: 3px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.post p {
+  font-size: 12pt;
+  line-height: 26px;
+}
+
+.post h1 {
+  padding-bottom: 0.2em;
+  border-bottom: 6px solid #e5e5e5;
+}
+
+.post .signoff {
+  font-size: 12pt;
+  font-style: normal;
+  text-align: right;
+}
+
+/* ids */
+#cse-search-box {
+  margin-top: 10px;
+}
+
+#footer {
+  font-size: 14pt;
+}
+
+#intro {
+  color: #666;
+  font-size: 22pt;
+  margin-bottom: 24pt;
+  margin-top: 24pt;
+}
+
+#subtitle, #title { color: #333; }
+
+#subtitle {
+  font-size: 24pt;
+}
+
+#title {
+  font-size: 32pt;
+}
+
+#wrapper {
+/*  max-width: 45em;
+  min-width: 30em;
+  width: 45em;
+*/  float: left;
+  padding-bottom: 5em;
+  min-width: 650px;
+  width: 650px;
+}
