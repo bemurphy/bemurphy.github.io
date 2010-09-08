@@ -3,86 +3,11 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2010-09-08T01:19:02-07:00</updated>
+ <updated>2010-09-08T01:30:43-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
- 
- <entry>
-   <title>Time Override</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/time-override.html"/>
-   <updated>2010-01-10T13:07:09-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/time-override</id>
-   <content type="html">&lt;p&gt;Post with a front matter time&lt;/p&gt;
-&lt;p&gt;10 Jan 2010&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Override Data</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/override-data.html"/>
-   <updated>2010-01-10T13:07:09-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/override-data</id>
-   <content type="html"></content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Timezone Override</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/timezone-override.html"/>
-   <updated>2010-01-10T05:07:09-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/timezone-override</id>
-   <content type="html">&lt;p&gt;Post with a front matter time with timezone&lt;/p&gt;
-&lt;p&gt;10 Jan 2010&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Date Override</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/date-override.html"/>
-   <updated>2010-01-10T00:00:00-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/date-override</id>
-   <content type="html">&lt;p&gt;Post with a front matter date&lt;/p&gt;
-&lt;p&gt;10 Jan 2010&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Foo --- Bar</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/08/triple-dash.html"/>
-   <updated>2010-01-08T00:00:00-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/08/triple-dash</id>
-   <content type="html">&lt;p&gt;Triple the fun!&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Hello World!</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/bundler/gems/rack-jekyll-0bd8153f5fc1/example/2009/12/21/hello-world.html"/>
-   <updated>2009-12-21T00:00:00-08:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/bundler/gems/rack-jekyll-0bd8153f5fc1/example/2009/12/21/hello-world</id>
-   <content type="html">&lt;h1&gt;Hello World!&lt;/h1&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
  
  <entry>
    <title>Metaprogramming in Ruby: Part 1</title>
@@ -105,11 +30,44 @@
  </entry>
  
  <entry>
-   <title>No Yaml</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2009/06/22/no-yaml.html"/>
-   <updated>2009-06-22T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2009/06/22/no-yaml</id>
-   <content type="html">&lt;p&gt;No &lt;span class=&quot;caps&quot;&gt;YAML&lt;/span&gt;.&lt;/p&gt;</content>
+   <title>wp-syntax test</title>
+   <link href="http://www.techfreak.net/2009/05/04/wp-syntax-test.html"/>
+   <updated>2009-05-04T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2009/05/04/wp-syntax-test</id>
+   <content type="html">&lt;p&gt;Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;date&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DateReformatter&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_reader&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:date&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reformat&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_offset&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
@@ -117,11 +75,24 @@
  </entry>
  
  <entry>
-   <title>Empty Yaml</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2009/06/22/empty-yaml.html"/>
-   <updated>2009-06-22T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2009/06/22/empty-yaml</id>
-   <content type="html">&lt;p&gt;Empty &lt;span class=&quot;caps&quot;&gt;YAML&lt;/span&gt;.&lt;/p&gt;</content>
+   <title>Roll your own dropbox</title>
+   <link href="http://www.techfreak.net/2008/03/29/roll-your-own-dropbox.html"/>
+   <updated>2008-03-29T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/29/roll-your-own-dropbox</id>
+   <content type="html">&lt;p&gt;So I&amp;#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out &lt;a href=&quot;http://www.filedropper.com/&quot;&gt;filedropper.com&lt;/a&gt; for a simple example of such an application.&lt;/p&gt;
+&lt;p&gt;Of course, I was bored, and don&amp;#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.&lt;/p&gt;
+&lt;p&gt;So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked &lt;a href=&quot;http://www.ruby-lang.org/en/&quot;&gt;ruby&lt;/a&gt;) and a module for interfacing with &lt;a href=&quot;http://aws.amazon.com/s3&quot;&gt;Amazon&amp;#8217;s S3 service&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&amp;#8217;s the basic workflow steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make an Automator workflow that takes a selected set of files (&amp;#8220;Get Selected Items&amp;#8221;) and creates an archive (&amp;#8220;Create Archive&amp;#8221;) out of them&lt;/li&gt;
+&lt;li&gt;Pass that archive into a script (&amp;#8220;Run Shell Script&amp;#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.&lt;/li&gt;
+&lt;li&gt;Store the file on S3, and then output the full S3 url for capture by Automator.&lt;/li&gt;
+&lt;li&gt;Use the Automator &amp;#8220;New Mail Message&amp;#8221; action, passing in the url as the content of the message&lt;/li&gt;
+&lt;li&gt;Plan on manually addressing the message, filling out the body if you like.&lt;/li&gt;
+&lt;li&gt;Now here&amp;#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.&lt;/p&gt;
+&lt;p&gt;I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&amp;#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&amp;#8217;s not as &amp;#8220;sexy&amp;#8221;, right?&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
@@ -129,11 +100,98 @@
  </entry>
  
  <entry>
-   <title>Test title</title>
-   <link href="http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/win/2009/05/24/yaml-linebreak.html"/>
-   <updated>2009-05-24T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/win/2009/05/24/yaml-linebreak</id>
-   <content type="html">&lt;p&gt;This is the content&lt;/p&gt;</content>
+   <title>My eye</title>
+   <link href="http://www.techfreak.net/2008/03/24/my-eye.html"/>
+   <updated>2008-03-24T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/24/my-eye</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/xternal1/sets/72157604236634154/&quot; title=&quot;DSC00406.JPG by xternal1, on Flickr&quot;&gt;&lt;img src=&quot;http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;DSC00406.JPG&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+So this is a bit of old news.  I was going back through the files on my camera I haven&amp;#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&amp;#8217;t know why I&amp;#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&amp;#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&amp;#8217;ve got a little red spot on my right lower lid, it&amp;#8217;s the remnants of this.  It&amp;#8217;s still got a little ways to go before it totally clears up.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Keeping support focused</title>
+   <link href="http://www.techfreak.net/2008/03/19/keeping-support-focused.html"/>
+   <updated>2008-03-19T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/19/keeping-support-focused</id>
+   <content type="html">&lt;p&gt;I was just browsing the &lt;a href=&quot;http://automattic.com&quot;&gt;automattic.com&lt;/a&gt; &lt;a href=&quot;http://automattic.com/about/how-we-work/&quot;&gt;How We Work page&lt;/a&gt; and ran across this tidbit:&lt;br /&gt;
+bq. Everyone who joins, regardless of position, does support for their first three weeks.&lt;br /&gt;
+Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&amp;#8217;s an interesting concept still.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>What I'm up to</title>
+   <link href="http://www.techfreak.net/2008/03/08/what-im-up-to.html"/>
+   <updated>2008-03-08T00:00:00-08:00</updated>
+   <id>http://www.techfreak.net/2008/03/08/what-im-up-to</id>
+   <content type="html">&lt;p&gt;Been very busy with work lately.  Here&amp;#8217;s some things I&amp;#8217;m up to.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reading &lt;a href=&quot;http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452&quot; title=&quot;Design Patterns in Ruby&quot;&gt;Design Patterns in Ruby&lt;/a&gt; by &lt;a href=&quot;http://www.jroller.com/rolsen/&quot;&gt;Russ Olsen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Settling into the Systems Engineering groups at work.  I transferred from IT to Engineering a few months back, it&amp;#8217;s shaping up well for me at this point.&lt;/li&gt;
+&lt;li&gt;Playing with the new MacBook Pro&lt;/li&gt;
+&lt;li&gt;Messing around on &lt;a href=&quot;http://twitter.com//xternal&quot;&gt;Twitter&lt;/a&gt; and &lt;a href=&quot;http://pownce.com/xternal/&quot;&gt;Pownce&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Posting some moronic photos to &lt;a href=&quot;http://www.flickr.com/photos/xternal1/&quot;&gt;Flickr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adding &lt;a href=&quot;http://site.gravatar.com/&quot;&gt;Gravatar&lt;/a&gt; support to my comments.&lt;/li&gt;
+&lt;li&gt;Trying to resist buying one of &lt;a href=&quot;http://eeepc.asus.com/global/&quot;&gt;these&lt;/a&gt;.  Thanks a lot, &lt;a href=&quot;http://www.brendoman.com/&quot;&gt;Brendan&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Toying with the &lt;a href=&quot;http://pownce.pbwiki.com/API%20Documentation2-0&quot;&gt;Pownce &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;And much , much more!  Heh.&lt;/li&gt;
+&lt;/ul&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Getting better</title>
+   <link href="http://www.techfreak.net/2006/10/18/getting-better.html"/>
+   <updated>2006-10-18T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2006/10/18/getting-better</id>
+   <content type="html">&lt;p&gt;I went back to jiu-jitsu class last night, having not gone in over a week or so due to the business trip.  I thought I would just get mangled.  Well, the second guy up for me, my friend Diego, did pretty much toy with me.  He was also helpful and gave me tips on some easily correctible errors I was making.  The real cool part of the night though was my first partner, Dave.  Now, Dave and I are about as evenly matched as I can find in the classes.  This is not to say we are actually evenly matched, it&amp;#8217;s just, there&amp;#8217;s not that many new people right now.  So we rolled first, and for the first time, I pretty much maintained control the entire time.  By maintained control, I mean, I either had or was transitioning to the dominant position most the time.  It felt great!  I was doing so well, he managed to compliment me during practice even, while we were going.  Hopefully tonight will be fun as well.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Mental Magic</title>
+   <link href="http://www.techfreak.net/2006/10/16/mental-magic.html"/>
+   <updated>2006-10-16T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2006/10/16/mental-magic</id>
+   <content type="html">&lt;p&gt;Last night a few co-workers and I hopped over to the Pleasanton Regal theater to catch a flick.  We saw &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0443543/&amp;#8220;&amp;gt;The Illusionist&lt;/a&gt;&amp;#8221;, which fortunately, turned out to be pretty good.  Good, but not great.  I say &amp;#8220;fortunately&amp;#8221; because I managed to confuse the film with &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0482571/&amp;#8220;&amp;gt;The Prestige&lt;/a&gt;&amp;#8221;, which though I&amp;#8217;m sure vaguely similar in content, is in fact, an entirely different film.  I realized this as, during the movie trailers,  a promo for the real &amp;#8220;Prestige&amp;#8221; was shown.  So for the next five minutes, I sat in flickering darkness, furiously scanning my brain to try and remember what movie we were indeed seeing.  It wasn&amp;#8217;t until Edward Nortan&amp;#8217;s name came up in the opening credits that I figured it out.  It&amp;#8217;s a pretty funny experience sitting in the theater thinking &amp;#8220;um, what movie am I about to see?&amp;#8221;&lt;/p&gt;
+&lt;p&gt;And hopefully &amp;#8220;The Prestige&amp;#8221; will be better.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Heading North</title>
+   <link href="http://www.techfreak.net/2006/10/12/heading-north.html"/>
+   <updated>2006-10-12T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2006/10/12/heading-north</id>
+   <content type="html">&lt;p&gt;Just about to pull out of here to head for Pleasanton with William.  I&amp;#8217;m looking forward to seeing my grandmother for a brief time tomorrow, but worried about the lack of sleep we face this weekend.  It will be nice to get out somewhere new though.  If all goes according to plan I should be back Monday night!&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Good Music</title>
+   <link href="http://www.techfreak.net/2006/10/10/good-music.html"/>
+   <updated>2006-10-10T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2006/10/10/good-music</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;m excited because I just discovered that one of my favorite bands, &lt;a href=&quot;http://en.wikipedia.org/wiki/Calexico&quot;&gt;Calexico&lt;/a&gt;, released a live session EP on iTunes recently.  Their music is awesome, I&amp;#8217;d describe it as an eclectic blend of rock and spaghetti western music, with surf and southwest sounds slapped on top.  Much of their &lt;a href=&quot;http://www.emusic.com/artist/11600/11600082.html&quot;&gt;collection&lt;/a&gt; is available on emusic. I recommend checking them out.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
