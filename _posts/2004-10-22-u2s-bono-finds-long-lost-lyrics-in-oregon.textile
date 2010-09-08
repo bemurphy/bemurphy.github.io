@@ -3,9 +3,6 @@ layout: post
 title: U2's Bono Finds Long-Lost Lyrics in Oregon
 wp-permalink: /wp/archives/2004/10/22/178/index.html
 post_id: 178
-categories: 
-- Asides
-- Music
 ---
 
 Reuters <a href="http://tinyurl.com/4n959">reports</a> that a briefcase with lyrics for songs intended for use on the U2 album "October", stolen in 1981, has been returned to Bono. 

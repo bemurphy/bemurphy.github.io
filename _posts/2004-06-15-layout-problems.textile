@@ -3,8 +3,6 @@ layout: post
 title: Layout problems
 wp-permalink: /wp/archives/2004/06/15/71/index.html
 post_id: 71
-categories: 
-- Site
 ---
 
 If anybody could be of help, I have a CSS layout problem.  If you have IE and Firefox, check out the page with both.  You'll notice in IE there is a sizeable gap between the content and the right hand menu that isn't present in Firefox.  This is causing a misalignment on the right side of the page.  I just spent and hour trying to figure out the problem with no luck.

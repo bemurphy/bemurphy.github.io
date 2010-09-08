@@ -3,8 +3,6 @@ layout: post
 title: MSN Direct ads roll tonight
 wp-permalink: /wp/archives/2004/02/10/14/index.html
 post_id: 14
-categories: 
-- Wireless
 ---
 
 According to <a href="http://www.i4u.com/article1128.html">I4U</a> ads for the <a href="http://direct.msn.com/">MSN Direct</a> service will start airing on TV.

@@ -3,9 +3,6 @@ layout: post
 title: "Via LawGeek: DMCA hammer comes down on tech service vendor"
 wp-permalink: /wp/archives/2004/07/10/113/index.html
 post_id: 113
-categories: 
-- Asides
-- Free Culture
 ---
 
 Court tells third party maintenance company their work on StorageTek devices is likely <a href="http://lawgeek.typepad.com/lawgeek/2004/07/dmca_hammer_com.html">in violation</a> of the DMCA.  ??hat tip: <a href="http://www.boingboing.net">BoingBoing</a>??

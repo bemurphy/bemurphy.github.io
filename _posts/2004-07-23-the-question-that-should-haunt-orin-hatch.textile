@@ -3,8 +3,6 @@ layout: post
 title: The question that should haunt Orrin Hatch
 wp-permalink: /wp/archives/2004/07/23/136/index.html
 post_id: 136
-categories: 
-- Free Culture
 ---
 
 Orrin Hatch is <a href="http://news.com.com/Senator+wants+to+ban+P2P+networks/2100-1027_3-5280384.html">still pushing</a> the much talked about INDUCE act.  If I could have it my way, everywhere Sen. Hatch would go, he would face the following loaded question:

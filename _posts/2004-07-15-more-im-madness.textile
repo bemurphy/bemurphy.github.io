@@ -3,8 +3,6 @@ layout: post
 title: More IM Madness
 wp-permalink: /wp/archives/2004/07/15/121/index.html
 post_id: 121
-categories: 
-- Tech
 ---
 
 Yahoo, AOL, and MSN plan to <a href="http://www.marketwatch.com/news/yhoo/story.asp?source=blq/yhoo&siteid=yhoo&dist=yhoo&guid=%7B100D0BD6%2DAB39%2D4E6A%2D9E5D%2D214265ABC13A%7D">link</a> their IM services.  The catch, it's only for businesses, and you have to license software from Microsoft that will provide the functionality.  Wow, sounds like a great idea.  Can you imagine if every business had to pay licensing to Microsoft in order for their email to work?

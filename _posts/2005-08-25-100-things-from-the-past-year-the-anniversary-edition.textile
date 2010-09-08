@@ -3,8 +3,6 @@ layout: post
 title: "100 things from the past year: the anniversary edition"
 wp-permalink: /wp/archives/2005/08/25/271/index.html
 post_id: 271
-categories: 
-- 100 Things
 ---
 
 Today is <a href="http://gingerstep.blogspot.com/">Crista</a> and my one year dating anniversary.  In honor of the occasion, I have created my third <a href="http://www.techfreak.net/wp/index.php/archives/category/100-things/">100 things</a> list.  It contains 100 things that I have done over the past year that I probably wouldn't have done otherwise.  So without further ado, look inside for the list!

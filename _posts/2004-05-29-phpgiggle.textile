@@ -3,8 +3,6 @@ layout: post
 title: phpGiggle
 wp-permalink: /wp/archives/2004/05/29/65/index.html
 post_id: 65
-categories: 
-- Site
 ---
 
 Thanks to NuclearMoose on #wordpress, I came across the phpGiggle plugin.  It's quite useful, essentially it preprocesses text and will translate keywords you've establed into automatic links.  So instead of slamming in the link to a friends site evertime, you just type it.  The word biolachris is automatically parsed, for example.

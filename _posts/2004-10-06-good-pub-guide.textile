@@ -3,9 +3,6 @@ layout: post
 title: Good Pub Guide
 wp-permalink: /wp/archives/2004/10/06/171/index.html
 post_id: 171
-categories: 
-- Asides
-- Rambling
 ---
 
 

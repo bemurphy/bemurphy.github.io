@@ -3,9 +3,6 @@ layout: post
 title: Cali vs. Diebold
 wp-permalink: /wp/archives/2004/09/07/163/index.html
 post_id: 163
-categories: 
-- Asides
-- Tech
 ---
 
 The state of California <a href="http://tinyurl.com/69hy3">announced plans</a> to sue voting electronic voting machine manufacturer Diebold for fraud. 

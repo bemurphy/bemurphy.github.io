@@ -3,9 +3,6 @@ layout: post
 title: Cool tshirt
 wp-permalink: /wp/archives/2004/07/13/117/index.html
 post_id: 117
-categories: 
-- Asides
-- Free Culture
 ---
 
 I think I want to <a href="http://www.downhillbattle.org/postal/index.php">buy</a> <a href="http://www.downhillbattle.org/postal/home_taping.jpg">this</a> tshirt.

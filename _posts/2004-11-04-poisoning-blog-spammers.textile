@@ -3,8 +3,6 @@ layout: post
 title: Poisoning Blog Spammers
 wp-permalink: /wp/archives/2004/11/04/185/index.html
 post_id: 185
-categories: 
-- Spam
 ---
 
 So lately I've gotten about 100 spam comments for the "texas holdem" idiot.  Fortunately, not a single one has actually been posted, because of the <a href="http://www.techfreak.net/wp/index.php/archives/2004/07/20/131/">whitelisting method</a> I've implemented.

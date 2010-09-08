@@ -3,8 +3,6 @@ layout: post
 title: Society of Discouragement
 wp-permalink: /wp/archives/2005/05/17/253/index.html
 post_id: 253
-categories: 
-- Rant
 ---
 
 I'm greatly interested in observing marketing in our society.  Understanding how that marketing helps shape us is interesting, but sometimes, wondering how the marketing reflects society is even more so.

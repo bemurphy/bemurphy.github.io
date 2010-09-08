@@ -3,9 +3,6 @@ layout: post
 title: "Hacking NetFlix : Netflix Launches "
 wp-permalink: /wp/archives/2004/12/02/199/index.html
 post_id: 199
-categories: 
-- Asides
-- Movies
 ---
 
 <a href="http://www.hackingnetflix.com/netflix/2004/12/netflix_launche.html">Hacking NetFlix :</a> Netflix Launches "Friends List" Feature

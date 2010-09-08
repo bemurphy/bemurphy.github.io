@@ -3,8 +3,6 @@ layout: post
 title: On control, procrastination and radio stations
 wp-permalink: /wp/archives/2005/07/12/258/index.html
 post_id: 258
-categories: 
-- Rambling
 ---
 
 I often behave as a procrastinator, in fact, I have for a long time.  I probably started the habit in school, where I found out I could put work off until the last minute and still get it done with above average grades.  Of course, such practice also tends to bring on above average stress.  Still, it felt natural to me.

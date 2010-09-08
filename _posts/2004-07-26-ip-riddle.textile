@@ -3,9 +3,6 @@ layout: post
 title: IP Riddle
 wp-permalink: /wp/archives/2004/07/26/139/index.html
 post_id: 139
-categories: 
-- Asides
-- Free Culture
 ---
 
 

@@ -3,8 +3,6 @@ layout: post
 title: New Favorite Quote
 wp-permalink: /wp/archives/2005/02/19/222/index.html
 post_id: 222
-categories: 
-- Rambling
 ---
 
 My new favorite quote is from Epictetus.  It's from about 200AD.

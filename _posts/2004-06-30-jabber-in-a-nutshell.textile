@@ -3,9 +3,6 @@ layout: post
 title: Jabber in a nutshell
 wp-permalink: /wp/archives/2004/06/30/101/index.html
 post_id: 101
-categories: 
-- Tech
-- Work
 ---
 
 Just got done testing the Jabber server against <a href="http://danny.brendoman.com">Danny's</a> jabber account.  Figured I'd just take a second to explain, exactly why I think <a href="http://www.jabber.org">Jabber</a> is cool.  I realize I've probably left some people in the dark on it.

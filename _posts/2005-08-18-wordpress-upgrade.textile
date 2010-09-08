@@ -3,8 +3,6 @@ layout: post
 title: Wordpress upgrade
 wp-permalink: /wp/archives/2005/08/18/262/index.html
 post_id: 262
-categories: 
-- Site
 ---
 
 I upgraded wordpress to 1.5, hence the different look.  I'm still working to figure out what theme I want, and I will be integrating gallery.  Hopefully soon!

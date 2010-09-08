@@ -3,8 +3,6 @@ layout: post
 title: Calling SC Players...
 wp-permalink: /wp/archives/2004/01/09/4/index.html
 post_id: 4
-categories: 
-- Paintball
 ---
 
 Got a camera phona and play at SC?  Let me know!

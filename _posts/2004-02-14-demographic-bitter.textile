@@ -3,8 +3,6 @@ layout: post
 title: Demographic = bitter
 wp-permalink: /wp/archives/2004/02/14/16/index.html
 post_id: 16
-categories: 
-- TV
 ---
 
 At this moment, CNN is airing a an hour program entitiled "Infidelity".  Yes, as in cheating in relationships.

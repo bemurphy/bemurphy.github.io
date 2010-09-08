@@ -3,9 +3,6 @@ layout: post
 title: iPod!
 wp-permalink: /wp/archives/2004/10/22/177/index.html
 post_id: 177
-categories: 
-- Music
-- Tech
 ---
 
 I've been wanting a hard drive based MP3 player for a while now.  I own about 20GB of music, so a 512MB flash player doesn't cut it anymore.  So I broke down and got a 40GB iPod.  All I can say is that in less than a day, it has surpassed my expectations.  I have used at least 3 different portable mp3 players in my life, and the iPod is better than all of them just by virtue of its user interface.  I'd read all the articles saying that's really what sells it, but I had no idea.  I mean, the click-wheel is essentially a touch pad for scrolling!  I'd done my research and didn't even know that.  And it works great!

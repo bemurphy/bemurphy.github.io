@@ -3,9 +3,6 @@ layout: post
 title: On TV and Style
 wp-permalink: /wp/archives/2005/03/08/231/index.html
 post_id: 231
-categories: 
-- Rant
-- TV
 ---
 
 My cynical prediction is that when Everwood returns, Ephram will be dressed like he's singing for The Killers or some equivalent.  Then we can come up with cute names like Emowood.

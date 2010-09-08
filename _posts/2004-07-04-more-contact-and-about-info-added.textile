@@ -3,9 +3,6 @@ layout: post
 title: More contact and about info added
 wp-permalink: /wp/archives/2004/07/04/108/index.html
 post_id: 108
-categories: 
-- Asides
-- Site
 ---
 
 I've now added preliminary content to my <a href="http://www.techfreak.net/wp/contact/" title="Contact Me">contact</a> and <a href="http://www.techfreak.net/wp/about/" title="About Me">about</a> pages.  Feel free to read up.

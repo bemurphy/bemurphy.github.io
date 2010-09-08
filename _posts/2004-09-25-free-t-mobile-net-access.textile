@@ -3,8 +3,6 @@ layout: post
 title: Free T-Mobile Net access?
 wp-permalink: /wp/archives/2004/09/25/170/index.html
 post_id: 170
-categories: 
-- Tech
 ---
 
 I can't believe it took me this long too figure out what bluetooth and T-Mobile free GPRS data could get you.

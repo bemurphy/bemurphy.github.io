@@ -3,9 +3,6 @@ layout: post
 title: me makey no sense
 wp-permalink: /wp/archives/2004/06/30/102/index.html
 post_id: 102
-categories: 
-- Asides
-- Tech
 ---
 
 I've now come to realize my attempt to explain Jabber didn't work.  Oops.

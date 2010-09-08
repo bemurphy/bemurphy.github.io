@@ -3,8 +3,6 @@ layout: post
 title: Vote this guy out
 wp-permalink: /wp/archives/2004/05/20/50/index.html
 post_id: 50
-categories: 
-- Free Culture
 ---
 
 Rep. Howard Bermain (D-Calif) is <a href="http://story.news.yahoo.com/news?tmpl=story&cid=638&e=3&u=/nm/20040521/en_nm/film_smut_dc">at it again</a>.  Part of legislation being debated in Congress right now surrounds <a href="http://www.clearplay.com/">ClearPlay</a> technology.    Basically, clearplay allows DVD players to play an edited cleaner version of movies.  Of course, Berman would like us to believe this is evil, pure evil:

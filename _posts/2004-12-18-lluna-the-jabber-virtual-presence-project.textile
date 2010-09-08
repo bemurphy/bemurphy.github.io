@@ -3,8 +3,6 @@ layout: post
 title: LLuna - the Jabber Virtual Presence Project
 wp-permalink: /wp/archives/2004/12/18/206/index.html
 post_id: 206
-categories: 
-- Tech
 ---
 
 I ran across an interesting Jabber application today called <a href="http://www.lluna.de/">Lluna</a>.  There's also a <a href="http://www.lluna.de/download.php?id=www.lluna.de&name=firefoxllunahelper">firefox plugin</a> for it.  The concept is pretty simple, it uses jabber for communication, and tracks what website you are currently viewing.  It throws up your avatar at the bottom on the web browser for that page, as well as the avatars of other users currently at the site.   This could, for instance, let users at a blog community like <a href="http://brendoman.com">brendoman.com</a> chat in real time about the news on the site.

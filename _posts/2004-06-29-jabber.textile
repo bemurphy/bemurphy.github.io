@@ -3,8 +3,6 @@ layout: post
 title: Jabber
 wp-permalink: /wp/archives/2004/06/29/99/index.html
 post_id: 99
-categories: 
-- Asides
 ---
 
 I have a test <a href="http://www.jabber.org">jabber</a> server running out of my house.  If you care to play, my account name is x t e r n a l at xternal.dyndns.org (remove the spaces).

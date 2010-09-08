@@ -3,8 +3,6 @@ layout: post
 title: New toy
 wp-permalink: /wp/archives/2004/03/23/31/index.html
 post_id: 31
-categories: 
-- Wireless
 ---
 
 It's cold here.  I'm outside the Starbucks at Culver and Irvine Blvd.  Figured it would be good to get out of the house.

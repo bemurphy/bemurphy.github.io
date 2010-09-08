@@ -3,9 +3,6 @@ layout: post
 title: Super Guitario
 wp-permalink: /wp/archives/2004/06/11/69/index.html
 post_id: 69
-categories: 
-- Games
-- Guitar
 ---
 
 Whoa, a site with guitar and some bass tab for old console games.  Some of the transcriptions are really pathetic, but there's a few good ones.  May I suggest <a href="http://kontek.net/vgjam/nes/smbros_over.txt">Overworld</a> from the original Super Mario Bros game, or something from <a href="http://kontek.net/vgjam/nes/gauntlet_title.txt">Gauntlet</a>.

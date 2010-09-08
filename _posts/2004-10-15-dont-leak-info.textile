@@ -3,9 +3,6 @@ layout: post
 title: Don't leak info!
 wp-permalink: /wp/archives/2004/10/15/173/index.html
 post_id: 173
-categories: 
-- Rant
-- Tech
 ---
 
 I'm a little irked at the excitement recently on some blogs regarding the <a href="http://www.chattingaimbot.com/">ChattingAimBot</a> service.  For those unfamiliar with the system, it's a novelty where you provide your email address, the AIM screenname of a friend, and some characteristics you wish the bot to assume.  The bot will then go have a random, and likely surprising, IM session with your friend and then email the transcript back to you.  It is nice they have a <a href="http://www.chattingaimbot.com/?p=block">feature</a> to block the bots from talking to a screenname, so people can't indefinitely harass you with the system.

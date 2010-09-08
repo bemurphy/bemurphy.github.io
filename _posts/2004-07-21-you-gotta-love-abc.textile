@@ -3,9 +3,6 @@ layout: post
 title: You gotta love ABC
 wp-permalink: /wp/archives/2004/07/21/133/index.html
 post_id: 133
-categories: 
-- Free Culture
-- TV
 ---
 
 Remember from a week or so ago, when ABC Primetime President Stephen McPherson <a href="http://abcnews.go.com/wire/Entertainment/reuters20040712_424.html">accused</a> Fox networks of taking on the role of programming imitator, saying "They will steal it, plain and simple"?

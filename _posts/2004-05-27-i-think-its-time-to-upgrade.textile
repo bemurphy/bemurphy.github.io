@@ -3,9 +3,6 @@ layout: post
 title: I think it's time to upgrade
 wp-permalink: /wp/archives/2004/05/27/60/index.html
 post_id: 60
-categories: 
-- Tech
-- Work
 ---
 
 Over time, I've managed to completely hose my linux box at work.  There were two, really really bad things I've done in the past 6 months.  First, I broke my rpm database beyond repair.  Then, I broke some of the perl libraries.  I've been trying to install BloGTK, but that's a no go because I can't get the new pygtk binding working.  So, I figured I'd do a remote connection to a windows box at work to use w.bloggar.  Since I have w2k and not XP, I can't use the excellent and fast <a href="http://www.rdesktop.org/">rdesktop</a> client, which I already have working.   So I decided to give a run at a VNC client to setup like <a href="http://danny.brendoman.com/">Danny</a> does.  I just spent 30 minutes compiling X libraries, and finally broke down on an error in libXaw that I'm not going to make it past.

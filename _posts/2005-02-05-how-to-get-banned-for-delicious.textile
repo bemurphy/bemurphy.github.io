@@ -3,9 +3,6 @@ layout: post
 title: How to get banned from del.icio.us
 wp-permalink: /wp/archives/2005/02/05/221/index.html
 post_id: 221
-categories: 
-- Rambling
-- Tech
 ---
 
 I just came across a <a href="http://www.davidco.com/forum/viewtopic.php?t=1794">cool idea</a> on using <a href="http://www.plkr.org/">plucker</a> to read <a href="http://del.icio.us/">del.icio.us</a> entries offline.  The idea is, you mark entries with a read-review tag, then use plucker to pull down the feed and 1 level deep of link data.  This way, you can review pages away from your computer if you have downtime.

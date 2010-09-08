@@ -3,9 +3,6 @@ layout: post
 title: 100 things
 wp-permalink: /wp/archives/2004/06/23/79/index.html
 post_id: 79
-categories: 
-- 100 Things
-- Rambling
 ---
 
 The NuclearMoose <a href="http://blog.nuclearmoose.com/archives/2004/06/23/100-things/#more-147">inspired</a> me to write a 100 items list about myself.  Some sure to be trivial, some not.  He was pressured by WordPress guru <a href="http://blog.carthik.net/index.php">Carthik</a>  to do so.

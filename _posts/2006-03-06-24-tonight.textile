@@ -3,8 +3,6 @@ layout: post
 title: 24 Tonight
 wp-permalink: /wp/archives/2006/03/06/306/index.html
 post_id: 306
-categories: 
-- 24 TV
 ---
 
 The TV schedulers have blessed us with not one but two new episodes of 24 tonight.  We'll start around 8:40ish, so that through the miracle of PVR we can skip all commercials!

@@ -3,9 +3,6 @@ layout: post
 title: A new puppy!
 wp-permalink: /wp/archives/2006/02/10/298/index.html
 post_id: 298
-categories: 
-- Games
-- Rambling
 ---
 
 Crista and I got a new puppy.  He's a pembroke welsh corgi, and his name is Brando.

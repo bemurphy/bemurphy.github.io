@@ -3,8 +3,6 @@ layout: post
 title: Let the wind blow
 wp-permalink: /wp/archives/2004/02/10/13/index.html
 post_id: 13
-categories: 
-- Rambling
 ---
 
 It's been very windy lately.  The funny thing is, the weather.com icons for current local weather don't read "windy".  Trust me, they should.  Last night, as near as I can figure, we had multiple wind related blackouts.  I counted 5 times the power shut off.  Must be blown transformers?

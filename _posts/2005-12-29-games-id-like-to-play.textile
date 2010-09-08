@@ -3,9 +3,6 @@ layout: post
 title: Games I'd like to play
 wp-permalink: /wp/archives/2005/12/29/293/index.html
 post_id: 293
-categories: 
-- Games
-- Rambling
 ---
 
 Here's a list of the games I'd really like to play with some friends.  They are mostly what I'd call Storytelling games.  I take that definition as kind of a cross between role playing games and storytelling.  Another description might be collaborative storytelling.  If you played in our recent group <a href="http://www.atlas-games.com/onceuponatime/index.php">Once Upon a Time</a> game, you have a flavor for such a game, albeit lighter weight than the following.

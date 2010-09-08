@@ -3,9 +3,6 @@ layout: post
 title: What goes around comes around
 wp-permalink: /wp/archives/2004/07/04/110/index.html
 post_id: 110
-categories: 
-- Asides
-- Free Culture
 ---
 
 South african lawyers are <a href="http://tinyurl.com/2olxx" class="offsite">suing</a> Disney for infringement of copyright over their use of the song "The Lion Sleeps Tonight".  What goes around...

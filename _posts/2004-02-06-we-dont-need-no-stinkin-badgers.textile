@@ -3,8 +3,6 @@ layout: post
 title: We don't need no stinkin' badgers
 wp-permalink: /wp/archives/2004/02/06/11/index.html
 post_id: 11
-categories: 
-- Rambling
 ---
 
 Apparently somewhere near my house they're doing construction this morning.  I can't tell what.  I keep hearing the "beep beep beep" of trucks backing up.  Plus, there's the occassional shreak of a power tool.  Waking up to the sound of said tool, my initial reaction was "is somebody torturing a badger?"

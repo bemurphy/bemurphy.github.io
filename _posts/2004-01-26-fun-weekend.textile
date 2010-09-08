@@ -3,8 +3,6 @@ layout: post
 title: Fun weekend
 wp-permalink: /wp/archives/2004/01/26/8/index.html
 post_id: 8
-categories: 
-- Paintball
 ---
 
 <a href="http://www.techfreak.net/images/xt_sc.jpg">I</a> want to be a <a href="http://paintball.com/pics/events/0311/CalJam/dsc_1341.jpg">beast like Dan0</a>.  <a href="http://www.techfreak.net/images/xt_sc2.jpg">Working on it</a>.

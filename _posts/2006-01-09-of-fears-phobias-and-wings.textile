@@ -3,8 +3,6 @@ layout: post
 title: Of Fears, Phobias, and Wings
 wp-permalink: /wp/archives/2006/01/09/295/index.html
 post_id: 295
-categories: 
-- Rambling
 ---
 
 So Friday, I'm flying for the first time.  The first time since 1993.

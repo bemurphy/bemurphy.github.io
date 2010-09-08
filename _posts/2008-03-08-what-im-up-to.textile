@@ -3,8 +3,6 @@ layout: post
 title: What I'm up to
 wp-permalink: /wp/archives/2008/03/08/333/index.html
 post_id: 333
-categories: 
-- Rambling
 ---
 
 Been very busy with work lately.  Here's some things I'm up to.

@@ -3,9 +3,6 @@ layout: post
 title: The Big 3-0
 wp-permalink: /wp/archives/2005/02/01/219/index.html
 post_id: 219
-categories: 
-- Rambling
-- Rant
 ---
 
 I turned 30 today.  Yay me.

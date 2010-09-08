@@ -3,10 +3,6 @@ layout: post
 title: Bowling
 wp-permalink: /wp/archives/2005/02/21/224/index.html
 post_id: 224
-categories: 
-- Asides
-- Gallery
-- Rambling
 ---
 
 Crista and I went <a href="http://www.techfreak.net/gallery/2-19-2005" title="bowling">bowling</a> on Saturday.  We split winning games this time out.  I think she had her highest scoring game ever.

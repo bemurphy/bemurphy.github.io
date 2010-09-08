@@ -3,8 +3,6 @@ layout: post
 title: Weekend wrap-up
 wp-permalink: /wp/archives/2005/11/14/285/index.html
 post_id: 285
-categories: 
-- Rambling
 ---
 
 Here's a quick rundown of my weekend.

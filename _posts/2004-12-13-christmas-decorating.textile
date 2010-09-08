@@ -3,9 +3,6 @@ layout: post
 title: Christmas Decorating
 wp-permalink: /wp/archives/2004/12/13/203/index.html
 post_id: 203
-categories: 
-- Asides
-- Gallery
 ---
 
 We <a href="http://www.techfreak.net/gallery/ChristmasDecorating">decorated </a>our Christmas tree last night.

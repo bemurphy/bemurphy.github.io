@@ -3,8 +3,6 @@ layout: post
 title: Five people I'd like to meet (well, they're dead, it will be rough)
 wp-permalink: /wp/archives/2005/10/14/280/index.html
 post_id: 280
-categories: 
-- 5ives
 ---
 
 <ol>

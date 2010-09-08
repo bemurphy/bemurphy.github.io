@@ -3,8 +3,6 @@ layout: post
 title: The joy of chromatics
 wp-permalink: /wp/archives/2004/03/05/22/index.html
 post_id: 22
-categories: 
-- Guitar
 ---
 
 So I've been playing guitar more recently.  Even have a <a href="http://www.ibanez.com/guitars/guitar.asp?model=UV777">new one</a> in the mail.  Now, you may ask, what my number one goal of the moment is?  How about to be able to play really, really fast.  80's guitar legend fast.  Seems like an odd want, as it's an irrelevant skill these days.  But still it's my goal.

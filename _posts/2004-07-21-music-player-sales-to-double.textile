@@ -3,8 +3,6 @@ layout: post
 title: Music player sales to double?
 wp-permalink: /wp/archives/2004/07/21/132/index.html
 post_id: 132
-categories: 
-- Music
 ---
 
 A somewhat dubious <a href="http://tinyurl.com/4rv9p">study</a> claims sales of portable digital music players will double in the coming year.  That sound you heard was the collective sigh of the music industry, upon realizing they are still too far behind the curve on music that isn't pressed.

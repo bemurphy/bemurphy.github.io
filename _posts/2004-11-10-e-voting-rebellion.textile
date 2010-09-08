@@ -3,8 +3,6 @@ layout: post
 title: E-Voting rebellion
 wp-permalink: /wp/archives/2004/11/10/188/index.html
 post_id: 188
-categories: 
-- Politics
 ---
 
 My cousin Shannon lives in Brooklyn.  <a href="http://www.eff.org/news/archives/2004_11.php#002062">Wisely fearing</a> the <a href="http://www.popsci.com/popsci/generaltech/article/0,20967,714491,00.html">potential</a> for <a href="http://www.wired.com/news/print/0,1294,65601,00.html">problems</a> that could occur with a paperless evoting box, this past November 2 she demanded access to a paper ballot.  In the end, it took a court issued order and eight hours of time for her request to be met.

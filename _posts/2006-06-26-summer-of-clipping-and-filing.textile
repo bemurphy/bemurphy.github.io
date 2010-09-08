@@ -3,8 +3,6 @@ layout: post
 title: Summer of Clipping and Filing
 wp-permalink: /wp/archives/2006/06/26/312/index.html
 post_id: 312
-categories: []
-
 ---
 
 Crista is going to Japan to perform for three months this summer.  Besides the obvious, what does this mean to me?

@@ -3,10 +3,6 @@ layout: post
 title: Hey MPAA...
 wp-permalink: /wp/archives/2004/11/09/186/index.html
 post_id: 186
-categories: 
-- Free Culture
-- Movies
-- Rant
 ---
 
 ...you suck.

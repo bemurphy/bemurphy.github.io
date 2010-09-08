@@ -3,8 +3,6 @@ layout: post
 title: Google IM service is (half) live
 wp-permalink: /wp/archives/2005/08/23/266/index.html
 post_id: 266
-categories: 
-- Tech
 ---
 
 I've successfully connected to Google's new instant messaging service, powered by <a href="http://www.jabber.org">jabber</a>.  Rumor has it they are unveiling the service tomorrow.  Unfortunately, as far as I can tell, server to server jabber communications are not yet enabled.  If s2s gets turned on, jabber will get the shot in the arm it needs.

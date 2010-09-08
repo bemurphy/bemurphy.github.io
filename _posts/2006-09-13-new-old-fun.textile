@@ -3,8 +3,6 @@ layout: post
 title: New Old Fun
 wp-permalink: /wp/archives/2006/09/13/315/index.html
 post_id: 315
-categories: []
-
 ---
 
 I've got more free time on my hands as of late, so I wanted to fill it with some exercise that would be fun and help pass the time.

@@ -3,8 +3,6 @@ layout: post
 title: Weekend wrap-up
 wp-permalink: /wp/archives/2005/08/08/260/index.html
 post_id: 260
-categories: 
-- Rambling
 ---
 
 So here's the rundown of my weekend.  Like many, I consider the weekend to start when I leave work on Friday.

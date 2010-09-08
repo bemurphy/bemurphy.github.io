@@ -3,8 +3,6 @@ layout: post
 title: SpoofStick
 wp-permalink: /wp/archives/2004/08/18/155/index.html
 post_id: 155
-categories: 
-- Tech
 ---
 
 There's a browser extension I just ran across called <a href="http://www.corestreet.com/spoofstick/">SpoofStick</a> that sounds pretty interesting.  It basically sticks a message up in your browser for any site you go to that says what domain you are currently on.  The goal, obviously, is to prevent falling victim to <a href="http://www.antiphishing.org/">phishing attacks</a>.

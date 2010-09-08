@@ -3,9 +3,6 @@ layout: post
 title: Cuba V. US
 wp-permalink: /wp/archives/2004/12/17/204/index.html
 post_id: 204
-categories: 
-- Asides
-- Politics
 ---
 
 Cuba and the US are in a Christmas spirit <a href="http://www.reuters.com/newsArticle.jhtml?type=topNews&storyID=7125685">billboard war</a>

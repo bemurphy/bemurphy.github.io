@@ -3,9 +3,6 @@ layout: post
 title: iPod Shuffle
 wp-permalink: /wp/archives/2005/01/29/218/index.html
 post_id: 218
-categories: 
-- Music
-- Tech
 ---
 
 <a href="http://www.biolachris.com" title="biolachris">Chris</a> informed me that the BestBuy near my house had a table full of iPod Shuffles for sale.  I was surprised, since no stores seem to have them in stock.  I picked one up.  Now I'll see if I can use it as motivation to exercise. 

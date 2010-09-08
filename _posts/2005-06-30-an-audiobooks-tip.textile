@@ -3,8 +3,6 @@ layout: post
 title: An audiobooks tip
 wp-permalink: /wp/archives/2005/06/30/257/index.html
 post_id: 257
-categories: 
-- Rambling
 ---
 
 I just provided this tip to a friend of mine, and thought it would be worthy sharing with my readers.  If you are into purchasing audiobooks piecemeal from audible.com, check if the iTunes music store has the book before buying.  ITMS gets their books from Audible, but often sells them for less than Audible. 

@@ -3,8 +3,6 @@ layout: post
 title: Five books I am reading now
 wp-permalink: /wp/archives/2005/10/14/278/index.html
 post_id: 278
-categories: 
-- 5ives
 ---
 
 Here are five books I'm currently reading.  It's hard to keep track, I think I'm abandoning one.  I'm on a hypnosis and simple living kick right now.

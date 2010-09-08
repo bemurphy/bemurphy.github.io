@@ -3,8 +3,6 @@ layout: post
 title: Five kicks & Choose your own post
 wp-permalink: /wp/archives/2005/11/21/286/index.html
 post_id: 286
-categories: 
-- 5ives
 ---
 
 Following are five recent kicks of mine.  Vote via a comment which you want me to post about first.

@@ -3,8 +3,6 @@ layout: post
 title: Rasterbation!
 wp-permalink: /wp/archives/2004/05/16/43/index.html
 post_id: 43
-categories: 
-- Tech
 ---
 
 I ran across the <a href="http://homokaasu.org/rasterbator/">Rasterbator</a> a while ago.  Haven't put it to use yet, but I'm planning to get around to it soon.  See, the house I live in has it's original 70s styling mostly intact, inluding the 96xsomething inch mirror behind my bed.

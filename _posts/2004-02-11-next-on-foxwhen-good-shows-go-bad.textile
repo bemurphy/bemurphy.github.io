@@ -3,8 +3,6 @@ layout: post
 title: Next on FOX...when good shows go bad
 wp-permalink: /wp/archives/2004/02/11/15/index.html
 post_id: 15
-categories: 
-- TV
 ---
 
 24 used to be a good show.  Yes, "used to be".  First season was cool, second wasn't bad.  The third, well, it's dreck.

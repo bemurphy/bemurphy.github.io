@@ -3,8 +3,6 @@ layout: post
 title: contact updates
 wp-permalink: /wp/archives/2004/12/18/205/index.html
 post_id: 205
-categories: 
-- Asides
 ---
 
 I updated my <a href="http://www.techfreak.net/wp/contact/">contact info</a> to include my skype login.  Not that I'm on all the time.

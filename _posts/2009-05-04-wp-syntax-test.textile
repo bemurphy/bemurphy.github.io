@@ -3,8 +3,6 @@ layout: post
 title: wp-syntax test
 wp-permalink: /wp/archives/2009/05/04/352/index.html
 post_id: 352
-categories: 
-- ""
 ---
 
 Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!

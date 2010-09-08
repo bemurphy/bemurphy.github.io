@@ -3,8 +3,6 @@ layout: post
 title: If you elect me President...
 wp-permalink: /wp/archives/2005/12/13/290/index.html
 post_id: 290
-categories: 
-- Rambling
 ---
 
 ...I'll put coke in all the drinking fountains!

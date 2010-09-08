@@ -3,8 +3,6 @@ layout: post
 title: Safest City?
 wp-permalink: /wp/archives/2004/11/22/196/index.html
 post_id: 196
-categories: 
-- Rambling
 ---
 
 <a href="http://www.techfreak.net/gallery/TreeDestroysNeighborHouse"><img src="http://www.techfreak.net/data/albums/TreeDestroysNeighborHouse/CIMG0112.thumb.jpg" alt="tree destroys house" style="margin-bottom: 15px;margin-right: 15px; float: left" /></a>According to a <a href="http://www.nbc4.tv/houseandhome/3938296/detail.html">recent study</a> my home town of Irvine, CA is the 11th safest city in the US based on crime statistics.

@@ -3,8 +3,6 @@ layout: post
 title: Mixed message?
 wp-permalink: /wp/archives/2004/11/17/194/index.html
 post_id: 194
-categories: 
-- Music
 ---
 
 According to this <a href="http://tinyurl.com/4uk2e">story</a>:

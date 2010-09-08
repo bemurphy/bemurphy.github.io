@@ -3,8 +3,6 @@ layout: post
 title: "BlogMatrix J\xC3\xA4ger"
 wp-permalink: /wp/archives/2004/10/19/176/index.html
 post_id: 176
-categories: 
-- Tech
 ---
 
 Just ran across the news aggregator <a href="http://jaeger.blogmatrix.com/">Jäger</a>.   It looks really interesting I plan on testing it when I get home.

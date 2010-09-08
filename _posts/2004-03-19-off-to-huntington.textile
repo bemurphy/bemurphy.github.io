@@ -3,8 +3,6 @@ layout: post
 title: Off to Huntington
 wp-permalink: /wp/archives/2004/03/19/29/index.html
 post_id: 29
-categories: 
-- Paintball
 ---
 
 Running late to make it to the Huntington Beach <a href="http://www.nppl.tv/hb04tourney.htm">NPPL season opener</a>.  Fortunately (I think) I'm not playing!

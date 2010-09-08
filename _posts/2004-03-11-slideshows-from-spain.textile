@@ -3,8 +3,6 @@ layout: post
 title: Slideshows from Spain
 wp-permalink: /wp/archives/2004/03/11/26/index.html
 post_id: 26
-categories: 
-- Rambling
 ---
 
 Lots of local <a href="http://www.elmundo.es/fotografia/2004/03/atentados/heridos1.html">pictures from the bombings</a> in Spain.  Disturbing stuff.  I'm not eloquent enough to do this situation justice in words, so a simple "our prayers are with you" must suffice.

@@ -3,9 +3,6 @@ layout: post
 title: Hi Mom!
 wp-permalink: /wp/archives/2004/07/10/112/index.html
 post_id: 112
-categories: 
-- Rambling
-- Site
 ---
 
 I've joined the ranks of people who's moms have found their site.  Well, perhaps found isn't the best term.  It was more like, I showed my site to my dad as an example of what I'd set up for him, and, you get the idea.

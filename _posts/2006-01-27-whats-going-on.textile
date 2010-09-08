@@ -3,8 +3,6 @@ layout: post
 title: What's going on
 wp-permalink: /wp/archives/2006/01/27/296/index.html
 post_id: 296
-categories: 
-- Rambling
 ---
 
 I figured I'd just bullet point random happenings for the past couple weeks.

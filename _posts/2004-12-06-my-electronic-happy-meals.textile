@@ -3,8 +3,6 @@ layout: post
 title: My electronic happy meals
 wp-permalink: /wp/archives/2004/12/06/200/index.html
 post_id: 200
-categories: 
-- Rambling
 ---
 
 

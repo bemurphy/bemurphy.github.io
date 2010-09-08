@@ -3,8 +3,6 @@ layout: post
 title: age + 1
 wp-permalink: /wp/archives/2004/02/01/10/index.html
 post_id: 10
-categories: 
-- Rambling
 ---
 
 I officially turned 29 today.   But, my new stage age is 27.  Ya, you heard me right.

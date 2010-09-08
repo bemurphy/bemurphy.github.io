@@ -3,9 +3,6 @@ layout: post
 title: iMac
 wp-permalink: /wp/archives/2005/02/21/223/index.html
 post_id: 223
-categories: 
-- Rave
-- Tech
 ---
 
 After enjoying OSX on a Mac Mini, but realizing it was too slow to work as my main workstation, I upgraded to a 20" iMac.  I looked at dual processor towers, but felt I couldn't justify the processing power for the price right now.  I'm not going to be doing anything rigorous on it right now.  I'm just planning to use it for run of the mill internet and photo work.  It's remarkably faster than the Mini, which is not surprising.  It's a G5 vs. G4 processor, plus the bus is at 600mhz rather than 147 or so.  I also bumped the memory up  an additional 1GB, so it's not starving at 256MB.

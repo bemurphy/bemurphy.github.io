@@ -3,8 +3,6 @@ layout: post
 title: YaITL
 wp-permalink: /wp/archives/2005/07/29/259/index.html
 post_id: 259
-categories: 
-- Music
 ---
 
 Or, yet another instrument to learn.

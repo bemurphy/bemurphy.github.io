@@ -3,8 +3,6 @@ layout: post
 title: A fine day
 wp-permalink: /wp/archives/2004/10/19/175/index.html
 post_id: 175
-categories: 
-- Rave
 ---
 
 Normally, I don't break up my workday much.  Like many in the networking industry, I'm one of those eat at the keyboard kinda guys.

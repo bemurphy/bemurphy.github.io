@@ -3,8 +3,6 @@ layout: post
 title: Sick
 wp-permalink: /wp/archives/2004/11/11/190/index.html
 post_id: 190
-categories: 
-- Rambling
 ---
 
 Just a quick note, if you're trying to get a hold of me and I'm less responsive, it's because I'm sick.  I thought I was past the worst of a cold I from last weekend.  Unfortunately I developed a wicked eye infection yesterday, and it's complicated my sinus problems.  Yay.

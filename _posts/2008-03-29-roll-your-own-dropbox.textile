@@ -3,8 +3,6 @@ layout: post
 title: Roll your own dropbox
 wp-permalink: /wp/archives/2008/03/29/343/index.html
 post_id: 343
-categories: 
-- Rambling
 ---
 
 So I've had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out <a href="http://www.filedropper.com/">filedropper.com</a> for a simple example of such an application.
