@@ -50,133 +50,79 @@
 <div class="post">  
 
   <h1>
-    Metaprogramming in Ruby: Part 1
+    Time Override
   </h1>
 
-  <p>I joked with a co-worker the other day that, sometimes I think I&#8217;m better at Ruby metaprogramming that straight ahead programming.  This is a serious exaggeration, and I don&#8217;t count myself as an expert at either.  However, it dawned on me that, I have a few friends that aren&#8217;t as exposed to metaprogramming concepts in Ruby, so, what better topic to share about.  Hopefully in the process, you&#8217;ll learn something new, and, I&#8217;ll become better at explaining Ruby concepts and sharing code.</p>
-<p>Before I dive in with some introductory examples, a quick definition of metaprogramming is in order.  To quote <a href="http://en.wikipedia.org/wiki/Metaprogramming" title="Wikipedia">Wikipedia</a>, &#8220;Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data, or that do part of the work at compile time that would otherwise be done at runtime&#8221;.  If you use Rails (and, I know you do), metaprogramming enables things you already do on a daily basis, such as dynamic find_by methods in ActiveRecord, or plugins that dynamically get a class to include them (acts_as_list, acts_as_tree, etc).</p>
-<p>In this writeup, I&#8217;ll start with two extremely basic metaprogramming concepts.  In fact, these might not even be considered true Ruby metaprogramming, but, I wanted to start with some simple ideas which you may not have been exposed to in Ruby 101.</p>
-<p>The first concept to get down in Ruby is that, classes are objects like anything else.  In Ruby, this means you can open the class and modify it on the fly.  The practice is affectionately called monkey patching or duck punching.  Let&#8217;s look at a simple example:</p>
-<script src="http://gist.github.com/222706.js"></script><p>You can see above, we&#8217;ve created a Foo class with a public instance method, bar.  Calling foo.bar, we&#8217;ll get the output we expect, &#8220;bar!&#8221;.  Next, we reopen the Foo class, and add a new public instance method, foobar.  Had we tried to use Foo#foobar before this, we&#8217;d get a NoMethodError exception, as expected.  However, having reopened and modified the class, we can call our new method.</p>
-<p>The other demonstration I&#8217;d like to show is one way you can define methods on the fly.  This example is abstract and doesn&#8217;t represent a recommended use, it&#8217;s simply to prove the point.</p>
-<script src="http://gist.github.com/222724.js"></script><p>Running this simple example, the first call to foo_two.bar will output &#8220;bar&#8221;.  However, once we call foo.cap_bar, the public instance method bar is changed.  Running it a second time will output &#8220;<span class="caps">BAR</span>!!!&#8221;.  A more common, rubyish way of defining methods at run time in Ruby is the use of <a href="http://ruby-doc.org/core/classes/Module.html#M001654" title="define_method">define_method</a>, which I&#8217;ll cover in a future post.</p>
-<p>An important concept to keep in mind here is that, you aren&#8217;t modifying behavior solely on the foo or foo_two instances.  Instead, you are changing the behavior of any open instance of the Foo or FooTwo classes.  So in our FooTwo example, if you were to create a foo_too instance, calling foo_too.bar would run through the dynamically created method as well and output &#8220;<span class="caps">BAR</span>!!!&#8221;.  In future postings, we&#8217;ll see a different approach of opening instances and defining methods specific to that instance.</p>
-<p>Hopefully this has whet your appetite a little, and, in the future, we can run through some more exciting examples of the metaprogramming facilities Ruby has to offer.</p>  
+  <p>Post with a front matter time</p>
+<p>10 Jan 2010</p>  
   
   <p class="signoff">
-    &mdash;<a href="/2009/10/30/metaprogramming-in-ruby-part-1.html">Oct 30, 2009</a>
+    &mdash;<a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/time-override.html">Jan 10, 2010</a>
   </p>
 
-  <p class="index_comments_count"><a href="/2009/10/30/metaprogramming-in-ruby-part-1.html#disqus_thread">/2009/10/30/metaprogramming-in-ruby-part-1.html comments</a></p>
+  <p class="index_comments_count"><a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/time-override.html#disqus_thread">/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/time-override.html comments</a></p>
   </div>
 
 <div class="post">  
 
   <h1>
-    wp-syntax test
+    Override Data
   </h1>
 
-  <p>Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s2">&quot;date&quot;</span>
-
-<span class="k">class</span> <span class="nc">DateReformatter</span>
-  <span class="kp">attr_reader</span> <span class="ss">:date</span>
-  
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
-    <span class="nb">self</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span>
-  <span class="k">end</span>
-  
-  <span class="k">def</span> <span class="nf">date</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
-    <span class="k">begin</span>
-      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
-    <span class="k">rescue</span>
-      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">now</span><span class="p">()</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-  
-  <span class="k">def</span> <span class="nf">reformat</span>
-    <span class="n">local</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-    <span class="n">utc</span> <span class="o">=</span> <span class="vi">@date</span><span class="o">.</span><span class="n">new_offset</span>
-    <span class="n">local_from_utc</span> <span class="o">=</span> <span class="n">utc</span><span class="o">.</span><span class="n">new_offset</span><span class="p">(</span><span class="n">local</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span>
-    <span class="n">local_from_utc</span><span class="o">.</span><span class="n">to_s</span>
-    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">pad</span><span class="p">(</span><span class="n">local_from_utc</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">pad</span><span class="p">(</span><span class="n">local_from_utc</span><span class="o">.</span><span class="n">min</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-  <span class="k">end</span>
-  
-  <span class="kp">private</span>
-  
-  <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-    <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>  
+    
   
   <p class="signoff">
-    &mdash;<a href="/2009/05/04/wp-syntax-test.html">May 04, 2009</a>
+    &mdash;<a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/override-data.html">Jan 10, 2010</a>
   </p>
 
-  <p class="index_comments_count"><a href="/2009/05/04/wp-syntax-test.html#disqus_thread">/2009/05/04/wp-syntax-test.html comments</a></p>
+  <p class="index_comments_count"><a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/override-data.html#disqus_thread">/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/override-data.html comments</a></p>
   </div>
 
 <div class="post">  
 
   <h1>
-    Roll your own dropbox
+    Timezone Override
   </h1>
 
-  <p>So I&#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out <a href="http://www.filedropper.com/">filedropper.com</a> for a simple example of such an application.</p>
-<p>Of course, I was bored, and don&#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.</p>
-<p>So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked <a href="http://www.ruby-lang.org/en/">ruby</a>) and a module for interfacing with <a href="http://aws.amazon.com/s3">Amazon&#8217;s S3 service</a>.</p>
-<p>The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&#8217;s the basic workflow steps:</p>
-<ol>
-<li>Make an Automator workflow that takes a selected set of files (&#8220;Get Selected Items&#8221;) and creates an archive (&#8220;Create Archive&#8221;) out of them</li>
-<li>Pass that archive into a script (&#8220;Run Shell Script&#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.</li>
-<li>Store the file on S3, and then output the full S3 url for capture by Automator.</li>
-<li>Use the Automator &#8220;New Mail Message&#8221; action, passing in the url as the content of the message</li>
-<li>Plan on manually addressing the message, filling out the body if you like.</li>
-<li>Now here&#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.</li>
-</ol>
-<p>Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.</p>
-<p>I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&#8217;s not as &#8220;sexy&#8221;, right?</p>  
+  <p>Post with a front matter time with timezone</p>
+<p>10 Jan 2010</p>  
   
   <p class="signoff">
-    &mdash;<a href="/2008/03/29/roll-your-own-dropbox.html">Mar 29, 2008</a>
+    &mdash;<a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/timezone-override.html">Jan 10, 2010</a>
   </p>
 
-  <p class="index_comments_count"><a href="/2008/03/29/roll-your-own-dropbox.html#disqus_thread">/2008/03/29/roll-your-own-dropbox.html comments</a></p>
+  <p class="index_comments_count"><a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/timezone-override.html#disqus_thread">/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/timezone-override.html comments</a></p>
   </div>
 
 <div class="post">  
 
   <h1>
-    My eye
+    Date Override
   </h1>
 
-  <p><a href="http://www.flickr.com/photos/xternal1/sets/72157604236634154/" title="DSC00406.JPG by xternal1, on Flickr"><img src="http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg" width="240" height="180" alt="DSC00406.JPG" /></a><br />
-So this is a bit of old news.  I was going back through the files on my camera I haven&#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&#8217;t know why I&#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&#8217;ve got a little red spot on my right lower lid, it&#8217;s the remnants of this.  It&#8217;s still got a little ways to go before it totally clears up.</p>  
+  <p>Post with a front matter date</p>
+<p>10 Jan 2010</p>  
   
   <p class="signoff">
-    &mdash;<a href="/2008/03/24/my-eye.html">Mar 24, 2008</a>
+    &mdash;<a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/date-override.html">Jan 10, 2010</a>
   </p>
 
-  <p class="index_comments_count"><a href="/2008/03/24/my-eye.html#disqus_thread">/2008/03/24/my-eye.html comments</a></p>
+  <p class="index_comments_count"><a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/date-override.html#disqus_thread">/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/10/date-override.html comments</a></p>
   </div>
 
 <div class="post">  
 
   <h1>
-    Keeping support focused
+    Foo --- Bar
   </h1>
 
-  <p>I was just browsing the <a href="http://automattic.com">automattic.com</a> <a href="http://automattic.com/about/how-we-work/">How We Work page</a> and ran across this tidbit:<br />
-bq. Everyone who joins, regardless of position, does support for their first three weeks.<br />
-Now, I&#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&#8217;s an interesting concept still.</p>  
+  <p>Triple the fun!</p>  
   
   <p class="signoff">
-    &mdash;<a href="/2008/03/19/keeping-support-focused.html">Mar 19, 2008</a>
+    &mdash;<a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/08/triple-dash.html">Jan 08, 2010</a>
   </p>
 
-  <p class="index_comments_count"><a href="/2008/03/19/keeping-support-focused.html#disqus_thread">/2008/03/19/keeping-support-focused.html comments</a></p>
+  <p class="index_comments_count"><a href="/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/08/triple-dash.html#disqus_thread">/vendor/bundle/ruby/1.8/gems/jekyll-0.7.0/test/source/2010/01/08/triple-dash.html comments</a></p>
   </div>
 
       <footer id="footer">
