@@ -1,0 +1,18 @@
+---
+layout: post
+title: 5ives on negativity
+wp-permalink: /wp/archives/2005/05/09/250/index.html
+post_id: 250
+categories: 
+- 5ives
+---
+
+What are five things I currently do not like?
+
+<ol>
+<li>Mac vs. Windows vs. Linux flame wars.</li>
+<li>Obfuscating dogmatism as certainty in "facts".</li>
+<li>Advertising by any soft drink manufacturer which implies sugar water can somehow improve your life.</li>
+<li>Convergent thinking in absence of divergent thinking.</li>
+<li>Overuse of loaded labels, such as liberal or conservative.</li>
+</ol>

@@ -1,0 +1,11 @@
+---
+layout: post
+title: SMS Bank Card alerts
+wp-permalink: /wp/archives/2004/11/12/191/index.html
+post_id: 191
+categories: 
+- Asides
+- Tech
+---
+
+Spanish bank Bankinter has <a href="http://www.textually.org/textually/archives/006011.htm">launched</a> an sms based service to inform people each time their bank card is used.  Can the CC issuers in the US _please_ consider this?

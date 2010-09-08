@@ -1,0 +1,18 @@
+---
+layout: post
+title: Valenti is smarter than this
+wp-permalink: /wp/archives/2004/08/30/159/index.html
+post_id: 159
+categories: 
+- Free Culture
+---
+
+Engadget just ran an <a href="http://www.engadget.com/entry/8536544887710643/">interview</a> they did with on-his-way-out MPAA president Jack Valenti.  In response to the question "What would you say to a mom who wants to make a backup of her kids’ DVD movies?".  Valenti offered the following, nonsensical analogy:
+
+bq.  When you go to your department store and you buy 10 Cognac glasses and two weeks later you break two of them, the store doesn’t give you two backup copies. Where did this backup copy thing come from? A digital thing lasts forever.
+
+Complete nonsense, mostly brought on by the common industry practice of comparing digital information to physical property.  If the store were to give you 2 additional Cognac glasses, they are now out of 2 physical pieces of merchandise they had intended to sell to another consumer.  On the other hand, a mom who makes a copy of a dvd to protect it from the gooey-sticky fingers of toddlers doesn't remove inventory from any stock.  At the most, she is limiting the ability of a retailer from selling her a new copy of a movie she purchased but was damaged.  Look at it this way, a more honest representation of Valenti's analogy would be that, if the Cognac glass was to break in two in a repairable fashion, he'd rather you not be sold the glue to fix it.  You should just go buy yourself a new glass.
+
+Oh, and what exactly does  "A digital thing lasts forever" mean?  CDs and DVDs certainly don't last forever, anybody with Netflix could tell you that.  In fact, the only way I think an individual could make such a "digital thing" last forever (or at least, the duration of their lifespan) is if they were permitted to make non-degrading backup copies.
+
+In answer to his silly question of "where did this backup copy thing come from?" the answer is really simple: because we can.  You can't make a backup copy of a glass, it's physical.  But data, in any format, can be copied by virtue of it's nature.  That's what makes his comparison so ridiculous.

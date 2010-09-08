@@ -1,0 +1,11 @@
+---
+layout: post
+title: Alton Brown.com
+wp-permalink: /wp/archives/2004/07/19/129/index.html
+post_id: 129
+categories: 
+- Asides
+- TV
+---
+
+By way of <a href="http://www.photomatt.net">photomatt</a> I came across the <a href="http://www.altonbrown.com/pages/rants.html">blog </a> of <a href="http://www.foodtv.com/food/show_ea/0,1976,FOOD_9956,00.html">Good Eats</a> guru Alton Brown.  This might prove interesting.

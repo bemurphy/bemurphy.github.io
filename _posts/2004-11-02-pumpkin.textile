@@ -1,0 +1,11 @@
+---
+layout: post
+title: Pumpkin
+wp-permalink: /wp/archives/2004/11/02/180/index.html
+post_id: 180
+categories: 
+- Asides
+- Gallery
+---
+
+I added a <a href="http://www.techfreak.net/gallery/10-31-04">new album</a> to the gallery of our pumpkins from this year.

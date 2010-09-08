@@ -1,0 +1,11 @@
+---
+layout: post
+title: Spammer hit with $4m judgement
+wp-permalink: /wp/archives/2004/07/15/122/index.html
+post_id: 122
+categories: 
+- Asides
+- Spam
+---
+
+Microsoft just <a href="http://biz.yahoo.com/rc/040715/tech_microsoft_spam_1.html">won</a> a $4 million dollar judgement against a California based spammer.

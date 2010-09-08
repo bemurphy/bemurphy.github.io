@@ -1,0 +1,11 @@
+---
+layout: post
+title: Non-pc headline
+wp-permalink: /wp/archives/2004/09/16/167/index.html
+post_id: 167
+categories: 
+- Asides
+- TV
+---
+
+The award for retro news headline of the day goes to <a href="http://tinyurl.com/4ya2r">this story</a> from the Reuters entertainment news feed: "Miss America to Showcase More Skin, Less Talent"

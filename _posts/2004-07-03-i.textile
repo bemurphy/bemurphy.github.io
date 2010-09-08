@@ -1,0 +1,11 @@
+---
+layout: post
+title: I'm slow at CSS
+wp-permalink: /wp/archives/2004/07/03/107/index.html
+post_id: 107
+categories: 
+- Asides
+- Site
+---
+
+I'm slow at CSS, but I managed to figure out how to tab a navbar today, using only style.  Now I should eat.

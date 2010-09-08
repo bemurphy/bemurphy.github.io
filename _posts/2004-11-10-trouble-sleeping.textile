@@ -1,0 +1,42 @@
+---
+layout: post
+title: Trouble Sleeping?
+wp-permalink: /wp/archives/2004/11/10/189/index.html
+post_id: 189
+categories: 
+- Ad Naseaum
+- Rambling
+---
+
+Last night I was intrigued by a tv ad for the prescription drug Ambien.  Doesn't ring a bell?  Perhaps you know it as Zolpidem Tartrate.  Wait, that's why they named it Ambien.  The important thing was, it was the kind of ad where they don't talk about what the drug is used to treat.  Rather, it is left as an exercise to the viewer to "ask your doctor if it is right for you".  By the way, I can't wait for an ad for either 1) a female hormonal supplement or 2) a herpes medication, to emply such tactics.  Greater embarassment would occur in doctor's offices across the nation.
+
+I've decided to check out ambien.com and see if the product is right for me.  I mean, I can't get to a doctor right now, but at least I can get to their website.  Turns out it's a prescription sleep-aid.  Fantastic, tv advertisements give me insomnia anyways.
+
+Their <a href="http://ambien.com/consumer/sleeping/quiz.asp">Sleep Assessment Quiz</a> is most amusing.  It's written with the broad strokes that we've come to know and love from say, a telephone psychic.  But don't worry, these guys are professionals.  I'll run through a summary of their questions (don't want to quote verbatim, might get a beatdown).
+
+<ul>
+<li>Do you fall asleep in more than 30 minutes?</li>
+Yes.  Especially at work.
+<li>Ever wake up and have difficulty falling asleep?</li>
+Yes.  Last I checked, so do newborns.
+<li>Do people tell you you seem out of it?</li>
+Uhh, I'm not out of it, you're just BORING.
+<li>Trouble concentrating at work?</li>
+Oh geeze.  I mean, I don't work in a candy factory, do I?
+<li>Go to bed really late?</li>
+I have broadband.
+<li>Is 8 hours of sleep not enough?</li>
+I wish I could tell you.  So does my neighbor.  And their neighbor.
+<li>Snore?</li>
+No clue.  Can you send me a tape recorder?
+<li>Ever get tired when driving?</li>
+Never ever.  Driving is 100% driving excitement.  I've never been stuck in traffic after a hard day at work and felt like I wanted a nap.
+<li>Sleepy during the day?</li>
+That's because you're boring me again.
+</ul>
+
+Now here's the really cool part.  An affirmative answer to any of the 9 questions yields the advice that "You may have a sleep-related problem".  I was a bit dismayed to discover checking no boxes does indeed return a different result.
+
+So what I jokingly started as a curious expidition ended deadly serious.  Really.  I probably have insomnia.  An html form,  9 checkboxes,  and a submit button told me so.  Lucky for me, something this easy to figure out can be fixed with a pill.
+
+Newsflash:  If you're routinely tired in your car, I got 10-to-1 odds that you hate your job, and work more than 40 hours a week.  Can a pill fix that too?

@@ -1,0 +1,12 @@
+---
+layout: post
+title: New Layout
+wp-permalink: /wp/archives/2004/06/14/70/index.html
+post_id: 70
+categories: 
+- Site
+---
+
+Though not as fancy as I'd like, I think I've redesigned the layout to be a bit nicer.  Note to self, always build off of less complicated CSS (thanks to <a href="http://aphotolog.com/">Chris M</a>) when you are a CSS moron like me.
+
+Let me know if the orange makes you dizzy.  All three of you.

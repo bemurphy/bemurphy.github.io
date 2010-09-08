@@ -1,0 +1,14 @@
+---
+layout: post
+title: Calling SC Players...
+wp-permalink: /wp/archives/2004/01/09/4/index.html
+post_id: 4
+categories: 
+- Paintball
+---
+
+Got a camera phona and play at SC?  Let me know!
+
+I'm testing my beta code for MMS to MovableType.  It's the basic code that the mblog is running off of.  The goal is to allow my friends from SC to post pics from the fun on Saturday and Sunday.
+
+And come NPPL Huntington Beach, we can have a mobile army.  Sounds fun, eh?  Comment away if you got the hardware...

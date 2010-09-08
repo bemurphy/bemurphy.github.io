@@ -1,0 +1,16 @@
+---
+layout: post
+title: Poisoning Blog Spammers
+wp-permalink: /wp/archives/2004/11/04/185/index.html
+post_id: 185
+categories: 
+- Spam
+---
+
+So lately I've gotten about 100 spam comments for the "texas holdem" idiot.  Fortunately, not a single one has actually been posted, because of the <a href="http://www.techfreak.net/wp/index.php/archives/2004/07/20/131/">whitelisting method</a> I've implemented.
+
+The annoying thing is, the posts still sit in my moderation queue and I get emailed about it.  So today, I took another step.  I hacked up the wordpress code that checks against the list of words that immediately flag a comment for moderation.  Now instead of using it to moderate comments, I'm just killing them outright if they match.  My other plugins do enough to stop spam, so I can afford this.
+
+I got to thinking more about it, and thought to see how high the guy had gotten his page into Google.  He'd loaded up the front page for searches on "texas-holdem" and had some for "texas holdem".  Now until this point, as bloggers our spam fighting has been almost entirely passive.  We limit or can the spam.  I say, it's time to fight back.  So here's my idea.  We pull down the master blacklist from the <a href="http://www.jayallen.org/comment_spam/">MT-Blacklist/Comment Spam Clearinghouse</a>, and then pull updates via the <a href="http://www.jayallen.org/comment_spam/feeds/blacklist-changes.xml">RSS 2.0 feed</a>.  Then we all make pages that link their spam domains to a page explaining what comment spamming is.  Let's outrank the spammers using similiar tactics.
+
+I'm no expert in Google bombing, so this might never work.  But, wouldn't it be neat if it did?  It would be harder to get the cooperation of enough sites than get the code working.

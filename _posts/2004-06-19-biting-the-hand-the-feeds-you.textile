@@ -1,0 +1,14 @@
+---
+layout: post
+title: Biting the hand the feeds you
+wp-permalink: /wp/archives/2004/06/19/75/index.html
+post_id: 75
+categories: 
+- Free Culture
+---
+
+I was reading the <a href="http://www.downhillbattle.org/">downhillbattle.org</a> site the other day, and came across a succinct <a href="http://www.downhillbattle.org/riaa/">viewpoint</a> to the current RIAA tactics of suing families for copyright infringement:
+
+bq. "Whatever you think about filesharing, it's just not okay for giant corporations to sue people with kids, living paycheck to paycheck, who can't afford a defense."
+
+Now on to dealing with the slightly older consumers.  In case you've never read the <a href="http://www.authorama.com/free-culture-6.html">story</a> of the RIAA trying to get $15,000,000 from New York college freshman Jesse Jordan, it's a good read.  He ended up paying an initial settlement of $12k.  As the tale is recounted, he wasn't even sharing the files, he'd written a search engine to index them.

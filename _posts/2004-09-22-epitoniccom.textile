@@ -1,0 +1,11 @@
+---
+layout: post
+title: epitonic.com
+wp-permalink: /wp/archives/2004/09/22/168/index.html
+post_id: 168
+categories: 
+- Asides
+- Music
+---
+
+Came across <a href="http://www.epitonic.com">epitonic.com</a> thanks to slashdot user <a href="http://slashdot.org/~justkarl">justkarl</a>.  Lots of free and legal mp3s for download.  Most suck, but with that catalog some are not bad.

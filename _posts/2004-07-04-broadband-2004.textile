@@ -1,0 +1,15 @@
+---
+layout: post
+title: Broadband 2004
+wp-permalink: /wp/archives/2004/07/04/109/index.html
+post_id: 109
+categories: 
+- Politics
+- Tech
+---
+
+Over on <a href="http://www.johnkerry.com" class="offsite" title="John Kerry for President">johnkerry.com</a>, there's a page on the plan and position for <a href="http://www.johnkerry.com/pressroom/releases/pr_2004_0624.html">investing in high-tech</a>.  Now, I don't care so much to turn this into a Bush vs. Kerry thing.  What's more interesting to me is that the candidates have turned the availability of internet access into a campaign issue.  Who would have thought it.  A quote from the Kerry press release tickled me:??"America has slipped from 4th to 10th in adoption of broadband"??.
+
+Even if it's an accurate statement, it's so free from context it hardly seems relevant.  Come on now, we were early on the broadband curve.  Aren't there other places catching up?  So maybe it's not so much a slip, but a plateau.  But again, that's not really what I care about.  I'm just going to laugh like a madman if the words "wireless" or "broadband" get used in the Presidential debates.  It isn't that new technology and adoption is unimportant, this just strikes me as funny.
+
+I guess it's just something I take for granted.

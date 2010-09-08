@@ -1,0 +1,18 @@
+---
+layout: post
+title: 5ives on ambivalence
+wp-permalink: /wp/archives/2005/05/09/251/index.html
+post_id: 251
+categories: 
+- 5ives
+---
+
+What are five things I am currently ambivalent about?
+
+<ol>
+<li>Apologetic defenses of faith.</li>
+<li>Playing and practicing guitar.</li>
+<li>Exercise.</li>
+<li>Computer programming.</li>
+<li>Conditioning myself to travel more.</li>
+</ol>

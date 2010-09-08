@@ -10,6 +10,7 @@ body {
   font-family: 'Lucida Grande', Tahoma, Arial, sans-serif;
   line-height: 1.4em;
   margin: 20px auto 18px 10%;
+  min-width: 920px;
 }
 
 a:link, a:visited {
@@ -112,7 +113,7 @@ sidebar #twitter {
 
 #working-with-rails {
   background: #ffffcc url(/images/working-with-rails.png) no-repeat center 0.5em;
-  margin: 10px 0px 0px 0px;
+/*  margin: 10px 0px 0px 0px;*/
   padding: 50px 10px 5px;
   text-align: center;
 }
@@ -139,10 +140,16 @@ sidebar #twitter {
   border-bottom: 6px solid #e5e5e5;
 }
 
-.post .signoff {
+.post .signoff,
+.post .index_comments_count {
   font-size: 12pt;
   font-style: normal;
-  text-align: right;
+  text-align: left;
+}
+
+.post .signoff {
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 /* ids */
@@ -177,6 +184,6 @@ sidebar #twitter {
   width: 45em;
 */  float: left;
   padding-bottom: 5em;
-  min-width: 650px;
-  width: 650px;
+/*  min-width: 650px;*/
+  width: 600px;
 }

@@ -1,0 +1,10 @@
+---
+layout: post
+title: Google Maps
+wp-permalink: /wp/archives/2005/02/25/228/index.html
+post_id: 228
+categories: 
+- Asides
+---
+
+<a href="http://maps.google.com/" title="Google maps">Google maps</a> now works in Safari (that's the Mac webbrowser for those that don't know).

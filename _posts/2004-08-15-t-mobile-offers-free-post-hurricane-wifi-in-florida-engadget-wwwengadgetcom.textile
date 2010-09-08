@@ -1,0 +1,11 @@
+---
+layout: post
+title: T-Mobile offers free post-hurricane WiFi in Florida - Engadget - www.engadget.com
+wp-permalink: /wp/archives/2004/08/15/153/index.html
+post_id: 153
+categories: 
+- Asides
+- Tech
+---
+
+T-mobile is temporarily opening up it's WiFi <a href="http://www.engadget.com/entry/8829361047203461/">for free</a> to the residents of Florida.

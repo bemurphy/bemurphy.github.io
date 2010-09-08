@@ -6,6 +6,7 @@
     <meta content="The online musing of Brendon Murphy" name="description" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds2.feedburner.com/techfreak" />
     <title>Brendon Murphy &ndash; jekyll-test</title>
   </head>
@@ -15,17 +16,24 @@
         <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
       </h1>
       <h2 id="subtitle">
-        See also the <a href="/archive.html" title="Archive">archive</a>,
-        <a href="/books_talks.html">books & talks</a>.
+        See also the <a href="/archive.html" title="Archive">archive</a> &amp;
+        <a href="/links.html">links</a>.
       </h2>
     </header>
     <sidebar id="sidebar">
-    
-      <div class="sidebar-item">
-        <img src="http://a1.twimg.com/profile_images/57838625/xternal_bigger.jpg" class="avatar">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      
+      <div id="sidebar-about" class="sidebar-item">
+       <p>My experience runs from unix & linux system administration, to programming for the web.  I'm passionate about open source, and spend much of my time these days in Ruby.</p>
+       
+       <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
+       
+       <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.ocruby.org">OC Ruby Users Group</a>.  We'd love to see you there.</p>
       </div>
 
+      <div id="working-with-rails" class="sidebar-item">
+        WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
+      </div>
+    
       <div class="sidebar-item" id="twitter">
         <a href="http://twitter.com/xternal" class="center">Follow me on Twitter</a>
         <div id="tweet">
@@ -34,39 +42,148 @@
         </div>
       </div>
       
-      <div id="working-with-rails" class="sidebar-item">
-        WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-      </div>
-      
     </sidebar>
     
     <div id="wrapper">
       <h2 id="intro">The five most recent posts.</h2>
 
-  <div class="post">
-  <div class="post">
-<h1>Why every programmer should play NetHack</h1>
-<p>I have a place in my heart for an obscure text based game called <a href="http://www.nethack.org/" title="nethack.org" target="_blank">NetHack</a>. This game is an archetype <a href="http://en.wikipedia.org/wiki/Roguelike" title="Wikipedia entry on Roguelike." target="_blank">roguelike</a> game, and I&#8217;ve been playing it for over a year now. Not a year in actual game time (yes, I used to play WoW, a lot), but I&#8217;ve been into NetHack seriously for the past 6 months or so, and it still kicks my ass. However, I&#8217;ve managed to <a href="http://alt.org/nethack/player-stats.php?player=DoctorNick" title="My Stats">ascend (beat the game) twice</a>, and I can even play it on my Motorola Q.</p>
-<p>How has such a game captured my attention for so long <strong>and</strong> directly apply towards my career as a software developer? Let me enlighten you as to why I think you should play it, and why it still matters so much.</p>
-<p><strong>NetHack is <span class="caps">HARD</span>.</strong></p>
-<p>No, this isn&#8217;t really a reason to play the game. However, it is a testament to how <span class="caps">NOT</span> to make your software. The amount of frustration I&#8217;ve had to go through in order to ascend has been utterly ridiculous. Hell, when I first started playing the game, I didn&#8217;t even know there was an ending. I just played because I like to explore. A classic idiom in web development is <a href="http://www.sensible.com/chapter.html" title="Don't Make me think!" target="_blank">&#8220;Don&#8217;t Make Me Think!&#8221;</a> I had to do completely the opposite in order to get anywhere in NetHack. One has to remember what monsters do, not to put on that piece of armor because it might be cursed, not to drink from that fountain because snakes might pour out and kill me, and so on and so forth. Well, perhaps under the thousands of lines of C that compose NetHack, someone didn&#8217;t think about that, but I for damn well sure am not going to make sure whoever uses my program won&#8217;t have to think twice about performing actions.</p>
-<p><strong>After 20+ years of development, it still has a vibrant community of users.</strong></p>
-<p>This really should be the goal of any community online going forward, be it you&#8217;re creating a forum for users of your software to request features, or you&#8217;re making a wiki-based community, or any of the above. Where will your community be in 20 years? Will it have <a href="http://alt.org/nethack/">vibrant fan-made sites</a>? Will it have a <a href="http://nethack.wikia.com">fleshed out wiki</a>? How about a <a href="http://groups.google.com/group/rec.games.roguelike.nethack/topics">newsgroup</a>? Or will it fizzle and be forgotten? The lesson here is that in order to make your community bloom you need to first plant the seeds.  Dig in a bit and you&#8217;ll find that behind this game of <span class="caps">ASCII</span> characters and telnet terminals there lies a deep and invested group of users passionate about the game and willing to help others how to play. If it wasn&#8217;t for the community and the &#8220;spoilers&#8221; it offers, I&#8217;d probably still be wandering around the Dungeons of Doom aimlessly.</p>
-<p><strong>&#8220;The DevTeam thinks of everything.&#8221;</strong></p>
-<p>This is a classic motto of NetHack&#8217;s development team within the community. The level of complexity of the game is ridiculous. Allow me to elaborate on one specific monster, the <a href="http://en.wikipedia.org/wiki/Cockatrice">cockatrice</a>. This monster is one of the most feared in the game because it can turn you to stone. Ah, but here&#8217;s the rub: once slain, you can wield its corpse and stone foes. And this is where the DevTeam starts thinking. You picked it up with no gloves on? You turn to stone. Oops, you tripped down some stairs because you were carrying too much? Stoned. Hit the wrong key and now you&#8217;re eating it? Bam, stoned. The list goes on, and on and on. However, the point is clear: the people behind NetHack have really thought of every possible case, every possible scenario in the game, and there&#8217;s a consequence or action for it.</p>
-<p>I tend to strive for this goal now when I&#8217;m coding. I&#8217;d be proud if my program was so robust, so tested, and so mature that it could be said that I thought of everything. And even then, that&#8217;s still a long shot, perhaps even impossible. In the short term, I find myself trying to think of every possible case that I can while I&#8217;m programming, and I hope someday I&#8217;ll be known to be able to really &#8220;think of everything.&#8221;</p>
-<p>Not convinced yet? Check out <a href="http://archive.gamespy.com/legacy/fargo/nethack_a.shtm" target="_blank">these old</a> <a href="http://archive.gamespy.com/legacy/halloffame/nethack_a.shtm" target="_blank">articles</a> from GameSpy about NetHack.  And if you&#8217;ve played NetHack (and/or if you&#8217;re a coder), leave a comment and let me know what you think about how NetHack relates to your <em>other </em>9 to 5 job. And for those of you concerned, there are <a href="http://nethack.wikia.com/wiki/Graphical_user_interface">several <span class="caps">GUI</span> versions of the game</a> in the case that you&#8217;d rather look at pretty pictures instead of characters.</p>
-</div>
+<div class="post">  
+
+  <h1>
+    Metaprogramming in Ruby: Part 1
+  </h1>
+
+  <p>I joked with a co-worker the other day that, sometimes I think I&#8217;m better at Ruby metaprogramming that straight ahead programming.  This is a serious exaggeration, and I don&#8217;t count myself as an expert at either.  However, it dawned on me that, I have a few friends that aren&#8217;t as exposed to metaprogramming concepts in Ruby, so, what better topic to share about.  Hopefully in the process, you&#8217;ll learn something new, and, I&#8217;ll become better at explaining Ruby concepts and sharing code.</p>
+<p>Before I dive in with some introductory examples, a quick definition of metaprogramming is in order.  To quote <a href="http://en.wikipedia.org/wiki/Metaprogramming" title="Wikipedia">Wikipedia</a>, &#8220;Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data, or that do part of the work at compile time that would otherwise be done at runtime&#8221;.  If you use Rails (and, I know you do), metaprogramming enables things you already do on a daily basis, such as dynamic find_by methods in ActiveRecord, or plugins that dynamically get a class to include them (acts_as_list, acts_as_tree, etc).</p>
+<p>In this writeup, I&#8217;ll start with two extremely basic metaprogramming concepts.  In fact, these might not even be considered true Ruby metaprogramming, but, I wanted to start with some simple ideas which you may not have been exposed to in Ruby 101.</p>
+<p>The first concept to get down in Ruby is that, classes are objects like anything else.  In Ruby, this means you can open the class and modify it on the fly.  The practice is affectionately called monkey patching or duck punching.  Let&#8217;s look at a simple example:</p>
+<script src="http://gist.github.com/222706.js"></script><p>You can see above, we&#8217;ve created a Foo class with a public instance method, bar.  Calling foo.bar, we&#8217;ll get the output we expect, &#8220;bar!&#8221;.  Next, we reopen the Foo class, and add a new public instance method, foobar.  Had we tried to use Foo#foobar before this, we&#8217;d get a NoMethodError exception, as expected.  However, having reopened and modified the class, we can call our new method.</p>
+<p>The other demonstration I&#8217;d like to show is one way you can define methods on the fly.  This example is abstract and doesn&#8217;t represent a recommended use, it&#8217;s simply to prove the point.</p>
+<script src="http://gist.github.com/222724.js"></script><p>Running this simple example, the first call to foo_two.bar will output &#8220;bar&#8221;.  However, once we call foo.cap_bar, the public instance method bar is changed.  Running it a second time will output &#8220;<span class="caps">BAR</span>!!!&#8221;.  A more common, rubyish way of defining methods at run time in Ruby is the use of <a href="http://ruby-doc.org/core/classes/Module.html#M001654" title="define_method">define_method</a>, which I&#8217;ll cover in a future post.</p>
+<p>An important concept to keep in mind here is that, you aren&#8217;t modifying behavior solely on the foo or foo_two instances.  Instead, you are changing the behavior of any open instance of the Foo or FooTwo classes.  So in our FooTwo example, if you were to create a foo_too instance, calling foo_too.bar would run through the dynamically created method as well and output &#8220;<span class="caps">BAR</span>!!!&#8221;.  In future postings, we&#8217;ll see a different approach of opening instances and defining methods specific to that instance.</p>
+<p>Hopefully this has whet your appetite a little, and, in the future, we can run through some more exciting examples of the metaprogramming facilities Ruby has to offer.</p>  
+  
   <p class="signoff">
-    &mdash; <a href="/2010/09/02/why-every-programmer-should-play-nethack.html">Sep 02, 2010</a>
+    &mdash;<a href="/2009/10/30/metaprogramming-in-ruby-part-1.html">Oct 30, 2009</a>
   </p>
+
+  <p class="index_comments_count"><a href="/2009/10/30/metaprogramming-in-ruby-part-1.html#disqus_thread">/2009/10/30/metaprogramming-in-ruby-part-1.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
+    wp-syntax test
+  </h1>
+
+  <p>Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!</p>
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s2">&quot;date&quot;</span>
+
+<span class="k">class</span> <span class="nc">DateReformatter</span>
+  <span class="kp">attr_reader</span> <span class="ss">:date</span>
+  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="nb">self</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">date</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="k">begin</span>
+      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="k">rescue</span>
+      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">now</span><span class="p">()</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">reformat</span>
+    <span class="n">local</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">utc</span> <span class="o">=</span> <span class="vi">@date</span><span class="o">.</span><span class="n">new_offset</span>
+    <span class="n">local_from_utc</span> <span class="o">=</span> <span class="n">utc</span><span class="o">.</span><span class="n">new_offset</span><span class="p">(</span><span class="n">local</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span>
+    <span class="n">local_from_utc</span><span class="o">.</span><span class="n">to_s</span>
+    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">pad</span><span class="p">(</span><span class="n">local_from_utc</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">pad</span><span class="p">(</span><span class="n">local_from_utc</span><span class="o">.</span><span class="n">min</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+  
+  <span class="kp">private</span>
+  
+  <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>  
+  
+  <p class="signoff">
+    &mdash;<a href="/2009/05/04/wp-syntax-test.html">May 04, 2009</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/2009/05/04/wp-syntax-test.html#disqus_thread">/2009/05/04/wp-syntax-test.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
+    Roll your own dropbox
+  </h1>
+
+  <p>So I&#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out <a href="http://www.filedropper.com/">filedropper.com</a> for a simple example of such an application.</p>
+<p>Of course, I was bored, and don&#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.</p>
+<p>So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked <a href="http://www.ruby-lang.org/en/">ruby</a>) and a module for interfacing with <a href="http://aws.amazon.com/s3">Amazon&#8217;s S3 service</a>.</p>
+<p>The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&#8217;s the basic workflow steps:</p>
+<ol>
+<li>Make an Automator workflow that takes a selected set of files (&#8220;Get Selected Items&#8221;) and creates an archive (&#8220;Create Archive&#8221;) out of them</li>
+<li>Pass that archive into a script (&#8220;Run Shell Script&#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.</li>
+<li>Store the file on S3, and then output the full S3 url for capture by Automator.</li>
+<li>Use the Automator &#8220;New Mail Message&#8221; action, passing in the url as the content of the message</li>
+<li>Plan on manually addressing the message, filling out the body if you like.</li>
+<li>Now here&#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.</li>
+</ol>
+<p>Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.</p>
+<p>I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&#8217;s not as &#8220;sexy&#8221;, right?</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/Rambling/2008/03/29/roll-your-own-dropbox-2.html">Mar 29, 2008</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/Rambling/2008/03/29/roll-your-own-dropbox-2.html#disqus_thread">/Rambling/2008/03/29/roll-your-own-dropbox-2.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
+    My eye
+  </h1>
+
+  <p><a href="http://www.flickr.com/photos/xternal1/sets/72157604236634154/" title="DSC00406.JPG by xternal1, on Flickr"><img src="http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg" width="240" height="180" alt="DSC00406.JPG" /></a><br />
+So this is a bit of old news.  I was going back through the files on my camera I haven&#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&#8217;t know why I&#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&#8217;ve got a little red spot on my right lower lid, it&#8217;s the remnants of this.  It&#8217;s still got a little ways to go before it totally clears up.</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/Rambling/2008/03/24/my-eye.html">Mar 24, 2008</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/Rambling/2008/03/24/my-eye.html#disqus_thread">/Rambling/2008/03/24/my-eye.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
+    Keeping support focused
+  </h1>
+
+  <p>I was just browsing the <a href="http://automattic.com">automattic.com</a> <a href="http://automattic.com/about/how-we-work/">How We Work page</a> and ran across this tidbit:<br />
+bq. Everyone who joins, regardless of position, does support for their first three weeks.<br />
+Now, I&#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&#8217;s an interesting concept still.</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/Rambling/2008/03/19/keeping-support-focused.html">Mar 19, 2008</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/Rambling/2008/03/19/keeping-support-focused.html#disqus_thread">/Rambling/2008/03/19/keeping-support-focused.html comments</a></p>
   </div>
 
       <footer id="footer">
         <a href="/" title="Home">Home</a> &bull;
         <a href="/about.html" title="About the author and site">About</a> &bull;
         <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-        <a href="/books_talks.html" title="Books and talks">Books & Talks</a>
+        <a href="/links.html" title="Links">Links</a>
         <form action="http://www.google.com/cse" id="cse-search-box">
           <div>
             <input type="hidden" name="cx" value="000652178004161548235:gnplrkdmhbu" />
@@ -97,6 +214,21 @@ pageTracker._trackPageview();
     clearContents: true,
     template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
   });  
+</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
 </script>
 
   </body>

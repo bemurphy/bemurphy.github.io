@@ -1,0 +1,11 @@
+---
+layout: post
+title: My new pet
+wp-permalink: /wp/archives/2005/08/27/273/index.html
+post_id: 273
+categories: 
+- Rambling
+---
+
+<wpg2id>2422</wpg2id>
+I got a pet betta yesterday.  His name is Maestro.

@@ -1,0 +1,14 @@
+---
+layout: post
+title: More IM Madness
+wp-permalink: /wp/archives/2004/07/15/121/index.html
+post_id: 121
+categories: 
+- Tech
+---
+
+Yahoo, AOL, and MSN plan to <a href="http://www.marketwatch.com/news/yhoo/story.asp?source=blq/yhoo&siteid=yhoo&dist=yhoo&guid=%7B100D0BD6%2DAB39%2D4E6A%2D9E5D%2D214265ABC13A%7D">link</a> their IM services.  The catch, it's only for businesses, and you have to license software from Microsoft that will provide the functionality.  Wow, sounds like a great idea.  Can you imagine if every business had to pay licensing to Microsoft in order for their email to work?
+
+The <a href="http://www.jabber.org">jabber</a> guys need to get their act together and set at least two things in order.  First, they need to fix their docs, they suck and are incomplete.  While they're at it, they should stop breaking links: their mailing lists are indexed all over google but they didn't maintain permalinks.  Secondly, they need to make sure there are enough robust public servers that can support a large user base.
+
+Closed IM systems that talk to each other are a step up, but still, let's let this model die.  Non-standardized closed systems are not the way to go.  Forget the webcams, leave the ads and mini hotornot/today's news pages behind.  Forget the stock tickers (of course, jabber can support headlines).  Let's just see that everybody can talk one to one, and one to multi with everybody else.

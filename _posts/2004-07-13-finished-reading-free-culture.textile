@@ -1,0 +1,12 @@
+---
+layout: post
+title: Finished reading "Free Culture"
+wp-permalink: /wp/archives/2004/07/13/116/index.html
+post_id: 116
+categories: 
+- Free Culture
+---
+
+I just finished reading Lessig's book, "<a href="http://www.free-culture.cc/">Free Culture</a>".  If you haven't got your hands on it, I suggest you <a href="http://www.free-culture.cc/freecontent/">download</a> it or <a href="http://www.amazon.com/exec/obidos/tg/detail/-/1594200068/ref=ase_lessigorg-20/002-9276059-8887269?v=glance&s=books">buy</a> yourself a copy.
+
+For those unfamiliar with the book, it focuses on copyright issues, the war surrounding them which exploded in the late 90's, and the harmful effects of hyperextended regulations which have come as a result.  It's a pretty quick read and fairly accessible.  Anybody who thinks copyright issues apply primarily to use of p2p networks, and are governed by some binary moral statute should take a serious look into the matter.

@@ -1,0 +1,15 @@
+---
+layout: post
+title: Don't leak info!
+wp-permalink: /wp/archives/2004/10/15/173/index.html
+post_id: 173
+categories: 
+- Rant
+- Tech
+---
+
+I'm a little irked at the excitement recently on some blogs regarding the <a href="http://www.chattingaimbot.com/">ChattingAimBot</a> service.  For those unfamiliar with the system, it's a novelty where you provide your email address, the AIM screenname of a friend, and some characteristics you wish the bot to assume.  The bot will then go have a random, and likely surprising, IM session with your friend and then email the transcript back to you.  It is nice they have a <a href="http://www.chattingaimbot.com/?p=block">feature</a> to block the bots from talking to a screenname, so people can't indefinitely harass you with the system.
+
+There's a much bigger problem here, and I'm disappointed that guys of the like of Engadget are <a href="http://www.engadget.com/entry/6451346367056557/">endorsing</a> such an application with little warning.  That is, it's simply not smart, nor cool, to give third parties information like this on your friends.  We've all received enough email spam and read enough prevention tips to know that it's good to protect your internet contact info.  So why all the sudden do we think it's a good idea to go and put the info of others in?
+
+Granted, the site has a <a href="http://www.chattingaimbot.com/?p=privacy">privacy policy</a> which states your screenname will never be used or sold for spamming purposes, now and forever.  But come on people, look at the site.  Does this really look like something you should be dragging your friends into?  

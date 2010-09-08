@@ -6,6 +6,7 @@
     <meta content="The online musing of Brendon Murphy" name="description" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds2.feedburner.com/techfreak" />
     <title>Brendon Murphy &ndash; about</title>
   </head>
@@ -15,27 +16,30 @@
         <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
       </h1>
       <h2 id="subtitle">
-        See also the <a href="/archive.html" title="Archive">archive</a>,
-        <a href="/books_talks.html">books & talks</a>.
+        See also the <a href="/archive.html" title="Archive">archive</a> &amp;
+        <a href="/links.html">links</a>.
       </h2>
     </header>
     <sidebar id="sidebar">
-    
-      <div class="sidebar-item">
-        <img src="http://a1.twimg.com/profile_images/57838625/xternal_bigger.jpg" class="avatar">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      
+      <div id="sidebar-about" class="sidebar-item">
+       <p>My experience runs from unix & linux system administration, to programming for the web.  I'm passionate about open source, and spend much of my time these days in Ruby.</p>
+       
+       <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
+       
+       <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.ocruby.org">OC Ruby Users Group</a>.  We'd love to see you there.</p>
       </div>
 
+      <div id="working-with-rails" class="sidebar-item">
+        WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
+      </div>
+    
       <div class="sidebar-item" id="twitter">
         <a href="http://twitter.com/xternal" class="center">Follow me on Twitter</a>
         <div id="tweet">
          <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
          <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
         </div>
-      </div>
-      
-      <div id="working-with-rails" class="sidebar-item">
-        WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
       </div>
       
     </sidebar>
@@ -57,7 +61,7 @@
         <a href="/" title="Home">Home</a> &bull;
         <a href="/about.html" title="About the author and site">About</a> &bull;
         <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-        <a href="/books_talks.html" title="Books and talks">Books & Talks</a>
+        <a href="/links.html" title="Links">Links</a>
         <form action="http://www.google.com/cse" id="cse-search-box">
           <div>
             <input type="hidden" name="cx" value="000652178004161548235:gnplrkdmhbu" />
@@ -88,6 +92,21 @@ pageTracker._trackPageview();
     clearContents: true,
     template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
   });  
+</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
 </script>
 
   </body>

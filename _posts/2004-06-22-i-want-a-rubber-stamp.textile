@@ -1,0 +1,17 @@
+---
+layout: post
+title: I want a rubber stamp...
+wp-permalink: /wp/archives/2004/06/22/77/index.html
+post_id: 77
+categories: 
+- Rant
+- Work
+---
+
+...that says "I don't understand how the internet works".
+
+This stamp will be applied to the forehead of clueless admins who don't bother to understand the traffic their systems are passing.  Nor do they bother to understand how their security systems work.
+
+Case in point, everybody and their mom that runs a firewall or intrusion detection system that watches for port scans, and has this stamped on their forehead, believes their ISP hosts dns resolvers that are attacking them.  
+
+Go read some documentation, figure out how port scan detection works, and sniff some dns resolution traffic.  Then get back to me.

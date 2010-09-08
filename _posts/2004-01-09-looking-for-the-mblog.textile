@@ -1,0 +1,10 @@
+---
+layout: post
+title: Looking for the mblog?
+wp-permalink: /wp/archives/2004/01/09/3/index.html
+post_id: 3
+categories: 
+- Site
+---
+
+I changed the site layout a bit.  You can now find the mblog <a href="/mt/mblog/">here</a>
