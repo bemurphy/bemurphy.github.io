@@ -6,6 +6,7 @@ server_port: 4000
 title: www.techfreak.net
 
 source:      .
+exclude:    ./vendor
 destination: ./_site
 plugins:     ./_plugins
 
