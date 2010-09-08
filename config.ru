@@ -2,6 +2,8 @@ require "rubygems"
 require 'bundler/setup'
 require "yaml"
 require "rack/jekyll"
+
+ENV['APP_ROOT'] ||= File.dirname(__FILE__)
 require "newrelic_rpm"
 
 require 'rack/rewrite'
