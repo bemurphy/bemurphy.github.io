@@ -2,6 +2,7 @@ require "rubygems"
 require 'bundler/setup'
 require "yaml"
 require "rack/jekyll"
+require "newrelic_rpm"
 
 require 'rack/rewrite'
 use Rack::Rewrite do
