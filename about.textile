@@ -24,6 +24,7 @@ h1. Around the Net
 
 * "GitHub":http://github.com/bemurphy - code
 * "Twitter":http://www.twitter.com/xternal
+* "Facebook":http://www.facebook.com/brendon.murphy
 
 h1. Contact
 
