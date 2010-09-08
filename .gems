@@ -1,4 +1,4 @@
 liquid --version '2.2.0'
-rack-jekyll
+rack-jekyll --source git://github.com/bemurphy/rack-jekyll.git
 rack-rewrite
 RedCloth
