@@ -1,0 +1,8 @@
+---
+layout: post
+title: "Onward to Jekyll"
+---
+
+In the grand tradition of getting bored with blogging software, without actually taking the time to blog, I've transitioned software yet again.  This time I selected "Jekyll":http://github.com/mojombo/jekyll to try.  I discovered that in the past I've had a habit of writing blog posts in TextMate or Vim, and then pasting them into whatever blog software I was using at the time.  That's silly.  Now I can just edit in my editor of choice, have full _syntax aware_ access to template and CSS documents without dealing with a nasty web interface, and have greater flexibility for throwing different pages up on the site.  With blog software, it's often like pulling teeth when you want those pages that are more CMS than blog.  Not so with Jekyll.  It's a template system that simply builds a static site out of layout and markup files (I'm using textile).  When you want that one-off page, all you have to do is drop it in.  There's no requirement that it play nice with the rest of your site, it could truly be a one-off if you so desired.
+
+Anyway, if you want some fun and simple software to test-drive, I'd recommend it.  Not that it'll get me to post any more.  Or perhaps, it will.
