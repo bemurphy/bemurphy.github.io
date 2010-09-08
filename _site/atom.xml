@@ -3,11 +3,24 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2010-09-08T02:38:49-07:00</updated>
+ <updated>2010-09-08T03:08:09-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>Onward to Jekyll</title>
+   <link href="http://www.techfreak.net/2010/09/08/onward-to-jekyll.html"/>
+   <updated>2010-09-08T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2010/09/08/onward-to-jekyll</id>
+   <content type="html">&lt;p&gt;In the grand tradition of getting bored with blogging software, without actually taking the time to blog, I&amp;#8217;ve transitioned software yet again.  This time I selected &lt;a href=&quot;http://github.com/mojombo/jekyll&quot;&gt;Jekyll&lt;/a&gt; to try.  I discovered that in the past I&amp;#8217;ve had a habit of writing blog posts in TextMate or Vim, and then pasting them into whatever blog software I was using at the time.  That&amp;#8217;s silly.  Now I can just edit in my editor of choice, have full &lt;em&gt;syntax aware&lt;/em&gt; access to template and &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; documents without dealing with a nasty web interface, and have greater flexibility for throwing different pages up on the site.  With blog software, it&amp;#8217;s often like pulling teeth when you want those pages that are more &lt;span class=&quot;caps&quot;&gt;CMS&lt;/span&gt; than blog.  Not so with Jekyll.  It&amp;#8217;s a template system that simply builds a static site out of layout and markup files (I&amp;#8217;m using textile).  When you want that one-off page, all you have to do is drop it in.  There&amp;#8217;s no requirement that it play nice with the rest of your site, it could truly be a one-off if you so desired.&lt;/p&gt;
+&lt;p&gt;Anyway, if you want some fun and simple software to test-drive, I&amp;#8217;d recommend it.  Not that it&amp;#8217;ll get me to post any more.  Or perhaps, it will.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>Metaprogramming in Ruby: Part 1</title>
@@ -180,18 +193,6 @@ Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly 
    <updated>2006-10-12T00:00:00-07:00</updated>
    <id>http://www.techfreak.net/2006/10/12/heading-north</id>
    <content type="html">&lt;p&gt;Just about to pull out of here to head for Pleasanton with William.  I&amp;#8217;m looking forward to seeing my grandmother for a brief time tomorrow, but worried about the lack of sleep we face this weekend.  It will be nice to get out somewhere new though.  If all goes according to plan I should be back Monday night!&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Good Music</title>
-   <link href="http://www.techfreak.net/2006/10/10/good-music.html"/>
-   <updated>2006-10-10T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2006/10/10/good-music</id>
-   <content type="html">&lt;p&gt;I&amp;#8217;m excited because I just discovered that one of my favorite bands, &lt;a href=&quot;http://en.wikipedia.org/wiki/Calexico&quot;&gt;Calexico&lt;/a&gt;, released a live session EP on iTunes recently.  Their music is awesome, I&amp;#8217;d describe it as an eclectic blend of rock and spaghetti western music, with surf and southwest sounds slapped on top.  Much of their &lt;a href=&quot;http://www.emusic.com/artist/11600/11600082.html&quot;&gt;collection&lt;/a&gt; is available on emusic. I recommend checking them out.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
