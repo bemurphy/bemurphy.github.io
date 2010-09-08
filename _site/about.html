@@ -50,26 +50,38 @@
 <h1>The Author</h1>
 <p>Hi, I&#8217;m Brendon Murphy, but the site already told you that.  I go by the handle &#8220;xternal&#8221; at various spots over the internet.  It&#8217;s a handle with no meaning; I picked it when I was in 6th grade and excited about BBS&#8217;ing.</p>
 <p>In March of 2010 I joined <a href="http://www.kajabi.com">Kajabi</a> as a lead programmer.  We are a <a href="http://rubyonrails.com">Ruby on Rails</a> shop that targets the Internet Marketing niche, and plan to launch our platform soon.</p>
+<h1>The Site</h1>
+<p>I currently host the site using the services of the fine folks at <a href="http://heroku.com">heroku.com</a>.  They make rolling out, scaling, at working with Ruby on Rails apps a breeze.  Small applications are free to rollout, I highly recommend testing it out.</p>
+<p>I&#8217;ve been through blogger, WordPress, <a href="http://github.com/adamwiggins/scanty">scanty</a>, and a host of other blog hosting &amp; software services.  Often looking for something new to play with, while at the same time loving ruby and customizable systems, I&#8217;ve settled with the flexible <a href="http://github.com/mojombo/jekyll">Jekyll</a> site-generator for the time being.  After years of doing crazy things like writing draft posts locally and saving them, I realized that being able to edit in a local text editor and version posts in git is a dream.  Did I mention I love <a href="http://git-scm.com/">git</a>?</p>
 <h1>Around the Net</h1>
 <ul>
 	<li><a href="http://github.com/bemurphy">GitHub</a> &#8211; code</li>
 	<li><a href="http://www.twitter.com/xternal">Twitter</a></li>
 </ul>
 <h1>Contact</h1>
+<p>Feel free to email me.  I&#8217;m always trying to thwart spammers, so you can mail me initially at xternal1+blog at gmail.com.  Or, send me a message on <a href="http://twitter.com/xternal">Twitter</a>.  I&#8217;ll get back to you as soon as I can!</p>
 </div>
       <footer id="footer">
         <a href="/" title="Home">Home</a> &bull;
         <a href="/about.html" title="About the author and site">About</a> &bull;
         <a href="/archive.html" title="Archived writing">Archive</a> &bull;
         <a href="/links.html" title="Links">Links</a>
-        <form action="http://www.google.com/cse" id="cse-search-box">
-          <div>
-            <input type="hidden" name="cx" value="000652178004161548235:gnplrkdmhbu" />
-            <input type="hidden" name="ie" value="UTF-8" />
-            <input type="text" name="q" size="40" />
-            <input type="submit" name="sa" value="Search" />
-          </div>
-        </form>
+        
+        <div id="cse" style="width: 100%;">Loading</div>
+        <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+        <script type="text/javascript">
+          google.load('search', '1', {language : 'en'});
+          google.setOnLoadCallback(function() {
+            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            customSearchControl.draw('cse');
+          }, true);
+        </script>
+        <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+        <style>
+          .gsc-control-cse { padding-left: 0px; }
+          .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+        </style>
       </footer>
     </div>
     <script type="text/javascript">
@@ -86,11 +98,11 @@ pageTracker._trackPageview();
 <script>
   getTwitters('tweet', { 
     id: 'xternal', 
-    count: 1, 
+    count: 2, 
     enableLinks: true, 
     ignoreReplies: true, 
     clearContents: true,
-    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
+    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/"><span class="time">&ndash;%time%</span></a>'
   });  
 </script>
 

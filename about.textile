@@ -12,6 +12,12 @@ Hi, I'm Brendon Murphy, but the site already told you that.  I go by the handle 
 
 In March of 2010 I joined "Kajabi":http://www.kajabi.com as a lead programmer.  We are a "Ruby on Rails":http://rubyonrails.com shop that targets the Internet Marketing niche, and plan to launch our platform soon.
 
+h1. The Site
+
+I currently host the site using the services of the fine folks at <a href="http://heroku.com">heroku.com</a>.  They make rolling out, scaling, at working with Ruby on Rails apps a breeze.  Small applications are free to rollout, I highly recommend testing it out.
+
+I've been through blogger, WordPress, "scanty":http://github.com/adamwiggins/scanty, and a host of other blog hosting & software services.  Often looking for something new to play with, while at the same time loving ruby and customizable systems, I've settled with the flexible "Jekyll":http://github.com/mojombo/jekyll site-generator for the time being.  After years of doing crazy things like writing draft posts locally and saving them, I realized that being able to edit in a local text editor and version posts in git is a dream.  Did I mention I love "git":http://git-scm.com/?
+
 h1. Around the Net
 
 * "GitHub":http://github.com/bemurphy - code
@@ -19,6 +25,7 @@ h1. Around the Net
 
 h1. Contact
 
+Feel free to email me.  I'm always trying to thwart spammers, so you can mail me initially at xternal1+blog at gmail.com.  Or, send me a message on "Twitter":http://twitter.com/xternal.  I'll get back to you as soon as I can!
 
 </div>
 
