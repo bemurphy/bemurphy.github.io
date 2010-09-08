@@ -4,6 +4,7 @@ require "rack/jekyll"
 
 require 'rack/rewrite'
 use Rack::Rewrite do
+  r301 '/past', '/archive.html'
   r301 '/feed', '/atom.xml'
   r301 '/wp/feed', '/atom.xml'
   r301 %r{/past/(\d+)/(\d+)/(\d+)/([^/]+)/?}, lambda { |match, rack_env|
