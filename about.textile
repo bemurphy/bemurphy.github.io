@@ -12,6 +12,8 @@ Hi, I'm Brendon Murphy, but the site already told you that.  I go by the handle 
 
 In March of 2010 I joined "Kajabi":http://www.kajabi.com as a lead programmer.  We are a "Ruby on Rails":http://rubyonrails.com shop that targets the Internet Marketing niche, and plan to launch our SaaS platform soon.
 
+I love programming.  Ruby is my favorite language these days, but, I enjoy learning and using others.  Additionally, in the past, I have professionally worked with C, Perl, Python, PHP, and shell scripting.  I've spent time getting my feet wet in Clojure, Erlang, and Haskell in recent years.  Clojure seems the most interesting, though, I'd like to look into Scala as well.  Obviously at my current job, CSS, HTML, and Javascript (mostly using jQuery) come in to play daily.
+
 h1. The Site
 
 I currently host the site using the services of the fine folks at <a href="http://heroku.com">heroku.com</a>.  They make rolling out, scaling, at working with Ruby on Rails apps a breeze.  Small applications are free to rollout, I highly recommend testing it out.
