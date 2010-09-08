@@ -10,5 +10,9 @@ h1. Work
 h1. Projects
 * <a href="http://github.com/bemurphy/acts_as_optionable">acts_as_optionable</a> - my foray into ruby plugins.  Adds variable options polymorphically onto ActiveRecord models.
 
+h1. Talks
+* "OC Ruby Redis Slides":http://ocruby-redis.heroku.com/ - Slides from my introduction to talk on Redis to the OC Ruby meetup, May 2010
+* "OC Ruby Resque Slides":http://ocruby-resque.heroku.com/ - Slides from my introduction to talk on Resque to the OC Ruby meetup, May 2010.  Mostly based off "defunkt's presentation":http://github.com/defunkt/sfruby-meetup-resque.
+
 h1. Friends & Acquaintances
 * <a href="http://www.ocruby.org">ocruby.org</a> - The OC Ruby Users Group 
