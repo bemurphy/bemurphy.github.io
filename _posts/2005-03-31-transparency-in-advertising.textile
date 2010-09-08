@@ -3,8 +3,6 @@ layout: post
 title: Transparency in Advertising
 wp-permalink: /wp/archives/2005/03/31/236/index.html
 post_id: 236
-categories: 
-- Ad Naseaum
 ---
 
 I just saw a hilarious ad on cable for a local Infiniti car dealship.  The ad features former basketball player and commentator Bill Walton.  Yeah, off to a good start.  So, Bill comes waltzing from behind one of the cars parked inside the dealership and forcefully proclaims, "Everything you'll ever need in life is right here".

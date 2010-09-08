@@ -3,8 +3,6 @@ layout: post
 title: These ol' bones
 wp-permalink: /wp/archives/2004/03/07/23/index.html
 post_id: 23
-categories: 
-- Rambling
 ---
 
 When I was in high school, I used to have this odd dream where I was running on sand, and just spinning wheels.  The most vivid memory is feeling so, so slow.

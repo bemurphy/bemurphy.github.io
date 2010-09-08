@@ -3,8 +3,6 @@ layout: post
 title: Netflix friends invites
 wp-permalink: /wp/archives/2004/12/23/209/index.html
 post_id: 209
-categories: 
-- Movies
 ---
 
 I got invited to the <a href="http://www.hackingnetflix.com/netflix/2004/12/netflix_launche.html">Netflix Friends system</a> [hackingnetflix.com].  If you want an invite, check my <a href="http://www.techfreak.net/wp/contact/">contact page</a> and let me know.  Also, if you're paranoid, you can remove the person who invited you as a friend.  I was initially a bit worried about that.

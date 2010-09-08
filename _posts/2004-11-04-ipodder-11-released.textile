@@ -3,8 +3,6 @@ layout: post
 title: iPodder 1.1 released
 wp-permalink: /wp/archives/2004/11/04/184/index.html
 post_id: 184
-categories: 
-- Tech
 ---
 
 I picked up an announcement this morning from the <a href="http://www.openpodcast.org/podcast.xml">openpodcast.org feed</a> that iPodder 1.1 is available.  Unfortunately, I can't find any info on the <a href="http://ipodder.sourceforge.net/index.php">site</a> announcement about what has changed.  So, I'll resort to eyeballing what is new.

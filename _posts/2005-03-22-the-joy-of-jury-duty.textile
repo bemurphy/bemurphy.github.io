@@ -3,8 +3,6 @@ layout: post
 title: The Joy of Jury Duty
 wp-permalink: /wp/archives/2005/03/22/235/index.html
 post_id: 235
-categories: 
-- Rambling
 ---
 
 So today, I got to experience the joy that is jury duty.  Well, more like 1/3 the joy.  If you were to break the process down into three steps, you might have a list like this:

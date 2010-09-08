@@ -3,9 +3,6 @@ layout: post
 title: MD5 crack
 wp-permalink: /wp/archives/2004/07/03/105/index.html
 post_id: 105
-categories: 
-- Asides
-- Tech
 ---
 
 A <a href="http://passcracking.com/">service</a> that can brute force md5 hashed passwords for you.  Takes a little time, and they can do up to 8 character passwords.  ??Hat tip: slashdot??

@@ -3,8 +3,6 @@ layout: post
 title: News, sensational?
 wp-permalink: /wp/archives/2004/02/01/9/index.html
 post_id: 9
-categories: 
-- TV
 ---
 
 If I was stuck in a basement for a very long time and hadn't realized the depth to which LA news had sunk, today I would know for sure.  So what happened in the news today?  Let's see, <a href="http://www.cnn.com/2004/WORLD/meast/02/01/hajj.stampede/index.html">240+ people trampled to death</a> in Saudi Arabia...<a href="http://www.cnn.com/2004/WORLD/meast/02/01/sprj.nirq.main/index.html">56 killed</a> in dual suicide bombings in Iraq...

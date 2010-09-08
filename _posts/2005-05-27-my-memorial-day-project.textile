@@ -3,8 +3,6 @@ layout: post
 title: My memorial day weekend project
 wp-permalink: /wp/archives/2005/05/27/255/index.html
 post_id: 255
-categories: 
-- Rambling
 ---
 
 I've decided one productive thing to spend some time on this weekend.  It will fit in quite nicely with my desire to try and develop a bit of a green thumb, too!

@@ -3,8 +3,6 @@ layout: post
 title: Document Not Found
 wp-permalink: /wp/archives/2004/01/01/78/index.html
 post_id: 78
-categories: 
-- Site
 ---
 
 *The resource you have tried to reach cannot be found.

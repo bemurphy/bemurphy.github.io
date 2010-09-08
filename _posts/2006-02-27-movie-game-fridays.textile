@@ -3,10 +3,6 @@ layout: post
 title: Movie & Game Sundays
 wp-permalink: /wp/archives/2006/02/27/303/index.html
 post_id: 303
-categories: 
-- Games
-- Movies
-- Rambling
 ---
 
 Crista and I have decided to try and put together movie & game night for <span style="text-decoration: line-through;">Friday</span> Thursday or Sunday nights.  I love hanging out with friends, but have been spending so much on restaurants and movies lately, I thought it would be nice to lower the costs.  Here's the plan as it stands.

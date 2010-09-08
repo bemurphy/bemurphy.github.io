@@ -3,8 +3,6 @@ layout: post
 title: so long bro
 wp-permalink: /wp/archives/2004/07/08/111/index.html
 post_id: 111
-categories: 
-- Asides
 ---
 
 So I'm a bit depressed this week, and assume I will be even moreso this weekend.  I thought my brother was moving to New York at the end of the month.  Turns out he's leaving Saturday.

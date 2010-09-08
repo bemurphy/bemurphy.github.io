@@ -3,8 +3,6 @@ layout: post
 title: Valenti is smarter than this
 wp-permalink: /wp/archives/2004/08/30/159/index.html
 post_id: 159
-categories: 
-- Free Culture
 ---
 
 Engadget just ran an <a href="http://www.engadget.com/entry/8536544887710643/">interview</a> they did with on-his-way-out MPAA president Jack Valenti.  In response to the question "What would you say to a mom who wants to make a backup of her kids’ DVD movies?".  Valenti offered the following, nonsensical analogy:

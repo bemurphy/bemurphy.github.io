@@ -3,9 +3,6 @@ layout: post
 title: What a great birthday
 wp-permalink: /wp/archives/2005/02/02/220/index.html
 post_id: 220
-categories: 
-- Rambling
-- Rave
 ---
 
 OK, so now that I've grumbled about turning 30, let me share about some of the great stuff.

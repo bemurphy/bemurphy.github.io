@@ -3,10 +3,6 @@ layout: post
 title: Wireless Spam Restrictions Take Effect Today - The Spam Weblog - spam.weblogsinc.com
 wp-permalink: /wp/archives/2004/10/18/174/index.html
 post_id: 174
-categories: 
-- Asides
-- Spam
-- Wireless
 ---
 
 New <a href="http://spam.weblogsinc.com/entry/6551346357845546/">restrictions</a> on text message spam sent to wireless devices via the internet go into effect today.

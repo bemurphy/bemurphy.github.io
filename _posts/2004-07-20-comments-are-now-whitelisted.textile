@@ -3,9 +3,6 @@ layout: post
 title: Comments are now whitelisted
 wp-permalink: /wp/archives/2004/07/20/131/index.html
 post_id: 131
-categories: 
-- Site
-- Spam
 ---
 
 I've turned on the requirement for name and email address in order to post a comment.  I'm using the email address list as a whitelist for comments moderation.  If you post for the first time with a given email address, the comment may not appear immediately.  I set a requirement to moderate comments by new posters.  However, any comment from a poster I have already moderated to "approved" will make it past the moderation check.

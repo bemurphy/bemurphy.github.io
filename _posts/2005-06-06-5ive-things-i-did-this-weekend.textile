@@ -3,8 +3,6 @@ layout: post
 title: 5ive things I did this weekend
 wp-permalink: /wp/archives/2005/06/06/256/index.html
 post_id: 256
-categories: 
-- 5ives
 ---
 
 I had a busy weekend.  I'm not super inspired to write it all up write now, so I'll just post a short list.

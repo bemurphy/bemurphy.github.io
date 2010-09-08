@@ -3,9 +3,6 @@ layout: post
 title: "textually.org: Resident Evil viral marketing ploy backfires"
 wp-permalink: /wp/archives/2004/08/18/154/index.html
 post_id: 154
-categories: 
-- Asides
-- Tech
 ---
 
 Fake SMS virus marketing tactic for the new Resident evil game <a href="http://www.textually.org/textually/archives/004986.htm">backfires</a>.

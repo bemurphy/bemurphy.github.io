@@ -3,8 +3,6 @@ layout: post
 title: eMusic Soundscapes
 wp-permalink: /wp/archives/2005/05/16/252/index.html
 post_id: 252
-categories: 
-- Music
 ---
 
 So a few months ago I <a href="http://www.techfreak.net/wp/index.php/archives/2005/02/21/227/">used</a> eMusic for a couple months.  I've always thought they had an interesting service.  The main problem of course is their selection isn't the greatest.

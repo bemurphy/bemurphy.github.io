@@ -3,9 +3,6 @@ layout: post
 title: Gov't Computers Hijacked
 wp-permalink: /wp/archives/2004/08/31/160/index.html
 post_id: 160
-categories: 
-- Asides
-- Spam
 ---
 
 Hundreds of Defense Department computers reportedly <a href="http://spam.weblogsinc.com/entry/4451358581391114/">hijacked</a> to send spam.

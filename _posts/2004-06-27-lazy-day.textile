@@ -3,8 +3,6 @@ layout: post
 title: Lazy Day
 wp-permalink: /wp/archives/2004/06/27/93/index.html
 post_id: 93
-categories: 
-- Asides
 ---
 
 Feeling quite lazy today.  Haven't eaten yet and it's after 2.  Will probably just lounge, watch some movies, and archive  some Reno911 to vcd.

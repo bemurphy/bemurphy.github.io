@@ -3,9 +3,6 @@ layout: post
 title: A note to web application designers
 wp-permalink: /wp/archives/2005/05/09/248/index.html
 post_id: 248
-categories: 
-- Rant
-- Tech
 ---
 
 Just wanted to rant a second about a pet peeve of mine.  Web app designers, listen up.  OK, that's melodramatic, barely any read here, but I just want to vent.

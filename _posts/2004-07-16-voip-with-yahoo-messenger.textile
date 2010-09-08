@@ -3,9 +3,6 @@ layout: post
 title: VoIP with Yahoo Messenger
 wp-permalink: /wp/archives/2004/07/16/125/index.html
 post_id: 125
-categories: 
-- Asides
-- Tech
 ---
 
 Yahoo and British Telecom <a href="http://tinyurl.com/6rnsc">partner</a> to create a voice over instant messenger service.

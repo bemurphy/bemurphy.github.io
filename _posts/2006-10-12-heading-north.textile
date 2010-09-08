@@ -3,9 +3,6 @@ layout: post
 title: Heading North
 wp-permalink: /wp/archives/2006/10/12/321/index.html
 post_id: 321
-categories: 
-- Out &#038; About
-- Rambling
 ---
 
 Just about to pull out of here to head for Pleasanton with William.  I'm looking forward to seeing my grandmother for a brief time tomorrow, but worried about the lack of sleep we face this weekend.  It will be nice to get out somewhere new though.  If all goes according to plan I should be back Monday night!

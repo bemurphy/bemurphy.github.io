@@ -3,8 +3,6 @@ layout: post
 title: My eye
 wp-permalink: /wp/archives/2008/03/24/341/index.html
 post_id: 341
-categories: 
-- Rambling
 ---
 
 <a href="http://www.flickr.com/photos/xternal1/sets/72157604236634154/" title="DSC00406.JPG by xternal1, on Flickr"><img src="http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg" width="240" height="180" alt="DSC00406.JPG" /></a>

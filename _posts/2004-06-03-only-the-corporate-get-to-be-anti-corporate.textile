@@ -3,8 +3,6 @@ layout: post
 title: Only the corporate get to be anti-corporate
 wp-permalink: /wp/archives/2004/06/03/66/index.html
 post_id: 66
-categories: 
-- Ad Naseaum
 ---
 
 I saw a strange television ad yesterday for the domain <a href="http://www.iwantmyvacation.com/">iwantmyvacation.com</a>.  The site supports "vacation advocacy", and the PSA like commercial features a mock CEO thanking the average joe for putting in more hours and taking less vacation.  The front page is splashed with commands like "America, You NEED A Vacation".

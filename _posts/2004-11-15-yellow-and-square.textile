@@ -3,8 +3,6 @@ layout: post
 title: Yellow and square
 wp-permalink: /wp/archives/2004/11/15/193/index.html
 post_id: 193
-categories: 
-- Rant
 ---
 
 I'm one of those office types that is almost always at my desk.  Some of the LAN guys that sit behind me are rarely there.  Not in the slighest because they are slacking, but rather because they have to run all over the floor to fix things.

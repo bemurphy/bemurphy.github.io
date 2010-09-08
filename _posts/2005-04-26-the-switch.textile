@@ -3,9 +3,6 @@ layout: post
 title: The Switch
 wp-permalink: /wp/archives/2005/04/26/239/index.html
 post_id: 239
-categories: 
-- Rave
-- Tech
 ---
 
 <a href="http://www.brendoman.com/dbc/">Danny</a> is <a href="http://www.brendoman.com/dbc/2005/04/25/choosing_os_2">pondering</a> what path to take on buying a new computer.

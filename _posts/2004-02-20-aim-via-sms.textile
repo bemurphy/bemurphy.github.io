@@ -3,8 +3,6 @@ layout: post
 title: AIM via SMS
 wp-permalink: /wp/archives/2004/02/20/19/index.html
 post_id: 19
-categories: 
-- Wireless
 ---
 
 Thanks to Will at work for pointing out that you can use AOL Instant messenger <a href="http://mymobile.aol.com/portal/redirect?log=portal.im.fullservice&urn=im/phones.html">via SMS</a> on your cell phone.  I found the <a href="http://mymobile.aol.com/portal/im/pdfs/tmobile/AIM_SMS_UG_tmobile.pdf">user guide</a> for my provider, too.

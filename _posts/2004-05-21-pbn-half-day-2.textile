@@ -3,8 +3,6 @@ layout: post
 title: pbn half day 2
 wp-permalink: /wp/archives/2004/05/21/51/index.html
 post_id: 51
-categories: 
-- Paintball
 ---
 
 I call it half day because it wasn't really official, but there's a <a href="http://www.scvrush.com/videos/MT201.wmv">new video</a> of my friends from <a href="http://www.digitalpaintball.net/?site=3&sid=">DPB</a> playing against <a href="http://www.hkarmy.com">Hostile Kids</a> at SC Village.  Quittman did a pretty good job this time around.

@@ -3,9 +3,6 @@ layout: post
 title: Ads that suck
 wp-permalink: /wp/archives/2005/12/19/291/index.html
 post_id: 291
-categories: 
-- Ad Naseaum
-- Rant
 ---
 
 The Wal-Mart ad featuring Destiny's Child is currently near the top of my imaginary "Ads that suck" list.

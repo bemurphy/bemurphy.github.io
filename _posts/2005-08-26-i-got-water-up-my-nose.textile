@@ -3,8 +3,6 @@ layout: post
 title: I got water up my nose
 wp-permalink: /wp/archives/2005/08/26/272/index.html
 post_id: 272
-categories: 
-- Rambling
 ---
 
 In the summer I tend to have sinus problems, especially when I wake up in the morning.  It's never unbearable for me, but I figured it's time I try something less drastic than constant decongestants to help.

@@ -3,9 +3,6 @@ layout: post
 title: Nosferatu, illegal art
 wp-permalink: /wp/archives/2004/07/23/137/index.html
 post_id: 137
-categories: 
-- Free Culture
-- Movies
 ---
 
 Did you know, the first vampire movie, <a href="http://www.imdb.com/title/tt0013442/">Nosferatu</a>, was almost lost forever due to copyright enforcement?  The filmmaker lost a decision in favor of the estate of Bram Stoker, and all known copies of the film were transferred to Florence Stoker in 1925.   They were destroyed.

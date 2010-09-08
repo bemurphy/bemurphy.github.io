@@ -3,9 +3,6 @@ layout: post
 title: Boucher on Lessig blog
 wp-permalink: /wp/archives/2004/08/09/152/index.html
 post_id: 152
-categories: 
-- Asides
-- Free Culture
 ---
 
 Representative Rick Boucher is posting on the <a href="http://www.lessig.org/blog/">Lessig blog</a> this week!  Good to see a politician in favor of copyright balance.

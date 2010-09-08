@@ -3,9 +3,6 @@ layout: post
 title: Samsung SGH-D500
 wp-permalink: /wp/archives/2004/10/08/172/index.html
 post_id: 172
-categories: 
-- Asides
-- Tech
 ---
 
 

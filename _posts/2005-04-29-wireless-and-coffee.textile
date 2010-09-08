@@ -3,9 +3,6 @@ layout: post
 title: Wireless and coffee
 wp-permalink: /wp/archives/2005/04/29/244/index.html
 post_id: 244
-categories: 
-- Asides
-- Wireless
 ---
 
 I'm at Diedrich's Coffee right now using their free wireless.  It would appear that all the shops in Tustin, Irvine, Mission Viejo, and Lake Forest currently offer free wireless.

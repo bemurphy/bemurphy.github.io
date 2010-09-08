@@ -3,9 +3,6 @@ layout: post
 title: MGS1
 wp-permalink: /wp/archives/2006/03/03/304/index.html
 post_id: 304
-categories: 
-- Games
-- Movies
 ---
 
 Or, Movie Game Sunday 1.

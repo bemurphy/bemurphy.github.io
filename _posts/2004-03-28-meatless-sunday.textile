@@ -3,8 +3,6 @@ layout: post
 title: Meatless Sunday
 wp-permalink: /wp/archives/2004/03/28/33/index.html
 post_id: 33
-categories: 
-- Rambling
 ---
 
 I managed to pack 3 meat substitute products into meals today.  Even for me, that's a lot.  Hopefully not an unhealthly "a lot".  At lunch, it was soy imitation ground beef, with dinner, ground <a href="http://www.quorn.com/us/index.htm">quorn</a>, and tofu in miso soup as a late night snack.

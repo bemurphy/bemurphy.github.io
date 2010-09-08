@@ -3,9 +3,6 @@ layout: post
 title: I want a rubber stamp...
 wp-permalink: /wp/archives/2004/06/22/77/index.html
 post_id: 77
-categories: 
-- Rant
-- Work
 ---
 
 ...that says "I don't understand how the internet works".

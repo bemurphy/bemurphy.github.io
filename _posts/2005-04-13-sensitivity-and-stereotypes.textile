@@ -3,8 +3,6 @@ layout: post
 title: Sensitivity and Stereotypes
 wp-permalink: /wp/archives/2005/04/13/238/index.html
 post_id: 238
-categories: 
-- Rambling
 ---
 
 According to California state law (or rather, according to my employer, I am no student of state law) we must participate in some form of sensitivity training on a yearly basis.  This was the first year I'd run across such a requirement.  Our training consisted of a 123 page web course in which mock situations were presented, to which the participant was required to answer multiple choice questions regarding.  It wasn't really a pass/fail situation, they just informed you of the reasoning on the right answers and moved on.

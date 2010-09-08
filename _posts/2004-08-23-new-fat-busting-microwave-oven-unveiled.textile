@@ -3,8 +3,6 @@ layout: post
 title: New Fat-Busting Microwave Oven Unveiled
 wp-permalink: /wp/archives/2004/08/23/157/index.html
 post_id: 157
-categories: 
-- Asides
 ---
 
 Sharp claims to have developed a <a href="http://tinyurl.com/5bd9z">microwave</a> that reduces fat in meats.

@@ -3,8 +3,6 @@ layout: post
 title: So cynical now
 wp-permalink: /wp/archives/2004/08/19/156/index.html
 post_id: 156
-categories: 
-- Free Culture
 ---
 
 This Rueters <a href="http://tinyurl.com/62hhe">story</a> regarding the recent Grokster case decision has an interesting title: "Court Deals Blow to Anti-Piracy Efforts".  You know if you stop and think about that, it shows an awful lot of cynicism.  How about "Court Protects Innovation", "Court Upholds Sony Decision", or "Court Sees Value in Peer-to-Peer Technology".  The negative headline, however, will always win out.

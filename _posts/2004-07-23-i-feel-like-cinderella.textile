@@ -3,8 +3,6 @@ layout: post
 title: I feel like Cinderella
 wp-permalink: /wp/archives/2004/07/23/134/index.html
 post_id: 134
-categories: 
-- Rant
 ---
 
 No, not as bad as it sounds.

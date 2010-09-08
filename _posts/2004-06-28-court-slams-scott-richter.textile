@@ -3,8 +3,6 @@ layout: post
 title: Court slams Scott Richter
 wp-permalink: /wp/archives/2004/06/28/98/index.html
 post_id: 98
-categories: 
-- Asides
 ---
 
 <a href="http://spam.weblogsinc.com/entry/5225545010143189/">Court slams</a> self proclaimed king of spam, Scott Richter. 

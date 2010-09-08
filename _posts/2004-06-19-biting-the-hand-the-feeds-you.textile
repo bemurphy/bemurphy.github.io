@@ -3,8 +3,6 @@ layout: post
 title: Biting the hand the feeds you
 wp-permalink: /wp/archives/2004/06/19/75/index.html
 post_id: 75
-categories: 
-- Free Culture
 ---
 
 I was reading the <a href="http://www.downhillbattle.org/">downhillbattle.org</a> site the other day, and came across a succinct <a href="http://www.downhillbattle.org/riaa/">viewpoint</a> to the current RIAA tactics of suing families for copyright infringement:

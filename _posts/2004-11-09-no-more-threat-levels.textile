@@ -3,8 +3,6 @@ layout: post
 title: No more threat levels!
 wp-permalink: /wp/archives/2004/11/09/187/index.html
 post_id: 187
-categories: 
-- Politics
 ---
 
 I guess the recent election was more important than we all could have fathomed.  Because I don't know what else possibly could have happened to allow Ashcroft to write this in his <a href="http://msnbc.msn.com/ID/6446686/">resignation letter</a> (emphasis mine):

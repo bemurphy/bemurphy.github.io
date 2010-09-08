@@ -3,8 +3,6 @@ layout: post
 title: 100 more things
 wp-permalink: /wp/archives/2004/08/25/158/index.html
 post_id: 158
-categories: 
-- 100 Things
 ---
 
 I decided it was time to make another 100 things list.  This one I'm sure will be much tougher, especially as I've been in a much more reflective mood lately.  Plus, I'm putting a little effort into avoiding collisions with the previous list.

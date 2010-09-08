@@ -3,8 +3,6 @@ layout: post
 title: Where do you want to go today?
 wp-permalink: /wp/archives/2004/03/09/25/index.html
 post_id: 25
-categories: 
-- Work
 ---
 
 Somebody finally set up the <a href="http://www.wheeloyum.com/">Wheel O' Yum</a> at work.  Now they can let destiny decide their lunchtime fate.

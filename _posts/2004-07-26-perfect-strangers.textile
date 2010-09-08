@@ -3,10 +3,6 @@ layout: post
 title: Perfect Strangers
 wp-permalink: /wp/archives/2004/07/26/142/index.html
 post_id: 142
-categories: 
-- Asides
-- Free Culture
-- Music
 ---
 
 Will people really confuse <a href="http://tinyurl.com/7xhss">this</a> rock group with Dio?  Seriously Ronnie, nobody is accidentally coming home with their CD hoping to hear "Rainbow in the Dark".

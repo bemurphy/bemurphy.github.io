@@ -3,8 +3,6 @@ layout: post
 title: Damenzu What?
 wp-permalink: /wp/archives/2004/03/24/32/index.html
 post_id: 32
-categories: 
-- Rambling
 ---
 
 Actually, it's the <a href="http://www.dottocomu.com/b/archives/000736.html">Damenzu Walker</a>, otherwise know as a "loser detector".  Wow, a toy with AI can tell you if somebody was a loser.  And I thought intuition was enough.

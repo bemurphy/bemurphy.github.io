@@ -3,9 +3,6 @@ layout: post
 title: Netflix shares plunge
 wp-permalink: /wp/archives/2004/07/16/124/index.html
 post_id: 124
-categories: 
-- Asides
-- Movies
 ---
 
 

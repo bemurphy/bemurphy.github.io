@@ -3,8 +3,6 @@ layout: post
 title: DS Acquisitions
 wp-permalink: /wp/archives/2006/04/27/311/index.html
 post_id: 311
-categories: []
-
 ---
 
 I picked up <a href="http://www.gamestop.com/product.asp?product%5Fid=180129">Brain Age</a> last night, and will likely get <a href="http://www.gamestop.com/product.asp?product%5Fid=180108">Lost Magic</a> today.

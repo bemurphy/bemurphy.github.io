@@ -3,8 +3,6 @@ layout: post
 title: Brendon's FAQ, 1.0
 wp-permalink: /wp/archives/2005/12/05/288/index.html
 post_id: 288
-categories: 
-- Rambling
 ---
 
 Dear friends and acquaintances,

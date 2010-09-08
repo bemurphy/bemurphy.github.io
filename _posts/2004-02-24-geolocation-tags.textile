@@ -3,8 +3,6 @@ layout: post
 title: Geolocation tags
 wp-permalink: /wp/archives/2004/02/24/20/index.html
 post_id: 20
-categories: 
-- Tech
 ---
 
 So I stumbled across two connected sites of interest last week.  <a href="http://www.geourl.org/">GeoURL</a> and <a href="http://www.localfeeds.com">localfeeds.com</a> seek to provide a <a href="http://www.geourl.org/add.html">simple mechanism</a> for throwing geographic coordinates onto a webpage.  A point of course being, to find owners or operators of sites within a certain area.  It's really a novelty at this stage, but someday it <a href="http://www.isedb.com/news/index.php?t=reviews&id=587">might pay off</a>.

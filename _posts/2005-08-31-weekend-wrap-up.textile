@@ -3,8 +3,6 @@ layout: post
 title: Weekend wrap-up
 wp-permalink: /wp/archives/2005/08/31/274/index.html
 post_id: 274
-categories: 
-- Rambling
 ---
 
 A description of my past weekend.  It's all a big blur to me.  I'm starting this list from Thursday night, since I took Friday off from work.  I'm also posting the list late because my week got off to an odd start; I stayed home from work Monday and Tuesday this week.

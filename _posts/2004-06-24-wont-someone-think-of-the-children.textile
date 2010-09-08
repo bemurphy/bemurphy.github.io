@@ -3,8 +3,6 @@ layout: post
 title: Won't someone think of the children?
 wp-permalink: /wp/archives/2004/06/24/81/index.html
 post_id: 81
-categories: 
-- Free Culture
 ---
 
 

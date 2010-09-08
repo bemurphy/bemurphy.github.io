@@ -3,8 +3,6 @@ layout: post
 title: DRM & Portable Subscriptions
 wp-permalink: /wp/archives/2004/07/17/126/index.html
 post_id: 126
-categories: 
-- Free Culture
 ---
 
 <a href="http://tinyurl.com/464lt">Janus DRM technology</a> from Microsoft seeks to provide "assurance to record companies that their copyrighted content will not be pirated".  

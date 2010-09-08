@@ -3,8 +3,6 @@ layout: post
 title: This is how tired I am
 wp-permalink: /wp/archives/2004/06/30/100/index.html
 post_id: 100
-categories: 
-- Asides
 ---
 
 This is how tired I am:  I was just looking for my socks, only to realize I'd already put them on.

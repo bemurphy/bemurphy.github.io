@@ -3,8 +3,6 @@ layout: post
 title: Keeping support focused
 wp-permalink: /wp/archives/2008/03/19/339/index.html
 post_id: 339
-categories: 
-- Rambling
 ---
 
 I was just browsing the <a href="http://automattic.com">automattic.com</a> <a href="http://automattic.com/about/how-we-work/">How We Work page</a> and ran across this tidbit:

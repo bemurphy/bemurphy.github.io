@@ -3,9 +3,6 @@ layout: post
 title: p2p payment model.
 wp-permalink: /wp/archives/2004/07/01/103/index.html
 post_id: 103
-categories: 
-- Asides
-- Free Culture
 ---
 
 No idea how feasible it would be, but in their "Pay Artists" <a href="http://www.eff.org/deeplinks/archives/001660.php">article</a> today, ran across EFF <a href="http://www.eff.org/share/collective_lic_wp.php">solutions</a> for a pay-for-p2p system.

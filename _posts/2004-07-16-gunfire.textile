@@ -3,9 +3,6 @@ layout: post
 title: Gunfire!
 wp-permalink: /wp/archives/2004/07/16/123/index.html
 post_id: 123
-categories: 
-- Asides
-- Rambling
 ---
 
 I forgot to post this lastnight, but around 9pm my roommate and I were convinced we heard sporadic gunfire near our house.  About 5 shots.  Scary considering Irvine is the Canada of Orange County.

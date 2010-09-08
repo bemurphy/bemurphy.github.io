@@ -3,8 +3,6 @@ layout: post
 title: "Metaprogramming in Ruby: Part 1"
 wp-permalink: /wp/archives/2009/10/30/368/index.html
 post_id: 368
-categories: 
-- ""
 ---
 
 I joked with a co-worker the other day that, sometimes I think I'm better at Ruby metaprogramming that straight ahead programming.  This is a serious exaggeration, and I don't count myself as an expert at either.  However, it dawned on me that, I have a few friends that aren't as exposed to metaprogramming concepts in Ruby, so, what better topic to share about.  Hopefully in the process, you'll learn something new, and, I'll become better at explaining Ruby concepts and sharing code.

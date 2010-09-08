@@ -3,9 +3,6 @@ layout: post
 title: Boos and Yays for AIM
 wp-permalink: /wp/archives/2004/12/29/210/index.html
 post_id: 210
-categories: 
-- Rambling
-- Tech
 ---
 
 Today I'm experiencing both the joys and frustrations of using AIM.  I use it all the time, of course, it's nothing new.

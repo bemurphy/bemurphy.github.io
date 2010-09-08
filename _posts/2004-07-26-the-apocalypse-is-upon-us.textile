@@ -3,9 +3,6 @@ layout: post
 title: The Apocalypse is upon us
 wp-permalink: /wp/archives/2004/07/26/141/index.html
 post_id: 141
-categories: 
-- Asides
-- Music
 ---
 
 Ashlee Simpson's album holds sales rank #3 at amazon,  with 93 reviews averaging to 4 out of 5 stars.  Apocalyptic for sure.

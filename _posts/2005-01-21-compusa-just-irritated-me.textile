@@ -3,9 +3,6 @@ layout: post
 title: CompUSA Just Irritated me
 wp-permalink: /wp/archives/2005/01/21/214/index.html
 post_id: 214
-categories: 
-- Rant
-- Tech
 ---
 
 The CompUSA near my house has a managers special tag out on the slightly older, iBook 14" 1ghz systems.  They wanted $699 for them.  Amazon sells the 12" variety for $799, so as you can see, this is a great deal.  I was ready to buy, and guess what, none in stock!  Then they told me they'd sell me the demo...then they wouldn't.  Then they wouldn't give me a straight answer if they would be getting any more from a warehouse to clear out.

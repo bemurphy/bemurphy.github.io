@@ -3,8 +3,6 @@ layout: post
 title: 10 signs your weekend is off to a bad start
 wp-permalink: /wp/archives/2004/04/03/34/index.html
 post_id: 34
-categories: 
-- Rambling
 ---
 
 Otherwise known as "it's about 2 AM and you are...."
