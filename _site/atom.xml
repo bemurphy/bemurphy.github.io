@@ -3,7 +3,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2010-09-07T22:34:18-07:00</updated>
+ <updated>2010-09-07T22:42:29-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -76,9 +76,9 @@
  
  <entry>
    <title>Roll your own dropbox</title>
-   <link href="http://www.techfreak.net/Rambling/2008/03/29/roll-your-own-dropbox-2.html"/>
+   <link href="http://www.techfreak.net/Rambling/2008/03/29/roll-your-own-dropbox.html"/>
    <updated>2008-03-29T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/Rambling/2008/03/29/roll-your-own-dropbox-2</id>
+   <id>http://www.techfreak.net/Rambling/2008/03/29/roll-your-own-dropbox</id>
    <content type="html">&lt;p&gt;So I&amp;#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out &lt;a href=&quot;http://www.filedropper.com/&quot;&gt;filedropper.com&lt;/a&gt; for a simple example of such an application.&lt;/p&gt;
 &lt;p&gt;Of course, I was bored, and don&amp;#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.&lt;/p&gt;
 &lt;p&gt;So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked &lt;a href=&quot;http://www.ruby-lang.org/en/&quot;&gt;ruby&lt;/a&gt;) and a module for interfacing with &lt;a href=&quot;http://aws.amazon.com/s3&quot;&gt;Amazon&amp;#8217;s S3 service&lt;/a&gt;.&lt;/p&gt;
