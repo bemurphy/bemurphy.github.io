@@ -1,0 +1,12 @@
+---
+layout: post
+title: Jesus Rocks
+wp-permalink: /wp/archives/2004/09/10/164/index.html
+post_id: 164
+categories: 
+- Asides
+- Free Culture
+- Music
+---
+
+First asian album <a href="http://creativecommons.org/weblog/entry/4390">released</a> using a creative commons license.  It's a Chinese language gospel album.

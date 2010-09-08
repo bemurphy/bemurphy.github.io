@@ -1,0 +1,11 @@
+---
+layout: post
+title: This Land
+wp-permalink: /wp/archives/2004/07/26/140/index.html
+post_id: 140
+categories: 
+- Asides
+- Free Culture
+---
+
+The guys who made the "<a href="http://www.jibjab.com/">This Land</a>" flash regarding the 2004 elections got <a href="http://www.eff.org/deeplinks/archives/001765.php">threatened</a> with a lawsuit for copyright infringement.  I'm sure Woodie Guthrie was real big on suing people.

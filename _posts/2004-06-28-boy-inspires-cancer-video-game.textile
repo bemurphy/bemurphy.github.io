@@ -1,0 +1,11 @@
+---
+layout: post
+title: Boy inspires cancer video game
+wp-permalink: /wp/archives/2004/06/28/96/index.html
+post_id: 96
+categories: 
+- Asides
+- Games
+---
+
+Boy inspires <a href="http://news.bbc.co.uk/2/hi/technology/3839091.stm">cancer video game</a>.  It turns out to be far less creepy than it sounds.

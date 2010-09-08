@@ -1,0 +1,45 @@
+---
+layout: post
+title: wp-syntax test
+wp-permalink: /wp/archives/2009/05/04/352/index.html
+post_id: 352
+categories: 
+- ""
+---
+
+Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!
+
+{% highlight ruby %}
+require "date"
+
+class DateReformatter
+  attr_reader :date
+  
+  def initialize(date)
+    self.date = date
+  end
+  
+  def date=(date)
+    begin
+      @date = DateTime::parse(date)
+    rescue
+      @date = DateTime::now()
+    end
+  end
+  
+  def reformat
+    local = DateTime.now()
+    utc = @date.new_offset
+    local_from_utc = utc.new_offset(local.offset)
+    local_from_utc.to_s
+    "#{pad(local_from_utc.hour)}:#{pad(local_from_utc.min)}"
+  end
+  
+  private
+  
+  def pad(num)
+    num.to_s.rjust(2, '0')
+  end
+end
+{% endhighlight %}
+

@@ -1,0 +1,30 @@
+---
+layout: post
+title: Roll your own dropbox
+wp-permalink: /wp/archives/2008/03/29/343/index.html
+post_id: 343
+categories: 
+- Rambling
+---
+
+So I've had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out <a href="http://www.filedropper.com/">filedropper.com</a> for a simple example of such an application.
+
+Of course, I was bored, and don't like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.
+
+So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked <a href="http://www.ruby-lang.org/en/">ruby</a>) and a module for interfacing with <a href="http://aws.amazon.com/s3">Amazon's S3 service</a>.
+
+The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here's the basic workflow steps:
+
+<ol>
+<li>Make an Automator workflow that takes a selected set of files ("Get Selected Items") and creates an archive ("Create Archive") out of them</li>
+<li>Pass that archive into a script ("Run Shell Script") to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.</li>
+<li>Store the file on S3, and then output the full S3 url for capture by Automator.</li>
+<li>Use the Automator "New Mail Message" action, passing in the url as the content of the message</li>
+<li>Plan on manually addressing the message, filling out the body if you like.</li>
+<li>Now here's what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.</li>
+</ol>
+
+Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.
+
+I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there's really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that's not as "sexy", right?
+

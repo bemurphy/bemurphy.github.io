@@ -1,0 +1,11 @@
+---
+layout: post
+title: CallerTunes
+wp-permalink: /wp/archives/2004/12/08/201/index.html
+post_id: 201
+categories: 
+- Asides
+- Tech
+---
+
+T-Mobile released <a href="http://www.t-mobile.com/services/ctunes/overview.asp">CallerTunes</a>  (aka Ringback tones) today.  For those unfamaliar, it's a tone played in place of the normal "ring-ring" to your callers.

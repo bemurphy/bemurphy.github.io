@@ -1,0 +1,16 @@
+---
+layout: post
+title: New toy
+wp-permalink: /wp/archives/2004/03/23/31/index.html
+post_id: 31
+categories: 
+- Wireless
+---
+
+It's cold here.  I'm outside the Starbucks at Culver and Irvine Blvd.  Figured it would be good to get out of the house.
+
+Obviously my <a href="http://www1.us.dell.com/content/products/productdetails.aspx/inspn_600m?c=us&cs=19&l=en&s=dhs">new laptop</a> came today.  It's pretty sweet.  It feels more sturdy than Inspirons I've used in the past, and the lcd is a knockout.  I get net access via the <a href="http://www.t-mobile.com/hotspot/services_about.htm">T-Mobile hotspot</a> service.  If you know me, and you know anything about wireless, this should come as a shock.  The access is totally unencrypted, and creates a boatload of privacy concerns.  For now, I'm slamming my website traffic through an encrypted ssh tunnel.  Might have to go for the old vpn setup.  Argh, was hoping to avoid that.
+
+Aren't I just the sucker for tech?
+
+And now I'm hungry, and Starbucks just closed.  I think it's time to go.

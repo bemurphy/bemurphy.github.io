@@ -1,0 +1,13 @@
+---
+layout: post
+title: Wordpress must have arrived
+wp-permalink: /wp/archives/2004/07/20/130/index.html
+post_id: 130
+categories: 
+- Site
+- Spam
+---
+
+Perhaps a sign of gaining acceptance of a blog app is when it starts getting comment spam.  I got my first today.  Yippie?  Fortunately, wordpress has a <a href="http://wiki.wordpress.org/How%20to%20combat%20comment%20spam%20with%20WordPress">feature</a> to throw a comment to moderation if it contains more than x number of links.
+
+Now if the bozos give me any more trouble, I'm whitelisting via email address.

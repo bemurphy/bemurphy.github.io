@@ -4,10 +4,18 @@ title: jekyll-test
 ---
 <h2 id="intro">The five most recent posts.</h2>
 {% for post in site.posts limit:5 %}
-  <div class="post">
-  {{ post.content }}
+<div class="post">  
+
+  <h1>
+    {{ post.title }}
+  </h1>
+
+  {{ post.content }}  
+  
   <p class="signoff">
-    &mdash; <a href="{{ post.url }}">{{ post.date | date: "%b %d, %Y" }}</a>
+    &mdash;<a href="{{ post.url }}">{{ post.date | date: "%b %d, %Y" }}</a>
   </p>
+
+  <p class="index_comments_count"><a href="{{ post.url }}#disqus_thread">{{ post.url }} comments</a></p>
   </div>
 {% endfor %}

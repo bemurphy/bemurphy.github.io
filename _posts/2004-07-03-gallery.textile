@@ -1,0 +1,11 @@
+---
+layout: post
+title: Gallery
+wp-permalink: /wp/archives/2004/07/03/106/index.html
+post_id: 106
+categories: 
+- Asides
+- Site
+---
+
+Yippie, skinned my <a href="http://www.techfreak.net/gallery/">gallery</a> to look like my wordpress install.  Colors make me dizzy.

@@ -1,0 +1,21 @@
+---
+layout: post
+title: Free culture tidbits
+wp-permalink: /wp/archives/2004/07/11/114/index.html
+post_id: 114
+categories: 
+- Free Culture
+---
+
+I'm finally starting back up with reading Lessig's "Free Culture".  From chapter 10, I bring you the following tidbits.
+
+<ul>
+	<li>Default copyright durations have tripled in the past 30 years.</li>
+	<li>John McCain's summary of FCC information on media ownership: "five companies control 85 percent of our media sources."</li>
+	<li>Before deregulation of radio, the largest broadcast company owned fewer than 75 stations.  Now there is one company which owns 1,200+ stations.</li> 
+	<li>Four companies control 90 percent of radio advertising revenues.</li>
+</ul>
+
+You wonder why you hear that same damn song everywhere you go?
+
+

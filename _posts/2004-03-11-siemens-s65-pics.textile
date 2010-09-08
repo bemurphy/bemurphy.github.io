@@ -1,0 +1,12 @@
+---
+layout: post
+title: Siemens S65 Pics
+wp-permalink: /wp/archives/2004/03/11/27/index.html
+post_id: 27
+categories: 
+- Wireless
+---
+
+<a href="http://www.mobileburn.com">Mobileburn</a> has <a href="http://www.mobileburn.com/news.jsp?Id=660">photos</a> of the forthcoming Siemens S65 phone.  That thing looks sweet.
+
+32MB onboard, 1.3MP camera.  I bet we'll never see it here.

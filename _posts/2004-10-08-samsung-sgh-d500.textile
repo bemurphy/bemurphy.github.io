@@ -1,0 +1,12 @@
+---
+layout: post
+title: Samsung SGH-D500
+wp-permalink: /wp/archives/2004/10/08/172/index.html
+post_id: 172
+categories: 
+- Asides
+- Tech
+---
+
+
+<a href="http://www.phonescoop.com">Phonescoop</a> put up info on the forthcoming <a href="http://www.phonescoop.com/news/item.php?n=970">Samsung slider phone</a>.  It's black, beautiful, and has bluetooth.

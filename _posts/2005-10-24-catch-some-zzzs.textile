@@ -1,0 +1,37 @@
+---
+layout: post
+title: Catch some Zzz's
+wp-permalink: /wp/archives/2005/10/24/284/index.html
+post_id: 284
+categories: 
+- Rambling
+- Rave
+- Tech
+---
+
+There's buzz these days on <a href="http://glenrhodes.com/index.php?option=com_content&task=view&id=54&Itemid=9">sleep cycles</a> and <a href="http://veenix.blogspot.com/2005/10/alarm-clocks-are-bad-how-to-wake-up.html">waking techniques</a> that are increasingly useful to the growing number of sleep deprived/zombified Americans.  Let me throw my experience on the subject of sleep into the ring.  I've become very, very good at falling asleep in the past six months.  What is my secret, you ask?
+
+<!--more-->
+It's my iPod.
+
+Well, technically, it's my iPod plus an <a href="http://www.emusic.com/">emusic</a> subscription.
+
+The fantastic emusic service starts at $9.99 for a month of service, which allows you to download 40 songs during a 30 day billing cycle.  Remember to download them, otherwise the credits disappear.  Now, how does a download credit work?  The formula is quite easy, it follows: 1 track = 1 download.  That's right, if the song is 31 second long, it's one download.  And if it's 60 minutes long, yup, you guessed it.  Did I mention some of these tracks (which, depending on your subscription, range from $0 to $.25 a pop) can sell as a CD for over $10?  What a deal.
+
+It turns out they have a great deal of material with long lengths that fit into the "natural sounds" category.  They also have a good deal of medium length tracks as well as guided imageries that are useful as well.  The following have yielded the best results so far.
+
+<ul>
+<li><a href="http://www.emusic.com/search.html?mode=x&QT=relax+with+nature&x=19&y=15">Relax with nature</a>: bubbling stream, rainforest, jungle sounds, you get the idea</li>
+<li><a href="http://www.emusic.com/artist/11590/11590854.html">Kelly Howell</a>: lots of music tracks with theta/beta/alpha/you name it droning sounds.  Very nice for relaxing and great for blocking out noise.  Also features some guided tracks.</li>
+<li><a href="http://www.emusic.com/artist/11583/11583219.html">Ambient Music Therapy</a>: Their <a href="http://www.emusic.com/album/10854/10854152.html">Ultimate Sleep System</a> album is pretty relaxing.</li>
+<li><a href="http://www.emusic.com/album/10825/10825634.html">Guided Meditation to Sleep</a>: I think of the 20 or so times I've used this track, I heard the whole thing once.  Special note to guys, if you think women with australian accents are really hot (and they are) you might have to get past her voice at first.</li>
+<li><a href="http://www.emusic.com/album/10604/10604917.html">Bamboo rainsticks</a>: about as close to whitenoise as rain can get</li>
+<li><a href="http://www.emusic.com/artist/11585/11585436.html">Global Hypnosis</a>: has a droning <a href="http://www.emusic.com/album/10853/10853054.html">Insomnia Relief</a> title</li>
+<li><a href="http://www.emusic.com/album/10843/10843875.html">Sonosync</a>: a combination of soothing synth waves and natural sounds.  It's supposed synced to "calibrate brainwaves".  Don't ask me if that's legit, but, it is relaxing.</li>
+</ul>
+
+So what to do?  It's not rocket science.  Pick an album to fall asleep to (many albums are one long track), pop in the earbuds, press play, and shut your eyes.  When the end of the album is reached, your iPod will sleep soon (you're likely already there).  If you want a specific short track from an album, set a short playlist via the <a href="http://manuals.info.apple.com/en/iPod_Click_Wheel_UserGuide.pdf">on-the-go playlist</a> functionality.
+
+What's that you say?  You want to help out the insomnia curing effect of the droning sounds?  Your ticket might just be one of three sensory experiences.  Pick something you see (eyes open or closed) and focus on just it.  Or pick some element from the audio track, try and key in on it, blocking the other sounds out.  Finally, if you experience some sensation of relaxation, don't let it go, instead, focus in.  As part of focusing in, you may wish to try narrating to yourself about the experience, I find this works particularly well with describing and magnifying sensations.   Want the tingly comfortable feeling you just noticed in your foot to move up your leg?  Talk to yourself about it, don't worry, you're not crazy for trying it.  You will be surprised by how well it can work.  Personally, I have found that focusing on the swirling darkness behind closed eyes is my ticket.  Try this quick demonstration.  Close your eyes, and really become aware of the swirling lights and darks you still see.  People will often find swirls of purple, orange, or green, depending on ambient lighting.  Become highly aware of it, narrate it, see if you can magnify and double it.  And then, double it again.  Whatever you notice that you think is a sign of your comfort and relaxation is what you want to continue to notice.
+
+A final safety tip.  If you tend to chew on things in your sleep, the earbuds may be hazardous.  I have a loop in mine velcro'd down to my bed post which I suppose could present a choking hazard (err, I'm a grown adult) but it does prevent the dreaded my-ipod-broke-because-I-yanked-it-off-my-bedstand-while-sleeping effect.  The tie-down also tend to cause the earbuds to get yanked out of my head while I turn in my sleep, which, I'm assuming makes for a more comfortable sleep.

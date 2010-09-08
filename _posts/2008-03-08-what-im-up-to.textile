@@ -1,0 +1,22 @@
+---
+layout: post
+title: What I'm up to
+wp-permalink: /wp/archives/2008/03/08/333/index.html
+post_id: 333
+categories: 
+- Rambling
+---
+
+Been very busy with work lately.  Here's some things I'm up to.
+
+<ul>
+<li>Reading <a href="http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452" title="Design Patterns in Ruby">Design Patterns in Ruby</a> by <a href="http://www.jroller.com/rolsen/">Russ Olsen</a></li>
+<li>Settling into the Systems Engineering groups at work.  I transferred from IT to Engineering a few months back, it's shaping up well for me at this point.</li>
+<li>Playing with the new MacBook Pro</li>
+<li>Messing around on <a href="http://twitter.com//xternal">Twitter</a> and <a href="http://pownce.com/xternal/">Pownce</a></li>
+<li>Posting some moronic photos to <a href="http://www.flickr.com/photos/xternal1/">Flickr</a></li>
+<li>Adding <a href="http://site.gravatar.com/">Gravatar</a> support to my comments.</li>
+<li>Trying to resist buying one of <a href="http://eeepc.asus.com/global/">these</a>.  Thanks a lot, <a href="http://www.brendoman.com/">Brendan</a>.</li>
+<li>Toying with the <a href="http://pownce.pbwiki.com/API%20Documentation2-0">Pownce API</a></li>
+<li>And much , much more!  Heh.</li>
+</ul>

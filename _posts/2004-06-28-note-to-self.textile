@@ -1,0 +1,10 @@
+---
+layout: post
+title: Note to self
+wp-permalink: /wp/archives/2004/06/28/97/index.html
+post_id: 97
+categories: 
+- Asides
+---
+
+Note to self: eating dark chocolate after 10pm is not conducive to a good night's sleep.

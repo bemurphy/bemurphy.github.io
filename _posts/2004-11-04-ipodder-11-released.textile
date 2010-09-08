@@ -1,0 +1,20 @@
+---
+layout: post
+title: iPodder 1.1 released
+wp-permalink: /wp/archives/2004/11/04/184/index.html
+post_id: 184
+categories: 
+- Tech
+---
+
+I picked up an announcement this morning from the <a href="http://www.openpodcast.org/podcast.xml">openpodcast.org feed</a> that iPodder 1.1 is available.  Unfortunately, I can't find any info on the <a href="http://ipodder.sourceforge.net/index.php">site</a> announcement about what has changed.  So, I'll resort to eyeballing what is new.
+
+As far as I can tell, here are the new features:
+<ul>
+<li>You can check specific feeds via a button click, rather than just hitting every feed</li>
+<li>It can select feeds via a podcast directories.  <a href="http://www.ipodder.org">iPodder.org</a> is in the list.</li>
+<li>You can now select which directory to save enclosed files to.  I think this means, in iTunes if you set iPodder to save under the iTunes directory, iTunes will delete the files on removal from the library.  With 1.0, you have to set iTunes to copy imported files into the iTunes folder, and then delete the iPodder downloads.</li>
+<li>There is an option to run a command on a file after each download.  I am keeping my fingers crossed that this command is run before importing into your media player.  This will allow users to add mp3 tags (i.e. reset the genre or comment to "Podcast") in order to make organizing podcasts easier.</li>
+</ul>
+
+For those unfamiliar with podcasting, please see the <a href="http://en.wikipedia.org/wiki/Podcast">wikipedia entry</a>.

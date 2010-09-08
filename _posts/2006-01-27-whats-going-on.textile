@@ -1,0 +1,19 @@
+---
+layout: post
+title: What's going on
+wp-permalink: /wp/archives/2006/01/27/296/index.html
+post_id: 296
+categories: 
+- Rambling
+---
+
+I figured I'd just bullet point random happenings for the past couple weeks.
+
+<ul>
+<li>I successfully flew to and from Oklahoma City and experience nothing remotely like a panic attack.  A few nerves, sure, but nothing bad.</li>
+<li>I've gone to <a href="http://www.stmatthewsacc.com/">St. Matthew's Anglican Catholic Church</a> a couple more times.  They have an inquirer's group running now.  I'm not attending but going through the material from the classes.</li>
+<li>Crista and I started playing a game of <a href="http://www.blackgreengames.com/bti.shtml">Breaking the Ice</a>.  We're 1/3 done.  Fun, hard, fresh, and creative so far.  I'll probably do a write-up if I can remember everything.</li>
+<li>I'm still looking into starting a <a href="http://www.techfreak.net/wp/index.php/archives/2005/12/13/290/">game club</a>.</li>
+<li>I'm going to have to seriously tweak my blog frontpage, as the MySQL slowness is killing it.</li>
+<li>I got geekdome + 1 by running my very first game ever.  It was a session of <a href="http://www.peginc.com/Games/Savage%20Worlds/Savage%20Worlds.htm">Savage Worlds</a> played online, and it was lots of fun.</li>
+</ul>

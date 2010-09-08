@@ -1,0 +1,12 @@
+---
+layout: post
+title: Free T-Mobile Net access?
+wp-permalink: /wp/archives/2004/09/25/170/index.html
+post_id: 170
+categories: 
+- Tech
+---
+
+I can't believe it took me this long too figure out what bluetooth and T-Mobile free GPRS data could get you.
+
+It means <a href="http://www.geek.com/news/geeknews/2003Dec/bpd20031205022950.htm">this</a>.  The quick summary is, I paired my bluetooth enabled laptop to my bluetooth enabled phone, and set bluetooth dial-up networking on the laptop to call *99***_#.  It connects at 115Kbp/s or so.  Feels a bit slower than that, but the good news is, SSH works!

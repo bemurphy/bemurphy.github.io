@@ -1,0 +1,17 @@
+---
+layout: post
+title: Missing the scariest part?
+wp-permalink: /wp/archives/2004/08/02/146/index.html
+post_id: 146
+categories: 
+- Free Culture
+- TV
+---
+
+The <a href="http://www.washingtonpost.com/wp-dyn/articles/A29428-2004Jul31.html">Washington Post article </a>regarding TiVo asking the FCC for permission to add new content sharing functionality has been getting a lot of coverage lately.  Most the criticism is levied at the sad notion that a company needs to ask permission in order to innovate.  While this is true, I think there's a far scarier element of the article that needs equal attention.  Almost glossed over in the end,  we have Fritz Attaway (MPAA executive vice president for government relations) saying the following regarding the presence of analog outputs on devices with HDTV modulators:
+
+bq. "We'll probably have to go to Congress to enact legislation to deal with that"
+
+People, I don't think it get's much more certain than that.  I don't read this as they "probably" want to do it, but rather they know the FCC won't approve, so they'll have to go to Congress.
+
+I'm certainly glad I'm out of school.  I can't remember how many meaningful projects I had in different classes throughout my education that involved content taken from the television, but it sure was significant.   But really, who should care about collateral damage anyway?

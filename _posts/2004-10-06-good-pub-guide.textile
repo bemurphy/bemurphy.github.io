@@ -1,0 +1,12 @@
+---
+layout: post
+title: Good Pub Guide
+wp-permalink: /wp/archives/2004/10/06/171/index.html
+post_id: 171
+categories: 
+- Asides
+- Rambling
+---
+
+
+I have friends that would appreciate <a href="http://www.textually.org/textually/archives/005590.htm">this</a> service in the US.  The UK's <a href="http://www.goodguides.co.uk/">Good Pub Guide</a> now allows you to send a text message and receive details of the nearest pub.

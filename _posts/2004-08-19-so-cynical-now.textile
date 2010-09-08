@@ -1,0 +1,12 @@
+---
+layout: post
+title: So cynical now
+wp-permalink: /wp/archives/2004/08/19/156/index.html
+post_id: 156
+categories: 
+- Free Culture
+---
+
+This Rueters <a href="http://tinyurl.com/62hhe">story</a> regarding the recent Grokster case decision has an interesting title: "Court Deals Blow to Anti-Piracy Efforts".  You know if you stop and think about that, it shows an awful lot of cynicism.  How about "Court Protects Innovation", "Court Upholds Sony Decision", or "Court Sees Value in Peer-to-Peer Technology".  The negative headline, however, will always win out.
+
+For those unfamiliar with the recent ruling, the summary is that the court found the network providers should be held in similiar esteem to Sony of the betamax case.  That is, while their product (or in this case, service) has illegal and infringing uses, it also has substantial non-infringing uses.

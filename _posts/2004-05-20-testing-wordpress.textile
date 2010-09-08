@@ -1,0 +1,12 @@
+---
+layout: post
+title: Testing Wordpress
+wp-permalink: /wp/archives/2004/05/20/47/index.html
+post_id: 47
+categories: 
+- Site
+---
+
+My thoughts to migrate off Movable Type came down to choosing between b2evolution and !wordpress.   Wordpress looks a little less complicated, so thought I'd give it a go.  The only downside (and it's a big downside) is it doesn't have native support for multiple blogs right now.  Supposedly the next release will.  Seems good so far...we'll see.
+
+I should add, it imported my MT entries and comments without any trouble.  Now that's cool.

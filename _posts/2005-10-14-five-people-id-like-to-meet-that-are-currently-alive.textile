@@ -1,0 +1,16 @@
+---
+layout: post
+title: Five people I'd like to meet (that are currently alive)
+wp-permalink: /wp/archives/2005/10/14/279/index.html
+post_id: 279
+categories: 
+- 5ives
+---
+
+<ol>
+<li><a href="http://www.vai.com/">Steve Vai</a> - guitar virtuoso</li>
+<li><a href="http://en.wikipedia.org/wiki/Richard_Bandler">Richard Bandler</a> - <a href="http://en.wikipedia.org/wiki/Neuro-linguistic_programming">NLP</a> - co-founder/wacky guy</li>
+<li><a href="http://www.apple.com/">Steve Jobs</a> - Yay Apple</li>
+<li><a href="http://en.wikipedia.org/wiki/Albert_Ellis">Albert Ellis</a> - one of the primary driving forces behind the creation of cognitive behavioral therapy</li>
+<li><a href="http://www.channel4.com/entertainment/tv/microsites/M/mindcontrol/video/">Derren Brown</a> - he looks to me like a cross between David Blaine, a stage hypnotist, and an NLP student</li>
+</ol>

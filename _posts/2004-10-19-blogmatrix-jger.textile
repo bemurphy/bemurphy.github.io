@@ -1,0 +1,14 @@
+---
+layout: post
+title: "BlogMatrix J\xC3\xA4ger"
+wp-permalink: /wp/archives/2004/10/19/176/index.html
+post_id: 176
+categories: 
+- Tech
+---
+
+Just ran across the news aggregator <a href="http://jaeger.blogmatrix.com/">Jäger</a>.   It looks really interesting I plan on testing it when I get home.
+
+What sets it apart from other client aggregators?  Well for starters, it's handling <a href="http://en.wikipedia.org/wiki/Podcast">podcasts</a> and enclosures.  But here's the really cool part.  It will sync using the <a href="http://www.bloglines.com/services/api/">Bloglines web services API</a>.  To the less technical reader what this means is if you prefer a client side reader, you can use the client at home.  But say you're at the library and want to check, you can still use the web interface and your profile as to subscriptions, what is read and unread will be uniform.
+
+This could be useful in light of a problem I've been tackling for the past two days.  Let's see if this motivates me further.

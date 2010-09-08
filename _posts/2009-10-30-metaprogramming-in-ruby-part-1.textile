@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Metaprogramming in Ruby: Part 1"
+wp-permalink: /wp/archives/2009/10/30/368/index.html
+post_id: 368
+categories: 
+- ""
+---
+
+I joked with a co-worker the other day that, sometimes I think I'm better at Ruby metaprogramming that straight ahead programming.  This is a serious exaggeration, and I don't count myself as an expert at either.  However, it dawned on me that, I have a few friends that aren't as exposed to metaprogramming concepts in Ruby, so, what better topic to share about.  Hopefully in the process, you'll learn something new, and, I'll become better at explaining Ruby concepts and sharing code.
+
+Before I dive in with some introductory examples, a quick definition of metaprogramming is in order.  To quote <a href="http://en.wikipedia.org/wiki/Metaprogramming" title="Wikipedia">Wikipedia</a>, "Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data, or that do part of the work at compile time that would otherwise be done at runtime".  If you use Rails (and, I know you do), metaprogramming enables things you already do on a daily basis, such as dynamic find_by methods in ActiveRecord, or plugins that dynamically get a class to include them (acts_as_list, acts_as_tree, etc).
+
+In this writeup, I'll start with two extremely basic metaprogramming concepts.  In fact, these might not even be considered true Ruby metaprogramming, but, I wanted to start with some simple ideas which you may not have been exposed to in Ruby 101.
+
+The first concept to get down in Ruby is that, classes are objects like anything else.  In Ruby, this means you can open the class and modify it on the fly.  The practice is affectionately called monkey patching or duck punching.  Let's look at a simple example:
+
+<script src="http://gist.github.com/222706.js"></script>
+
+You can see above, we've created a Foo class with a public instance method, bar.  Calling foo.bar, we'll get the output we expect, "bar!".  Next, we reopen the Foo class, and add a new public instance method, foobar.  Had we tried to use Foo#foobar before this, we'd get a NoMethodError exception, as expected.  However, having reopened and modified the class, we can call our new method.
+
+The other demonstration I'd like to show is one way you can define methods on the fly.  This example is abstract and doesn't represent a recommended use, it's simply to prove the point.
+
+<script src="http://gist.github.com/222724.js"></script>
+
+Running this simple example, the first call to foo_two.bar will output "bar".  However, once we call foo.cap_bar, the public instance method bar is changed.  Running it a second time will output "BAR!!!".  A more common, rubyish way of defining methods at run time in Ruby is the use of <a href="http://ruby-doc.org/core/classes/Module.html#M001654" title="define_method">define_method</a>, which I'll cover in a future post.
+
+An important concept to keep in mind here is that, you aren't modifying behavior solely on the foo or foo_two instances.  Instead, you are changing the behavior of any open instance of the Foo or FooTwo classes.  So in our FooTwo example, if you were to create a foo_too instance, calling foo_too.bar would run through the dynamically created method as well and output "BAR!!!".  In future postings, we'll see a different approach of opening instances and defining methods specific to that instance.
+
+Hopefully this has whet your appetite a little, and, in the future, we can run through some more exciting examples of the metaprogramming facilities Ruby has to offer.
+

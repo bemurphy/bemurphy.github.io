@@ -1,0 +1,11 @@
+---
+layout: post
+title: Limited DVD Copying
+wp-permalink: /wp/archives/2004/07/13/120/index.html
+post_id: 120
+categories: 
+- Asides
+- Free Culture
+---
+
+Media and technology companies announce a <a href="http://biz.yahoo.com/rc/040714/media_dvd_sharing_1.html">new strategy</a> to allow limited dvd backup.  What is the point, really. <abbr title="Content Scrambling System">CSS</abbr> didn't work, neither will this.

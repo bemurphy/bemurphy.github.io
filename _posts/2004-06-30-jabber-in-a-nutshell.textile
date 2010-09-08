@@ -1,0 +1,39 @@
+---
+layout: post
+title: Jabber in a nutshell
+wp-permalink: /wp/archives/2004/06/30/101/index.html
+post_id: 101
+categories: 
+- Tech
+- Work
+---
+
+Just got done testing the Jabber server against <a href="http://danny.brendoman.com">Danny's</a> jabber account.  Figured I'd just take a second to explain, exactly why I think <a href="http://www.jabber.org">Jabber</a> is cool.  I realize I've probably left some people in the dark on it.
+
+As it stands, most people are using 1 of the 3 big "protocols" for IM use.  I quote it because it's not so much about using a protocol, as it is being locked in to the service providers network.  If you want to talk to somebody on AIM, you need to have an AIM account, and so do they.  Extend that to Yahoo, MSN, and so on.  This is like email in the old days.  For those of you that can remember the pre-internet days, there was a time where a lot of people had CompuServ accounts, and a lot of people had Prodigy accounts.  They could email to other users of the service, but users of either service couldn't email users of other services.  How antequated does that seem?  It would be like needing a hotmail email account to talk to somebody on hotmail, and a yahoo.com account to email your buddy that uses yahoo.  That's lame.
+
+So along comes Jabber.  In many regards, it functions much more like email does now.  A very brief lesson in how email works:
+<ul>
+<li>You compose an email to a buddy in your outlook client (shiver)</li>
+<li>You click send, and your client shuttles the message off to the smtp server you have designated it to use.</li>
+<li>The smtp server queues the message (assuming you are allowed to relay) and the decides where to send the message to.  It does this by checking the MX dns records for the recipient domain.</li>
+<li>If proper DNS records are found, the smtp server sends the message on to the host listed with the most preferred MX record (the lowest number).</li>
+</ul>
+
+Here's how something like AIM works now:
+<ul>
+<li>Your client authenticates with an AOL server, and receives buddy list information.</li>
+<li>When you message a buddy, the message goes from your client, to the connected server, then on to your friend.</li>
+</ul>
+
+Here's how jabber works:
+<ul>
+<li>Your client connects to a jabber server in your domain, or a domain of a public jabber server.</li>
+<li>You send a message to a friend, joe@jabber.otherdomain.com.</li>
+<li>Message leaves your client and is sent to your jabber server</li>
+<li>Your jabber server performs dns lookups to find the jabber host for the domain in the jabber identifier (in this case, jabber.otherdomain.com).</li>
+<li>Your jabber server then sends the message to the jabber service it located via the dns resolution.</li>
+<li>The remote service forwards the message onto the client, assuming they are connected.  If not, it queues the message and will deliver when they log on next.</li>
+</ul>
+
+Hopefully this makes sense.  In a nutshell, it's decentralized, and it's great.  Not to mention, all the communications are valid XML.

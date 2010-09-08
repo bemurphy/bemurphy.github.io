@@ -1,0 +1,11 @@
+---
+layout: post
+title: Spammer shutdown
+wp-permalink: /wp/archives/2004/07/31/145/index.html
+post_id: 145
+categories: 
+- Asides
+- Spam
+---
+
+FTC <a href="http://www.internetweek.com/allStories/showArticle.jhtml?articleID=26100965">shuts down</a> <a href="http://tinyurl.com/3lmcm">big-time</a> pill spammer.

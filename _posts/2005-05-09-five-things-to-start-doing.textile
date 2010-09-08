@@ -1,0 +1,18 @@
+---
+layout: post
+title: Five things to start doing
+wp-permalink: /wp/archives/2005/05/09/249/index.html
+post_id: 249
+categories: 
+- 5ives
+---
+
+What are five things I can start doing to improve my fight against procrastination?
+
+<ol>
+<li>Expense my broadband access and cell phone service charges to work.</li>
+<li>Shop for groceries more consistently.</li>
+<li>View or return my NetFlix rentals more quickly.</li>
+<li>Spend less time browsing the internet without a goal in mind.</li>
+<li>Discover and implement one project each for putting the <a href="http://www.apple.com/iwork/">iWork</a> applications to use.  I think I already have some ideas in mind (thanks to Crista on this).</li>
+</ol>
