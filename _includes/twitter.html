@@ -2,10 +2,10 @@
 <script>
   getTwitters('tweet', { 
     id: 'xternal', 
-    count: 1, 
+    count: 2, 
     enableLinks: true, 
     ignoreReplies: true, 
     clearContents: true,
-    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
+    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/"><span class="time">&ndash;%time%</span></a>'
   });  
 </script>

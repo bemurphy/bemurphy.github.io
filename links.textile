@@ -3,4 +3,12 @@ layout: default
 title: links
 ---
 
-links will go here.
+h1. Work
+* <a href="http://www.kajabi.com">Kajabi</a> - my day job
+* <a href="http://www.megapath.com">MegaPath Networks</a> - my old day job.  Lots of good friends still there.
+
+h1. Projects
+* <a href="http://github.com/bemurphy/acts_as_optionable">acts_as_optionable</a> - my foray into ruby plugins.  Adds variable options polymorphically onto ActiveRecord models.
+
+h1. Friends & Acquaintances
+* <a href="http://www.ocruby.org">ocruby.org</a> - The OC Ruby Users Group 
