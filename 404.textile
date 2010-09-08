@@ -5,4 +5,4 @@ title: 404
 
 <h1>404</h1>
 
-This requested page is not available.
+This requested page is not available.  It's probably just a bad permalink; you might try the "archive":/archive.html for what you are looking for.
