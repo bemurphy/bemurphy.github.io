@@ -15,4 +15,4 @@ h1. Talks
 * "OC Ruby Resque Presentation":http://ocruby-resque.heroku.com/ - Slides from my introduction to talk on Resque to the OC Ruby meetup, May 2010.  Mostly based off "defunkt's presentation":http://github.com/defunkt/sfruby-meetup-resque.
 
 h1. Friends & Acquaintances
-* <a href="http://www.ocruby.org">ocruby.org</a> - The OC Ruby Users Group 
+* <a href="http://www.meetup.com/ocruby/">OC Ruby Meetup</a>
