@@ -5,3 +5,9 @@ task :deploy do
   `git commit -a -m'Auto-deploy from rake.'`
   `git push heroku master`
 end
+
+task :refresh do
+  `rm -rf _site`
+  `git pull heroku master`
+  `jekyll --no-auto`
+end
