@@ -17,6 +17,15 @@ use Rack::Rewrite do
     "/#{match[1]}/#{month}/#{day}/#{match[4].gsub(/_/, '-')}.html"
   }
 end
+
+use Rack::Cache,
+  :verbose     => false,
+  # Killing private_headers isn't safe in a big dynamic app,
+  # but does the trick for our two page app, esp since there's
+  # no user sessions
+  :private_headers => [],
+  :default_ttl => 3600 # 1 hour
+
 # run Rack::Jekyll.new
 
 require "masquerade"

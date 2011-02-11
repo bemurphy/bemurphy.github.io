@@ -7,3 +7,4 @@ gem "rack-rewrite"
 gem "RedCloth"
 
 gem "sinatra", "1.1.2"
+gem "rack-cache", "1.0"
