@@ -22,10 +22,13 @@ GEM
     liquid (2.2.0)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    newrelic_rpm (2.13.0)
     rack (1.2.1)
     rack-rewrite (1.0.0)
+    sinatra (1.1.2)
+      rack (~> 1.1)
+      tilt (~> 1.2)
     syntax (1.0.0)
+    tilt (1.2.2)
 
 PLATFORMS
   ruby
@@ -33,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   liquid (= 2.2.0)
-  newrelic_rpm
   rack (= 1.2.1)
   rack-jekyll!
   rack-rewrite
+  sinatra (= 1.1.2)
