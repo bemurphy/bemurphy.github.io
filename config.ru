@@ -4,7 +4,6 @@ require "yaml"
 require "rack/jekyll"
 
 ENV['APP_ROOT'] ||= File.dirname(__FILE__)
-require "newrelic_rpm"
 
 require 'rack/rewrite'
 use Rack::Rewrite do
@@ -18,4 +17,7 @@ use Rack::Rewrite do
     "/#{match[1]}/#{month}/#{day}/#{match[4].gsub(/_/, '-')}.html"
   }
 end
-run Rack::Jekyll.new
+# run Rack::Jekyll.new
+
+require "masquerade"
+run Sinatra::Application

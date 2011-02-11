@@ -6,4 +6,4 @@ gem "rack-jekyll", :git => "git://github.com/bemurphy/rack-jekyll.git"
 gem "rack-rewrite"
 gem "RedCloth"
 
-gem "newrelic_rpm"
+gem "sinatra", "1.1.2"
