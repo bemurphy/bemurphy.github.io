@@ -23,6 +23,8 @@ GEM
     maruku (0.6.0)
       syntax (>= 1.0.0)
     rack (1.2.1)
+    rack-cache (1.0)
+      rack (>= 0.4)
     rack-rewrite (1.0.0)
     sinatra (1.1.2)
       rack (~> 1.1)
@@ -37,6 +39,7 @@ DEPENDENCIES
   RedCloth
   liquid (= 2.2.0)
   rack (= 1.2.1)
+  rack-cache (= 1.0)
   rack-jekyll!
   rack-rewrite
   sinatra (= 1.1.2)
