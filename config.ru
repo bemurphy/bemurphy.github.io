@@ -19,13 +19,13 @@ use Rack::Rewrite do
   }
 end
 
-# use Rack::Cache,
-#   :verbose     => false,
-#   # Killing private_headers isn't safe in a big dynamic app,
-#   # but does the trick for our two page app, esp since there's
-#   # no user sessions
-#   :private_headers => [],
-#   :default_ttl => 3600 # 1 hour
+use Rack::Cache,
+  :verbose     => false,
+  # Killing private_headers isn't safe in a big dynamic app,
+  # but does the trick for our two page app, esp since there's
+  # no user sessions
+  :private_headers => [],
+  :default_ttl => 3600 # 1 hour
 
 # run Rack::Jekyll.new
 
