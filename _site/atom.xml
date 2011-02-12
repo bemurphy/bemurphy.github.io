@@ -3,23 +3,11 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-02-11T18:57:34-08:00</updated>
+ <updated>2011-02-11T18:59:09-08:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
- 
- <entry>
-   <title>test post </title>
-   <link href="http://www.techfreak.net/2011/02/11/test-post.html"/>
-   <updated>2011-02-11T00:00:00-08:00</updated>
-   <id>http://www.techfreak.net/2011/02/11/test-post</id>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
  
  <entry>
    <title>Onward to Jekyll</title>
@@ -193,6 +181,18 @@ Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly 
    <id>http://www.techfreak.net/2006/10/16/mental-magic</id>
    <content type="html">&lt;p&gt;Last night a few co-workers and I hopped over to the Pleasanton Regal theater to catch a flick.  We saw &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0443543/&amp;#8220;&amp;gt;The Illusionist&lt;/a&gt;&amp;#8221;, which fortunately, turned out to be pretty good.  Good, but not great.  I say &amp;#8220;fortunately&amp;#8221; because I managed to confuse the film with &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0482571/&amp;#8220;&amp;gt;The Prestige&lt;/a&gt;&amp;#8221;, which though I&amp;#8217;m sure vaguely similar in content, is in fact, an entirely different film.  I realized this as, during the movie trailers,  a promo for the real &amp;#8220;Prestige&amp;#8221; was shown.  So for the next five minutes, I sat in flickering darkness, furiously scanning my brain to try and remember what movie we were indeed seeing.  It wasn&amp;#8217;t until Edward Nortan&amp;#8217;s name came up in the opening credits that I figured it out.  It&amp;#8217;s a pretty funny experience sitting in the theater thinking &amp;#8220;um, what movie am I about to see?&amp;#8221;&lt;/p&gt;
 &lt;p&gt;And hopefully &amp;#8220;The Prestige&amp;#8221; will be better.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Heading North</title>
+   <link href="http://www.techfreak.net/2006/10/12/heading-north.html"/>
+   <updated>2006-10-12T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2006/10/12/heading-north</id>
+   <content type="html">&lt;p&gt;Just about to pull out of here to head for Pleasanton with William.  I&amp;#8217;m looking forward to seeing my grandmother for a brief time tomorrow, but worried about the lack of sleep we face this weekend.  It will be nice to get out somewhere new though.  If all goes according to plan I should be back Monday night!&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
