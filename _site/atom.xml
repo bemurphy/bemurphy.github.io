@@ -3,11 +3,31 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-02-11T18:59:09-08:00</updated>
+ <updated>2011-07-27T10:41:08-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>NotNot Alternative</title>
+   <link href="http://www.techfreak.net/programming,/ruby/2011/07/27/notnot-alternative.html"/>
+   <updated>2011-07-27T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/programming,/ruby/2011/07/27/notnot-alternative</id>
+   <content type="html">&lt;p&gt;There&amp;#8217;s a common ruby convention out there, I call it NotNot.  You&amp;#8217;ll find it often in predicate methods, and it looks like it sounds, &amp;#8216;!!&amp;#8217;.  I suppose you could call it &amp;#8220;Bang Bang&amp;#8221;, or perhaps it has a real name I&amp;#8217;m not aware of.&lt;/p&gt;
+&lt;p&gt;I don&amp;#8217;t like like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it&amp;#8217;s just weird.&lt;/p&gt;
+&lt;p&gt;The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&amp;#8217;s try an a simple example predicate:&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=first_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;What?  That looks kind of strange, however, it will pass conditional tests, since ruby treats the values nil and false both as falsy values, while other values as truthy.  But again, the returns look weird.  Enter the NotNot:&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=second_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;Hey, those returns looks better, I see we&amp;#8217;re getting back real true/false which is really what we want.  But that NotNot looks weird.  Think about it in your head, what&amp;#8217;s the value of not not false&amp;#8230;uh.&lt;/p&gt;
+&lt;p&gt;Say hello to the TrueClass#&amp;amp; method.  The &lt;a href=&quot;http://www.ruby-doc.org/core/classes/TrueClass.html#M000564&quot;&gt;TrueClass RDoc states&lt;/a&gt; that the &amp;amp; method &amp;#8220;Returns false if obj is nil or false, true otherwise.&amp;#8221;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=third_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;You&amp;#8217;ll note we&amp;#8217;re still getting back true/false.  The method is less terse than the NotNot, but I think slightly a better match intuitively.&lt;/p&gt;
+&lt;p&gt;In the end, it really boils down to style and readability.  If you code Ruby, while it&amp;#8217;s important to know the NotNot, I&amp;#8217;d advise something your brain doesn&amp;#8217;t have to double unroll.&lt;/p&gt;
+&lt;p&gt;Hat tip to my friend &lt;a href=&quot;http://www.billpratt.net/&quot;&gt;Bill&lt;/a&gt; for taking me straight from example 1 to 3 when I started in Ruby.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>Onward to Jekyll</title>
@@ -181,18 +201,6 @@ Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly 
    <id>http://www.techfreak.net/2006/10/16/mental-magic</id>
    <content type="html">&lt;p&gt;Last night a few co-workers and I hopped over to the Pleasanton Regal theater to catch a flick.  We saw &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0443543/&amp;#8220;&amp;gt;The Illusionist&lt;/a&gt;&amp;#8221;, which fortunately, turned out to be pretty good.  Good, but not great.  I say &amp;#8220;fortunately&amp;#8221; because I managed to confuse the film with &amp;#8220;&amp;#8221;http://www.imdb.com/title/tt0482571/&amp;#8220;&amp;gt;The Prestige&lt;/a&gt;&amp;#8221;, which though I&amp;#8217;m sure vaguely similar in content, is in fact, an entirely different film.  I realized this as, during the movie trailers,  a promo for the real &amp;#8220;Prestige&amp;#8221; was shown.  So for the next five minutes, I sat in flickering darkness, furiously scanning my brain to try and remember what movie we were indeed seeing.  It wasn&amp;#8217;t until Edward Nortan&amp;#8217;s name came up in the opening credits that I figured it out.  It&amp;#8217;s a pretty funny experience sitting in the theater thinking &amp;#8220;um, what movie am I about to see?&amp;#8221;&lt;/p&gt;
 &lt;p&gt;And hopefully &amp;#8220;The Prestige&amp;#8221; will be better.&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Heading North</title>
-   <link href="http://www.techfreak.net/2006/10/12/heading-north.html"/>
-   <updated>2006-10-12T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2006/10/12/heading-north</id>
-   <content type="html">&lt;p&gt;Just about to pull out of here to head for Pleasanton with William.  I&amp;#8217;m looking forward to seeing my grandmother for a brief time tomorrow, but worried about the lack of sleep we face this weekend.  It will be nice to get out somewhere new though.  If all goes according to plan I should be back Monday night!&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>

@@ -50,6 +50,29 @@
 <div class="post">  
 
   <h1>
+    NotNot Alternative
+  </h1>
+
+  <p>There&#8217;s a common ruby convention out there, I call it NotNot.  You&#8217;ll find it often in predicate methods, and it looks like it sounds, &#8216;!!&#8217;.  I suppose you could call it &#8220;Bang Bang&#8221;, or perhaps it has a real name I&#8217;m not aware of.</p>
+<p>I don&#8217;t like like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it&#8217;s just weird.</p>
+<p>The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&#8217;s try an a simple example predicate:</p>
+<script src="https://gist.github.com/1109678.js?file=first_example.rb"></script><p>What?  That looks kind of strange, however, it will pass conditional tests, since ruby treats the values nil and false both as falsy values, while other values as truthy.  But again, the returns look weird.  Enter the NotNot:</p>
+<script src="https://gist.github.com/1109678.js?file=second_example.rb"></script><p>Hey, those returns looks better, I see we&#8217;re getting back real true/false which is really what we want.  But that NotNot looks weird.  Think about it in your head, what&#8217;s the value of not not false&#8230;uh.</p>
+<p>Say hello to the TrueClass#&amp; method.  The <a href="http://www.ruby-doc.org/core/classes/TrueClass.html#M000564">TrueClass RDoc states</a> that the &amp; method &#8220;Returns false if obj is nil or false, true otherwise.&#8221;</p>
+<script src="https://gist.github.com/1109678.js?file=third_example.rb"></script><p>You&#8217;ll note we&#8217;re still getting back true/false.  The method is less terse than the NotNot, but I think slightly a better match intuitively.</p>
+<p>In the end, it really boils down to style and readability.  If you code Ruby, while it&#8217;s important to know the NotNot, I&#8217;d advise something your brain doesn&#8217;t have to double unroll.</p>
+<p>Hat tip to my friend <a href="http://www.billpratt.net/">Bill</a> for taking me straight from example 1 to 3 when I started in Ruby.</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/programming,/ruby/2011/07/27/notnot-alternative.html">Jul 27, 2011</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/programming,/ruby/2011/07/27/notnot-alternative.html#disqus_thread">/programming,/ruby/2011/07/27/notnot-alternative.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
     Onward to Jekyll
   </h1>
 
@@ -160,22 +183,6 @@
   </p>
 
   <p class="index_comments_count"><a href="/2008/03/29/roll-your-own-dropbox.html#disqus_thread">/2008/03/29/roll-your-own-dropbox.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    My eye
-  </h1>
-
-  <p><a href="http://www.flickr.com/photos/xternal1/sets/72157604236634154/" title="DSC00406.JPG by xternal1, on Flickr"><img src="http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg" width="240" height="180" alt="DSC00406.JPG" /></a><br />
-So this is a bit of old news.  I was going back through the files on my camera I haven&#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&#8217;t know why I&#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&#8217;ve got a little red spot on my right lower lid, it&#8217;s the remnants of this.  It&#8217;s still got a little ways to go before it totally clears up.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2008/03/24/my-eye.html">Mar 24, 2008</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2008/03/24/my-eye.html#disqus_thread">/2008/03/24/my-eye.html comments</a></p>
   </div>
 
       <footer id="footer">
