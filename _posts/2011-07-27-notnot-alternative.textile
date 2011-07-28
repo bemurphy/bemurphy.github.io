@@ -7,7 +7,7 @@ categories: programming, ruby
 
 There's a common ruby convention out there, I call it NotNot.  You'll find it often in predicate methods, and it looks like it sounds, '!!'.  I suppose you could call it "Bang Bang", or perhaps it has a real name I'm not aware of.
 
-I don't like like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it's just weird.
+I don't like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it's just weird.
 
 The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let's try an a simple example predicate:
 
