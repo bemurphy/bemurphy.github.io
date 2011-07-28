@@ -4,8 +4,8 @@
   padding: 0; }
 
 body {
-  background-color: #edf1f3;
-  color: #666677;
+  background-color: whiteSmoke;
+  color: #505050;
   font-family: 'Lucida Grande', Tahoma, Arial, sans-serif;
   line-height: 1.4em;
   margin: 20px auto 18px 10%;
@@ -139,8 +139,8 @@ sidebar #social a.center {
   margin-bottom: 20px; }
 
 .post p {
-  font-size: 12pt;
-  line-height: 26px; }
+  font-size: 14px;
+  line-height: 23px; }
 
 .post h1 {
   padding-bottom: 0.2em;
@@ -166,14 +166,14 @@ sidebar #social a.center {
 #intro {
   color: #666;
   font-size: 22pt;
-  margin-bottom: 24pt;
-  margin-top: 24pt; }
+  margin-bottom: 24pt; }
 
 #subtitle, #title {
   color: #333; }
 
 #subtitle {
-  font-size: 24pt; }
+  font-size: 24pt;
+  margin-bottom: 35px; }
 
 #title {
   font-size: 32pt; }

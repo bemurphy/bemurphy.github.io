@@ -1,4 +1,4 @@
-$body-background-color: #EDF1F3;
+$body-background-color: whiteSmoke;
 
 $background: #E5E5E5;
 $sidebar-background-color: $background;
@@ -6,6 +6,8 @@ $sidebar-outline-color: #ddd;
 
 $link-color: #336699;
 $link-hover-color: #3399CC;
+
+$main-font-color: #505050;
 
 $h1-color: #669933;
 
@@ -17,7 +19,7 @@ $h1-color: #669933;
 
 body {
   background-color: $body-background-color;
-  color: #666677;
+  color: $main-font-color;
   font-family: 'Lucida Grande', Tahoma, Arial, sans-serif;
   line-height: 1.4em;
   margin: 20px auto 18px 10%;
@@ -167,8 +169,8 @@ sidebar #social a.center {
 }
 
 .post p {
-  font-size: 12pt;
-  line-height: 26px;
+  font-size: 14px;
+  line-height: 23px;
 }
 
 .post h1 {
@@ -201,13 +203,13 @@ sidebar #social a.center {
   color: #666;
   font-size: 22pt;
   margin-bottom: 24pt;
-  margin-top: 24pt;
 }
 
 #subtitle, #title { color: #333; }
 
 #subtitle {
   font-size: 24pt;
+  margin-bottom: 35px;
 }
 
 #title {
