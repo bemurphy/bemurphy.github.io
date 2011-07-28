@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "another ping test"
-published: true
+published: false
 ---
 
-second ping test
+yet another ping test
 
 
