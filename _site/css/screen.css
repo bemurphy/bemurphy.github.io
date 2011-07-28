@@ -96,6 +96,9 @@ sidebar .sidebar-item {
   -webkit-border-radius: 5px;
   margin-bottom: 1em; }
 
+sidebar #sidebar-about {
+  padding: 8px 10px; }
+
 sidebar .avatar {
   float: right;
   padding: 0.2em;
