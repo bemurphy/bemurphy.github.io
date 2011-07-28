@@ -9,6 +9,12 @@ h1. Work
 
 h1. Projects
 * <a href="http://github.com/bemurphy/acts_as_optionable">acts_as_optionable</a> - my foray into ruby plugins.  Adds variable options polymorphically onto ActiveRecord models.
+* <a href="https://github.com/bemurphy/spec_run_queue">spec_run_queue</a> - Use a queue in redis to run specs outside your editor.
+* <a href="https://github.com/bemurphy/can-opener">can-opener</a> - Split up your CanCan Ability.
+
+h1. Contributions
+* "rack-throttle":https://github.com/datagraph/rack-throttle - Rack middleware for rate-limiting HTTP requests
+* "cuba-sugar":https://github.com/elcuervo/cuba-sugar - Give cuba some sugar!
 
 h1. Talks
 * "OC Ruby Redis Overview":http://ocruby-redis.heroku.com/ - Slides from my introduction to talk on Redis to the OC Ruby meetup, May 2010
