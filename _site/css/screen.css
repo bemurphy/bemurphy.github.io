@@ -46,7 +46,7 @@ h1 {
   font-size: 30px;
   line-height: 36px;
   margin-bottom: 18px;
-  color: #669933; }
+  color: #333333; }
 
 h2 {
   font-size: 24px;
@@ -83,7 +83,7 @@ sidebar {
   float: right;
   width: 265px;
   margin-top: 0.5em;
-  margin-right: 5%; }
+  margin-right: 17px; }
 
 sidebar .sidebar-item {
   background-color: #e5e5e5;
@@ -91,10 +91,10 @@ sidebar .sidebar-item {
   padding: 0.5em;
   font-size: 10pt;
   line-height: 1.2em;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  margin-bottom: 1em; }
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-bottom: 17px; }
 
 sidebar #sidebar-about {
   padding: 8px 10px; }
@@ -208,3 +208,14 @@ sidebar #social a.center {
 
 .gr_grid_container a.gr_grid_branding:hover {
   color: #3399cc !important; }
+
+sidebar #bg {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: #333;
+  position: fixed; }
+
+sidebar .sidebar-item {
+  position: relative; }

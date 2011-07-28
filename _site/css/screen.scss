@@ -3,13 +3,14 @@ $body-background-color: whiteSmoke;
 $background: #E5E5E5;
 $sidebar-background-color: $background;
 $sidebar-outline-color: #ddd;
+$sidebar-item-radius: 4px;
 
 $link-color: #336699;
 $link-hover-color: #3399CC;
 
 $main-font-color: #505050;
 
-$h1-color: #669933;
+$h1-color: #333;
 
 /* elements */
 * {
@@ -101,7 +102,8 @@ sidebar  {
   float: right;
   width: 265px;
   margin-top: 0.5em;
-  margin-right: 5%;
+  // margin-right: 5%;
+  margin-right: 17px;
 }
 
 sidebar .sidebar-item {
@@ -110,10 +112,10 @@ sidebar .sidebar-item {
   padding: 0.5em;
   font-size: 10pt;
   line-height: 1.2em;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  margin-bottom: 1em;
+  border-radius: $sidebar-item-radius;
+  -moz-border-radius: $sidebar-item-radius;
+  -webkit-border-radius: $sidebar-item-radius;
+  margin-bottom: 17px;
 }
 
 sidebar #sidebar-about {
@@ -252,4 +254,15 @@ sidebar #social a.center {
   color: $link-hover-color !important;
 }
 
+sidebar #bg {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: #333;
+  position: fixed;
+}
 
+sidebar .sidebar-item {
+  position: relative;
+}
