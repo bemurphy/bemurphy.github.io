@@ -99,10 +99,11 @@ header, footer, nav, article { display: block; }
 header { float: left; }
 
 sidebar  { 
+  position: relative;
+  top: -10px;
   float: right;
   width: 265px;
   margin-top: 0.5em;
-  // margin-right: 5%;
   margin-right: 17px;
 }
 
