@@ -219,3 +219,31 @@ sidebar #social a.center {
 /*  min-width: 650px;*/
   width: 600px;
 }
+
+#goodreads div#currently_reading,
+#goodreads div#recently_read {
+  padding-left: 8px;
+  clear: left;
+}
+
+#goodreads div#recently_read {
+  padding-top: 10px;
+}
+
+.gr_grid_container {
+  margin-left: 8px;
+  margin-top: 10px;
+  clear: both !important;
+}
+
+.gr_grid_container a.gr_grid_branding {
+  float: none !important;
+  color: $link-color !important;
+  text-decoration: none !important;
+}
+
+.gr_grid_container a.gr_grid_branding:hover {
+  color: $link-hover-color !important;
+}
+
+
