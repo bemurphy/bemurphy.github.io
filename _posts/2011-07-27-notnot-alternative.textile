@@ -9,7 +9,7 @@ There's a common ruby convention out there, I call it NotNot.  You'll find it of
 
 I don't like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it's just weird.
 
-The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let's try an a simple example predicate:
+The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let's start with a simple example predicate:
 
 <script src="https://gist.github.com/1109678.js?file=first_example.rb"></script>
 

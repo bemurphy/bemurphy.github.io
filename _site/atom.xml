@@ -3,7 +3,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-07-27T19:11:34-07:00</updated>
+ <updated>2011-07-27T19:13:18-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -16,7 +16,7 @@
    <id>http://www.techfreak.net/programming,/ruby/2011/07/27/notnot-alternative</id>
    <content type="html">&lt;p&gt;There&amp;#8217;s a common ruby convention out there, I call it NotNot.  You&amp;#8217;ll find it often in predicate methods, and it looks like it sounds, &amp;#8216;!!&amp;#8217;.  I suppose you could call it &amp;#8220;Bang Bang&amp;#8221;, or perhaps it has a real name I&amp;#8217;m not aware of.&lt;/p&gt;
 &lt;p&gt;I don&amp;#8217;t like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it&amp;#8217;s just weird.&lt;/p&gt;
-&lt;p&gt;The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&amp;#8217;s try an a simple example predicate:&lt;/p&gt;
+&lt;p&gt;The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&amp;#8217;s start with a simple example predicate:&lt;/p&gt;
 &lt;script src=&quot;https://gist.github.com/1109678.js?file=first_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;What?  That looks kind of strange, however, it will pass conditional tests, since ruby treats the values nil and false both as falsy values, while other values as truthy.  But again, the returns look weird.  Enter the NotNot:&lt;/p&gt;
 &lt;script src=&quot;https://gist.github.com/1109678.js?file=second_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;Hey, those returns looks better, I see we&amp;#8217;re getting back real true/false which is really what we want.  But that NotNot looks weird.  Think about it in your head, what&amp;#8217;s the value of not not false&amp;#8230;uh.&lt;/p&gt;
 &lt;p&gt;Say hello to the TrueClass#&amp;amp; method.  The &lt;a href=&quot;http://www.ruby-doc.org/core/classes/TrueClass.html#M000564&quot;&gt;TrueClass RDoc states&lt;/a&gt; that the &amp;amp; method &amp;#8220;Returns false if obj is nil or false, true otherwise.&amp;#8221;&lt;/p&gt;
