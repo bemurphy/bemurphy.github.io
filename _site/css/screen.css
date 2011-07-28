@@ -30,9 +30,12 @@ blockquote {
   margin: 20px;
   padding-left: 10px; }
 
+div.highlight {
+  line-height: 1em; }
+
 code {
   font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
-  font-size: 12pt; }
+  font-size: 10pt; }
 
 h1, h2, h3, #footer {
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
