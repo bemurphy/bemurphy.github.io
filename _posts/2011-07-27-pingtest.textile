@@ -1,0 +1,8 @@
+---
+layout: post
+title: "pingtest"
+published: true
+---
+
+testing the ping function
+

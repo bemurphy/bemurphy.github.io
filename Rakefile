@@ -12,3 +12,20 @@ task :refresh do
   `git pull heroku master`
   `jekyll --no-auto`
 end
+
+desc 'Ping pubsubhubbub server.'
+task :ping do
+  require 'cgi'
+  require 'net/http'
+  puts 'Pinging pubsubhubbub server'
+  # feed_url = "http://feeds.feedburner.com/techfreaknet"
+  feed_url = "http://www.techfreak.net/atom.xml"
+  data = 'hub.mode=publish&hub.url=' + CGI::escape(feed_url)
+  http = Net::HTTP.new('pubsubhubbub.appspot.com', 80)
+  resp, data = http.post('http://pubsubhubbub.appspot.com/publish',
+                         data,
+                         {'Content-Type' => 'application/x-www-form-urlencoded'})
+
+  puts "Ping error: #{resp}, #{data}" unless resp.code == "204"
+end
+
