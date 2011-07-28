@@ -19,7 +19,6 @@ task :ping do
   require 'net/http'
   puts 'Pinging pubsubhubbub server'
   feed_url = "http://feeds.feedburner.com/techfreaknet"
-  # feed_url = "http://www.techfreak.net/atom.xml"
   data = 'hub.mode=publish&hub.url=' + CGI::escape(feed_url)
   http = Net::HTTP.new('pubsubhubbub.appspot.com', 80)
   resp, data = http.post('http://pubsubhubbub.appspot.com/publish',
