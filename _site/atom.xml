@@ -4,23 +4,11 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-07-27T20:45:20-07:00</updated>
+ <updated>2011-07-27T20:49:26-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
- 
- <entry>
-   <title>pingtest</title>
-   <link href="http://www.techfreak.net/2011/07/27/pingtest.html"/>
-   <updated>2011-07-27T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2011/07/27/pingtest</id>
-   <content type="html">&lt;p&gt;testing the ping function&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
  
  <entry>
    <title>NotNot Alternative</title>
@@ -36,6 +24,18 @@
 &lt;script src=&quot;https://gist.github.com/1109678.js?file=third_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;You&amp;#8217;ll note we&amp;#8217;re still getting back true/false.  The method is less terse than the NotNot, but I think slightly a better match intuitively.&lt;/p&gt;
 &lt;p&gt;In the end, it really boils down to style and readability.  If you code Ruby, while it&amp;#8217;s important to know the NotNot, I&amp;#8217;d advise something your brain doesn&amp;#8217;t have to double unroll.&lt;/p&gt;
 &lt;p&gt;Hat tip to my friend &lt;a href=&quot;http://www.billpratt.net/&quot;&gt;Bill&lt;/a&gt; for taking me straight from example 1 to 3 when I started in Ruby.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>another ping test</title>
+   <link href="http://www.techfreak.net/2011/07/27/another-ping-test.html"/>
+   <updated>2011-07-27T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2011/07/27/another-ping-test</id>
+   <content type="html">&lt;p&gt;second ping test&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>

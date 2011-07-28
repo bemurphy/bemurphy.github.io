@@ -1,0 +1,9 @@
+---
+layout: post
+title: "another ping test"
+published: true
+---
+
+second ping test
+
+
