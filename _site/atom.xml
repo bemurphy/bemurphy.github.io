@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-10-01T09:27:49-07:00</updated>
+ <updated>2011-10-01T09:32:34-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -36,7 +36,7 @@
   &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ls_files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;config/database.yml&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be_empty&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;p&gt;Finally, there&amp;#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&amp;#8217;re confident you&amp;#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&amp;#8217;t trickle this practice over towards reusuable code, like gems you write and share with the world.  It&amp;#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&amp;#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&amp;#8217;t share this behavior with your application or gem code, but rather, use gems like &lt;a href=&quot;https://github.com/defunkt/fakefs&quot;&gt;FakeFS&lt;/a&gt; for testing in isolation of the filesystem.&lt;/p&gt;</content>
+&lt;/div&gt;&lt;p&gt;Finally, there&amp;#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&amp;#8217;re confident you&amp;#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&amp;#8217;t trickle this practice over towards reusable code, like gems you write and share with the world.  It&amp;#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&amp;#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&amp;#8217;t share this behavior with your application or gem code, but rather, use gems like &lt;a href=&quot;https://github.com/defunkt/fakefs&quot;&gt;FakeFS&lt;/a&gt; for testing in isolation of the filesystem.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
