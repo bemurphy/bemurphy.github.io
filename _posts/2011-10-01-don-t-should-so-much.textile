@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Don't Should So Much"
+published: false
+---
+
+When I look back over specs I've written the past couple years, I notice I used to start RSpec example group descriptions in a rather common way, with the word "should".  For example, I'd usually write an example like:
+[insert single example]
+
+This reads pretty well.  If we output the specdoc for a passing run, you can see it still reads well:
+[insert single example passing]
+
+Now, let's suppose our specifications do what all specifications do: grow a little from further requirements:
+[insert triple example]
+
+This still reads OK, but something is starting to jump out.  Think about this for a second, "should" is entered three times not as a ruby keyword or method reference, but as a string.  This smells a little because I'm repeatedly typing something that isn't an abstraction I'm repeatedly calling.  However, it's a common way of providing a description for your example groups, probably in no small part due to the fact that rspec.info and other sites still use it in their documentation.  Many people favor it because "should" is a strongly opinionated word and they feel it helps to tightly frame an example.
+
+Let's see the passing specdoc for these examples:
+[insert triple example passing]
+
+I no longer like reading output such as this for a simple reason:  the word "should" becomes noise.  Now, it may be clear what each spec is doing, but having read enough output such as this, I can guess what your and my brain have learned to, skip the word "should" and start processing at the next word.  As the addage goes, if everything is important, then nothing is important.
+
+So what's the solution?  Quite simple really.  Drop the word "should" from starting your example group descriptions while continuing to write them in a way that will produce a readable specdoc output:
+[insert triple example with no should]
+
+And finally, the specdoc output:
+[insert new triple example passing]
+
+Not only is this output still readable, but it isn't cluttered up with needless repitition.

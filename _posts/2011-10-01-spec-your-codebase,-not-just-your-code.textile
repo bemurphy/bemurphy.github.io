@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Spec your codebase, not just your code"
+published: true
+---
+
+Many rubyists are familiar with using Test::Unit, RSpec, or MiniTest for specifying the behavior of their application code.  Over the past year, I've discovered a novel and less conventional use of testing tools I like to call "specifying the codebase".  Let me show you what I mean.
+
+If you've ever worked on a sizeable Rails project, you've probably experienced some codebase quirks at some point.  For example, I've got an application that had issues when the "Liquid Templating engine":http://liquidmarkup.org/ was loaded as a gem.  The fix was to include a specific version as a plugin.  While it's usually best to get to the root of the problem, sometimes it's not feasible or expedient and such measures must suffice.  Once Liquid was included as a gem, we noticed some failing tests, and then pieced together that, oops, Liquid had be reconfigured as a gem.  A code review may have caught this, or perhaps not, since it's a little quirky.  Now the second time we made the mistake, it dawned on me, write a spec to send up a red flag and make it easier to spot the immediate problem when tests fail in the future:
+
+{% highlight ruby %}
+describe "The codebase" do
+  it "doesn't load the liquid gem" do
+    Gem.loaded_specs.any? {|s| s.first == "liquid"}.should be_false
+  end
+end
+{% endhighlight %}
+
+It's pretty easy to make the mistake of not properly compressing or optimizing assets, especially images, in your app's public directory.  Code review or possibly even your vcs can help prevent such problems, but you can also let your specifications alert you to the problem:
+
+{% highlight ruby %}
+it "/public directory includes files less than 1MB" do
+  files = `find #{File.join Rails.root, "public"} -type f -size +1M`
+  files.split(/\n/).should == []
+end
+{% endhighlight %}
+
+The pattern emerging here is pretty simple:  if you or your teammates make any repeat mistakes with your codebase, write a spec to prevent further repeats.  By all means, make sure to communicate and talk out application guidelines, yet, nothing says "hey, over here!" like a failing test.
+
+The applications here are pretty endless.  Maybe you've got a Sinatra app on Heroku where you precompile dynamic stylesheets, and have made the mistake of checking in a busted css one too many times;  there's a spec for that!  Or perhaps you've got an overzealous teammate adding or removing crazy things from git file index.  First, do better code review and, secondly, there's a spec for that:
+
+{% highlight ruby %}
+it "leaves config/database.yml out of the repository" do
+  git = Git.open(Rails.root)
+  git.ls_files("config/database.yml").should be_empty
+end
+{% endhighlight %}
+
+Finally, there's some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you're confident you've got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don't trickle this practice over towards reusuable code, like gems you write and share with the world.  It's not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don't touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don't share this behavior with your application or gem code, but rather, use gems like "FakeFS":https://github.com/defunkt/fakefs for testing in isolation of the filesystem.

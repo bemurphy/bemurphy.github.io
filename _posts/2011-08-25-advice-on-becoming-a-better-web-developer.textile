@@ -1,0 +1,42 @@
+---
+layout: post
+title: "Advice on Becoming a Better Web Developer"
+published: false
+---
+
+* Version control
+
+* Github
+
+* Twitter
+
+* Fall in like with your editor
+
+* Don't be dogmatic
+
+* Always be explaining - 2 contexts, I don't get it and I think I get it. Rubber ducking
+
+* Pace Yourself
+
+* Read books/code/blogs
+
+* Don't hate on yourself in comments
+
+* You can't keep up, it's ok - digestable chunks
+- if you feel this way, pick one chunk, do it
+
+* Pick idols, then connect with them
+
+* Fake it till you make it
+
+* User groups
+
+* Be well rounded
+
+* No analysis paralysis
+
+* Drive by tests/docs
+
+* You can't be perfect.  Breathe
+
+* Set goals

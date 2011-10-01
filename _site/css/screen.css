@@ -31,7 +31,16 @@ blockquote {
   padding-left: 10px; }
 
 div.highlight {
-  line-height: 1em; }
+  line-height: 1em;
+  margin-bottom: 18px;
+  border: 1px solid #DEDEDE;
+  background: ghostWhite;
+}
+
+div.highlight pre {
+  padding: .7em;
+  word-wrap: normal;
+}
 
 code {
   font-family: 'Bitstream Vera Sans Mono', 'Courier', monospace;
