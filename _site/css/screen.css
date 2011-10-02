@@ -230,3 +230,13 @@ sidebar #bg {
 
 sidebar .sidebar-item {
   position: relative; }
+
+#archived-posts {
+  list-style-type: none;
+}
+
+#archived-posts .archive-date {
+  width: 140px;
+  float: left;
+  clear: left;
+}
