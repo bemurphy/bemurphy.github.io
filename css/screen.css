@@ -94,7 +94,9 @@ sidebar {
   float: right;
   width: 265px;
   margin-top: 0.5em;
-  margin-right: 17px; }
+  margin-right: 17px;
+  text-shadow: white 0px 1px 0px;
+}
 
 sidebar .sidebar-item {
   background-color: #e5e5e5;
