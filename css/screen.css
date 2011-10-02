@@ -240,3 +240,8 @@ sidebar .sidebar-item {
   float: left;
   clear: left;
 }
+
+#archived-posts p {
+  margin-bottom: 4px;
+  overflow: auto;
+}
