@@ -46,6 +46,11 @@ code {
   font-family: 'Bitstream Vera Sans Mono', 'Courier', monospace;
   font-size: 10pt; }
 
+em.code {
+  font-style: normal;
+  font-family: monospace;
+}
+
 h1, h2, h3, #footer {
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-weight: bolder;

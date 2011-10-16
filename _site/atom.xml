@@ -4,11 +4,84 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2011-10-02T08:44:05-07:00</updated>
+ <updated>2011-10-16T09:05:43-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>Two Support Objects You May Have Missed</title>
+   <link href="http://www.techfreak.net/2011/10/16/two-support-objects-you-may-have-missed.html"/>
+   <updated>2011-10-16T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2011/10/16/two-support-objects-you-may-have-missed</id>
+   <content type="html">&lt;p&gt;If you spend time daily in a large ruby project (such as a Rails app) that has ActiveSupport pulled in, you are likely relying on its string, time, hash, and other extensions.  I&amp;#8217;ve found two objects it provides prove useful, and having found them lesser known amongst my coding friends, figured they are worth sharing.&lt;/p&gt;
+&lt;p&gt;The first useful tidbit is the &lt;a href=&quot;http://api.rubyonrails.org/classes/ActiveSupport/StringInquirer.html&quot;&gt;ActiveSupport::StringInquirer&lt;/a&gt; class.  It&amp;#8217;s a &lt;a href=&quot;https://github.com/rails/rails/blob/ef53d915164da7f757d03c4a70fe38e374c08b14/activesupport/lib/active_support/string_inquirer.rb#L13&quot;&gt;simple method missing call&lt;/a&gt; that lets you do prettier equality tests on strings.  If you&amp;#8217;ve ever done a &lt;em class=&quot;code&quot;&gt;Rails.env.development?&lt;/em&gt; check, it uses this implementation.  Let&amp;#8217;s go to the code:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;development?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; true&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;              &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &amp;quot;development&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; ActiveSupport::StringInquirer&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;StringInquirer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;I think this is great for two reasons.  First, it&amp;#8217;s a more expressive use of code, and secondly, it implies less coupling to a string outside of an object.  Let&amp;#8217;s take a simple example: a role for a User object.  Imagine you start simple, where role is just a string.  Now let&amp;#8217;s say we&amp;#8217;re using &lt;a href=&quot;https://github.com/ryanb/cancan&quot;&gt;CanCan&lt;/a&gt; to add simple authorization to our app, with an ability class that looks like this:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ability&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CanCan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Ability&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Note we&amp;#8217;re doing an &lt;em class=&quot;code&quot;&gt;#==&lt;/em&gt; for comparison on that role.  This is a bit ugly and not as expressive as I&amp;#8217;d like.  Let&amp;#8217;s get rid of ugly with the help of the StringInquirer.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;role&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;role&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;read_attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:role&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;StringInquirer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ability&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CanCan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Ability&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin?&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;role&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;I&amp;#8217;ve redefined &lt;em class=&quot;code&quot;&gt;User#role&lt;/em&gt; to wrap the attribute in a StringInquirer, and updated the Ability class to call the role with the predicate &lt;em class=&quot;code&quot;&gt;#admin?&lt;/em&gt; method. Our end behavior for ability checking is the same, but I think we&amp;#8217;ve got more readable code.  There&amp;#8217;s another win on this: we&amp;#8217;ve decoupled from treating our role like a string which can pay out nicely in the future.  Imagine for instance the day arrives when a user no longer has one role, but many.  A simple user may be able to function as both a forum moderator or a comment moderator.  You can shift to supporting &lt;a href=&quot;https://github.com/ryanb/cancan/wiki/Role-Based-Authorization&quot;&gt;many roles per user&lt;/a&gt; with a bitmask method and leave your external calls untouched.  A simple application of &lt;em class=&quot;code&quot;&gt;define_method&lt;/em&gt; or &lt;em class=&quot;code&quot;&gt;method_missing&lt;/em&gt; on your role attribute wrapper is all you need to keep rolling.  Now, you could also define &lt;em class=&quot;code&quot;&gt;#==&lt;/em&gt; on your role object for such string comparisons, but comparing to a string reads more like the caller knows too much of an implementation detail.  I haven&amp;#8217;t touched on the &lt;em class=&quot;code&quot;&gt;User#role=&lt;/em&gt; setter here;  you may need some sanitizing and cleanup on it if you were assigning it the results from the getter method anywhere (and, ahem, possibly breaking encapsulation with your own string assignments, too).  I&amp;#8217;ll leave that as an exercise for the reader.&lt;/p&gt;
+&lt;p&gt;Our second friend is the &lt;a href=&quot;http://rails.rubyonrails.org/classes/ActiveSupport/SecureRandom.html&quot;&gt;ActiveSupport::SecureRandom&lt;/a&gt; interface.  Actually, saying this is from ActiveSupport is a little misleading.  If you are working on an older Rails 2 project, you&amp;#8217;ll probably be using this by way of ActiveSupport.  However for modern and future use, this is deprecated and delegated to Ruby 1.9.x &lt;a href=&quot;http://rubydoc.info/stdlib/securerandom/1.9.2/SecureRandom&quot;&gt;stdlib&amp;#8217;s SecureRandom&lt;/a&gt;.  SecureRandom is great for generating random character strings on the fly that are useful as &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt; keys, temporary passwords, tokens, etc.  It&amp;#8217;s simple to use, and can replace those naive calls to &lt;em class=&quot;code&quot;&gt;rand()&lt;/em&gt; you&amp;#8217;ve been making for generating random strings.  Don&amp;#8217;t reinvent the wheel!  I&amp;#8217;ll leave you with a few examples:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hex&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; ace59c788b498fadcaa88216e45cf800&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; iJKR2NQ8Jk1wBdp0nU/fhA==&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Optionally pass 5 for 5 hex pairs&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; a5f8bf212f&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>Spec your codebase, not just your code</title>
@@ -210,18 +283,6 @@ Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly 
 &lt;li&gt;Toying with the &lt;a href=&quot;http://pownce.pbwiki.com/API%20Documentation2-0&quot;&gt;Pownce &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;And much , much more!  Heh.&lt;/li&gt;
 &lt;/ul&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Getting better</title>
-   <link href="http://www.techfreak.net/2006/10/18/getting-better.html"/>
-   <updated>2006-10-18T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2006/10/18/getting-better</id>
-   <content type="html">&lt;p&gt;I went back to jiu-jitsu class last night, having not gone in over a week or so due to the business trip.  I thought I would just get mangled.  Well, the second guy up for me, my friend Diego, did pretty much toy with me.  He was also helpful and gave me tips on some easily correctible errors I was making.  The real cool part of the night though was my first partner, Dave.  Now, Dave and I are about as evenly matched as I can find in the classes.  This is not to say we are actually evenly matched, it&amp;#8217;s just, there&amp;#8217;s not that many new people right now.  So we rolled first, and for the first time, I pretty much maintained control the entire time.  By maintained control, I mean, I either had or was transitioning to the dominant position most the time.  It felt great!  I was doing so well, he managed to compliment me during practice even, while we were going.  Hopefully tonight will be fun as well.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
