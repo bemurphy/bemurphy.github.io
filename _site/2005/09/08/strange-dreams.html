@@ -8,104 +8,50 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Strange Dreams</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2005/09/08/strange-dreams.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2005/09/08/strange-dreams.html"]').length) {
+            $('nav a[href="/2005/09/08/strange-dreams.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Strange Dreams
-  </h1>
+  <h1>Strange Dreams</h1>
+
   <p>I&#8217;ve had two really bizarre dreams in a row this week.  Read on for descriptions&#8230;<br />
 <!--more--><br />
 Yesterday, I woke up with a funny marriage related dream.  I was somewhere that reminded me of work, though I don&#8217;t think it was this building.  Can&#8217;t be sure.  Anyway, I noticed there was a big stretch limo out front.  &#8220;Gee, I wonder was that is here&#8221;, I thought.  So the next thing I remember, I&#8217;m in a long walk in clothing closet, with the <span class="caps">CEO</span> of the company I work for, and one of our sales guys.  The sales guy was standing up, and the ceo was sitting down on a stool, hunched over, with a dejected look on his face.  They were both wearing light grey linen suits, which were noticeably wrinkled.  I remember thinking, &#8220;how is a man with so much money wearing such a wrinkled suit&#8221;.  I didn&#8217;t understand why he was so depressed, and then he rhetorically asked, &#8220;I&#8217;m not sure there are good enough reasons for me to get married?&#8221; to which I replied &#8220;Well, are there good enough reasons <em>not</em> to get married?&#8221;  His face brightened up, he exclaimed &#8220;No!&#8221; and thanked me for encouraging him.  He then bolted out of the closet, and then I realized the limo out front was there to take him to his wedding.  By the way, just as a disclaimer, this has no real life relation to our <span class="caps">CEO</span> at all.</p>
 <p>It was a pretty odd dream, but it felt encouraging as well.  I remember when I woke up, I had a pronounced feeling that I&#8217;d successfully given advice to &#8220;someone else&#8221; that took it as quite good, so why shouldn&#8217;t I?</p>
 <p>The details of this mornings dream are more sketchy.  I remember it involved meeting up with some male Biola student who was a stranger to me.  We went on some kind of adventure that involved walking through the mountains, I think.  Anyway, on the return trip, it turns out the guy was using some kind of inhaled drug, like ketamine but different.  He totally collapsed on the return trip, and we had to take refuge in a nearby houseboat on either an ocean or riverfront.  Keep in mind, we&#8217;d been hiking <em>through the mountains</em>, so I have no recollection how we got there.  Not like such a thing matters in a dream.  OK, so here&#8217;s where the dream starts getting really cool, I wish I could remember all the details.  We met up with 2 other people in the houseboat (it was more like a house structure on the water btw, not a boat), and then we started getting attacked by creatures coming up from the water.  There was one scene that was really odd because it was &#8220;out of body&#8221; for me in the dream, meaning, I viewed it more like a movie than through my own dream eyes.  Usually I don&#8217;t view dreams that way.  Anyway, the scene involved this skeleton hand rising up from the ocean/river floor, and it slowly started growing flesh and nails and more features on it as it rose up to the surface.  By the time it reached the surface, it had grown into this entire medusa like water snake something or other creature that was quite menacing.  I remember feeling aware of it&#8217;s presence in the dream, because I&#8217;d seen it rise to the surface, but for some unknown reason was unable to alert my companions to the danger.  Finally it made it&#8217;s way into the hut/houseboat/whatever, and was about to attack me with one of it&#8217;s poisoned tails (yes, it had more than one).  At that point of course, I promptly woke up.</p>
 <p>Weird, eh?  And I rarely remember my dreams, so two days in a row is something.</p>
-  
+
   <p class="signoff">
     &mdash;Sep 08, 2005
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -114,29 +60,15 @@ Yesterday, I woke up with a funny marriage related dream.  I was somewhere that 
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

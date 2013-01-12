@@ -5,7 +5,7 @@ title: about
 
 <h2 id="intro">About the author and this site.</h2>
 
-<div class="post">
+<div class="post about">
 h1. The Author
 
 Hi, I'm Brendon Murphy, but the site already told you that.  I go by the handle "xternal" at various spots over the internet.  It's a handle with no meaning; I picked it when I was in 6th grade and excited about BBS'ing.
