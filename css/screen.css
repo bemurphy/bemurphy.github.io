@@ -623,6 +623,10 @@ em.code {
   list-style: none;
 }
 
+#archived-posts ul {
+  padding-left: 0;
+}
+
 #archived-posts li {
   margin-bottom: 4px;
 }
