@@ -8,3 +8,7 @@ gem "RedCloth"
 
 gem "sinatra", "1.1.2"
 gem "rack-cache", "1.0"
+
+group :development do
+  gem "rake"
+end
