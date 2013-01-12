@@ -8,102 +8,48 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Hurry up and relax</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2005/05/06/hurry-up-and-relax.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2005/05/06/hurry-up-and-relax.html"]').length) {
+            $('nav a[href="/2005/05/06/hurry-up-and-relax.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Hurry up and relax
-  </h1>
+  <h1>Hurry up and relax</h1>
+
   <p>Lately I&#8217;ve become quite aware of how intentionally restricted I allow my life to be.  I don&#8217;t go to new places as often as I&#8217;d like (though don&#8217;t consider this an open invite), and am too often worried or consumed with anxiety.  Like I&#8217;ve said before, it&#8217;s getting better.  This isn&#8217;t meant as a &#8220;woe is me&#8221; complaint, but rather, a launching point for interesting observation.  The short of it is, I can be quite uptight!  An uncomfortable spot for sure, but certainly not horrible or awful.<br />
 <!--more--></p>
 <p>For the past few months, I&#8217;ve had a strange reaction to washing my hands in warm water.  Not a bad reaction, mind you.  It&#8217;s been quite pleasurable.  Perhaps too much though.  There are times, especially on cold days, when washing my hands feels so good it&#8217;s like I&#8217;m on drugs.  No, I don&#8217;t do drugs, never have touched anything illegal even.  But the euphoric feeling seems way beyond what the relaxation of warm water normally would bring.  Quite often, I have a strong desire to just leap into a hot tub when I have such a full body experience.  Why just leave it to the hands?</p>
 <p>This of course brings me back to the notion of being uptight.  Exactly how rigid might this indicate I am?  Probably, a lot.  Probably so much that I go so far as to push away things I like.  So when I stumble across a pleasure so simple as warm, relaxing water, it feels consuming.  It&#8217;s obvious to me as a result of this observation, I can pursue at least two goals.  First, I need to be more relaxed across the board.  I&#8217;ve felt a great success in this lately.  I no longer wake up and feel like I&#8217;ve been thinking for two hours.  I feel calmer throughout the day, and suffer from obsessive thought patterns far less than I used to.  I&#8217;d credit much of this success to <a href="http://en.wikipedia.org/wiki/Rebt"><span class="caps">REBT</span></a>, as well as spending more time daily in purposeful relaxed states.  You&#8217;d be amazed the good a little searching of iTunes for relaxing music can do you.  Secondly, I need to more vigorously pursue things I like.  Sure, the warm water feels great, but, there&#8217;s more to life than that.  This is a goal worth pursuing!  <a href="http://www.techfreak.net/wp/index.php/archives/2005/04/27/240/">My earlier thoughts</a> regarding a hobby are a good start.  Beyond that, perhaps I should even consider making more observations on what I like and don&#8217;t like.  Sounds like fodder for a good list.  I&#8217;ll try to get back shortly with my brainstorm of some fun things to try.</p>
-  
+
   <p class="signoff">
     &mdash;May 06, 2005
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -112,29 +58,15 @@
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

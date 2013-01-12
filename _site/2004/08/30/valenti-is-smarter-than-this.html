@@ -8,93 +8,39 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Valenti is smarter than this</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2004/08/30/valenti-is-smarter-than-this.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2004/08/30/valenti-is-smarter-than-this.html"]').length) {
+            $('nav a[href="/2004/08/30/valenti-is-smarter-than-this.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Valenti is smarter than this
-  </h1>
+  <h1>Valenti is smarter than this</h1>
+
   <p>Engadget just ran an <a href="http://www.engadget.com/entry/8536544887710643/">interview</a> they did with on-his-way-out <span class="caps">MPAA</span> president Jack Valenti.  In response to the question &#8220;What would you say to a mom who wants to make a backup of her kids’ <span class="caps">DVD</span> movies?&#8221;.  Valenti offered the following, nonsensical analogy:</p>
 <blockquote>
 <p>When you go to your department store and you buy 10 Cognac glasses and two weeks later you break two of them, the store doesn’t give you two backup copies. Where did this backup copy thing come from? A digital thing lasts forever.</p>
@@ -102,11 +48,11 @@
 <p>Complete nonsense, mostly brought on by the common industry practice of comparing digital information to physical property.  If the store were to give you 2 additional Cognac glasses, they are now out of 2 physical pieces of merchandise they had intended to sell to another consumer.  On the other hand, a mom who makes a copy of a dvd to protect it from the gooey-sticky fingers of toddlers doesn&#8217;t remove inventory from any stock.  At the most, she is limiting the ability of a retailer from selling her a new copy of a movie she purchased but was damaged.  Look at it this way, a more honest representation of Valenti&#8217;s analogy would be that, if the Cognac glass was to break in two in a repairable fashion, he&#8217;d rather you not be sold the glue to fix it.  You should just go buy yourself a new glass.</p>
 <p>Oh, and what exactly does  &#8220;A digital thing lasts forever&#8221; mean?  CDs and DVDs certainly don&#8217;t last forever, anybody with Netflix could tell you that.  In fact, the only way I think an individual could make such a &#8220;digital thing&#8221; last forever (or at least, the duration of their lifespan) is if they were permitted to make non-degrading backup copies.</p>
 <p>In answer to his silly question of &#8220;where did this backup copy thing come from?&#8221; the answer is really simple: because we can.  You can&#8217;t make a backup copy of a glass, it&#8217;s physical.  But data, in any format, can be copied by virtue of it&#8217;s nature.  That&#8217;s what makes his comparison so ridiculous.</p>
-  
+
   <p class="signoff">
     &mdash;Aug 30, 2004
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -115,29 +61,15 @@
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

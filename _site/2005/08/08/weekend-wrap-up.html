@@ -8,93 +8,39 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Weekend wrap-up</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2005/08/08/weekend-wrap-up.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2005/08/08/weekend-wrap-up.html"]').length) {
+            $('nav a[href="/2005/08/08/weekend-wrap-up.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Weekend wrap-up
-  </h1>
+  <h1>Weekend wrap-up</h1>
+
   <p>So here&#8217;s the rundown of my weekend.  Like many, I consider the weekend to start when I leave work on Friday.</p>
 <p><b>Friday Night</b><br />
 Went to see Crista&#8217;s show at the dinner theater, and got to take my brother along.  Afterwards, she and I went to the Newport 17 Jazz Lounge off Newport and Irvine Blvd. in Tustin.  They have a jazz trio that plays Friday and Saturday nights that is quite talented.  It&#8217;s a fun relaxing hangout, not seedy at all.  Crista didn&#8217;t want to feel like she was mooching so she ordered a coffee, but, they didn&#8217;t charge her for it.  So, we had an hour and a half of a relaxing date in great atmosphere, with good conversation, and it only cost us gas money.  My favorite way to spend time.</p>
@@ -104,11 +50,11 @@ Saturday morning Crista and I had a breakfast of coffee (decaf only for me!) and
 <p><b>Sunday</b><br />
 Sunday morning Crista and I went to a 9AM service at <a href="http://www.rockharbor.org/">Rock Harbor</a>.  I don&#8217;t even make it into work by 9AM, so it was a challenge.  I surprised Crista by being on time, so she wasn&#8217;t able to have her morning coffee.  If you know me, you know that &#8220;on time&#8221; is something I suck at, but am trying to improve.  We met up with <a href="http://darylsmith.blogspot.com/">Daryl</a>, and we all seemed to enjoy the service.  Even though, that&#8217;s way more people than I would prefer to be around or feel comfortable with.  Afterwards we had brunch at Champagne&#8217;s in South Coast plaza.  The menu said they serve breakfast until noon on weekends, but they claimed they only served until 11.  So we ate lunch food instead of breakfast.  Then they managed to serve breakfast to people that ordered after us.  Oh well, the food was still good, and I made a better than usual attempt at being assertive with them about their so-called breakfast policy.  Maybe they just got confused.</p>
 <p>Sunday night Crista and I hung out at her apartment.  We briefly stopped by the Jacuzzi and then watched <a href="http://www.imdb.com/title/tt0362270/?fr=c2l0ZT1kZnxteD0yMHxsbT01MDB8dHQ9MXxmYj11fHBuPTB8cT10aGUgbGlmZSBhcXVhdGljfGh0bWw9MXxubT0x;fc=1;ft=20">The Life Aquatic with Steve Zissou</a>.  I find other <a href="http://www.imdb.com/name/nm0027572/">Wes Anderson</a> films at least amusing in general, but felt this was a let down.  I was wishing it was over about 30 minutes earlier.  Well actually, I was wishing it was earlier 2 hours earlier.  At best there were some mildly amusing parts but overall I thought it was a total misfire.  Maybe my sense of humor has evolved too, and I wouldn&#8217;t find his older films that entertaining either.</p>
-  
+
   <p class="signoff">
     &mdash;Aug 08, 2005
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -117,29 +63,15 @@ Sunday morning Crista and I went to a 9AM service at <a href="http://www.rockhar
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

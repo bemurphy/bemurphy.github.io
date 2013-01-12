@@ -8,93 +8,39 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Spec your codebase, not just your code</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html"]').length) {
+            $('nav a[href="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Spec your codebase, not just your code
-  </h1>
+  <h1>Spec your codebase, not just your code</h1>
+
   <p>Many rubyists are familiar with using Test::Unit, RSpec, or MiniTest for specifying the behavior of their application code.  Over the past year, I&#8217;ve discovered a novel and less conventional use of testing tools I like to call &#8220;specifying the codebase&#8221;.  Let me show you what I mean.</p>
 <p>If you&#8217;ve ever worked on a sizeable Rails project, you&#8217;ve probably experienced some codebase quirks at some point.  For example, I&#8217;ve got an application that had issues when the <a href="http://liquidmarkup.org/">Liquid Templating engine</a> was loaded as a gem.  The fix was to include a specific version as a plugin.  While it&#8217;s usually best to get to the root of the problem, sometimes it&#8217;s not feasible or expedient and such measures must suffice.  Once Liquid was included as a gem, we noticed some failing tests, and then pieced together that, oops, Liquid had been reconfigured as a gem.  A code review may have caught this, or perhaps not, since it&#8217;s a little quirky.  Now the second time we made the mistake, it dawned on me, write a spec to send up a red flag and make it easier to spot the immediate problem when tests fail in the future:</p>
 <div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="s2">&quot;The codebase&quot;</span> <span class="k">do</span>
@@ -117,11 +63,11 @@
 <span class="k">end</span>
 </code></pre>
 </div><p>Finally, there&#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&#8217;re confident you&#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&#8217;t trickle this practice over towards reusable code, like gems you write and share with the world.  It&#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&#8217;t share this behavior with your application or gem code, but rather, use gems like <a href="https://github.com/defunkt/fakefs">FakeFS</a> for testing in isolation of the filesystem.</p>
-  
+
   <p class="signoff">
     &mdash;Oct 01, 2011
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -130,29 +76,15 @@
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

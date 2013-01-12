@@ -8,104 +8,50 @@
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <title>Brendon Murphy &ndash; Vote this guy out</title>
   </head>
   <body>
-    <header>
-    <h1 id="title">
-      <a href="/about.html" title="About">Brendon Murphy</a> writes <a href="/" title="Home">here</a>.
-    </h1>
-    <h2 id="subtitle">
-      See also the <a href="/archive.html" title="Archive">archive</a> &amp;
-      <a href="/miscellaneous.html">miscellaneous</a>.
-    </h2>
-    </header>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2004/05/20/somebody-vote-this-guy-out.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2004/05/20/somebody-vote-this-guy-out.html"]').length) {
+            $('nav a[href="/2004/05/20/somebody-vote-this-guy-out.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
 
-    <sidebar id="sidebar">
-    <div id="bg">
-    </div>
-    <div id="sidebar-about" class="sidebar-item">
-      <p>My experience runs from unix & linux system administration, to programming for the web.  I'm a firm believer in open source, and spend much of my time these days in Ruby.</p>
-
-      <p>My passions include git, github, rspec, rails, jQuery, programming in general, and my girlfriend Arielle.</p>
-
-      <p>I like to hang out with other Ruby-ists in Orange County.  You can connect with us at the monthly <a href="http://www.meetup.com/ocruby/">OC Ruby Users Group</a>.  We'd love to see you there.</p>
-    </div>
-
-    <div id="working-with-rails" class="sidebar-item">
-      WorkingWithRails is the online home of the world's community of Ruby on Rails users. Go <a href="http://workingwithrails.com/person/19061-brendon-murphy">check my profile there.</a>
-    </div>
-
-    <div class="sidebar-item" id="social">
-      <a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Techfreaknet" class="center" rel="alternate" type="application/rss+xml">Subscribe to my feed</a>
-
-      <a href="http://twitter.com/xternal"><img src="/images/t_logo-b32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://twitter.com/xternal" class="center" rel="alternate">Follow me on Twitter</a>
-
-      <div id="tweet">
-        <p>Please wait while my tweets load <img src="/images/indicator.gif" /></p>
-        <p><a href="http://twitter.com/xternal">If you can't wait - check out what I've been twittering</a></p>
-      </div>
-    </div>
-
-    <div class="sidebar-item" id="goodreads">
-      <div id="currently_reading">Currently Reading</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841551">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20currently-reading%20book%20montage?cover_size=small&amp;hide_link=true&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1311841551" type="text/javascript" charset="utf-8"></script>
-
-      <div id="recently_read">Recently Read</div>
-      <style type="text/css" media="screen">
-        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ } 
-        .gr_grid_book_container { /* customize book cover container div here */ 
-          float: left; 
-          width: 39px; 
-          height: 60px; 
-          padding: 0px 0px;
-          overflow: hidden; 
-        }
-      </style>
-      <div id="gr_grid_widget_1311841495">
-        <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
-
-        <div class="gr_grid_container">
-        </div>
-        }
-      </div>
-      <script src="http://www.goodreads.com/review/grid_widget/2728801.Brendon's%20read%20book%20montage?cover_size=small&amp;hide_link=false&amp;hide_title=true&amp;num_books=12&amp;order=d&amp;shelf=read&amp;sort=date_added&amp;widget_id=1311841495" type="text/javascript" charset="utf-8"></script>
-    </div>
-    </sidebar>
-
-    <div id="wrapper">
+    <section id="content">
       <div class="post">
-  <h1>
-    Vote this guy out
-  </h1>
+  <h1>Vote this guy out</h1>
+
   <p>Rep. Howard Bermain (D-Calif) is <a href="http://story.news.yahoo.com/news?tmpl=story&cid=638&e=3&u=/nm/20040521/en_nm/film_smut_dc">at it again</a>.  Part of legislation being debated in Congress right now surrounds <a href="http://www.clearplay.com/">ClearPlay</a> technology.    Basically, clearplay allows <span class="caps">DVD</span> players to play an edited cleaner version of movies.  Of course, Berman would like us to believe this is evil, pure evil:</p>
 bq. p. &#8220;I do not believe Congress should give companies the right to alter, distort, and mutilate creative works, or to sell otherwise-infringing products that do functionally the same thing&#8221;
 <p>OK, first of all stupid, this statement falls apart when held up to the fact that network and cable tv air such &#8220;<em>mutilate</em>[d] <em>creative works</em>&#8221; when they edit for time and content.  Copyright issues will have different play obviously,  as the broadcasters have license to redistribute from the original holder.  But where does this sensational garbage about mutilation and artistic integrity come in?  It&#8217;s just that, sensationalism.  It&#8217;s up to network standards what gets cut, redubbed, etc., so please don&#8217;t feed us these lies like it&#8217;s some grand new travesty.</p>
 <p>Berman also pulled a super low blow during the hearing, I know, shocking.  At one point, he read statements of ClearPlay <span class="caps">CEO</span> Bill Aho back to the committee, but edited the content so as to embarass him.  This is a total joke and irrelevant.  To equate editing of movies meant for entertainment purposes, to editing of factual statements to wrongly portray someone is insane, maybe even unethical.  So this is what we need in Washington, people who hold fiction in the same light as the truth?  Awesome.</p>
 <p>Lastly, let&#8217;s take a peek over at the <a href="http://www.opensecrets.org/politicians/indus.asp?CID=N00008094&cycle=2002">top industries</a> that supported Berman in the 2002 election courtesy of  <a href="http://www.opensecrets.org">opensecrets.org</a>.  Wow, look at that.  The top industry was TV/Movies/Music at $222,791.  Compared to all  other recipeints of such donations, Berman was #3 from the motion picture industry, #1 from the music industry, #2 from television, and #2 of all these combined.  He received a total of $959,023  in recorded fundraising.   His republican opponent in 2002 was David R. Hernandez, who raised a &lt;a href= &#8220;http://www.opensecrets.org/races/summary.asp?ID=CA28&amp;Cycle=2002&#8221;&gt;measley  $6,623</a>.  Anything wrong with this picture?</p>
 <p>Lookout, covering your kids eyes, or telling other parents what movies or scenes to skip is soon going to be copyright and protection circumvention.</p>
-  
+
   <p class="signoff">
     &mdash;May 20, 2004
   </p>
-  
+
   <hr />
    <div id="disqus">
      <script>var no_disqus_developer = 1;</script>
@@ -114,29 +60,15 @@ bq. p. &#8220;I do not believe Congress should give companies the right to alter
 </div>
 
 
-      <footer id="footer">
-      <a href="/" title="Home">Home</a> &bull;
-      <a href="/about.html" title="About the author and site">About</a> &bull;
-      <a href="/archive.html" title="Archived writing">Archive</a> &bull;
-      <a href="/miscellaneous.html" title="Miscellaneous">Miscellaneous</a>
-
-      <div id="cse" style="width: 100%;">Loading</div>
-      <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-      <script type="text/javascript">
-        google.load('search', '1', {language : 'en'});
-        google.setOnLoadCallback(function() {
-            var customSearchControl = new google.search.CustomSearchControl('003730570411629047560:hoyvw7xkswg');
-            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-            customSearchControl.draw('cse');
-            }, true);
-</script>
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-<style>
-  .gsc-control-cse { padding-left: 0px; }
-  .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
-</style>
-</footer>
-    </div>
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
     <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
