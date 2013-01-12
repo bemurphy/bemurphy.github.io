@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; Two Support Objects You May Have Missed</title>
+  </head>
+  <body>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2011/10/16/two-support-objects-you-may-have-missed.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').length) {
+            $('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
+
+    <section id="content">
+      <div class="post">
+  <h1>Two Support Objects You May Have Missed</h1>
+
+  <p>If you spend time daily in a large ruby project (such as a Rails app) that has ActiveSupport pulled in, you are likely relying on its string, time, hash, and other extensions.  I&#8217;ve found two objects it provides prove useful, and having found them lesser known amongst my coding friends, figured they are worth sharing.</p>
+<p>The first useful tidbit is the <a href="http://api.rubyonrails.org/classes/ActiveSupport/StringInquirer.html">ActiveSupport::StringInquirer</a> class.  It&#8217;s a <a href="https://github.com/rails/rails/blob/ef53d915164da7f757d03c4a70fe38e374c08b14/activesupport/lib/active_support/string_inquirer.rb#L13">simple method missing call</a> that lets you do prettier equality tests on strings.  If you&#8217;ve ever done a <em class="code">Rails.env.development?</em> check, it uses this implementation.  Let&#8217;s go to the code:</p>
+<div class="highlight"><pre><code class="ruby"><span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span> <span class="c1"># =&gt; true</span>
+<span class="no">Rails</span><span class="o">.</span><span class="n">env</span>              <span class="c1"># =&gt; &quot;development&quot;</span>
+<span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">class</span>        <span class="c1"># =&gt; ActiveSupport::StringInquirer</span>
+
+<span class="n">si</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="n">si</span><span class="o">.</span><span class="n">foo?</span> <span class="c1"># =&gt; true</span>
+<span class="n">si</span><span class="o">.</span><span class="n">bar?</span> <span class="c1"># =&gt; false</span>
+</code></pre>
+</div><p>I think this is great for two reasons.  First, it&#8217;s a more expressive use of code, and secondly, it implies less coupling to a string outside of an object.  Let&#8217;s take a simple example: a role for a User object.  Imagine you start simple, where role is just a string.  Now let&#8217;s say we&#8217;re using <a href="https://github.com/ryanb/cancan">CanCan</a> to add simple authorization to our app, with an ability class that looks like this:</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Ability</span>
+  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="o">||</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
+
+    <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span>
+      <span class="n">can</span> <span class="ss">:manage</span><span class="p">,</span> <span class="ss">:all</span>
+    <span class="k">else</span>
+      <span class="n">can</span> <span class="ss">:read</span><span class="p">,</span> <span class="ss">:all</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>Note we&#8217;re doing an <em class="code">#==</em> for comparison on that role.  This is a bit ugly and not as expressive as I&#8217;d like.  Let&#8217;s get rid of ugly with the help of the StringInquirer.</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">role</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="n">read_attribute</span><span class="p">(</span><span class="ss">:role</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span>
+    <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Ability</span>
+  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span> <span class="o">||</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
+
+    <span class="k">if</span> <span class="n">role</span><span class="o">.</span><span class="n">admin?</span>
+      <span class="n">can</span> <span class="ss">:manage</span><span class="p">,</span> <span class="ss">:all</span>
+    <span class="k">else</span>
+      <span class="n">can</span> <span class="ss">:read</span><span class="p">,</span> <span class="ss">:all</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">role</span>
+    <span class="vi">@user</span><span class="o">.</span><span class="n">role</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>I&#8217;ve redefined <em class="code">User#role</em> to wrap the attribute in a StringInquirer, and updated the Ability class to call the role with the predicate <em class="code">#admin?</em> method. Our end behavior for ability checking is the same, but I think we&#8217;ve got more readable code.  There&#8217;s another win on this: we&#8217;ve decoupled from treating our role like a string which can pay out nicely in the future.  Imagine for instance the day arrives when a user no longer has one role, but many.  A simple user may be able to function as both a forum moderator or a comment moderator.  You can shift to supporting <a href="https://github.com/ryanb/cancan/wiki/Role-Based-Authorization">many roles per user</a> with a bitmask method and leave your external calls untouched.  A simple application of <em class="code">define_method</em> or <em class="code">method_missing</em> on your role attribute wrapper is all you need to keep rolling.  Now, you could also define <em class="code">#==</em> on your role object for such string comparisons, but comparing to a string reads more like the caller knows too much of an implementation detail.  I haven&#8217;t touched on the <em class="code">User#role=</em> setter here;  you may need some sanitizing and cleanup on it if you were assigning it the results from the getter method anywhere (and, ahem, possibly breaking encapsulation with your own string assignments, too).  I&#8217;ll leave that as an exercise for the reader.</p>
+<p>Our second friend is the <a href="http://rails.rubyonrails.org/classes/ActiveSupport/SecureRandom.html">ActiveSupport::SecureRandom</a> interface.  Actually, saying this is from ActiveSupport is a little misleading.  If you are working on an older Rails 2 project, you&#8217;ll probably be using this by way of ActiveSupport.  However for modern and future use, this is deprecated and delegated to Ruby 1.9.x <a href="http://rubydoc.info/stdlib/securerandom/1.9.2/SecureRandom">stdlib&#8217;s SecureRandom</a>.  SecureRandom is great for generating random character strings on the fly that are useful as <span class="caps">API</span> keys, temporary passwords, tokens, etc.  It&#8217;s simple to use, and can replace those naive calls to <em class="code">rand()</em> you&#8217;ve been making for generating random strings.  Don&#8217;t reinvent the wheel!  I&#8217;ll leave you with a few examples:</p>
+<div class="highlight"><pre><code class="ruby"><span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span>    <span class="c1"># =&gt; ace59c788b498fadcaa88216e45cf800</span>
+<span class="no">SecureRandom</span><span class="o">.</span><span class="n">base64</span> <span class="c1"># =&gt; iJKR2NQ8Jk1wBdp0nU/fhA==</span>
+
+<span class="c1"># Optionally pass 5 for 5 hex pairs</span>
+<span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># =&gt; a5f8bf212f</span>
+</code></pre>
+</div>
+
+  <p class="signoff">
+    &mdash;Oct 16, 2011
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <script src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+<script>
+  getTwitters('tweet', { 
+    id: 'xternal', 
+    count: 2, 
+    enableLinks: true, 
+    ignoreReplies: true, 
+    clearContents: true,
+    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/"><span class="time">&ndash;%time%</span></a>'
+  });  
+</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; Roll your own dropbox</title>
+  </head>
+  <body>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2008/03/29/roll-your-own-dropbox.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2008/03/29/roll-your-own-dropbox.html"]').length) {
+            $('nav a[href="/2008/03/29/roll-your-own-dropbox.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
+
+    <section id="content">
+      <div class="post">
+  <h1>Roll your own dropbox</h1>
+
+  <p>So I&#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out <a href="http://www.filedropper.com/">filedropper.com</a> for a simple example of such an application.</p>
+<p>Of course, I was bored, and don&#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.</p>
+<p>So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked <a href="http://www.ruby-lang.org/en/">ruby</a>) and a module for interfacing with <a href="http://aws.amazon.com/s3">Amazon&#8217;s S3 service</a>.</p>
+<p>The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&#8217;s the basic workflow steps:</p>
+<ol>
+<li>Make an Automator workflow that takes a selected set of files (&#8220;Get Selected Items&#8221;) and creates an archive (&#8220;Create Archive&#8221;) out of them</li>
+<li>Pass that archive into a script (&#8220;Run Shell Script&#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.</li>
+<li>Store the file on S3, and then output the full S3 url for capture by Automator.</li>
+<li>Use the Automator &#8220;New Mail Message&#8221; action, passing in the url as the content of the message</li>
+<li>Plan on manually addressing the message, filling out the body if you like.</li>
+<li>Now here&#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.</li>
+</ol>
+<p>Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.</p>
+<p>I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&#8217;s not as &#8220;sexy&#8221;, right?</p>
+
+  <p class="signoff">
+    &mdash;Mar 29, 2008
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+      <style>
+        .gsc-control-cse { padding-left: 0px; }
+        .gsc-control-cse a:link, .gsc-control-cse a:hover { color: #336699; }
+      </style>
+    </footer>
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <script src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+<script>
+  getTwitters('tweet', { 
+    id: 'xternal', 
+    count: 2, 
+    enableLinks: true, 
+    ignoreReplies: true, 
+    clearContents: true,
+    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/"><span class="time">&ndash;%time%</span></a>'
+  });  
+</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+  </body>
+</html>

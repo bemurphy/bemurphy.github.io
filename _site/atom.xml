@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <link rel="hub" href="https://pubsubhubbub.appspot.com"/>
+ <title>techfreak.net</title>
+ <link href="http://www.techfreak.net/atom.xml" rel="self"/>
+ <link href="http://www.techfreak.net/"/>
+ <updated>2013-01-11T23:58:14-08:00</updated>
+ <id>http://www.techfreak.net/</id>
+ <author>
+   <name>Brendon Murphy</name>
+ </author>
+ 
+ <entry>
+   <title>Two Support Objects You May Have Missed</title>
+   <link href="http://www.techfreak.net/2011/10/16/two-support-objects-you-may-have-missed.html"/>
+   <updated>2011-10-16T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2011/10/16/two-support-objects-you-may-have-missed</id>
+   <content type="html">&lt;p&gt;If you spend time daily in a large ruby project (such as a Rails app) that has ActiveSupport pulled in, you are likely relying on its string, time, hash, and other extensions.  I&amp;#8217;ve found two objects it provides prove useful, and having found them lesser known amongst my coding friends, figured they are worth sharing.&lt;/p&gt;
+&lt;p&gt;The first useful tidbit is the &lt;a href=&quot;http://api.rubyonrails.org/classes/ActiveSupport/StringInquirer.html&quot;&gt;ActiveSupport::StringInquirer&lt;/a&gt; class.  It&amp;#8217;s a &lt;a href=&quot;https://github.com/rails/rails/blob/ef53d915164da7f757d03c4a70fe38e374c08b14/activesupport/lib/active_support/string_inquirer.rb#L13&quot;&gt;simple method missing call&lt;/a&gt; that lets you do prettier equality tests on strings.  If you&amp;#8217;ve ever done a &lt;em class=&quot;code&quot;&gt;Rails.env.development?&lt;/em&gt; check, it uses this implementation.  Let&amp;#8217;s go to the code:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;development?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; true&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;              &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &amp;quot;development&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; ActiveSupport::StringInquirer&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;StringInquirer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;si&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;I think this is great for two reasons.  First, it&amp;#8217;s a more expressive use of code, and secondly, it implies less coupling to a string outside of an object.  Let&amp;#8217;s take a simple example: a role for a User object.  Imagine you start simple, where role is just a string.  Now let&amp;#8217;s say we&amp;#8217;re using &lt;a href=&quot;https://github.com/ryanb/cancan&quot;&gt;CanCan&lt;/a&gt; to add simple authorization to our app, with an ability class that looks like this:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ability&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CanCan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Ability&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Note we&amp;#8217;re doing an &lt;em class=&quot;code&quot;&gt;#==&lt;/em&gt; for comparison on that role.  This is a bit ugly and not as expressive as I&amp;#8217;d like.  Let&amp;#8217;s get rid of ugly with the help of the StringInquirer.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;role&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;role&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;read_attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:role&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;StringInquirer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ability&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CanCan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Ability&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin?&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:all&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;role&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;I&amp;#8217;ve redefined &lt;em class=&quot;code&quot;&gt;User#role&lt;/em&gt; to wrap the attribute in a StringInquirer, and updated the Ability class to call the role with the predicate &lt;em class=&quot;code&quot;&gt;#admin?&lt;/em&gt; method. Our end behavior for ability checking is the same, but I think we&amp;#8217;ve got more readable code.  There&amp;#8217;s another win on this: we&amp;#8217;ve decoupled from treating our role like a string which can pay out nicely in the future.  Imagine for instance the day arrives when a user no longer has one role, but many.  A simple user may be able to function as both a forum moderator or a comment moderator.  You can shift to supporting &lt;a href=&quot;https://github.com/ryanb/cancan/wiki/Role-Based-Authorization&quot;&gt;many roles per user&lt;/a&gt; with a bitmask method and leave your external calls untouched.  A simple application of &lt;em class=&quot;code&quot;&gt;define_method&lt;/em&gt; or &lt;em class=&quot;code&quot;&gt;method_missing&lt;/em&gt; on your role attribute wrapper is all you need to keep rolling.  Now, you could also define &lt;em class=&quot;code&quot;&gt;#==&lt;/em&gt; on your role object for such string comparisons, but comparing to a string reads more like the caller knows too much of an implementation detail.  I haven&amp;#8217;t touched on the &lt;em class=&quot;code&quot;&gt;User#role=&lt;/em&gt; setter here;  you may need some sanitizing and cleanup on it if you were assigning it the results from the getter method anywhere (and, ahem, possibly breaking encapsulation with your own string assignments, too).  I&amp;#8217;ll leave that as an exercise for the reader.&lt;/p&gt;
+&lt;p&gt;Our second friend is the &lt;a href=&quot;http://rails.rubyonrails.org/classes/ActiveSupport/SecureRandom.html&quot;&gt;ActiveSupport::SecureRandom&lt;/a&gt; interface.  Actually, saying this is from ActiveSupport is a little misleading.  If you are working on an older Rails 2 project, you&amp;#8217;ll probably be using this by way of ActiveSupport.  However for modern and future use, this is deprecated and delegated to Ruby 1.9.x &lt;a href=&quot;http://rubydoc.info/stdlib/securerandom/1.9.2/SecureRandom&quot;&gt;stdlib&amp;#8217;s SecureRandom&lt;/a&gt;.  SecureRandom is great for generating random character strings on the fly that are useful as &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt; keys, temporary passwords, tokens, etc.  It&amp;#8217;s simple to use, and can replace those naive calls to &lt;em class=&quot;code&quot;&gt;rand()&lt;/em&gt; you&amp;#8217;ve been making for generating random strings.  Don&amp;#8217;t reinvent the wheel!  I&amp;#8217;ll leave you with a few examples:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hex&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; ace59c788b498fadcaa88216e45cf800&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; iJKR2NQ8Jk1wBdp0nU/fhA==&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Optionally pass 5 for 5 hex pairs&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; a5f8bf212f&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Spec your codebase, not just your code</title>
+   <link href="http://www.techfreak.net/2011/10/01/spec-your-codebase%2C-not-just-your-code.html"/>
+   <updated>2011-10-01T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2011/10/01/spec-your-codebase,-not-just-your-code</id>
+   <content type="html">&lt;p&gt;Many rubyists are familiar with using Test::Unit, RSpec, or MiniTest for specifying the behavior of their application code.  Over the past year, I&amp;#8217;ve discovered a novel and less conventional use of testing tools I like to call &amp;#8220;specifying the codebase&amp;#8221;.  Let me show you what I mean.&lt;/p&gt;
+&lt;p&gt;If you&amp;#8217;ve ever worked on a sizeable Rails project, you&amp;#8217;ve probably experienced some codebase quirks at some point.  For example, I&amp;#8217;ve got an application that had issues when the &lt;a href=&quot;http://liquidmarkup.org/&quot;&gt;Liquid Templating engine&lt;/a&gt; was loaded as a gem.  The fix was to include a specific version as a plugin.  While it&amp;#8217;s usually best to get to the root of the problem, sometimes it&amp;#8217;s not feasible or expedient and such measures must suffice.  Once Liquid was included as a gem, we noticed some failing tests, and then pieced together that, oops, Liquid had been reconfigured as a gem.  A code review may have caught this, or perhaps not, since it&amp;#8217;s a little quirky.  Now the second time we made the mistake, it dawned on me, write a spec to send up a red flag and make it easier to spot the immediate problem when tests fail in the future:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The codebase&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;doesn&amp;#39;t load the liquid gem&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loaded_specs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;liquid&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be_false&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;It&amp;#8217;s pretty easy to make the mistake of not properly compressing or optimizing assets, especially images, in your app&amp;#8217;s public directory.  Code review or possibly even your vcs can help prevent such problems, but you can also let your specifications alert you to the problem:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/public directory includes files less than 1MB&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`find &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;public&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt; -type f -size +1M`&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/\n/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;The pattern emerging here is pretty simple:  if you or your teammates make any repeat mistakes with your codebase, write a spec to prevent further repeats.  By all means, make sure to communicate and talk out application guidelines, yet, nothing says &amp;#8220;hey, over here!&amp;#8221; like a failing test.&lt;/p&gt;
+&lt;p&gt;The applications here are pretty endless.  Maybe you&amp;#8217;ve got a Sinatra app on Heroku where you precompile dynamic stylesheets, and have made the mistake of checking in a busted css one too many times;  there&amp;#8217;s a spec for that!  Or perhaps you&amp;#8217;ve got an overzealous teammate adding or removing crazy things from git file index.  First, do better code review and, secondly, there&amp;#8217;s a spec for that:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;leaves config/database.yml out of the repository&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Git&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ls_files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;config/database.yml&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be_empty&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Finally, there&amp;#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&amp;#8217;re confident you&amp;#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&amp;#8217;t trickle this practice over towards reusable code, like gems you write and share with the world.  It&amp;#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&amp;#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&amp;#8217;t share this behavior with your application or gem code, but rather, use gems like &lt;a href=&quot;https://github.com/defunkt/fakefs&quot;&gt;FakeFS&lt;/a&gt; for testing in isolation of the filesystem.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>NotNot Alternative</title>
+   <link href="http://www.techfreak.net/programming,/ruby/2011/07/27/notnot-alternative.html"/>
+   <updated>2011-07-27T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/programming,/ruby/2011/07/27/notnot-alternative</id>
+   <content type="html">&lt;p&gt;There&amp;#8217;s a common ruby convention out there, I call it NotNot.  You&amp;#8217;ll find it often in predicate methods, and it looks like it sounds, &amp;#8216;!!&amp;#8217;.  I suppose you could call it &amp;#8220;Bang Bang&amp;#8221;, or perhaps it has a real name I&amp;#8217;m not aware of.&lt;/p&gt;
+&lt;p&gt;I don&amp;#8217;t like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it&amp;#8217;s just weird.&lt;/p&gt;
+&lt;p&gt;The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&amp;#8217;s start with a simple example predicate:&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=first_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;What?  That looks kind of strange, however, it will pass conditional tests, since ruby treats the values nil and false both as falsy values, while other values as truthy.  But again, the returns look weird.  Enter the NotNot:&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=second_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;Hey, those returns looks better, I see we&amp;#8217;re getting back real true/false which is really what we want.  But that NotNot looks weird.  Think about it in your head, what&amp;#8217;s the value of not not false&amp;#8230;uh.&lt;/p&gt;
+&lt;p&gt;Say hello to the TrueClass#&amp;amp; method.  The &lt;a href=&quot;http://www.ruby-doc.org/core/classes/TrueClass.html#M000564&quot;&gt;TrueClass RDoc states&lt;/a&gt; that the &amp;amp; method &amp;#8220;Returns false if obj is nil or false, true otherwise.&amp;#8221;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/1109678.js?file=third_example.rb&quot;&gt;&lt;/script&gt;&lt;p&gt;You&amp;#8217;ll note we&amp;#8217;re still getting back true/false.  The method is less terse than the NotNot, but I think slightly a better match intuitively.&lt;/p&gt;
+&lt;p&gt;In the end, it really boils down to style and readability.  If you code Ruby, while it&amp;#8217;s important to know the NotNot, I&amp;#8217;d advise something your brain doesn&amp;#8217;t have to double unroll.&lt;/p&gt;
+&lt;p&gt;Hat tip to my friend &lt;a href=&quot;http://www.billpratt.net/&quot;&gt;Bill&lt;/a&gt; for taking me straight from example 1 to 3 when I started in Ruby.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Onward to Jekyll</title>
+   <link href="http://www.techfreak.net/2010/09/08/onward-to-jekyll.html"/>
+   <updated>2010-09-08T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2010/09/08/onward-to-jekyll</id>
+   <content type="html">&lt;p&gt;In the grand tradition of getting bored with blogging software, without actually taking the time to blog, I&amp;#8217;ve transitioned software yet again.  This time I selected &lt;a href=&quot;http://github.com/mojombo/jekyll&quot;&gt;Jekyll&lt;/a&gt; to try.  I discovered that in the past I&amp;#8217;ve had a habit of writing blog posts in TextMate or Vim, and then pasting them into whatever blog software I was using at the time.  That&amp;#8217;s silly.  Now I can just edit in my editor of choice, have full &lt;em&gt;syntax aware&lt;/em&gt; access to template and &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; documents without dealing with a nasty web interface, and have greater flexibility for throwing different pages up on the site.  With blog software, it&amp;#8217;s often like pulling teeth when you want those pages that are more &lt;span class=&quot;caps&quot;&gt;CMS&lt;/span&gt; than blog.  Not so with Jekyll.  It&amp;#8217;s a template system that simply builds a static site out of layout and markup files (I&amp;#8217;m using textile).  When you want that one-off page, all you have to do is drop it in.  There&amp;#8217;s no requirement that it play nice with the rest of your site, it could truly be a one-off if you so desired.&lt;/p&gt;
+&lt;p&gt;Anyway, if you want some fun and simple software to test-drive, I&amp;#8217;d recommend it.  Not that it&amp;#8217;ll get me to post any more.  Or perhaps, it will.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Metaprogramming in Ruby: Part 1</title>
+   <link href="http://www.techfreak.net/2009/10/30/metaprogramming-in-ruby-part-1.html"/>
+   <updated>2009-10-30T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2009/10/30/metaprogramming-in-ruby-part-1</id>
+   <content type="html">&lt;p&gt;I joked with a co-worker the other day that, sometimes I think I&amp;#8217;m better at Ruby metaprogramming that straight ahead programming.  This is a serious exaggeration, and I don&amp;#8217;t count myself as an expert at either.  However, it dawned on me that, I have a few friends that aren&amp;#8217;t as exposed to metaprogramming concepts in Ruby, so, what better topic to share about.  Hopefully in the process, you&amp;#8217;ll learn something new, and, I&amp;#8217;ll become better at explaining Ruby concepts and sharing code.&lt;/p&gt;
+&lt;p&gt;Before I dive in with some introductory examples, a quick definition of metaprogramming is in order.  To quote &lt;a href=&quot;http://en.wikipedia.org/wiki/Metaprogramming&quot; title=&quot;Wikipedia&quot;&gt;Wikipedia&lt;/a&gt;, &amp;#8220;Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data, or that do part of the work at compile time that would otherwise be done at runtime&amp;#8221;.  If you use Rails (and, I know you do), metaprogramming enables things you already do on a daily basis, such as dynamic find_by methods in ActiveRecord, or plugins that dynamically get a class to include them (acts_as_list, acts_as_tree, etc).&lt;/p&gt;
+&lt;p&gt;In this writeup, I&amp;#8217;ll start with two extremely basic metaprogramming concepts.  In fact, these might not even be considered true Ruby metaprogramming, but, I wanted to start with some simple ideas which you may not have been exposed to in Ruby 101.&lt;/p&gt;
+&lt;p&gt;The first concept to get down in Ruby is that, classes are objects like anything else.  In Ruby, this means you can open the class and modify it on the fly.  The practice is affectionately called monkey patching or duck punching.  Let&amp;#8217;s look at a simple example:&lt;/p&gt;
+&lt;script src=&quot;http://gist.github.com/222706.js&quot;&gt;&lt;/script&gt;&lt;p&gt;You can see above, we&amp;#8217;ve created a Foo class with a public instance method, bar.  Calling foo.bar, we&amp;#8217;ll get the output we expect, &amp;#8220;bar!&amp;#8221;.  Next, we reopen the Foo class, and add a new public instance method, foobar.  Had we tried to use Foo#foobar before this, we&amp;#8217;d get a NoMethodError exception, as expected.  However, having reopened and modified the class, we can call our new method.&lt;/p&gt;
+&lt;p&gt;The other demonstration I&amp;#8217;d like to show is one way you can define methods on the fly.  This example is abstract and doesn&amp;#8217;t represent a recommended use, it&amp;#8217;s simply to prove the point.&lt;/p&gt;
+&lt;script src=&quot;http://gist.github.com/222724.js&quot;&gt;&lt;/script&gt;&lt;p&gt;Running this simple example, the first call to foo_two.bar will output &amp;#8220;bar&amp;#8221;.  However, once we call foo.cap_bar, the public instance method bar is changed.  Running it a second time will output &amp;#8220;&lt;span class=&quot;caps&quot;&gt;BAR&lt;/span&gt;!!!&amp;#8221;.  A more common, rubyish way of defining methods at run time in Ruby is the use of &lt;a href=&quot;http://ruby-doc.org/core/classes/Module.html#M001654&quot; title=&quot;define_method&quot;&gt;define_method&lt;/a&gt;, which I&amp;#8217;ll cover in a future post.&lt;/p&gt;
+&lt;p&gt;An important concept to keep in mind here is that, you aren&amp;#8217;t modifying behavior solely on the foo or foo_two instances.  Instead, you are changing the behavior of any open instance of the Foo or FooTwo classes.  So in our FooTwo example, if you were to create a foo_too instance, calling foo_too.bar would run through the dynamically created method as well and output &amp;#8220;&lt;span class=&quot;caps&quot;&gt;BAR&lt;/span&gt;!!!&amp;#8221;.  In future postings, we&amp;#8217;ll see a different approach of opening instances and defining methods specific to that instance.&lt;/p&gt;
+&lt;p&gt;Hopefully this has whet your appetite a little, and, in the future, we can run through some more exciting examples of the metaprogramming facilities Ruby has to offer.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>wp-syntax test</title>
+   <link href="http://www.techfreak.net/2009/05/04/wp-syntax-test.html"/>
+   <updated>2009-05-04T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2009/05/04/wp-syntax-test</id>
+   <content type="html">&lt;p&gt;Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;date&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DateReformatter&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_reader&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:date&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reformat&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_offset&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_from_utc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Roll your own dropbox</title>
+   <link href="http://www.techfreak.net/2008/03/29/roll-your-own-dropbox.html"/>
+   <updated>2008-03-29T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/29/roll-your-own-dropbox</id>
+   <content type="html">&lt;p&gt;So I&amp;#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out &lt;a href=&quot;http://www.filedropper.com/&quot;&gt;filedropper.com&lt;/a&gt; for a simple example of such an application.&lt;/p&gt;
+&lt;p&gt;Of course, I was bored, and don&amp;#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.&lt;/p&gt;
+&lt;p&gt;So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked &lt;a href=&quot;http://www.ruby-lang.org/en/&quot;&gt;ruby&lt;/a&gt;) and a module for interfacing with &lt;a href=&quot;http://aws.amazon.com/s3&quot;&gt;Amazon&amp;#8217;s S3 service&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&amp;#8217;s the basic workflow steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make an Automator workflow that takes a selected set of files (&amp;#8220;Get Selected Items&amp;#8221;) and creates an archive (&amp;#8220;Create Archive&amp;#8221;) out of them&lt;/li&gt;
+&lt;li&gt;Pass that archive into a script (&amp;#8220;Run Shell Script&amp;#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.&lt;/li&gt;
+&lt;li&gt;Store the file on S3, and then output the full S3 url for capture by Automator.&lt;/li&gt;
+&lt;li&gt;Use the Automator &amp;#8220;New Mail Message&amp;#8221; action, passing in the url as the content of the message&lt;/li&gt;
+&lt;li&gt;Plan on manually addressing the message, filling out the body if you like.&lt;/li&gt;
+&lt;li&gt;Now here&amp;#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.&lt;/p&gt;
+&lt;p&gt;I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&amp;#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&amp;#8217;s not as &amp;#8220;sexy&amp;#8221;, right?&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>My eye</title>
+   <link href="http://www.techfreak.net/2008/03/24/my-eye.html"/>
+   <updated>2008-03-24T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/24/my-eye</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/xternal1/sets/72157604236634154/&quot; title=&quot;DSC00406.JPG by xternal1, on Flickr&quot;&gt;&lt;img src=&quot;http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;DSC00406.JPG&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+So this is a bit of old news.  I was going back through the files on my camera I haven&amp;#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&amp;#8217;t know why I&amp;#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&amp;#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&amp;#8217;ve got a little red spot on my right lower lid, it&amp;#8217;s the remnants of this.  It&amp;#8217;s still got a little ways to go before it totally clears up.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>Keeping support focused</title>
+   <link href="http://www.techfreak.net/2008/03/19/keeping-support-focused.html"/>
+   <updated>2008-03-19T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2008/03/19/keeping-support-focused</id>
+   <content type="html">&lt;p&gt;I was just browsing the &lt;a href=&quot;http://automattic.com&quot;&gt;automattic.com&lt;/a&gt; &lt;a href=&quot;http://automattic.com/about/how-we-work/&quot;&gt;How We Work page&lt;/a&gt; and ran across this tidbit:&lt;br /&gt;
+bq. Everyone who joins, regardless of position, does support for their first three weeks.&lt;br /&gt;
+Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&amp;#8217;s an interesting concept still.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+ <entry>
+   <title>What I'm up to</title>
+   <link href="http://www.techfreak.net/2008/03/08/what-im-up-to.html"/>
+   <updated>2008-03-08T00:00:00-08:00</updated>
+   <id>http://www.techfreak.net/2008/03/08/what-im-up-to</id>
+   <content type="html">&lt;p&gt;Been very busy with work lately.  Here&amp;#8217;s some things I&amp;#8217;m up to.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reading &lt;a href=&quot;http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452&quot; title=&quot;Design Patterns in Ruby&quot;&gt;Design Patterns in Ruby&lt;/a&gt; by &lt;a href=&quot;http://www.jroller.com/rolsen/&quot;&gt;Russ Olsen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Settling into the Systems Engineering groups at work.  I transferred from IT to Engineering a few months back, it&amp;#8217;s shaping up well for me at this point.&lt;/li&gt;
+&lt;li&gt;Playing with the new MacBook Pro&lt;/li&gt;
+&lt;li&gt;Messing around on &lt;a href=&quot;http://twitter.com//xternal&quot;&gt;Twitter&lt;/a&gt; and &lt;a href=&quot;http://pownce.com/xternal/&quot;&gt;Pownce&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Posting some moronic photos to &lt;a href=&quot;http://www.flickr.com/photos/xternal1/&quot;&gt;Flickr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adding &lt;a href=&quot;http://site.gravatar.com/&quot;&gt;Gravatar&lt;/a&gt; support to my comments.&lt;/li&gt;
+&lt;li&gt;Trying to resist buying one of &lt;a href=&quot;http://eeepc.asus.com/global/&quot;&gt;these&lt;/a&gt;.  Thanks a lot, &lt;a href=&quot;http://www.brendoman.com/&quot;&gt;Brendan&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Toying with the &lt;a href=&quot;http://pownce.pbwiki.com/API%20Documentation2-0&quot;&gt;Pownce &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;And much , much more!  Heh.&lt;/li&gt;
+&lt;/ul&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
+ 
+</feed>
