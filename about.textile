@@ -3,8 +3,6 @@ layout: default
 title: about
 ---
 
-<h2 id="intro">About the author and this site.</h2>
-
 <div class="post about">
 h1. The Author
 
