@@ -10,5 +10,5 @@ before do
 end
 
 get '/' do
-  File.read('_site/index.html')
+  send_file '_site/index.html'
 end
