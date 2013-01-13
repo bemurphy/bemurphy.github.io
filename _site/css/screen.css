@@ -621,9 +621,6 @@ em.code {
 
 #archived-posts {
   list-style: none;
-}
-
-#archived-posts {
   padding-left: 0;
 }
 
@@ -648,6 +645,11 @@ em.code {
 
 .about ul li {
   margin-bottom: 4px;
+}
+
+.dsq-notice {
+  background: rgba(255,255,0,.05);
+  border: 1px solid rgba(210,210,0,.3);
 }
 
 /* ==========================================================================
