@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+    <link href="/css/screen.css?v=2" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; An Example of Wrapping</title>
+  </head>
+  <body>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2013/01/15/a-simple-example-of-wrapping.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2013/01/15/a-simple-example-of-wrapping.html"]').length) {
+            $('nav a[href="/2013/01/15/a-simple-example-of-wrapping.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
+
+    <section id="content">
+      <div class="post">
+  <h1>An Example of Wrapping</h1>
+
+  <p>You&#8217;ve been tasked with adding comments to some internal system at work.  You throw together some new controllers and views into your app, and churn out the feature quickly and efficiently.</p>
+<p>A few days pass, and a peer comes and informs you, &#8220;Hey, have you seen the comments?  Some people are swearing up a storm and Bob is <em>irritated</em>!&#8221;  You are left wondering, what to do.  You quickly discover there&#8217;s an <a href="https://rubygems.org/gems/obscenity">Obscenity</a> gem for Ruby, and get cracking.  At stage one, you&#8217;re just going to output sanitized versions of comments, rather than resort to draconian measures.</p>
+<p>Let&#8217;s assume an overly simple, Comment model with one property, content, that looks like this:</p>
+<div class="highlight"><pre><code class="ruby"><span class="no">Comment</span> <span class="o">=</span> <span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:username</span><span class="p">,</span> <span class="ss">:content</span><span class="p">)</span> <span class="k">do</span>
+  <span class="c1">#...</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>Dont&#8217; worry about database, etc, it&#8217;s beyond the point right now.  Dropping in a <em class="code">#clean_content</em> method is quick:</p>
+<div class="highlight"><pre><code class="ruby"><span class="no">Comment</span> <span class="o">=</span> <span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:username</span><span class="p">,</span> <span class="ss">:content</span><span class="p">)</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="nf">clean_content</span>
+    <span class="n">content</span> <span class="o">&amp;&amp;</span> <span class="no">Obscenity</span><span class="o">.</span><span class="n">sanitize</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">dup</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>Now off to update the views and change the references to <em class="code">@comment.content</em> to <em class="code">@comment.clean_content</em> and you&#8217;re done.   Wait, not so fast, that&#8217;s only one option, with others to consider.  Possible options include:</p>
+<ul>
+	<li>Changing the view references, as mentioned</li>
+	<li>Using a helper method like <em class="code">sanitized_comment(@comment)</em> to return the clean content</li>
+	<li>Opening your model back up and changing the content to return sanitized content, and storing the original content in <em class="code">#unsanitized_content</em></li>
+	<li>Wrapping your @comment instance and taking advantage of Ruby duck typing.</li>
+</ul>
+<p>Here&#8217;s a quick example of accomplishing the last.  The presenter/exhibit/delegate pattern in Ruby are often presented as a way to decorate new methods onto an instance, such as taking an underlying object with an <em class="code">#amount_in_cents</em> attribute and adding a new method for outputing it as readable currency.  Another way to leverage this is to intercept calls to an <em>existing</em> method, like <em class="code">#content</em>, and change its behavior.  Let me show you what I mean.</p>
+<p>First, <a href="http://www.ruby-doc.org/stdlib-1.9.3/libdoc/delegate/rdoc/SimpleDelegator.html">SimpleDelegator</a> can provide an easy wrapping for instances:</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">CleanComment</span> <span class="o">&lt;</span> <span class="no">SimpleDelegator</span>
+  <span class="c1"># In case you want to get back at the original</span>
+  <span class="k">def</span> <span class="nf">unsanitized_content</span>
+    <span class="n">__getobj__</span><span class="o">.</span><span class="n">content</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Ensure clean content</span>
+  <span class="k">def</span> <span class="nf">content</span>
+    <span class="n">clean_content</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>When you want to sanitize the comment, say after finding it via a controller, wrap it:</p>
+<div class="highlight"><pre><code class="ruby"><span class="vi">@comment</span> <span class="o">=</span> <span class="no">CleanComment</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
+</code></pre>
+</div><p>Now your views can keep rolling on with a calls to <em class="code">@comment.content</em> and be none the wiser.  Remember, Ruby&#8217;s duck typing is powerful;  rely on what instances respond to, as opposed to what they are instances of.</p>
+<p>This is partially a matter of taste, remember there&#8217;s often not a &#8220;right way&#8221;.  What&#8217;s important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros &amp; cons.  With wrapping, for instance, you have to remember to wrap!  And if it&#8217;s a collection, you must wrap them all.  There&#8217;s gems like <a href="https://github.com/drapergem/draper">draper</a> or <a href="https://github.com/objects-on-rails/display-case">display-case</a> than can help you on your way.</p>
+
+  <p class="signoff">
+    &mdash;Jan 15, 2013
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+    </footer>
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,63 @@
+---
+layout: post
+title: "An Example of Wrapping"
+published: true
+---
+
+You've been tasked with adding comments to some internal system at work.  You throw together some new controllers and views into your app, and churn out the feature quickly and efficiently.
+
+A few days pass, and a peer comes and informs you, "Hey, have you seen the comments?  Some people are swearing up a storm and Bob is _irritated_!"  You are left wondering, what to do.  You quickly discover there's an "Obscenity":https://rubygems.org/gems/obscenity gem for Ruby, and get cracking.  At stage one, you're just going to output sanitized versions of comments, rather than resort to draconian measures.
+
+Let's assume an overly simple, Comment model with one property, content, that looks like this:
+
+{% highlight ruby %}
+Comment = Struct.new(:username, :content) do
+  #...
+end
+{% endhighlight %}
+
+Dont' worry about database, etc, it's beyond the point right now.  Dropping in a _(code)#clean_content_ method is quick:
+
+{% highlight ruby %}
+Comment = Struct.new(:username, :content) do
+  def clean_content
+    content && Obscenity.sanitize(content.dup)
+  end
+end
+{% endhighlight %}
+
+Now off to update the views and change the references to _(code)@comment.content_ to _(code)@comment.clean_content_ and you're done.   Wait, not so fast, that's only one option, with others to consider.  Possible options include:
+
+* Changing the view references, as mentioned
+* Using a helper method like _(code)sanitized_comment(@comment)_ to return the clean content
+* Opening your model back up and changing the content to return sanitized content, and storing the original content in _(code)#unsanitized_content_
+* Wrapping your @comment instance and taking advantage of Ruby duck typing.
+
+Here's a quick example of accomplishing the last.  The presenter/exhibit/delegate pattern in Ruby are often presented as a way to decorate new methods onto an instance, such as taking an underlying object with an _(code)#amount_in_cents_ attribute and adding a new method for outputing it as readable currency.  Another way to leverage this is to intercept calls to an _existing_ method, like _(code)#content_, and change its behavior.  Let me show you what I mean.
+
+First, "SimpleDelegator":http://www.ruby-doc.org/stdlib-1.9.3/libdoc/delegate/rdoc/SimpleDelegator.html can provide an easy wrapping for instances:
+
+{% highlight ruby %}
+class CleanComment < SimpleDelegator
+  # In case you want to get back at the original
+  def unsanitized_content
+    __getobj__.content
+  end
+
+  # Ensure clean content
+  def content
+    clean_content
+  end
+end
+{% endhighlight %}
+
+When you want to sanitize the comment, say after finding it via a controller, wrap it:
+
+{% highlight ruby %}
+@comment = CleanComment.new(comment)
+{% endhighlight %}
+
+Now your views can keep rolling on with a calls to _(code)@comment.content_ and be none the wiser.  Remember, Ruby's duck typing is powerful;  rely on what instances respond to, as opposed to what they are instances of.
+
+This is partially a matter of taste, remember there's often not a "right way".  What's important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros & cons.  With wrapping, for instance, you have to remember to wrap!  And if it's a collection, you must wrap them all.  There's gems like "draper":https://github.com/drapergem/draper or "display-case":https://github.com/objects-on-rails/display-case than can help you on your way.
+

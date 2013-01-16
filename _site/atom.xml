@@ -4,11 +4,62 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-01-13T15:08:09-08:00</updated>
+ <updated>2013-01-15T22:38:02-08:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>An Example of Wrapping</title>
+   <link href="http://www.techfreak.net/2013/01/15/a-simple-example-of-wrapping.html"/>
+   <updated>2013-01-15T00:00:00-08:00</updated>
+   <id>http://www.techfreak.net/2013/01/15/a-simple-example-of-wrapping</id>
+   <content type="html">&lt;p&gt;You&amp;#8217;ve been tasked with adding comments to some internal system at work.  You throw together some new controllers and views into your app, and churn out the feature quickly and efficiently.&lt;/p&gt;
+&lt;p&gt;A few days pass, and a peer comes and informs you, &amp;#8220;Hey, have you seen the comments?  Some people are swearing up a storm and Bob is &lt;em&gt;irritated&lt;/em&gt;!&amp;#8221;  You are left wondering, what to do.  You quickly discover there&amp;#8217;s an &lt;a href=&quot;https://rubygems.org/gems/obscenity&quot;&gt;Obscenity&lt;/a&gt; gem for Ruby, and get cracking.  At stage one, you&amp;#8217;re just going to output sanitized versions of comments, rather than resort to draconian measures.&lt;/p&gt;
+&lt;p&gt;Let&amp;#8217;s assume an overly simple, Comment model with one property, content, that looks like this:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Struct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Dont&amp;#8217; worry about database, etc, it&amp;#8217;s beyond the point right now.  Dropping in a &lt;em class=&quot;code&quot;&gt;#clean_content&lt;/em&gt; method is quick:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Struct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean_content&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Obscenity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sanitize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Now off to update the views and change the references to &lt;em class=&quot;code&quot;&gt;@comment.content&lt;/em&gt; to &lt;em class=&quot;code&quot;&gt;@comment.clean_content&lt;/em&gt; and you&amp;#8217;re done.   Wait, not so fast, that&amp;#8217;s only one option, with others to consider.  Possible options include:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Changing the view references, as mentioned&lt;/li&gt;
+	&lt;li&gt;Using a helper method like &lt;em class=&quot;code&quot;&gt;sanitized_comment(@comment)&lt;/em&gt; to return the clean content&lt;/li&gt;
+	&lt;li&gt;Opening your model back up and changing the content to return sanitized content, and storing the original content in &lt;em class=&quot;code&quot;&gt;#unsanitized_content&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Wrapping your @comment instance and taking advantage of Ruby duck typing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;#8217;s a quick example of accomplishing the last.  The presenter/exhibit/delegate pattern in Ruby are often presented as a way to decorate new methods onto an instance, such as taking an underlying object with an &lt;em class=&quot;code&quot;&gt;#amount_in_cents&lt;/em&gt; attribute and adding a new method for outputing it as readable currency.  Another way to leverage this is to intercept calls to an &lt;em&gt;existing&lt;/em&gt; method, like &lt;em class=&quot;code&quot;&gt;#content&lt;/em&gt;, and change its behavior.  Let me show you what I mean.&lt;/p&gt;
+&lt;p&gt;First, &lt;a href=&quot;http://www.ruby-doc.org/stdlib-1.9.3/libdoc/delegate/rdoc/SimpleDelegator.html&quot;&gt;SimpleDelegator&lt;/a&gt; can provide an easy wrapping for instances:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CleanComment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SimpleDelegator&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# In case you want to get back at the original&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;unsanitized_content&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;__getobj__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Ensure clean content&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;clean_content&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;When you want to sanitize the comment, say after finding it via a controller, wrap it:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CleanComment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;Now your views can keep rolling on with a calls to &lt;em class=&quot;code&quot;&gt;@comment.content&lt;/em&gt; and be none the wiser.  Remember, Ruby&amp;#8217;s duck typing is powerful;  rely on what instances respond to, as opposed to what they are instances of.&lt;/p&gt;
+&lt;p&gt;This is partially a matter of taste, remember there&amp;#8217;s often not a &amp;#8220;right way&amp;#8221;.  What&amp;#8217;s important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros &amp;amp; cons.  With wrapping, for instance, you have to remember to wrap!  And if it&amp;#8217;s a collection, you must wrap them all.  There&amp;#8217;s gems like &lt;a href=&quot;https://github.com/drapergem/draper&quot;&gt;draper&lt;/a&gt; or &lt;a href=&quot;https://github.com/objects-on-rails/display-case&quot;&gt;display-case&lt;/a&gt; than can help you on your way.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>Two Support Objects You May Have Missed</title>
@@ -260,29 +311,6 @@ So this is a bit of old news.  I was going back through the files on my camera I
    <content type="html">&lt;p&gt;I was just browsing the &lt;a href=&quot;http://automattic.com&quot;&gt;automattic.com&lt;/a&gt; &lt;a href=&quot;http://automattic.com/about/how-we-work/&quot;&gt;How We Work page&lt;/a&gt; and ran across this tidbit:&lt;br /&gt;
 bq. Everyone who joins, regardless of position, does support for their first three weeks.&lt;br /&gt;
 Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&amp;#8217;s an interesting concept still.&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>What I'm up to</title>
-   <link href="http://www.techfreak.net/2008/03/08/what-im-up-to.html"/>
-   <updated>2008-03-08T00:00:00-08:00</updated>
-   <id>http://www.techfreak.net/2008/03/08/what-im-up-to</id>
-   <content type="html">&lt;p&gt;Been very busy with work lately.  Here&amp;#8217;s some things I&amp;#8217;m up to.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Reading &lt;a href=&quot;http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452&quot; title=&quot;Design Patterns in Ruby&quot;&gt;Design Patterns in Ruby&lt;/a&gt; by &lt;a href=&quot;http://www.jroller.com/rolsen/&quot;&gt;Russ Olsen&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Settling into the Systems Engineering groups at work.  I transferred from IT to Engineering a few months back, it&amp;#8217;s shaping up well for me at this point.&lt;/li&gt;
-&lt;li&gt;Playing with the new MacBook Pro&lt;/li&gt;
-&lt;li&gt;Messing around on &lt;a href=&quot;http://twitter.com//xternal&quot;&gt;Twitter&lt;/a&gt; and &lt;a href=&quot;http://pownce.com/xternal/&quot;&gt;Pownce&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Posting some moronic photos to &lt;a href=&quot;http://www.flickr.com/photos/xternal1/&quot;&gt;Flickr&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Adding &lt;a href=&quot;http://site.gravatar.com/&quot;&gt;Gravatar&lt;/a&gt; support to my comments.&lt;/li&gt;
-&lt;li&gt;Trying to resist buying one of &lt;a href=&quot;http://eeepc.asus.com/global/&quot;&gt;these&lt;/a&gt;.  Thanks a lot, &lt;a href=&quot;http://www.brendoman.com/&quot;&gt;Brendan&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Toying with the &lt;a href=&quot;http://pownce.pbwiki.com/API%20Documentation2-0&quot;&gt;Pownce &lt;span class=&quot;caps&quot;&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;And much , much more!  Heh.&lt;/li&gt;
-&lt;/ul&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>

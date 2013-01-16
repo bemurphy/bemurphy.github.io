@@ -561,6 +561,10 @@ blockquote {
   background: #f9f9f9;
 }
 
+#content ul {
+  line-height: 1.6em;
+}
+
 div.highlight {
   line-height: 1em;
   margin-top: 24px;
