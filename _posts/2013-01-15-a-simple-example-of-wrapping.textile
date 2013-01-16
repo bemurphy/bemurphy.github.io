@@ -11,7 +11,7 @@ A few days pass, and a peer comes and informs you, "Hey, have you seen the comme
 Let's assume an overly simple, Comment model with one property, content, that looks like this:
 
 {% highlight ruby %}
-Comment = Struct.new(:username, :content) do
+Comment = Struct.new(:content) do
   #...
 end
 {% endhighlight %}
@@ -19,7 +19,7 @@ end
 Dont' worry about database, etc, it's beyond the point right now.  Dropping in a _(code)#clean_content_ method is quick:
 
 {% highlight ruby %}
-Comment = Struct.new(:username, :content) do
+Comment = Struct.new(:content) do
   def clean_content
     content && Obscenity.sanitize(content.dup)
   end
