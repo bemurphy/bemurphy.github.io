@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-01-15T22:40:20-08:00</updated>
+ <updated>2013-01-15T22:43:46-08:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -54,7 +54,7 @@
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CleanComment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;p&gt;Now your views can keep rolling on with a calls to &lt;em class=&quot;code&quot;&gt;@comment.content&lt;/em&gt; and be none the wiser.  Remember, Ruby&amp;#8217;s duck typing is powerful;  rely on what instances respond to, as opposed to what they are instances of.&lt;/p&gt;
-&lt;p&gt;This is partially a matter of taste, remember there&amp;#8217;s often not a &amp;#8220;right way&amp;#8221;.  What&amp;#8217;s important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros &amp;amp; cons.  With wrapping, for instance, you have to remember to wrap!  And if it&amp;#8217;s a collection, you must wrap them all.  There&amp;#8217;s gems like &lt;a href=&quot;https://github.com/drapergem/draper&quot;&gt;draper&lt;/a&gt; or &lt;a href=&quot;https://github.com/objects-on-rails/display-case&quot;&gt;display-case&lt;/a&gt; than can help you on your way.&lt;/p&gt;</content>
+&lt;p&gt;This is partially a matter of taste, remember there&amp;#8217;s often not a &amp;#8220;right way&amp;#8221;.  What&amp;#8217;s important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros &amp;amp; cons.  With wrapping, for instance, you have to remember to wrap!  And if it&amp;#8217;s a collection, you must wrap them all.  There&amp;#8217;s gems like &lt;a href=&quot;https://github.com/drapergem/draper&quot;&gt;draper&lt;/a&gt; or &lt;a href=&quot;https://github.com/objects-on-rails/display-case&quot;&gt;display-case&lt;/a&gt; that can help you on your way.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
