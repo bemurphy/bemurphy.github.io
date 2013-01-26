@@ -42,6 +42,44 @@
 <div class="post">  
 
   <h1>
+    A note about "friendly" passwords
+  </h1>
+
+  <p>Often in a web application, the time will come where you opt to generate temporary passwords for users.  One common approach to this is to use a helper that combines a small about of random data (such as 4 random numbers) with a word randomly selected from a pared down dictionary list.</p>
+<p>Please don&#8217;t do this.  There are at least two reasons:</p>
+<ul>
+	<li>Using a word list radically reduces password entropy</li>
+	<li>Eventually a password will unintentionally perplex, or worse, offend someone</li>
+</ul>
+<p>If the day comes and the system generates the password &#8220;cigar1984&#8221; for somebody trying to quit smoking, that could be awkward.</p>
+<p>Now, I&#8217;m no crypto expert, but I&#8217;m going to assume that the ruby <em class="code">SecureRandom</em> library will do a better job than me at outputting random strings.  So it&#8217;s of use here.  For example:</p>
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s2">&quot;securerandom&quot;</span>
+
+<span class="c1"># outputs something like &quot;Ht25IeNqIBUp&quot;</span>
+<span class="no">SecureRandom</span><span class="o">.</span><span class="n">urlsafe_base64</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9]+/i</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="o">]</span>
+</code></pre>
+</div><p>This strips non-alphanumeric characters such as &#8216;_&#8217; and &#8216;-&#8217; out.  This is useful because people are less used to typing them, and also, certain mouseclick-to-copy behaviors will split on those characters depending on the environment.</p>
+<p>It&#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed in an email.  Fonts can make characters including the following difficult to distinguish</p>
+<ul>
+	<li>0 (zero)</li>
+	<li>1 (the number one)</li>
+	<li>I (the uppercase i)</li>
+	<li>O (the uppercase OH)</li>
+	<li>l (lowercase L)</li>
+</ul>
+<p>You can <em class="code">String#tr</em> these out for substitutions, or strip them alltogether.  This will slightly reduce entropy, but by keeping a longer<br />
+password you compensate somewhat.</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/2013/01/26/a-note-about--friendly--passwords.html">Jan 26, 2013</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/2013/01/26/a-note-about--friendly--passwords.html#disqus_thread">/2013/01/26/a-note-about--friendly--passwords.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
     An Example of Wrapping
   </h1>
 
@@ -226,22 +264,6 @@
   </p>
 
   <p class="index_comments_count"><a href="/programming,/ruby/2011/07/27/notnot-alternative.html#disqus_thread">/programming,/ruby/2011/07/27/notnot-alternative.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    Onward to Jekyll
-  </h1>
-
-  <p>In the grand tradition of getting bored with blogging software, without actually taking the time to blog, I&#8217;ve transitioned software yet again.  This time I selected <a href="http://github.com/mojombo/jekyll">Jekyll</a> to try.  I discovered that in the past I&#8217;ve had a habit of writing blog posts in TextMate or Vim, and then pasting them into whatever blog software I was using at the time.  That&#8217;s silly.  Now I can just edit in my editor of choice, have full <em>syntax aware</em> access to template and <span class="caps">CSS</span> documents without dealing with a nasty web interface, and have greater flexibility for throwing different pages up on the site.  With blog software, it&#8217;s often like pulling teeth when you want those pages that are more <span class="caps">CMS</span> than blog.  Not so with Jekyll.  It&#8217;s a template system that simply builds a static site out of layout and markup files (I&#8217;m using textile).  When you want that one-off page, all you have to do is drop it in.  There&#8217;s no requirement that it play nice with the rest of your site, it could truly be a one-off if you so desired.</p>
-<p>Anyway, if you want some fun and simple software to test-drive, I&#8217;d recommend it.  Not that it&#8217;ll get me to post any more.  Or perhaps, it will.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2010/09/08/onward-to-jekyll.html">Sep 08, 2010</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2010/09/08/onward-to-jekyll.html#disqus_thread">/2010/09/08/onward-to-jekyll.html comments</a></p>
   </div>
 
 

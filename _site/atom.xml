@@ -4,11 +4,46 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-01-15T22:44:12-08:00</updated>
+ <updated>2013-01-26T11:59:05-08:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>A note about "friendly" passwords</title>
+   <link href="http://www.techfreak.net/2013/01/26/a-note-about--friendly--passwords.html"/>
+   <updated>2013-01-26T00:00:00-08:00</updated>
+   <id>http://www.techfreak.net/2013/01/26/a-note-about--friendly--passwords</id>
+   <content type="html">&lt;p&gt;Often in a web application, the time will come where you opt to generate temporary passwords for users.  One common approach to this is to use a helper that combines a small about of random data (such as 4 random numbers) with a word randomly selected from a pared down dictionary list.&lt;/p&gt;
+&lt;p&gt;Please don&amp;#8217;t do this.  There are at least two reasons:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Using a word list radically reduces password entropy&lt;/li&gt;
+	&lt;li&gt;Eventually a password will unintentionally perplex, or worse, offend someone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the day comes and the system generates the password &amp;#8220;cigar1984&amp;#8221; for somebody trying to quit smoking, that could be awkward.&lt;/p&gt;
+&lt;p&gt;Now, I&amp;#8217;m no crypto expert, but I&amp;#8217;m going to assume that the ruby &lt;em class=&quot;code&quot;&gt;SecureRandom&lt;/em&gt; library will do a better job than me at outputting random strings.  So it&amp;#8217;s of use here.  For example:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;securerandom&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# outputs something like &amp;quot;Ht25IeNqIBUp&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlsafe_base64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/[^a-z0-9]+/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;This strips non-alphanumeric characters such as &amp;#8216;_&amp;#8217; and &amp;#8216;-&amp;#8217; out.  This is useful because people are less used to typing them, and also, certain mouseclick-to-copy behaviors will split on those characters depending on the environment.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed in an email.  Fonts can make characters including the following difficult to distinguish&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;0 (zero)&lt;/li&gt;
+	&lt;li&gt;1 (the number one)&lt;/li&gt;
+	&lt;li&gt;I (the uppercase i)&lt;/li&gt;
+	&lt;li&gt;O (the uppercase OH)&lt;/li&gt;
+	&lt;li&gt;l (lowercase L)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can &lt;em class=&quot;code&quot;&gt;String#tr&lt;/em&gt; these out for substitutions, or strip them alltogether.  This will slightly reduce entropy, but by keeping a longer&lt;br /&gt;
+password you compensate somewhat.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>An Example of Wrapping</title>
@@ -297,20 +332,6 @@
    <id>http://www.techfreak.net/2008/03/24/my-eye</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/xternal1/sets/72157604236634154/&quot; title=&quot;DSC00406.JPG by xternal1, on Flickr&quot;&gt;&lt;img src=&quot;http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;DSC00406.JPG&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
 So this is a bit of old news.  I was going back through the files on my camera I haven&amp;#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&amp;#8217;t know why I&amp;#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&amp;#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&amp;#8217;ve got a little red spot on my right lower lid, it&amp;#8217;s the remnants of this.  It&amp;#8217;s still got a little ways to go before it totally clears up.&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Keeping support focused</title>
-   <link href="http://www.techfreak.net/2008/03/19/keeping-support-focused.html"/>
-   <updated>2008-03-19T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2008/03/19/keeping-support-focused</id>
-   <content type="html">&lt;p&gt;I was just browsing the &lt;a href=&quot;http://automattic.com&quot;&gt;automattic.com&lt;/a&gt; &lt;a href=&quot;http://automattic.com/about/how-we-work/&quot;&gt;How We Work page&lt;/a&gt; and ran across this tidbit:&lt;br /&gt;
-bq. Everyone who joins, regardless of position, does support for their first three weeks.&lt;br /&gt;
-Now, I&amp;#8217;d probably kinda-hate doing that, but it seems like a possibly great idea for keeping good customer service at the heart of a company.  I think it would also be tough for bigger, more traditional companies to pull off, but it&amp;#8217;s an interesting concept still.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>
