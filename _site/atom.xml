@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-01-26T12:03:07-08:00</updated>
+ <updated>2013-01-26T12:05:45-08:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -29,7 +29,7 @@
 &lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlsafe_base64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/[^a-z0-9]+/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;p&gt;This strips non-alphanumeric characters such as &amp;#8216;_&amp;#8217; and &amp;#8216;-&amp;#8217; out.  This is useful because people are less used to typing them, and also, certain mouseclick-to-copy behaviors will split on those characters depending on the environment.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed in an email.  Fonts can make characters including the following difficult to distinguish&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed from the screen.  Fonts can make characters including the following difficult to distinguish&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;0 (zero)&lt;/li&gt;
 	&lt;li&gt;1 (the number one)&lt;/li&gt;

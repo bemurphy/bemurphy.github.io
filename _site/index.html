@@ -59,7 +59,7 @@
 <span class="no">SecureRandom</span><span class="o">.</span><span class="n">urlsafe_base64</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9]+/i</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="o">]</span>
 </code></pre>
 </div><p>This strips non-alphanumeric characters such as &#8216;_&#8217; and &#8216;-&#8217; out.  This is useful because people are less used to typing them, and also, certain mouseclick-to-copy behaviors will split on those characters depending on the environment.</p>
-<p>It&#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed in an email.  Fonts can make characters including the following difficult to distinguish</p>
+<p>It&#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed from the screen.  Fonts can make characters including the following difficult to distinguish</p>
 <ul>
 	<li>0 (zero)</li>
 	<li>1 (the number one)</li>
