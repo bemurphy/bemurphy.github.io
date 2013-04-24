@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+    <link href="/css/screen.css?v=2" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; On Authorization Failures</title>
+  </head>
+  <body>
+    <nav>
+      <header>
+        <h1>
+          <a href="/"><span>Brendon Murphy</span>
+          Techfreak.net</a>
+        </h1>
+        </header>
+        <ul data-selected="/2013/04/24/on-authorization-failures.html">
+          <li><h3><a href="/">Blog</a></h3></li>
+          <li><h3><a href="/archive.html">Archives</a></h3></li>
+          <li><h3><a href="/about.html">About</a></h3></li>
+          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+        </ul>
+        <script type="text/javascript">
+          if ($('nav a[href="/2013/04/24/on-authorization-failures.html"]').length) {
+            $('nav a[href="/2013/04/24/on-authorization-failures.html"]').closest('li').addClass("selected");
+          } else {
+            $('nav li').first().addClass("selected");
+          }
+        </script>
+      <section class="sell"></section>
+    </nav>
+
+    <section id="content">
+      <div class="post">
+  <h1>On Authorization Failures</h1>
+
+  <p>As a slight extension to the previous post, I wanted to make a quick point about authorization failures.</p>
+<p>Given you&#8217;ve raised <em class="code">SomeAuthorizationFailure</em> exception in a controller action, you might have a general rescue handling it:</p>
+<div class="highlight"><pre><code class="ruby"><span class="n">rescue_from</span> <span class="s1">&#39;SomeAuthorizationFailure&#39;</span> <span class="k">do</span>
+  <span class="n">render</span> <span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bad user!&quot;</span><span class="p">,</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">403</span>
+<span class="k">end</span>
+</code></pre>
+</div><p>The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.</p>
+<p>Cool, let&#8217;s wrap that up, it&#8217;s done!  Hold on, not so fast.</p>
+<p>If you use Github (<em>if?</em>), you may have noticed something that struck you as curious the first time it happened.  Say you&#8217;re hanging in the dev campfire room, and somebody pastes a link to a line of code for you to checkout (like /foocorp/awesomeproject/config/application.rb#L7).  You clicked on the link but forgot you&#8217;ve logged out.  Boom&#8230;.403 Forbidden.</p>
+<p>Wait..no that&#8217;s not a 403, it&#8217;s a 404.  What the heck?</p>
+<p>The answer is pretty simple.  On your little todo app you run for friends and family, it&#8217;s probably not a huge deal for somebody to hit /todo_lists/42/item/5 and get a 403.  Wow, somebody now knows you have a todo list 42 and item 5.  Probably not a big deal.</p>
+<p>But on a site like Github, let&#8217;s change that application.rb link to say, /foocorp/awesomeproject/config/initializers/devise.rb.  403?  Oh look, that project is using Devise!</p>
+<p>The moral of the story:  best to give a 404 status on authorization failures if you don&#8217;t want to cater to mining and leaking of sensitive info.</p>
+
+  <p class="signoff">
+    &mdash;Apr 24, 2013
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+    </section>
+    <footer id="footer">
+      
+      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
+    </footer>
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+  </body>
+</html>

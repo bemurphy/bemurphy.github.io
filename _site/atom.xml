@@ -4,11 +4,35 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-04-23T22:24:48-07:00</updated>
+ <updated>2013-04-24T08:47:18-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>On Authorization Failures</title>
+   <link href="http://www.techfreak.net/2013/04/24/on-authorization-failures.html"/>
+   <updated>2013-04-24T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2013/04/24/on-authorization-failures</id>
+   <content type="html">&lt;p&gt;As a slight extension to the previous post, I wanted to make a quick point about authorization failures.&lt;/p&gt;
+&lt;p&gt;Given you&amp;#8217;ve raised &lt;em class=&quot;code&quot;&gt;SomeAuthorizationFailure&lt;/em&gt; exception in a controller action, you might have a general rescue handling it:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rescue_from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;SomeAuthorizationFailure&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Bad user!&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.&lt;/p&gt;
+&lt;p&gt;Cool, let&amp;#8217;s wrap that up, it&amp;#8217;s done!  Hold on, not so fast.&lt;/p&gt;
+&lt;p&gt;If you use Github (&lt;em&gt;if?&lt;/em&gt;), you may have noticed something that struck you as curious the first time it happened.  Say you&amp;#8217;re hanging in the dev campfire room, and somebody pastes a link to a line of code for you to checkout (like /foocorp/awesomeproject/config/application.rb#L7).  You clicked on the link but forgot you&amp;#8217;ve logged out.  Boom&amp;#8230;.403 Forbidden.&lt;/p&gt;
+&lt;p&gt;Wait..no that&amp;#8217;s not a 403, it&amp;#8217;s a 404.  What the heck?&lt;/p&gt;
+&lt;p&gt;The answer is pretty simple.  On your little todo app you run for friends and family, it&amp;#8217;s probably not a huge deal for somebody to hit /todo_lists/42/item/5 and get a 403.  Wow, somebody now knows you have a todo list 42 and item 5.  Probably not a big deal.&lt;/p&gt;
+&lt;p&gt;But on a site like Github, let&amp;#8217;s change that application.rb link to say, /foocorp/awesomeproject/config/initializers/devise.rb.  403?  Oh look, that project is using Devise!&lt;/p&gt;
+&lt;p&gt;The moral of the story:  best to give a 404 status on authorization failures if you don&amp;#8217;t want to cater to mining and leaking of sensitive info.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>On Authorization Patterns</title>
@@ -326,31 +350,6 @@
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>Roll your own dropbox</title>
-   <link href="http://www.techfreak.net/2008/03/29/roll-your-own-dropbox.html"/>
-   <updated>2008-03-29T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2008/03/29/roll-your-own-dropbox</id>
-   <content type="html">&lt;p&gt;So I&amp;#8217;ve had occasion recently to send out some slightly large .zip files to friends.  The problem with doing this is, often the attachments end up too large for some mail server in the mix.  The typical way these days around the problem is to use some sort of dropbox web application.  Usually you upload your file to the dropbox site, and are presented with a link that you can email to your friend, which then allows them to download the file.  Check out &lt;a href=&quot;http://www.filedropper.com/&quot;&gt;filedropper.com&lt;/a&gt; for a simple example of such an application.&lt;/p&gt;
-&lt;p&gt;Of course, I was bored, and don&amp;#8217;t like the extra steps of having to archive my files to a zip, browse to a website, click upload, find the file I want, upload it, and delete the archive copy.  Granted, there are some quicker solutions out there, but again, I was bored.&lt;/p&gt;
-&lt;p&gt;So I came up with a tiny solution that costs a few pennies and was fun.  All you need is the OS X Automator program, a programming language of your choice (I picked &lt;a href=&quot;http://www.ruby-lang.org/en/&quot;&gt;ruby&lt;/a&gt;) and a module for interfacing with &lt;a href=&quot;http://aws.amazon.com/s3&quot;&gt;Amazon&amp;#8217;s S3 service&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The procedure is simple.  If I have time, and clean up the code enough, I might post it here.  But here&amp;#8217;s the basic workflow steps:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Make an Automator workflow that takes a selected set of files (&amp;#8220;Get Selected Items&amp;#8221;) and creates an archive (&amp;#8220;Create Archive&amp;#8221;) out of them&lt;/li&gt;
-&lt;li&gt;Pass that archive into a script (&amp;#8220;Run Shell Script&amp;#8221;) to upload the file to S3.  Generate a filename for S3 by hashing some timestamp info, the filename, etc.&lt;/li&gt;
-&lt;li&gt;Store the file on S3, and then output the full S3 url for capture by Automator.&lt;/li&gt;
-&lt;li&gt;Use the Automator &amp;#8220;New Mail Message&amp;#8221; action, passing in the url as the content of the message&lt;/li&gt;
-&lt;li&gt;Plan on manually addressing the message, filling out the body if you like.&lt;/li&gt;
-&lt;li&gt;Now here&amp;#8217;s what makes it convenient: save the workflow as an application.  Drag the saved application to the Dock.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.&lt;/p&gt;
-&lt;p&gt;I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&amp;#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&amp;#8217;s not as &amp;#8220;sexy&amp;#8221;, right?&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>

@@ -1,0 +1,30 @@
+---
+layout: post
+title: "On Authorization Failures"
+published: true
+---
+
+As a slight extension to the previous post, I wanted to make a quick point about authorization failures.
+
+Given you've raised _(code)SomeAuthorizationFailure_ exception in a controller action, you might have a general rescue handling it:
+
+{% highlight ruby %}
+rescue_from 'SomeAuthorizationFailure' do
+  render :text => "Bad user!", :status => 403
+end
+{% endhighlight %}
+
+The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.
+
+Cool, let's wrap that up, it's done!  Hold on, not so fast.
+
+If you use Github (_if?_), you may have noticed something that struck you as curious the first time it happened.  Say you're hanging in the dev campfire room, and somebody pastes a link to a line of code for you to checkout (like /foocorp/awesomeproject/config/application.rb#L7).  You clicked on the link but forgot you've logged out.  Boom....403 Forbidden.
+
+Wait..no that's not a 403, it's a 404.  What the heck?
+
+The answer is pretty simple.  On your little todo app you run for friends and family, it's probably not a huge deal for somebody to hit /todo_lists/42/item/5 and get a 403.  Wow, somebody now knows you have a todo list 42 and item 5.  Probably not a big deal.
+
+But on a site like Github, let's change that application.rb link to say, /foocorp/awesomeproject/config/initializers/devise.rb.  403?  Oh look, that project is using Devise!
+
+The moral of the story:  best to give a 404 status on authorization failures if you don't want to cater to mining and leaking of sensitive info.
+
