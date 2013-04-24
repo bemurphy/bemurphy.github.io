@@ -42,6 +42,42 @@
 <div class="post">  
 
   <h1>
+    On Authorization Patterns
+  </h1>
+
+  <p>Once upon a time, I&#8217;d heavily lean upon scoped finds for cheap authorization in Rails controller actions.  For instance, a system might have many users, for which each has many projects they can manage.  In order to find a project that a user can administer, an action may include the following:</p>
+<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</code></pre>
+</div><p>This can work.  If a user tries to hit project id 42, for which they aren&#8217;t associated with, the execution short circuits at that point.  The security on that project has been maintained.</p>
+<p>I think most people know at this point, this is a poor general authorization scheme, because for one, it spreads your authorization logic, no matter how simple, around the application.  With a few controllers in a small system, this probably isn&#8217;t a big deal.</p>
+<p>Enter an authorization scheme, you might write:</p>
+<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="n">authorize</span> <span class="vi">@project</span>
+</code></pre>
+</div><p>The <em class="code">authorize</em> method here will typically take the current user, lookup some policy object, and run a check.  If a user can be associated to a project, but not be able to edit it, this will probably pan out as you expect.</p>
+<p>Sometimes though, you could simply write such code to be:</p>
+<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="n">authorize</span> <span class="vi">@project</span>
+</code></pre>
+</div><p>This can be a subtle, but I believe powerful, difference.  First, your finder usage is simplified.  But second, and I believe more importantly, the code becomes more straightforward and your exceptions more accurate.  Take another look:</p>
+<div class="highlight"><pre><code class="ruby"><span class="c1"># If no project is found, raise ActiveRecord::RecordNotFound</span>
+<span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="c1"># If the user is not authorized, raise SomeAuthorizationException</span>
+<span class="n">authorize</span> <span class="vi">@project</span>
+</code></pre>
+</div><p>This is a worthwhile difference.  Want to keep metrics or get alerted on security violation attempts?  Now it can be clearly split.  Or perhaps, you take different action or set different flash messages;  this can be handled more cleanly now.</p>
+<p>When it comes to patterns, remember, it&#8217;s never one-size-fits-all.  What&#8217;s good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.</p>  
+  
+  <p class="signoff">
+    &mdash;<a href="/2013/04/23/on-authorization-patterns.html">Apr 23, 2013</a>
+  </p>
+
+  <p class="index_comments_count"><a href="/2013/04/23/on-authorization-patterns.html#disqus_thread">/2013/04/23/on-authorization-patterns.html comments</a></p>
+  </div>
+
+<div class="post">  
+
+  <h1>
     A note about "friendly" passwords
   </h1>
 
@@ -240,29 +276,6 @@
   </p>
 
   <p class="index_comments_count"><a href="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html#disqus_thread">/2011/10/01/spec-your-codebase%2C-not-just-your-code.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    NotNot Alternative
-  </h1>
-
-  <p>There&#8217;s a common ruby convention out there, I call it NotNot.  You&#8217;ll find it often in predicate methods, and it looks like it sounds, &#8216;!!&#8217;.  I suppose you could call it &#8220;Bang Bang&#8221;, or perhaps it has a real name I&#8217;m not aware of.</p>
-<p>I don&#8217;t like NotNot, primarily I think because in my head it seems like the dreaded English grammar double negative.  In other words, it&#8217;s just weird.</p>
-<p>The point of the NotNot is for your classes to return true/false, rather than just truthy/falsy.  Let&#8217;s start with a simple example predicate:</p>
-<script src="https://gist.github.com/1109678.js?file=first_example.rb"></script><p>What?  That looks kind of strange, however, it will pass conditional tests, since ruby treats the values nil and false both as falsy values, while other values as truthy.  But again, the returns look weird.  Enter the NotNot:</p>
-<script src="https://gist.github.com/1109678.js?file=second_example.rb"></script><p>Hey, those returns looks better, I see we&#8217;re getting back real true/false which is really what we want.  But that NotNot looks weird.  Think about it in your head, what&#8217;s the value of not not false&#8230;uh.</p>
-<p>Say hello to the TrueClass#&amp; method.  The <a href="http://www.ruby-doc.org/core/classes/TrueClass.html#M000564">TrueClass RDoc states</a> that the &amp; method &#8220;Returns false if obj is nil or false, true otherwise.&#8221;</p>
-<script src="https://gist.github.com/1109678.js?file=third_example.rb"></script><p>You&#8217;ll note we&#8217;re still getting back true/false.  The method is less terse than the NotNot, but I think slightly a better match intuitively.</p>
-<p>In the end, it really boils down to style and readability.  If you code Ruby, while it&#8217;s important to know the NotNot, I&#8217;d advise something your brain doesn&#8217;t have to double unroll.</p>
-<p>Hat tip to my friend <a href="http://www.billpratt.net/">Bill</a> for taking me straight from example 1 to 3 when I started in Ruby.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/programming,/ruby/2011/07/27/notnot-alternative.html">Jul 27, 2011</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/programming,/ruby/2011/07/27/notnot-alternative.html#disqus_thread">/programming,/ruby/2011/07/27/notnot-alternative.html comments</a></p>
   </div>
 
 

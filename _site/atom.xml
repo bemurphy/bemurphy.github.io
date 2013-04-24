@@ -4,11 +4,44 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-01-26T12:06:15-08:00</updated>
+ <updated>2013-04-23T22:24:48-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
  </author>
+ 
+ <entry>
+   <title>On Authorization Patterns</title>
+   <link href="http://www.techfreak.net/2013/04/23/on-authorization-patterns.html"/>
+   <updated>2013-04-23T00:00:00-07:00</updated>
+   <id>http://www.techfreak.net/2013/04/23/on-authorization-patterns</id>
+   <content type="html">&lt;p&gt;Once upon a time, I&amp;#8217;d heavily lean upon scoped finds for cheap authorization in Rails controller actions.  For instance, a system might have many users, for which each has many projects they can manage.  In order to find a project that a user can administer, an action may include the following:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;projects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;This can work.  If a user tries to hit project id 42, for which they aren&amp;#8217;t associated with, the execution short circuits at that point.  The security on that project has been maintained.&lt;/p&gt;
+&lt;p&gt;I think most people know at this point, this is a poor general authorization scheme, because for one, it spreads your authorization logic, no matter how simple, around the application.  With a few controllers in a small system, this probably isn&amp;#8217;t a big deal.&lt;/p&gt;
+&lt;p&gt;Enter an authorization scheme, you might write:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;projects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;authorize&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;The &lt;em class=&quot;code&quot;&gt;authorize&lt;/em&gt; method here will typically take the current user, lookup some policy object, and run a check.  If a user can be associated to a project, but not be able to edit it, this will probably pan out as you expect.&lt;/p&gt;
+&lt;p&gt;Sometimes though, you could simply write such code to be:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;authorize&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;This can be a subtle, but I believe powerful, difference.  First, your finder usage is simplified.  But second, and I believe more importantly, the code becomes more straightforward and your exceptions more accurate.  Take another look:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# If no project is found, raise ActiveRecord::RecordNotFound&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# If the user is not authorized, raise SomeAuthorizationException&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;authorize&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@project&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;p&gt;This is a worthwhile difference.  Want to keep metrics or get alerted on security violation attempts?  Now it can be clearly split.  Or perhaps, you take different action or set different flash messages;  this can be handled more cleanly now.&lt;/p&gt;
+&lt;p&gt;When it comes to patterns, remember, it&amp;#8217;s never one-size-fits-all.  What&amp;#8217;s good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.&lt;/p&gt;</content>
+   <author>
+     <name>Brendon Murphy</name>
+     <uri>http://www.techfreak.net/about.html</uri>
+   </author>
+ </entry>
  
  <entry>
    <title>A note about "friendly" passwords</title>
@@ -318,19 +351,6 @@
 &lt;/ol&gt;
 &lt;p&gt;Now I have a droplet on the dock which I can drag any number of selected files to, which will upload to S3, and generate a new mail message with the download link in the message body.&lt;/p&gt;
 &lt;p&gt;I still need a scheduled job that cleans out old files from the bucket.  But the process is fairly easy, works great, and was fun to come up with.  Now I admit, for a small solution for use with friends, there&amp;#8217;s really no reason to pick Amazon.  I could probably just as easily upload to my website, and link from there.  But hey, that&amp;#8217;s not as &amp;#8220;sexy&amp;#8221;, right?&lt;/p&gt;</content>
-   <author>
-     <name>Brendon Murphy</name>
-     <uri>http://www.techfreak.net/about.html</uri>
-   </author>
- </entry>
- 
- <entry>
-   <title>My eye</title>
-   <link href="http://www.techfreak.net/2008/03/24/my-eye.html"/>
-   <updated>2008-03-24T00:00:00-07:00</updated>
-   <id>http://www.techfreak.net/2008/03/24/my-eye</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/xternal1/sets/72157604236634154/&quot; title=&quot;DSC00406.JPG by xternal1, on Flickr&quot;&gt;&lt;img src=&quot;http://farm3.static.flickr.com/2091/2359770041_09915305e5_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;DSC00406.JPG&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
-So this is a bit of old news.  I was going back through the files on my camera I haven&amp;#8217;t pulled off in a few months, and found some pics of my eye when it got infected a couple months back.  I don&amp;#8217;t know why I&amp;#8217;d think to share this, but oh well.  Anyway, it swelled way up, these don&amp;#8217;t even represent the worst of it.  I ended up having to see an opthamologist to have the infected tissue cut out.  He had to go in through the back of the eyelid.  It was far worse to anticipate than the surgery was itself.  So, if you ever wonder why I&amp;#8217;ve got a little red spot on my right lower lid, it&amp;#8217;s the remnants of this.  It&amp;#8217;s still got a little ways to go before it totally clears up.&lt;/p&gt;</content>
    <author>
      <name>Brendon Murphy</name>
      <uri>http://www.techfreak.net/about.html</uri>

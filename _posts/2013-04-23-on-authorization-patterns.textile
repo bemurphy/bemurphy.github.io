@@ -1,0 +1,44 @@
+---
+layout: post
+title: "On Authorization Patterns"
+published: true
+---
+
+Once upon a time, I'd heavily lean upon scoped finds for cheap authorization in Rails controller actions.  For instance, a system might have many users, for which each has many projects they can manage.  In order to find a project that a user can administer, an action may include the following:
+
+{% highlight ruby %}
+@project = current_user.projects.find(params[:id])
+{% endhighlight %}
+
+This can work.  If a user tries to hit project id 42, for which they aren't associated with, the execution short circuits at that point.  The security on that project has been maintained.
+
+I think most people know at this point, this is a poor general authorization scheme, because for one, it spreads your authorization logic, no matter how simple, around the application.  With a few controllers in a small system, this probably isn't a big deal.
+
+Enter an authorization scheme, you might write:
+
+{% highlight ruby %}
+@project = current_user.projects.find(params[:id])
+authorize @project
+{% endhighlight %}
+
+The _(code)authorize_ method here will typically take the current user, lookup some policy object, and run a check.  If a user can be associated to a project, but not be able to edit it, this will probably pan out as you expect.
+
+Sometimes though, you could simply write such code to be:
+
+{% highlight ruby %}
+@project = Project.find(params[:id])
+authorize @project
+{% endhighlight %}
+
+This can be a subtle, but I believe powerful, difference.  First, your finder usage is simplified.  But second, and I believe more importantly, the code becomes more straightforward and your exceptions more accurate.  Take another look:
+
+{% highlight ruby %}
+# If no project is found, raise ActiveRecord::RecordNotFound
+@project = Project.find(params[:id])
+# If the user is not authorized, raise SomeAuthorizationException
+authorize @project
+{% endhighlight %}
+
+This is a worthwhile difference.  Want to keep metrics or get alerted on security violation attempts?  Now it can be clearly split.  Or perhaps, you take different action or set different flash messages;  this can be handled more cleanly now.
+
+When it comes to patterns, remember, it's never one-size-fits-all.  What's good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.
