@@ -858,6 +858,10 @@ em.code {
   padding: 0 3px;
 }
 
+.post ul, .post ol {
+  list-style-type: square;
+}
+
 #archived-posts {
   list-style: none;
   padding-left: 0;
