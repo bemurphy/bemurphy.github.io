@@ -431,46 +431,305 @@ pre .bp { color: #999999 } /* Name.Builtin.Pseudo */
 pre .vc { color: #008080 } /* Name.Variable.Class */
 pre .vg { color: #008080 } /* Name.Variable.Global */
 pre .vi { color: #008080 } /* Name.Variable.Instance */
-pre .il { color: #009999 } /* Literal.Number.Integer.Long */html,
-body {
-  height: auto !important;
-  height: 100%;
-  min-width: 1015px;
+pre .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+/*
+ * Skeleton V1.2
+ * Copyright 2011, Dave Gamache
+ * www.getskeleton.com
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 6/20/2012
+ */
+
+
+/* Table of Contents
+==================================================
+#Base 960 Grid
+#Tablet (Portrait)
+#Mobile (Portrait)
+#Mobile (Landscape)
+#Clearing */
+
+
+
+/* #Base 960 Grid
+================================================== */
+
+.container                                  { position: relative; width: 960px; margin: 0 auto; padding: 0; }
+.container .column,
+.container .columns                         { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
+.row                                        { margin-bottom: 20px; }
+
+/* Nested Column Classes */
+.column.alpha, .columns.alpha               { margin-left: 0; }
+.column.omega, .columns.omega               { margin-right: 0; }
+
+/* Base Grid */
+.container .one.column,
+.container .one.columns                     { width: 40px;  }
+.container .two.columns                     { width: 100px; }
+.container .three.columns                   { width: 160px; }
+.container .four.columns                    { width: 220px; }
+.container .five.columns                    { width: 280px; }
+.container .six.columns                     { width: 340px; }
+.container .seven.columns                   { width: 400px; }
+.container .eight.columns                   { width: 460px; }
+.container .nine.columns                    { width: 520px; }
+.container .ten.columns                     { width: 580px; }
+.container .eleven.columns                  { width: 640px; }
+.container .twelve.columns                  { width: 700px; }
+.container .thirteen.columns                { width: 760px; }
+.container .fourteen.columns                { width: 820px; }
+.container .fifteen.columns                 { width: 880px; }
+.container .sixteen.columns                 { width: 940px; }
+
+.container .one-third.column                { width: 300px; }
+.container .two-thirds.column               { width: 620px; }
+
+/* Offsets */
+.container .offset-by-one                   { padding-left: 60px;  }
+.container .offset-by-two                   { padding-left: 120px; }
+.container .offset-by-three                 { padding-left: 180px; }
+.container .offset-by-four                  { padding-left: 240px; }
+.container .offset-by-five                  { padding-left: 300px; }
+.container .offset-by-six                   { padding-left: 360px; }
+.container .offset-by-seven                 { padding-left: 420px; }
+.container .offset-by-eight                 { padding-left: 480px; }
+.container .offset-by-nine                  { padding-left: 540px; }
+.container .offset-by-ten                   { padding-left: 600px; }
+.container .offset-by-eleven                { padding-left: 660px; }
+.container .offset-by-twelve                { padding-left: 720px; }
+.container .offset-by-thirteen              { padding-left: 780px; }
+.container .offset-by-fourteen              { padding-left: 840px; }
+.container .offset-by-fifteen               { padding-left: 900px; }
+
+
+
+/* #Tablet (Portrait)
+================================================== */
+
+/* Note: Design for a width of 768px */
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .container                                  { width: 768px; }
+  .container .column,
+  .container .columns                         { margin-left: 10px; margin-right: 10px;  }
+  .column.alpha, .columns.alpha               { margin-left: 0; margin-right: 10px; }
+  .column.omega, .columns.omega               { margin-right: 0; margin-left: 10px; }
+  .alpha.omega                                { margin-left: 0; margin-right: 0; }
+
+  .container .one.column,
+  .container .one.columns                     { width: 28px; }
+  .container .two.columns                     { width: 76px; }
+  .container .three.columns                   { width: 124px; }
+  .container .four.columns                    { width: 172px; }
+  .container .five.columns                    { width: 220px; }
+  .container .six.columns                     { width: 268px; }
+  .container .seven.columns                   { width: 316px; }
+  .container .eight.columns                   { width: 364px; }
+  .container .nine.columns                    { width: 412px; }
+  .container .ten.columns                     { width: 460px; }
+  .container .eleven.columns                  { width: 508px; }
+  .container .twelve.columns                  { width: 556px; }
+  .container .thirteen.columns                { width: 604px; }
+  .container .fourteen.columns                { width: 652px; }
+  .container .fifteen.columns                 { width: 700px; }
+  .container .sixteen.columns                 { width: 748px; }
+
+  .container .one-third.column                { width: 236px; }
+  .container .two-thirds.column               { width: 492px; }
+
+  /* Offsets */
+  .container .offset-by-one                   { padding-left: 48px; }
+  .container .offset-by-two                   { padding-left: 96px; }
+  .container .offset-by-three                 { padding-left: 144px; }
+  .container .offset-by-four                  { padding-left: 192px; }
+  .container .offset-by-five                  { padding-left: 240px; }
+  .container .offset-by-six                   { padding-left: 288px; }
+  .container .offset-by-seven                 { padding-left: 336px; }
+  .container .offset-by-eight                 { padding-left: 384px; }
+  .container .offset-by-nine                  { padding-left: 432px; }
+  .container .offset-by-ten                   { padding-left: 480px; }
+  .container .offset-by-eleven                { padding-left: 528px; }
+  .container .offset-by-twelve                { padding-left: 576px; }
+  .container .offset-by-thirteen              { padding-left: 624px; }
+  .container .offset-by-fourteen              { padding-left: 672px; }
+  .container .offset-by-fifteen               { padding-left: 720px; }
 }
+
+
+  /*  #Mobile (Portrait)
+  ================================================== */
+
+/* Note: Design for a width of 320px */
+
+@media only screen and (max-width: 767px) {
+  .container { width: 300px; }
+  .container .columns,
+  .container .column { margin: 0; }
+
+  .container .one.column,
+  .container .one.columns,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column  { width: 300px; }
+
+  /* Offsets */
+  .container .offset-by-one,
+  .container .offset-by-two,
+  .container .offset-by-three,
+  .container .offset-by-four,
+  .container .offset-by-five,
+  .container .offset-by-six,
+  .container .offset-by-seven,
+  .container .offset-by-eight,
+  .container .offset-by-nine,
+  .container .offset-by-ten,
+  .container .offset-by-eleven,
+  .container .offset-by-twelve,
+  .container .offset-by-thirteen,
+  .container .offset-by-fourteen,
+  .container .offset-by-fifteen { padding-left: 0; }
+
+}
+
+
+  /* #Mobile (Landscape)
+  ================================================== */
+
+/* Note: Design for a width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container { width: 420px; }
+  .container .columns,
+  .container .column { margin: 0; }
+
+  .container .one.column,
+  .container .one.columns,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column { width: 420px; }
+}
+
+
+  /* #Clearing
+  ================================================== */
+
+/* Self Clearing Goodness */
+.container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+.row:after,
+.clearfix:after {
+  clear: both; }
+.row,
+.clearfix {
+  zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  margin: 0;
+  padding: 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px;}
+h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
+h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
+h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
+h5 { font-size: 17px; line-height: 24px; }
+h6 { font-size: 14px; line-height: 21px; }
+
+body {
+  /* height: auto !important; */
+  /* height: 100%; */
+  /* min-width: 1015px; */
+}
+
 body {
   background: #fff;
   color: #444;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 15px;
 }
+
 h1,
 h3 {
   font-family: 'Varela Round', 'Trebuchet MS', sans-serif;
 }
+
+.container {
+  padding-top: 40px;
+}
+
 nav {
-  position: fixed;
-  width: 300px;
   background: #ececec;
   background: #f9f9f9;
-  border-right: 1px solid #dcdcdc;
-  height: 100%;
-  min-height: 100%;
-  float: left;
-  overflow-y: auto;
   text-align: left;
   z-index: 10;
   -webkit-font-smoothing: antialiased;
 }
+
 nav header {
   border-bottom: 1px solid #dcdcdc;
 }
+
 nav header h1 {
   background: url("//www.gravatar.com/avatar/e3a8a7e7250f6b2c8a874e1ea3a9a480?s=50") 0 0 no-repeat;
   font-size: 27px;
   line-height: 32px;
-  margin-left: 20px;
-  padding-left: 60px;
   font-weight: bold;
+  margin-top: 0;
   text-transform: lowercase;
 }
 
@@ -484,39 +743,43 @@ nav header span {
   line-height: 18px;
   display: block;
 }
+
 nav > ul {
   list-style: none;
   padding: 0;
   margin-top: 0;
   border-top: 1px solid #fff;
 }
+
 nav ul h3 {
   font-size: 16px;
 }
+
 nav li {
-  margin: 0 20px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+
 nav li h3 a {
   color: #444;
   display: block;
-  padding: 6px 15px;
+  padding: 6px 0;
   text-decoration: none;
   font-weight: 200;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   text-shadow: #fff 0px 1px 0px;
 }
+
 nav li.selected h3 a {
-  border: 1px solid #dedede;
-  padding: 5px 14px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 1px 0 #fff;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 1px 0 #fff;
+  color: black;
+  font-weight: bold;
 }
+
 nav li.selected {
   background-color: #fff;
 }
+
 nav li:hover {
   background-color: #fff;
   -webkit-transition: background-color 0.2s;
@@ -525,25 +788,24 @@ nav li:hover {
   -ms-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
+
 #content {
-  max-width: 600px;
-  min-width: 414px;
-  float: left;
-  margin: 20px 60px 0 350px;
-  padding: 0 0 40px;
-  top: 0;
+  word-wrap: break-word;
 }
+
 #content p {
   color: #4d4d4d;
   font-weight: 400;
   line-height: 1.7;
 }
+
 #content h1 {
   margin-top: 0;
   font-size: 36px;
   font-weight: 200;
   line-height: 42px;
 }
+
 #content a {
   color: inherit;
   font-weight: 500;
@@ -578,6 +840,7 @@ div.highlight pre {
   word-wrap: normal;
   margin: 0;
 }
+
 code {
   font-family: 'Helvetica Neue', Helvetica, sans-serif, monospace;
   font-family: 'Bitstream Vera Sans Mono', 'Courier', monospace;
@@ -585,6 +848,7 @@ code {
   line-height: 13px;
   font-weight: 300;
 }
+
 em.code {
   font-style: normal;
   border: 1px solid #eaeaea;
@@ -592,35 +856,6 @@ em.code {
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 0 3px;
-}
-.header {
-  width: 476px;
-  margin: 0 auto;
-  padding: 10px;
-  background-color: #4276b6;
-}
-.header-link {
-  margin-right: 32px;
-  text-decoration: none;
-  color: #eee;
-}
-.header-link:visited {
-  color: #eee;
-}
-.header-link:hover {
-  text-decoration: underline;
-}
-.header-link:last-child {
-  margin-right: 0;
-}
-.home-page {
-  width: 476px;
-  height: 130px;
-  margin: 5px auto;
-  padding: 5px;
-  margin-bottom: 0.5em;
-  color: #fff;
-  background-color: #4276b6;
 }
 
 #archived-posts {
@@ -756,6 +991,63 @@ em.code {
 .clearfix {
     *zoom: 1;
 }
+
+/* #Media Queries
+================================================== */
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+  nav {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  nav li {
+    float: left;
+  }
+
+  nav li:last-child {
+    margin-right: 0;
+  }
+
+  nav li h3 {
+    margin: 0;
+  }
+
+  nav li a {
+    line-height: 16px;
+  }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  nav li            { margin-right: 24px; }
+  code              { font-size: 0.8em; }
+
+  #content h1 {
+    font-size: 32px;
+  }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+  nav li            { margin-right: 12px; }
+  nav li:last-child { margin-right: 0; }
+  nav li a          { font-size: 0.8em; }
+  code              { font-size: 0.6em; }
+
+  #content h1 {
+    font-size: 24px;
+  }
+}
+
 
 /* ==========================================================================
    Print styles.

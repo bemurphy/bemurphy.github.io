@@ -4,6 +4,9 @@
     <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="The online musing of Brendon Murphy" name="description" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
     <link href="/css/screen.css?v=2" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -12,33 +15,31 @@
     <title>Brendon Murphy &ndash; about</title>
   </head>
   <body>
-    <nav>
-      <header>
-        <h1>
-          <a href="/"><span>Brendon Murphy</span>
-          Techfreak.net</a>
-        </h1>
-        </header>
-        <ul data-selected="/about.html">
-          <li><h3><a href="/">Blog</a></h3></li>
-          <li><h3><a href="/archive.html">Archives</a></h3></li>
-          <li><h3><a href="/about.html">About</a></h3></li>
-          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
-          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
-          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
-        </ul>
-        <script type="text/javascript">
-          if ($('nav a[href="/about.html"]').length) {
-            $('nav a[href="/about.html"]').closest('li').addClass("selected");
-          } else {
-            $('nav li').first().addClass("selected");
-          }
-        </script>
-      <section class="sell"></section>
-    </nav>
+    <div class="container">
 
-    <section id="content">
-      <div class="post about">
+      <nav class="two columns">
+        
+
+          <ul data-selected="/about.html">
+            <li><h3><a href="/">Blog</a></h3></li>
+            <li><h3><a href="/archive.html">Archives</a></h3></li>
+            <li><h3><a href="/about.html">About</a></h3></li>
+            <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+            <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+            <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+          </ul>
+
+          <script type="text/javascript">
+            if ($('nav a[href="/about.html"]').length) {
+              $('nav a[href="/about.html"]').closest('li').addClass("selected");
+            } else {
+              $('nav li').first().addClass("selected");
+            }
+          </script>
+      </nav>
+
+      <section id="content" class="thirteen columns offset-by-one">
+        <div class="post about">
 <h1>The Author</h1>
 <p>Hi, I&#8217;m Brendon Murphy, but the site already told you that.  I go by the handle &#8220;xternal&#8221; at various spots over the internet.  It&#8217;s a handle with no meaning; I picked it when I was in 6th grade and excited about BBS&#8217;ing.</p>
 <p>In March of 2010 I joined <a href="http://www.kajabi.com">Kajabi</a> as a lead programmer.  We are a <a href="http://rubyonrails.com">Ruby on Rails</a> shop that targets the Internet Marketing niche, and plan to launch our SaaS platform soon.</p>
@@ -55,12 +56,9 @@
 <h1>Contact</h1>
 <p>Feel free to email me.  I&#8217;m always trying to thwart spammers, so you can mail me initially at xternal1+blog at gmail.com.  Or, send me a message on <a href="http://twitter.com/xternal">Twitter</a>.  I&#8217;ll get back to you as soon as I can!</p>
 </div>
-    </section>
-    <footer id="footer">
-      
-      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-    </footer>
-    <script type="text/javascript">
+      </section>
+
+      <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
@@ -70,7 +68,7 @@ var pageTracker = _gat._getTracker("UA-15226195-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 
-    <script type="text/javascript">
+      <script type="text/javascript">
 //<[CDATA[
 (function() {
 	var links = document.getElementsByTagName('a');
@@ -85,5 +83,6 @@ pageTracker._trackPageview();
 //]]>
 </script>
 
+    </div>
   </body>
 </html>

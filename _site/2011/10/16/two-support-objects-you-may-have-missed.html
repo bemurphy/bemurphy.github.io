@@ -4,6 +4,9 @@
     <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="The online musing of Brendon Murphy" name="description" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
     <link href="/css/screen.css?v=2" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -12,33 +15,31 @@
     <title>Brendon Murphy &ndash; Two Support Objects You May Have Missed</title>
   </head>
   <body>
-    <nav>
-      <header>
-        <h1>
-          <a href="/"><span>Brendon Murphy</span>
-          Techfreak.net</a>
-        </h1>
-        </header>
-        <ul data-selected="/2011/10/16/two-support-objects-you-may-have-missed.html">
-          <li><h3><a href="/">Blog</a></h3></li>
-          <li><h3><a href="/archive.html">Archives</a></h3></li>
-          <li><h3><a href="/about.html">About</a></h3></li>
-          <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
-          <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
-          <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
-        </ul>
-        <script type="text/javascript">
-          if ($('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').length) {
-            $('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').closest('li').addClass("selected");
-          } else {
-            $('nav li').first().addClass("selected");
-          }
-        </script>
-      <section class="sell"></section>
-    </nav>
+    <div class="container">
 
-    <section id="content">
-      <div class="post">
+      <nav class="two columns">
+        
+
+          <ul data-selected="/2011/10/16/two-support-objects-you-may-have-missed.html">
+            <li><h3><a href="/">Blog</a></h3></li>
+            <li><h3><a href="/archive.html">Archives</a></h3></li>
+            <li><h3><a href="/about.html">About</a></h3></li>
+            <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+            <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+            <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+          </ul>
+
+          <script type="text/javascript">
+            if ($('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').length) {
+              $('nav a[href="/2011/10/16/two-support-objects-you-may-have-missed.html"]').closest('li').addClass("selected");
+            } else {
+              $('nav li').first().addClass("selected");
+            }
+          </script>
+      </nav>
+
+      <section id="content" class="thirteen columns offset-by-one">
+        <div class="post">
   <h1>Two Support Objects You May Have Missed</h1>
 
   <p>If you spend time daily in a large ruby project (such as a Rails app) that has ActiveSupport pulled in, you are likely relying on its string, time, hash, and other extensions.  I&#8217;ve found two objects it provides prove useful, and having found them lesser known amongst my coding friends, figured they are worth sharing.</p>
@@ -116,12 +117,9 @@
 </div>
 
 
-    </section>
-    <footer id="footer">
-      
-      <link rel="stylesheet" href="http://www.google.com/cse/style/look/minimalist.css" type="text/css" />
-    </footer>
-    <script type="text/javascript">
+      </section>
+
+      <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
@@ -131,7 +129,7 @@ var pageTracker = _gat._getTracker("UA-15226195-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 
-    <script type="text/javascript">
+      <script type="text/javascript">
 //<[CDATA[
 (function() {
 	var links = document.getElementsByTagName('a');
@@ -146,5 +144,6 @@ pageTracker._trackPageview();
 //]]>
 </script>
 
+    </div>
   </body>
 </html>
