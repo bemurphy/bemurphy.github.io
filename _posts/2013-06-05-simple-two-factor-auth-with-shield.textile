@@ -6,7 +6,7 @@ published: true
 
 "Shield":https://github.com/cyx/shield is a simple authentication gem I tend to reach for first when developing small Sinatra or Cuba apps.  The code is short, reliable, and easy to understand.  It's not a kitchen sink solution, it does one thing well: lets users log in with a password.
 
-As an experiment, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a PIN from a SecureID type token, or out-of-band delivery message such as SMS.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.
+As _an experiment_, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a PIN from a SecureID type token, or out-of-band delivery message such as SMS.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.
 
 Let's break down some of the components of what a simple system might look like.
 

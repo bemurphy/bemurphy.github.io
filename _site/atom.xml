@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-06-05T01:26:31-07:00</updated>
+ <updated>2013-06-05T01:28:25-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -16,7 +16,7 @@
    <updated>2013-06-05T00:00:00-07:00</updated>
    <id>http://www.techfreak.net/2013/06/05/simple-two-factor-auth-with-shield</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/cyx/shield&quot;&gt;Shield&lt;/a&gt; is a simple authentication gem I tend to reach for first when developing small Sinatra or Cuba apps.  The code is short, reliable, and easy to understand.  It&amp;#8217;s not a kitchen sink solution, it does one thing well: lets users log in with a password.&lt;/p&gt;
-&lt;p&gt;As an experiment, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a &lt;span class=&quot;caps&quot;&gt;PIN&lt;/span&gt; from a SecureID type token, or out-of-band delivery message such as &lt;span class=&quot;caps&quot;&gt;SMS&lt;/span&gt;.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.&lt;/p&gt;
+&lt;p&gt;As &lt;em&gt;an experiment&lt;/em&gt;, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a &lt;span class=&quot;caps&quot;&gt;PIN&lt;/span&gt; from a SecureID type token, or out-of-band delivery message such as &lt;span class=&quot;caps&quot;&gt;SMS&lt;/span&gt;.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.&lt;/p&gt;
 &lt;p&gt;Let&amp;#8217;s break down some of the components of what a simple system might look like.&lt;/p&gt;
 &lt;p&gt;First, we&amp;#8217;ll create a basic User model with &lt;a href=&quot;http://ohm.keyvalue.org&quot;&gt;Ohm&lt;/a&gt;, a persistance library backed by Redis.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ohm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Model&lt;/span&gt;
