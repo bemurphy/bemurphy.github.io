@@ -1,0 +1,178 @@
+---
+layout: post
+title: "Simple Two-Factor Auth with Shield"
+published: true
+---
+
+"Shield":https://github.com/cyx/shield is a simple authentication gem I tend to reach for first when developing small Sinatra or Cuba apps.  The code is short, reliable, and easy to understand.  It's not a kitchen sink solution, it does one thing well: lets users log in with a password.
+
+As an experiment, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a PIN from a SecureID type token, or out-of-band delivery message such as SMS.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.
+
+Let's break down some of the components of what a simple system might look like.
+
+First, we'll create a basic User model with "Ohm":http://ohm.keyvalue.org, a persistance library backed by Redis.
+
+{% highlight ruby %}
+
+class User < Ohm::Model
+  include Shield::Model
+
+  attribute :email
+  attribute :crypted_password
+  index :email
+
+  def self.fetch(email)
+    User.find(email: email).first
+  end
+end
+
+{% endhighlight %}
+
+This is pretty straightforward.  We've established a user with an email, crypted password, and the fetch method Shield expects per its implementation.  Moving on, we'll tweak the Shield helpers a little and setup some of our own for handling the second factor.
+
+{% highlight ruby %}
+
+helpers do
+  include Shield::Helpers
+
+  alias_method :initially_authenticated, :authenticated
+
+  def authenticated(model)
+    if user = initially_authenticated(model)
+      user.id.to_s == session["#{model}_secondary_auth"].to_s && user
+    end
+  end
+
+  def challenge_authentication(model)
+    ChallengeAuthentication.new(initially_authenticated(model))
+  end
+
+  def send_challenge(model)
+    challenge_authentication(model).push
+  end
+
+  def challenge_accepted(model, challenge)
+    if challenge_authentication(model).check!(challenge)
+      user = initially_authenticated(model)
+      session["#{model}_secondary_auth"] = user.id.to_s
+    end
+  end
+end
+
+{% endhighlight %}
+
+There's a few interesting things to note here.  First, we alias Shield's _(code)authenticated_ method out to _(code)initially_authenticate_.  We'll use this to check if a user passes the initial password authentication step.  Next, we define our new _(code)authenticated_ method, which will rely on password authentication, and a second check against the session to see if the user has passed the secondary authentication step.  Sprinkle in some methods around checking our challenge authentication (more details on that in a minute) and our helpers are good to go.
+
+Now let's move on to some simple Sinatra app and routing setup.  First, we'll handle 401 Unauthorized errors by redirecting to the _(code)/login_ path:
+
+{% highlight ruby %}
+
+error 401 do
+  redirect '/login'
+end
+
+{% endhighlight %}
+
+Next, add in the _(code)/login_ routes Shield typically expects, however, instead of redirecting on success to the main page, we'll redirect the browser on to a verification step:
+
+{% highlight ruby %}
+
+get '/login' do
+  erb :login
+end
+
+post '/login' do
+  if login(User, params[:login], params[:password])
+    remember(initially_authenticated(User)) if params[:remember_me]
+    send_challenge(User)
+    redirect '/login_verification'
+  else
+    redirect '/login'
+  end
+end
+
+{% endhighlight %}
+
+Note that when a user passes the first login stage, we'll send them the challenge for the verification step.
+
+Now we'll get into the meat of the routing and diverge from the vanilla Shield login flow a bit.  Setup the verification handling:
+
+{% highlight ruby %}
+
+get '/login_verification' do
+  error(401) unless initially_authenticated(User)
+
+  erb :login_verification
+end
+
+post '/login_verification' do
+  error(401) unless initially_authenticated(User)
+
+  if challenge_accepted(User, params[:challenge])
+    redirect '/'
+  else
+    redirect '/login_verification'
+  end
+end
+
+{% endhighlight %}
+
+For either action to succeed, first the user must be initially authenticated.  If so, we'll verify the challenge presented, in this case a randomly assigned 6 digit PIN, matches up.  Then we'll let the user proceed on to the app.
+
+The core of the challenge authentication is handled in a _(code)ChallengeAuthentication_ class:
+
+{% highlight ruby %}
+
+class ChallengeAuthentication
+  EXPIRE_TIME = 300
+
+  attr_reader :user
+
+  def initialize(user)
+    @user = user
+  end
+
+  def redis
+    Ohm.redis
+  end
+
+  def push
+    challenge = generate_challenge
+    redis.setex key, EXPIRE_TIME, challenge
+    deliver_challenge(challenge)
+  end
+
+  def check(challenge)
+    return false if user.nil? || challenge.to_s.empty?
+
+    # Should be a secure compare to prevent timing attacks
+    redis.get(key) == challenge
+  end
+
+  def check!(challenge)
+    !! ( check(challenge) && redis.del(key) )
+  end
+
+  def key
+    [user.class.name, user.id, 'challenge'].join(':')
+  end
+
+  # Returns a 6 digit challenge phrase
+  def generate_challenge
+    (SecureRandom.random_number * 1_000_000).to_i
+  end
+
+  def deliver_challenge(challenge)
+    # send an out of band challenge like SMS or Pushover here
+  end
+end
+
+{% endhighlight %}
+
+The flow of the challenge check is fairly simple.  First, we can push a new challenge by setting a random 6 digit pin for the user, and deliver that out of band.  This can be easily accomplished via SMS with a provider such as "Twilio":http://twilio.com, or my favorite push notification service "Pushover":http://pushover.net.  Checkout my "Rushover gem":https://rubygems.org/gems/rushover as a simple client for sending to Pushover.  We'll toss that PIN into Redis with a 5 minute expiration;  this provides a simple limited window for which the PIN is valid.  Likewise, if you want to implement this on top of a SQL ORM, you could add challenge and expiration timestamps on to your User model.
+
+For checking that the user has provided a valid challenge PIN, we can compare against the value in Redis if it exists.   Upon match, we'll delete the PIN from redis to invalidate it and confirm the challenge is accepted.
+
+You can find the "complete code":https://gist.github.com/bemurphy/831e6c3cf4d40060ed49 for this example as a gist.  Hopefully it's easy enough to follow, and now you can provide an extra level of security for your social cat-video apps!
+
+Until next time...

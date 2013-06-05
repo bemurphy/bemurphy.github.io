@@ -12,7 +12,7 @@
     <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <title>Brendon Murphy &ndash; techfreak.net</title>
+    <title>Brendon Murphy &ndash; Simple Two-Factor Auth with Shield</title>
   </head>
   <body>
     <div class="container">
@@ -20,7 +20,7 @@
       <nav class="two columns">
         
 
-          <ul data-selected="/index.html">
+          <ul data-selected="/2013/06/05/simple-two-factor-auth-with-shield.html">
             <li><h3><a href="/">Blog</a></h3></li>
             <li><h3><a href="/archive.html">Archives</a></h3></li>
             <li><h3><a href="/about.html">About</a></h3></li>
@@ -30,8 +30,8 @@
           </ul>
 
           <script type="text/javascript">
-            if ($('nav a[href="/index.html"]').length) {
-              $('nav a[href="/index.html"]').closest('li').addClass("selected");
+            if ($('nav a[href="/2013/06/05/simple-two-factor-auth-with-shield.html"]').length) {
+              $('nav a[href="/2013/06/05/simple-two-factor-auth-with-shield.html"]').closest('li').addClass("selected");
             } else {
               $('nav li').first().addClass("selected");
             }
@@ -39,12 +39,8 @@
       </nav>
 
       <section id="content" class="thirteen columns offset-by-one">
-        
-<div class="post">  
-
-  <h1>
-    Simple Two-Factor Auth with Shield
-  </h1>
+        <div class="post">
+  <h1>Simple Two-Factor Auth with Shield</h1>
 
   <p><a href="https://github.com/cyx/shield">Shield</a> is a simple authentication gem I tend to reach for first when developing small Sinatra or Cuba apps.  The code is short, reliable, and easy to understand.  It&#8217;s not a kitchen sink solution, it does one thing well: lets users log in with a password.</p>
 <p>As an experiment, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a <span class="caps">PIN</span> from a SecureID type token, or out-of-band delivery message such as <span class="caps">SMS</span>.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.</p>
@@ -178,168 +174,18 @@
 </div><p>The flow of the challenge check is fairly simple.  First, we can push a new challenge by setting a random 6 digit pin for the user, and deliver that out of band.  This can be easily accomplished via <span class="caps">SMS</span> with a provider such as <a href="http://twilio.com">Twilio</a>, or my favorite push notification service <a href="http://pushover.net">Pushover</a>.  Checkout my <a href="https://rubygems.org/gems/rushover">Rushover gem</a> as a simple client for sending to Pushover.  We&#8217;ll toss that <span class="caps">PIN</span> into Redis with a 5 minute expiration;  this provides a simple limited window for which the <span class="caps">PIN</span> is valid.  Likewise, if you want to implement this on top of a <span class="caps">SQL</span> <span class="caps">ORM</span>, you could add challenge and expiration timestamps on to your User model.</p>
 <p>For checking that the user has provided a valid challenge <span class="caps">PIN</span>, we can compare against the value in Redis if it exists.   Upon match, we&#8217;ll delete the <span class="caps">PIN</span> from redis to invalidate it and confirm the challenge is accepted.</p>
 <p>You can find the <a href="https://gist.github.com/bemurphy/831e6c3cf4d40060ed49">complete code</a> for this example as a gist.  Hopefully it&#8217;s easy enough to follow, and now you can provide an extra level of security for your social cat-video apps!</p>
-<p>Until next time&#8230;</p>  
-  
+<p>Until next time&#8230;</p>
+
   <p class="signoff">
-    &mdash;<a href="/2013/06/05/simple-two-factor-auth-with-shield.html">Jun 05, 2013</a>
+    &mdash;Jun 05, 2013
   </p>
 
-  <p class="index_comments_count"><a href="/2013/06/05/simple-two-factor-auth-with-shield.html#disqus_thread">/2013/06/05/simple-two-factor-auth-with-shield.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    On Authorization Failures
-  </h1>
-
-  <p>As a slight extension to the previous post, I wanted to make a quick point about authorization failures.</p>
-<p>Given you&#8217;ve raised <em class="code">SomeAuthorizationFailure</em> exception in a controller action, you might have a general rescue handling it:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">rescue_from</span> <span class="s1">&#39;SomeAuthorizationFailure&#39;</span> <span class="k">do</span>
-  <span class="n">render</span> <span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bad user!&quot;</span><span class="p">,</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">403</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.</p>
-<p>Cool, let&#8217;s wrap that up, it&#8217;s done!  Hold on, not so fast.</p>
-<p>If you use Github (<em>if?</em>), you may have noticed something that struck you as curious the first time it happened.  Say you&#8217;re hanging in the dev campfire room, and somebody pastes a link to a line of code for you to checkout (like /foocorp/awesomeproject/config/application.rb#L7).  You clicked on the link but forgot you&#8217;ve logged out.  Boom&#8230;.403 Forbidden.</p>
-<p>Wait..no that&#8217;s not a 403, it&#8217;s a 404.  What the heck?</p>
-<p>The answer is pretty simple.  On your little todo app you run for friends and family, it&#8217;s probably not a huge deal for somebody to hit /todo_lists/42/item/5 and get a 403.  Wow, somebody now knows you have a todo list 42 and item 5.  Probably not a big deal.</p>
-<p>But on a site like Github, let&#8217;s change that application.rb link to say, /foocorp/awesomeproject/config/initializers/devise.rb.  403?  Oh look, that project is using Devise!</p>
-<p>The moral of the story:  best to give a 404 status on authorization failures if you don&#8217;t want to cater to mining and leaking of sensitive info.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2013/04/24/on-authorization-failures.html">Apr 24, 2013</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2013/04/24/on-authorization-failures.html#disqus_thread">/2013/04/24/on-authorization-failures.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    On Authorization Patterns
-  </h1>
-
-  <p>Once upon a time, I&#8217;d heavily lean upon scoped finds for cheap authorization in Rails controller actions.  For instance, a system might have many users, for which each has many projects they can manage.  In order to find a project that a user can administer, an action may include the following:</p>
-<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</code></pre>
-</div><p>This can work.  If a user tries to hit project id 42, for which they aren&#8217;t associated with, the execution short circuits at that point.  The security on that project has been maintained.</p>
-<p>I think most people know at this point, this is a poor general authorization scheme, because for one, it spreads your authorization logic, no matter how simple, around the application.  With a few controllers in a small system, this probably isn&#8217;t a big deal.</p>
-<p>Enter an authorization scheme, you might write:</p>
-<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-<span class="n">authorize</span> <span class="vi">@project</span>
-</code></pre>
-</div><p>The <em class="code">authorize</em> method here will typically take the current user, lookup some policy object, and run a check.  If a user can be associated to a project, but not be able to edit it, this will probably pan out as you expect.</p>
-<p>Sometimes though, you could simply write such code to be:</p>
-<div class="highlight"><pre><code class="ruby"><span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-<span class="n">authorize</span> <span class="vi">@project</span>
-</code></pre>
-</div><p>This can be a subtle, but I believe powerful, difference.  First, your finder usage is simplified.  But second, and I believe more importantly, the code becomes more straightforward and your exceptions more accurate.  Take another look:</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># If no project is found, raise ActiveRecord::RecordNotFound</span>
-<span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-<span class="c1"># If the user is not authorized, raise SomeAuthorizationException</span>
-<span class="n">authorize</span> <span class="vi">@project</span>
-</code></pre>
-</div><p>This is a worthwhile difference.  Want to keep metrics or get alerted on security violation attempts?  Now it can be clearly split.  Or perhaps, you take different action or set different flash messages;  this can be handled more cleanly now.</p>
-<p>When it comes to patterns, remember, it&#8217;s never one-size-fits-all.  What&#8217;s good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2013/04/23/on-authorization-patterns.html">Apr 23, 2013</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2013/04/23/on-authorization-patterns.html#disqus_thread">/2013/04/23/on-authorization-patterns.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    A note about "friendly" passwords
-  </h1>
-
-  <p>Often in a web application, the time will come where you opt to generate temporary passwords for users.  One common approach to this is to use a helper that combines a small about of random data (such as 4 random numbers) with a word randomly selected from a pared down dictionary list.</p>
-<p>Please don&#8217;t do this.  There are at least two reasons:</p>
-<ul>
-	<li>Using a word list radically reduces password entropy</li>
-	<li>Eventually a password will unintentionally perplex, or worse, offend someone</li>
-</ul>
-<p>If the day comes and the system generates the password &#8220;cigar1984&#8221; for somebody trying to quit smoking, that could be awkward.</p>
-<p>Now, I&#8217;m no crypto expert, but I&#8217;m going to assume that the ruby <em class="code">SecureRandom</em> library will do a better job than me at outputting random strings.  So it&#8217;s of use here.  For example:</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s2">&quot;securerandom&quot;</span>
-
-<span class="c1"># outputs something like &quot;Ht25IeNqIBUp&quot;</span>
-<span class="no">SecureRandom</span><span class="o">.</span><span class="n">urlsafe_base64</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9]+/i</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="o">]</span>
-</code></pre>
-</div><p>This strips non-alphanumeric characters such as &#8216;_&#8217; and &#8216;-&#8217; out.  This is useful because people are less used to typing them, and also, certain mouseclick-to-copy behaviors will split on those characters depending on the environment.</p>
-<p>It&#8217;s worth noting that certain characters often will confuse users if they are manually entering a password as viewed from the screen.  Fonts can make characters including the following difficult to distinguish</p>
-<ul>
-	<li>0 (zero)</li>
-	<li>1 (the number one)</li>
-	<li>I (the uppercase i)</li>
-	<li>O (the uppercase OH)</li>
-	<li>l (lowercase L)</li>
-</ul>
-<p>You can <em class="code">String#tr</em> these out for substitutions, or strip them alltogether.  This will slightly reduce entropy, but by keeping a longer password you compensate somewhat.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2013/01/26/a-note-about--friendly--passwords.html">Jan 26, 2013</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2013/01/26/a-note-about--friendly--passwords.html#disqus_thread">/2013/01/26/a-note-about--friendly--passwords.html comments</a></p>
-  </div>
-
-<div class="post">  
-
-  <h1>
-    An Example of Wrapping
-  </h1>
-
-  <p>You&#8217;ve been tasked with adding comments to some internal system at work.  You throw together some new controllers and views into your app, and churn out the feature quickly and efficiently.</p>
-<p>A few days pass, and a peer comes and informs you, &#8220;Hey, have you seen the comments?  Some people are swearing up a storm and Bob is <em>irritated</em>!&#8221;  You are left wondering, what to do.  You quickly discover there&#8217;s an <a href="https://rubygems.org/gems/obscenity">Obscenity</a> gem for Ruby, and get cracking.  At stage one, you&#8217;re just going to output sanitized versions of comments, rather than resort to draconian measures.</p>
-<p>Let&#8217;s assume an overly simple, Comment model with one property, content, that looks like this:</p>
-<div class="highlight"><pre><code class="ruby"><span class="no">Comment</span> <span class="o">=</span> <span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:content</span><span class="p">)</span> <span class="k">do</span>
-  <span class="c1">#...</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Dont&#8217; worry about database, etc, it&#8217;s beyond the point right now.  Dropping in a <em class="code">#clean_content</em> method is quick:</p>
-<div class="highlight"><pre><code class="ruby"><span class="no">Comment</span> <span class="o">=</span> <span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:content</span><span class="p">)</span> <span class="k">do</span>
-  <span class="k">def</span> <span class="nf">clean_content</span>
-    <span class="n">content</span> <span class="o">&amp;&amp;</span> <span class="no">Obscenity</span><span class="o">.</span><span class="n">sanitize</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">dup</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Now off to update the views and change the references to <em class="code">@comment.content</em> to <em class="code">@comment.clean_content</em> and you&#8217;re done.   Wait, not so fast, that&#8217;s only one option, with others to consider.  Possible options include:</p>
-<ul>
-	<li>Changing the view references, as mentioned</li>
-	<li>Using a helper method like <em class="code">sanitized_comment(@comment)</em> to return the clean content</li>
-	<li>Opening your model back up and changing the content to return sanitized content, and storing the original content in <em class="code">#unsanitized_content</em></li>
-	<li>Wrapping your @comment instance and taking advantage of Ruby duck typing.</li>
-</ul>
-<p>Here&#8217;s a quick example of accomplishing the last.  The presenter/exhibit/delegate pattern in Ruby are often presented as a way to decorate new methods onto an instance, such as taking an underlying object with an <em class="code">#amount_in_cents</em> attribute and adding a new method for outputing it as readable currency.  Another way to leverage this is to intercept calls to an <em>existing</em> method, like <em class="code">#content</em>, and change its behavior.  Let me show you what I mean.</p>
-<p>First, <a href="http://www.ruby-doc.org/stdlib-1.9.3/libdoc/delegate/rdoc/SimpleDelegator.html">SimpleDelegator</a> can provide an easy wrapping for instances:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">CleanComment</span> <span class="o">&lt;</span> <span class="no">SimpleDelegator</span>
-  <span class="c1"># In case you want to get back at the original</span>
-  <span class="k">def</span> <span class="nf">unsanitized_content</span>
-    <span class="n">__getobj__</span><span class="o">.</span><span class="n">content</span>
-  <span class="k">end</span>
-
-  <span class="c1"># Ensure clean content</span>
-  <span class="k">def</span> <span class="nf">content</span>
-    <span class="n">clean_content</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>When you want to sanitize the comment, say after finding it via a controller, wrap it:</p>
-<div class="highlight"><pre><code class="ruby"><span class="vi">@comment</span> <span class="o">=</span> <span class="no">CleanComment</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
-</code></pre>
-</div><p>Now your views can keep rolling on with a calls to <em class="code">@comment.content</em> and be none the wiser.  Remember, Ruby&#8217;s duck typing is powerful;  rely on what instances respond to, as opposed to what they are instances of.</p>
-<p>This is partially a matter of taste, remember there&#8217;s often not a &#8220;right way&#8221;.  What&#8217;s important is to have options, and leverage the option that feels right given the situation at hand.  Different approaches have different pros &amp; cons.  With wrapping, for instance, you have to remember to wrap!  And if it&#8217;s a collection, you must wrap them all.  There&#8217;s gems like <a href="https://github.com/drapergem/draper">draper</a> or <a href="https://github.com/objects-on-rails/display-case">display-case</a> that can help you on your way.</p>  
-  
-  <p class="signoff">
-    &mdash;<a href="/2013/01/15/a-simple-example-of-wrapping.html">Jan 15, 2013</a>
-  </p>
-
-  <p class="index_comments_count"><a href="/2013/01/15/a-simple-example-of-wrapping.html#disqus_thread">/2013/01/15/a-simple-example-of-wrapping.html comments</a></p>
-  </div>
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
 
 
       </section>
