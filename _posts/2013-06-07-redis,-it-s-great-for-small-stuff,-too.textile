@@ -1,0 +1,106 @@
+---
+layout: post
+title: "Redis, It's Great for Small Stuff, Too"
+published: true
+---
+
+Unless you live under a rock, you've heard of the key-value store "Redis":http://redis.io/.  It's possible though, you've never used it.  Maybe you don't have giant, loaded site needs like Imgur, so you haven't added it to your stack.  That's cool.  In fact, I'm a proponent of not added an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under _giant load_.  But there's something I think is great about Redis that makes it useful for small tasks: it's simplicity.
+
+Redis has a a few different structure types, take Hashes and Lists.  For example, using the "redis-rb":https://github.com/redis/redis-rb client, you can set values in a Redis hash:
+
+{% highlight ruby %}
+redis.hset "user:1", :name, "Brendon"
+redis.hset "user:1", :gender, "male"
+redis.hget "user:1", "name" #=> "Brendon"
+redis.hgetall "user:1" # => {"gender"=>"male", "name"=>"Brendon"}
+redis.hvals "user:1" # => ["male", "Brendon"]
+{% endhighlight %}
+
+This feels like a simple, hash like primative to work with.  Though it is syntatically different than working with a plain old ruby Hash, the feel is similar.  I think this is a big win;  it's easy to understand and feels familiar, plus, it's network distributed.
+
+Check out some List basics:
+
+{% highlight ruby %}
+redis.rpush "comments", "Awesome"
+redis.rpush "comments", "Super"
+redis.llen "comments" # => 2
+redis.lpop "comments" # => "Awesome"
+{% endhighlight %}
+
+Again, syntatically a little different than using an Array, but still familiar.
+
+Redis itself is very easy to install.  You can install it from homebrew, or apt-get or just compile from source.  It's small, installs quickly, and unless you fill it with gigabytes of data, it's likely you will forget it's there.  I install it by default on most my systems, even little underpowered ones.  The reason being, I love Redis for my little one off scripting tasks because of a few features:
+
+* It's liteweight
+* Data has optional expiration so it will clean up after itself for free
+* Its commands for get/set, lists, and pub/sub are great for basic IPC.
+
+Here's some examples. I'm excluding exception handling and Redis watches/multi/transaction concepts to focus on the core idea.
+
+Redis is great at deduping.  Say you want to write a script that pushes campfire notifications to gently remind the team to keep commit messages under 50 characters, but not resend reminders in the case of forced pushes, rebases, merges, etc:
+
+{% highlight ruby %}
+# Generate your own digest to avoid git hash changing
+id = Digest::MD5.hexdigest("#{commit.author}:#{commit.message}")
+# unseen will only be true if the id is not already in Redis
+unseen = redis.setnx(id, Time.now.to_i)
+# expire after 90 days to save on memory
+redis.expire(id, 7776000) if unseen
+# run notification if unseen
+{% endhighlight %}
+
+Or imagine you have a system that is applying regex to RSS feeds, and you want to be alerted at most once a day about matches:
+
+{% highlight ruby %}
+id = Digest::MD5.hexdigest(regex_pat.to_s)
+# Exclusively set the key, returning false if it already exists
+unseen = redis.setnx(id, Time.now.to_i)
+redis.expire(id, 86_400) if unseen
+{% endhighlight %}
+
+I do this in small scripts all the time.  Now, I could write to sqlite, use the ruby PStore, or maybe a tempfile as lock, etc, but this just feels so dang simple, and I don't worry about file locking, sql queries, weird commit code, etc.
+
+Maybe you have scripts you want to "shut up" for a few hours.  You could write a file and stat it, or you could just set a value to read:
+
+{% highlight ruby %}
+# Don't bug for 5 minutes
+redis.setex("shutup", 300, "true")
+{% endhighlight %}
+
+Often I have little tasks or cronjob on my home server that I want notifications about.  Currently I use "Pushover":https://pushover.net/ for all those notifications.  Someday I might change my mind and switch to email or SMS.  So what I've done is treat Redis like a good old Unix "named pipe":https://en.wikipedia.org/wiki/Named_pipe.  But now I don't have to worry about creating the pipe, or permissions, and I seem to remember Redis commands much easier (pop quiz...how do you call mkfifo in Ruby without shelling out?).
+
+If you want to make a FIFO for notifications, write something like this:
+
+{% highlight ruby %}
+# Producer script, cron job, etc
+redis.rpush("notifications", "You've got mail!")
+
+# Notification daemon
+loop do
+  # blpop is a blocking read left pop
+  key, message = redis.blpop("notifications")
+  # send message to SMS, email, Pushover, etc
+end
+{% endhighlight %}
+
+Sometimes, your notification daemon might die and not restart properly.  Maybe you want to "catch up" on messages when you restart it, then the above list use is good.  If you don't want to get flooded by those missed notifications, simply switch to pub/sub:
+
+{% highlight ruby %}
+# Producer
+redis.publish("notifications", "A wild message arrives!")
+
+# Notification daemon
+Redis.new.subscribe("notifications") do |on|
+  on.message do |channel, msg|
+    send_notification(msg)
+  end
+end
+{% endhighlight %}
+
+Now for one last tip.  Redis provides redis-cli, a command line client for interacting with Redis.  If you fire it up with no commands, you'll get an interactive prompt.  However, you can also invoke it with a command to run.  This is _great_ for shell scripts:
+
+{% highlight bash %}
+redis-cli publish notifications 'John sent you a private message on irc'
+{% endhighlight %}
+
+If you haven't tried Redis yet and program small tasks, you can get started today!
