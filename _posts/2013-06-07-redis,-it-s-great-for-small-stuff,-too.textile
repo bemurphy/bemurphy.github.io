@@ -4,7 +4,7 @@ title: "Redis, It's Great for Small Stuff, Too"
 published: true
 ---
 
-Unless you live under a rock, you've heard of the key-value store "Redis":http://redis.io/.  It's possible though, you've never used it.  Maybe you don't have giant, loaded site needs like Imgur, so you haven't added it to your stack.  That's cool.  In fact, I'm a proponent of not added an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under _giant load_.  But there's something I think is great about Redis that makes it useful for small tasks: it's simplicity.
+Unless you live under a rock, you've heard of the key-value store "Redis":http://redis.io/.  It's possible though, you've never used it.  Maybe you don't have giant, loaded site needs like Imgur, so you haven't added it to your stack.  That's cool.  In fact, I'm a proponent of not added an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under _giant load_.  But there's something I think is great about Redis that makes it useful for small tasks: its simplicity.
 
 Redis has a a few different structure types, take Hashes and Lists.  For example, using the "redis-rb":https://github.com/redis/redis-rb client, you can set values in a Redis hash:
 
