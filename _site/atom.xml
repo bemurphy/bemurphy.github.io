@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2013-06-07T16:56:32-07:00</updated>
+ <updated>2013-06-07T17:09:14-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -16,7 +16,7 @@
    <updated>2013-06-07T00:00:00-07:00</updated>
    <id>http://www.techfreak.net/2013/06/07/redis,-it-s-great-for-small-stuff,-too</id>
    <content type="html">&lt;p&gt;Unless you live under a rock, you&amp;#8217;ve heard of the key-value store &lt;a href=&quot;http://redis.io/&quot;&gt;Redis&lt;/a&gt;.  It&amp;#8217;s possible though, you&amp;#8217;ve never used it.  Maybe you don&amp;#8217;t have giant, loaded site needs like Imgur, so you haven&amp;#8217;t added it to your stack.  That&amp;#8217;s cool.  In fact, I&amp;#8217;m a proponent of not adding an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under &lt;em&gt;giant load&lt;/em&gt;.  But there&amp;#8217;s something I think is great about Redis that makes it useful for small tasks: its simplicity.&lt;/p&gt;
-&lt;p&gt;Redis has a a few different structure types, take Hashes and Lists.  For example, using the &lt;a href=&quot;https://github.com/redis/redis-rb&quot;&gt;redis-rb&lt;/a&gt; client, you can set values in a Redis hash:&lt;/p&gt;
+&lt;p&gt;Redis has a few different structure types, take Hashes and Lists.  For example, using the &lt;a href=&quot;https://github.com/redis/redis-rb&quot;&gt;redis-rb&lt;/a&gt; client, you can set values in a Redis hash:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hset&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;user:1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Brendon&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hset&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;user:1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:gender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;male&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hget&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;user:1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &amp;quot;Brendon&amp;quot;&lt;/span&gt;
