@@ -40,10 +40,10 @@
 
       <section id="content" class="thirteen columns offset-by-one">
         
-<div class="post">  
+<div class="post">
 
   <h1>
-    Redis, It's Great for Small Stuff, Too
+    <a href="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html">Redis, It's Great for Small Stuff, Too</a>
   </h1>
 
   <p>Unless you live under a rock, you&#8217;ve heard of the key-value store <a href="http://redis.io/">Redis</a>.  It&#8217;s possible though, you&#8217;ve never used it.  Maybe you don&#8217;t have giant, loaded site needs like Imgur, so you haven&#8217;t added it to your stack.  That&#8217;s cool.  In fact, I&#8217;m a proponent of not adding an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under <em>giant load</em>.  But there&#8217;s something I think is great about Redis that makes it useful for small tasks: its simplicity.</p>
@@ -115,8 +115,8 @@
 </div><p>Now for one last tip.  Redis provides redis-cli, a command line client for interacting with Redis.  If you fire it up with no commands, you&#8217;ll get an interactive prompt.  However, you can also invoke it with a command to run.  This is <em>great</em> for shell scripts:</p>
 <div class="highlight"><pre><code class="bash">redis-cli publish notifications <span class="s1">&#39;John sent you a private message on irc&#39;</span>
 </code></pre>
-</div><p>If you haven&#8217;t tried Redis yet and program small tasks, you can get started today!</p>  
-  
+</div><p>If you haven&#8217;t tried Redis yet and program small tasks, you can get started today!</p>
+
   <p class="signoff">
     &mdash;<a href="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html">Jun 07, 2013</a>
   </p>
@@ -124,10 +124,10 @@
   <p class="index_comments_count"><a href="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html#disqus_thread">/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html comments</a></p>
   </div>
 
-<div class="post">  
+<div class="post">
 
   <h1>
-    Simple Two-Factor Auth with Shield
+    <a href="/2013/06/05/simple-two-factor-auth-with-shield.html">Simple Two-Factor Auth with Shield</a>
   </h1>
 
   <p><a href="https://github.com/cyx/shield">Shield</a> is a simple authentication gem I tend to reach for first when developing small Sinatra or Cuba apps.  The code is short, reliable, and easy to understand.  It&#8217;s not a kitchen sink solution, it does one thing well: lets users log in with a password.</p>
@@ -262,8 +262,8 @@
 </div><p>The flow of the challenge check is fairly simple.  First, we can push a new challenge by setting a random 6 digit pin for the user, and deliver that out of band.  This can be easily accomplished via <span class="caps">SMS</span> with a provider such as <a href="http://twilio.com">Twilio</a>, or my favorite push notification service <a href="http://pushover.net">Pushover</a>.  Checkout my <a href="https://rubygems.org/gems/rushover">Rushover gem</a> as a simple client for sending to Pushover.  We&#8217;ll toss that <span class="caps">PIN</span> into Redis with a 5 minute expiration;  this provides a simple limited window for which the <span class="caps">PIN</span> is valid.  Likewise, if you want to implement this on top of a <span class="caps">SQL</span> <span class="caps">ORM</span>, you could add challenge and expiration timestamps on to your User model.</p>
 <p>For checking that the user has provided a valid challenge <span class="caps">PIN</span>, we can compare against the value in Redis if it exists.   Upon match, we&#8217;ll delete the <span class="caps">PIN</span> from redis to invalidate it and confirm the challenge is accepted.</p>
 <p>You can find the <a href="https://gist.github.com/bemurphy/831e6c3cf4d40060ed49">complete code</a> for this example as a gist.  Hopefully it&#8217;s easy enough to follow, and now you can provide an extra level of security for your social cat-video apps!</p>
-<p>Until next time&#8230;</p>  
-  
+<p>Until next time&#8230;</p>
+
   <p class="signoff">
     &mdash;<a href="/2013/06/05/simple-two-factor-auth-with-shield.html">Jun 05, 2013</a>
   </p>
@@ -271,10 +271,10 @@
   <p class="index_comments_count"><a href="/2013/06/05/simple-two-factor-auth-with-shield.html#disqus_thread">/2013/06/05/simple-two-factor-auth-with-shield.html comments</a></p>
   </div>
 
-<div class="post">  
+<div class="post">
 
   <h1>
-    On Authorization Failures
+    <a href="/2013/04/24/on-authorization-failures.html">On Authorization Failures</a>
   </h1>
 
   <p>As a slight extension to the previous post, I wanted to make a quick point about authorization failures.</p>
@@ -289,8 +289,8 @@
 <p>Wait..no that&#8217;s not a 403, it&#8217;s a 404.  What the heck?</p>
 <p>The answer is pretty simple.  On your little todo app you run for friends and family, it&#8217;s probably not a huge deal for somebody to hit /todo_lists/42/item/5 and get a 403.  Wow, somebody now knows you have a todo list 42 and item 5.  Probably not a big deal.</p>
 <p>But on a site like Github, let&#8217;s change that application.rb link to say, /foocorp/awesomeproject/config/initializers/devise.rb.  403?  Oh look, that project is using Devise!</p>
-<p>The moral of the story:  best to give a 404 status on authorization failures if you don&#8217;t want to cater to mining and leaking of sensitive info.</p>  
-  
+<p>The moral of the story:  best to give a 404 status on authorization failures if you don&#8217;t want to cater to mining and leaking of sensitive info.</p>
+
   <p class="signoff">
     &mdash;<a href="/2013/04/24/on-authorization-failures.html">Apr 24, 2013</a>
   </p>
@@ -298,10 +298,10 @@
   <p class="index_comments_count"><a href="/2013/04/24/on-authorization-failures.html#disqus_thread">/2013/04/24/on-authorization-failures.html comments</a></p>
   </div>
 
-<div class="post">  
+<div class="post">
 
   <h1>
-    On Authorization Patterns
+    <a href="/2013/04/23/on-authorization-patterns.html">On Authorization Patterns</a>
   </h1>
 
   <p>Once upon a time, I&#8217;d heavily lean upon scoped finds for cheap authorization in Rails controller actions.  For instance, a system might have many users, for which each has many projects they can manage.  In order to find a project that a user can administer, an action may include the following:</p>
@@ -325,8 +325,8 @@
 <span class="n">authorize</span> <span class="vi">@project</span>
 </code></pre>
 </div><p>This is a worthwhile difference.  Want to keep metrics or get alerted on security violation attempts?  Now it can be clearly split.  Or perhaps, you take different action or set different flash messages;  this can be handled more cleanly now.</p>
-<p>When it comes to patterns, remember, it&#8217;s never one-size-fits-all.  What&#8217;s good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.</p>  
-  
+<p>When it comes to patterns, remember, it&#8217;s never one-size-fits-all.  What&#8217;s good to realize is that sometimes you can write your code in simpler fashions, and more importantly, think about the explicit exceptions your system should be throwing, if any.</p>
+
   <p class="signoff">
     &mdash;<a href="/2013/04/23/on-authorization-patterns.html">Apr 23, 2013</a>
   </p>
@@ -334,10 +334,10 @@
   <p class="index_comments_count"><a href="/2013/04/23/on-authorization-patterns.html#disqus_thread">/2013/04/23/on-authorization-patterns.html comments</a></p>
   </div>
 
-<div class="post">  
+<div class="post">
 
   <h1>
-    A note about "friendly" passwords
+    <a href="/2013/01/26/a-note-about--friendly--passwords.html">A note about "friendly" passwords</a>
   </h1>
 
   <p>Often in a web application, the time will come where you opt to generate temporary passwords for users.  One common approach to this is to use a helper that combines a small about of random data (such as 4 random numbers) with a word randomly selected from a pared down dictionary list.</p>
@@ -362,8 +362,8 @@
 	<li>O (the uppercase OH)</li>
 	<li>l (lowercase L)</li>
 </ul>
-<p>You can <em class="code">String#tr</em> these out for substitutions, or strip them alltogether.  This will slightly reduce entropy, but by keeping a longer password you compensate somewhat.</p>  
-  
+<p>You can <em class="code">String#tr</em> these out for substitutions, or strip them alltogether.  This will slightly reduce entropy, but by keeping a longer password you compensate somewhat.</p>
+
   <p class="signoff">
     &mdash;<a href="/2013/01/26/a-note-about--friendly--passwords.html">Jan 26, 2013</a>
   </p>

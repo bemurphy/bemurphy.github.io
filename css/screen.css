@@ -804,6 +804,11 @@ nav li:hover {
   line-height: 42px;
 }
 
+#content h1 a {
+  text-decoration: none;
+  border: none;
+}
+
 #content a {
   color: inherit;
   font-weight: 500;
