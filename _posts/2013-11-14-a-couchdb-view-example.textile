@@ -1,0 +1,225 @@
+---
+layout: post
+title: "A CouchDB view example"
+published: true
+---
+
+Newcomers to "CouchDB":http://couchdb.apache.org/ offerings often fall into two categories: people that use it purely as a key-value store, and people that are stuck wondering how to query non-primary-keyed data.
+
+One answer built in to CouchDB is "map-reduce".
+
+Let's dive in on a simple example.  We'll model a recipe book of bartending drinks.  This example provides two interesting points.  First, modeling recipes in relational databases provides for strong integrity, however, it is not very intuitive modeling.  I once tried to explain to a Rails newcomer how to create join models between a recipe and ingredients, and they found it fairly confusing.  Secondly, drink recipes provide a clear use case for a secondary index search by ingredient.
+
+First, we'll store some simple single document drink recipes that look like this:
+
+{% highlight javascript %}
+{
+  "type": "DrinkRecipe",
+  "name": "Angler's Cocktail",
+  "ingredients": [
+    { "name": "Gin", "amount": "2 oz" },
+    { "name": "Angostura Bitters", "amount": "3 dashes" },
+    { "name": "Orange Bitters", "amount": "3 dashes" },
+    { "name": "Grenadine", "amount": "splash" },
+    { "name": "Red Maraschino Cherry", "amount": "1"}
+  ],
+  "note": "Serve in an old fashioned glass over cracked ice"
+}
+{% endhighlight %}
+
+Briefly, if you're not familiar with CouchDB, take note of the _(code)type_ property.  That's a CouchDB convention of marking the document to distinguish them from each other.  Unlike collections in MongoDB, or tables in SQL stores, your docs for an app typically exist in a single database.  The rest of the properties are pretty self explanatory, but take note that it models the recipe as you might write it on a bit of scrap paper (minus the braces and keys).
+
+Now let's talk about two simple views.  First, it's pretty likely you'll want to be able to list all your recipes by name.  Here's the one possible view for that:
+
+{% highlight javascript %}
+function(doc) {
+  if (doc.type === 'DrinkRecipe') {
+    emit(doc.name.toLowerCase(), doc.name);
+  }
+}
+{% endhighlight %}
+
+We'll store that in the 'drinks' design doc as 'byName'.  We're emitting the document name in lowercase as the key (the first argument to emit), and the name as the value so we can preserve the case. Let's grab at that view with curl:
+
+
+{% highlight bash %}
+$ curl http://127.0.0.1:5984/drinks/_design/drinks/_view/byName
+
+{"total_rows":4,"offset":0,"rows":[
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":"angler's cocktail","value":"Angler's Cocktail"},
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":"manhattan","value":"Manhattan"},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":"martini","value":"Martini"},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":"old fashioned","value":"Old Fashioned"}
+]}
+{% endhighlight %}
+
+The most important thing to note here is that the keys come back in sorted order, in this case alphabetical.
+
+Now, say we wanted drinks starting with 'm'.  We can leverage the start and endkey params as such:
+
+{% highlight bash %}
+$ curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byName?startkey="m"&endkey="n"&inclusive_end=false'
+
+{"total_rows":4,"offset":1,"rows":[
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":"manhattan","value":"Manhattan"},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":"martini","value":"Martini"}
+]}
+{% endhighlight %}
+
+Note that total_rows is 4, that's because the view has 4 rows in total, but, our startkey "m" and endkey "n" only return two rows.  Kind of strange but just be aware of it.  Also, we've got back just our rows that start with "m" but not "n" because we disabled the inclusive_end.
+
+OK, let's introduce a second view to enable searching by ingredient:
+
+{% highlight javascript %}
+// map
+function(doc) {
+  if (doc.type === "DrinkRecipe") {
+    doc.ingredients.forEach(function(i) {
+      emit([i.name.toLowerCase(), doc.name.toLowerCase()], null);
+    });
+  }
+}
+
+// reduce
+_count // uses the built in _count implementation
+{% endhighlight %}
+
+We've included the ingredient name as the first element of the key _array_ (recall we had a string as key on the previous view), and the drink name as the second.  This gives us already sorted results, as well as some search and aggregation ability as we'll shortly see.
+
+Let's query it, we'll get a row for every ingredient in every drink.  We'll pass it _(code)reduce=false_ to tell it to only run the map phase:
+
+{% highlight bash %}
+curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?reduce=false'
+
+{"total_rows":17,"offset":0,"rows":[
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["angostura bitters","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":["angostura bitters","manhattan"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":["angostura bitters","old fashioned"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":["bourbon","manhattan"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":["bourbon","old fashioned"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":["dry vermouth","martini"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["gin","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":["gin","martini"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["grenadine","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["orange bitters","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":["orange bitters","martini"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":["orange peel","manhattan"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":["orange wedge","old fashioned"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["red maraschino cherry","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":["sugar","old fashioned"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700af45","key":["sweet vermouth","manhattan"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527009c27","key":["water","old fashioned"],"value":null}
+]}
+{% endhighlight %}
+
+Cool, let's try some queries with different options.
+
+Find any drink recipe that uses gin:
+
+{% highlight bash %}
+curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?reduce=false&startkey=\["gin"\]&endkey=\["gin",\[\]\]'
+
+{"total_rows":17,"offset":6,"rows":[
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["gin","angler's cocktail"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":["gin","martini"],"value":null}
+]}
+{% endhighlight %}
+
+The startkey is _(code)["gin"]_ and the endkey is _(code)["gin",[]]_.  The endkey contains a bit of a conventional trick, it is the start key with [] appended on to it.  Since we have a 2 element array key, this is a bit like a wildcard search on the last element, and matches on the first.  Because CouchDB will keysort [] after a string like 'zzzzzzz' we are sure to get all our gin drinks back.
+
+Now let's get a little trickier and use the reduce phase as well as a group_level option.
+
+{% highlight bash %}
+curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?group_level=1'
+
+{"rows":[
+{"key":["angostura bitters"],"value":3},
+{"key":["bourbon"],"value":2},
+{"key":["dry vermouth"],"value":1},
+{"key":["gin"],"value":2},
+{"key":["grenadine"],"value":1},
+{"key":["orange bitters"],"value":2},
+{"key":["orange peel"],"value":1},
+{"key":["orange wedge"],"value":1},
+{"key":["red maraschino cherry"],"value":1},
+{"key":["sugar"],"value":1},
+{"key":["sweet vermouth"],"value":1},
+{"key":["water"],"value":1}
+]}
+{% endhighlight %}
+
+By default, a view with a reduce specified runs, so we just remove that param from our query.  Also we've added group_level as 1.  This means that we will be adding up the number of rows using the first key element only for our reduce.  The value above is the sum of rows for each key, so there are 3 drinks that use "angostura bitters" in them.  Had we used group_level 2, in this case everything would come back with value "1" because all our keys in full are unique.
+
+Now, a natural reaction to searching by ingredient leads to a question:  what if you want to search by two ingredients?  Well, at this point, there are at least two obvious solutions.  First, you could perform 2 queries of the view, 1 for each ingredient, and then do an in app intersection.  A second would be to use "couchdb-lucene":https://github.com/rnewson/couchdb-lucene to enable full text search on your ingredients.  "Cloudant":http://cloudant.com also bakes this straight into their hosted BigCouch offering, you can "read their docs here":https://cloudant.com/for-developers/search/ about it if you want to get up and running quickly.
+
+At the outset I said we'd make two views.  Let's add a bonus one.  Imagine you've got some _bizarro_ recipe that calls for an ingredient of the same name twice (this happens much more in baking than mixology).  An observant eye of our _(code)byIngredients_ view would spot that, we'd output two rows for the same ingredient, thereby possibly offsetting our results (think pagination) when duplicates are involved.
+
+We could add another (or tweak our original _code()byIngredient_) view to include the _(code)doc._id_.  Let's call it _(code)byDedupedIngredient_:
+
+
+{% highlight javascript %}
+// map
+function(doc) {
+  if (doc.type === "DrinkRecipe") {
+    doc.ingredients.forEach(function(i) {
+      emit([i.name.toLowerCase(), doc.name.toLowerCase(), doc._id], null);
+    });
+  }
+}
+
+// reduce
+_count
+{% endhighlight %}
+
+Now let's add a rather contrived "Extra Gin Martini" to our book:
+
+{% highlight javascript %}
+{
+   "type": "DrinkRecipe",
+   "name": "Extra Gin Martini",
+   "ingredients": [
+       {
+           "name": "Gin",
+           "amount": "2 oz"
+       },
+       {
+           "name": "Gin",
+           "amount": "1 oz"
+       },
+       {
+           "name": "Dry Vermouth",
+           "amount": "1/4 oz"
+       },
+       {
+           "name": "Orange Bitters",
+           "amount": "A dash"
+       }
+   ],
+   "note": "Shake with ice and serve in a martini glass"
+}
+{% endhighlight %}
+
+Let's query it twice, first without a reduce, and secondly with a reduce phase
+
+{% highlight bash %}
+curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byDedupedIngredient?reduce=false&startkey=\["gin"\]&endkey=\["gin",\[\]\]'
+
+{"total_rows":21,"offset":7,"rows":[
+{"id":"3b510371b46c2f20cd7d72a527007e2a","key":["gin","angler's cocktail","3b510371b46c2f20cd7d72a527007e2a"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700c0fe","key":["gin","extra gin martini","3b510371b46c2f20cd7d72a52700c0fe"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a52700c0fe","key":["gin","extra gin martini","3b510371b46c2f20cd7d72a52700c0fe"],"value":null},
+{"id":"3b510371b46c2f20cd7d72a527008dd5","key":["gin","martini","3b510371b46c2f20cd7d72a527008dd5"],"value":null}
+]}
+
+curl 'http://127.0.0.1:5984/drinks/_design/drinks/_view/byDedupedIngredient?reduce=true&group_level=3&startkey=\["gin"\]&endkey=\["gin",\[\]\]'
+
+{"rows":[
+{"key":["gin","angler's cocktail","3b510371b46c2f20cd7d72a527007e2a"],"value":1},
+{"key":["gin","extra gin martini","3b510371b46c2f20cd7d72a52700c0fe"],"value":2},
+{"key":["gin","martini","3b510371b46c2f20cd7d72a527008dd5"],"value":1}
+]}
+{% endhighlight %}
+
+Can you spot the difference?  Look closely for the "extra gin martini".  In the first query, it shows up twice.  In the second, because we are running a reduce and group on the exact key at a group level of 3, it dedupes and returns with a value of 2.
+
+Hopefully this has been of some help to folks interested in CouchDB, but not familiar with it, especially its map-reduce side.  I should hatch a post in the near future to show you how to make more complicated collated views for returning richer, associated data in a single query.

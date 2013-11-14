@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+    <link href="/css/screen.css?v=6" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; A CouchDB view example</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <nav class="two columns">
+        
+
+          <ul data-selected="/2013/11/14/a-couchdb-view-example.html">
+            <li><h3><a href="/">Blog</a></h3></li>
+            <li><h3><a href="/archive.html">Archives</a></h3></li>
+            <li><h3><a href="/about.html">About</a></h3></li>
+            <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+            <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+            <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+          </ul>
+
+          <script type="text/javascript">
+            if ($('nav a[href="/2013/11/14/a-couchdb-view-example.html"]').length) {
+              $('nav a[href="/2013/11/14/a-couchdb-view-example.html"]').closest('li').addClass("selected");
+            } else {
+              $('nav li').first().addClass("selected");
+            }
+          </script>
+      </nav>
+
+      <section id="content" class="thirteen columns offset-by-one">
+        <div class="post">
+  <h1>A CouchDB view example</h1>
+
+  <p>Newcomers to <a href="http://couchdb.apache.org/">CouchDB</a> offerings often fall into two categories: people that use it purely as a key-value store, and people that are stuck wondering how to query non-primary-keyed data.</p>
+<p>One answer built in to CouchDB is &#8220;map-reduce&#8221;.</p>
+<p>Let&#8217;s dive in on a simple example.  We&#8217;ll model a recipe book of bartending drinks.  This example provides two interesting points.  First, modeling recipes in relational databases provides for strong integrity, however, it is not very intuitive modeling.  I once tried to explain to a Rails newcomer how to create join models between a recipe and ingredients, and they found it fairly confusing.  Secondly, drink recipes provide a clear use case for a secondary index search by ingredient.</p>
+<p>First, we&#8217;ll store some simple single document drink recipes that look like this:</p>
+<div class="highlight"><pre><code class="javascript"><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;DrinkRecipe&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Angler&#39;s Cocktail&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ingredients&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Gin&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;2 oz&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Angostura Bitters&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;3 dashes&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Orange Bitters&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;3 dashes&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Grenadine&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;splash&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Red Maraschino Cherry&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;note&quot;</span><span class="o">:</span> <span class="s2">&quot;Serve in an old fashioned glass over cracked ice&quot;</span>
+<span class="p">}</span>
+</code></pre>
+</div><p>Briefly, if you&#8217;re not familiar with CouchDB, take note of the <em class="code">type</em> property.  That&#8217;s a CouchDB convention of marking the document to distinguish them from each other.  Unlike collections in MongoDB, or tables in <span class="caps">SQL</span> stores, your docs for an app typically exist in a single database.  The rest of the properties are pretty self explanatory, but take note that it models the recipe as you might write it on a bit of scrap paper (minus the braces and keys).</p>
+<p>Now let&#8217;s talk about two simple views.  First, it&#8217;s pretty likely you&#8217;ll want to be able to list all your recipes by name.  Here&#8217;s the one possible view for that:</p>
+<div class="highlight"><pre><code class="javascript"><span class="kd">function</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;DrinkRecipe&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">emit</span><span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div><p>We&#8217;ll store that in the &#8216;drinks&#8217; design doc as &#8216;byName&#8217;.  We&#8217;re emitting the document name in lowercase as the key (the first argument to emit), and the name as the value so we can preserve the case. Let&#8217;s grab at that view with curl:</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>curl http://127.0.0.1:5984/drinks/_design/drinks/_view/byName
+
+<span class="o">{</span><span class="s2">&quot;total_rows&quot;</span>:4,<span class="s2">&quot;offset&quot;</span>:0,<span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;angler&#39;s cocktail&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Angler&#39;s Cocktail&quot;</span><span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;manhattan&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Manhattan&quot;</span><span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;martini&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Martini&quot;</span><span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;old fashioned&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Old Fashioned&quot;</span><span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>The most important thing to note here is that the keys come back in sorted order, in this case alphabetical.</p>
+<p>Now, say we wanted drinks starting with &#8216;m&#8217;.  We can leverage the start and endkey params as such:</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byName?startkey=&quot;m&quot;&amp;endkey=&quot;n&quot;&amp;inclusive_end=false&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;total_rows&quot;</span>:4,<span class="s2">&quot;offset&quot;</span>:1,<span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;manhattan&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Manhattan&quot;</span><span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;martini&quot;</span>,<span class="s2">&quot;value&quot;</span>:<span class="s2">&quot;Martini&quot;</span><span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>Note that total_rows is 4, that&#8217;s because the view has 4 rows in total, but, our startkey &#8220;m&#8221; and endkey &#8220;n&#8221; only return two rows.  Kind of strange but just be aware of it.  Also, we&#8217;ve got back just our rows that start with &#8220;m&#8221; but not &#8220;n&#8221; because we disabled the inclusive_end.</p>
+<p>OK, let&#8217;s introduce a second view to enable searching by ingredient:</p>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// map</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&quot;DrinkRecipe&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">emit</span><span class="p">([</span><span class="nx">i</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()],</span> <span class="kc">null</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// reduce</span>
+<span class="nx">_count</span> <span class="c1">// uses the built in _count implementation</span>
+</code></pre>
+</div><p>We&#8217;ve included the ingredient name as the first element of the key <em>array</em> (recall we had a string as key on the previous view), and the drink name as the second.  This gives us already sorted results, as well as some search and aggregation ability as we&#8217;ll shortly see.</p>
+<p>Let&#8217;s query it, we&#8217;ll get a row for every ingredient in every drink.  We&#8217;ll pass it <em class="code">reduce=false</em> to tell it to only run the map phase:</p>
+<div class="highlight"><pre><code class="bash">curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?reduce=false&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;total_rows&quot;</span>:17,<span class="s2">&quot;offset&quot;</span>:0,<span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;angostura bitters&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;angostura bitters&quot;</span>,<span class="s2">&quot;manhattan&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;angostura bitters&quot;</span>,<span class="s2">&quot;old fashioned&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;bourbon&quot;</span>,<span class="s2">&quot;manhattan&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;bourbon&quot;</span>,<span class="s2">&quot;old fashioned&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;dry vermouth&quot;</span>,<span class="s2">&quot;martini&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;martini&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;grenadine&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange bitters&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange bitters&quot;</span>,<span class="s2">&quot;martini&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange peel&quot;</span>,<span class="s2">&quot;manhattan&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange wedge&quot;</span>,<span class="s2">&quot;old fashioned&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;red maraschino cherry&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;sugar&quot;</span>,<span class="s2">&quot;old fashioned&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700af45&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;sweet vermouth&quot;</span>,<span class="s2">&quot;manhattan&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527009c27&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;water&quot;</span>,<span class="s2">&quot;old fashioned&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>Cool, let&#8217;s try some queries with different options.</p>
+<p>Find any drink recipe that uses gin:</p>
+<div class="highlight"><pre><code class="bash">curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?reduce=false&amp;startkey=\[&quot;gin&quot;\]&amp;endkey=\[&quot;gin&quot;,\[\]\]&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;total_rows&quot;</span>:17,<span class="s2">&quot;offset&quot;</span>:6,<span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;martini&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>The startkey is <em class="code">[&#8220;gin&#8221;]</em> and the endkey is <em class="code">[&#8220;gin&#8221;,[]]</em>.  The endkey contains a bit of a conventional trick, it is the start key with [] appended on to it.  Since we have a 2 element array key, this is a bit like a wildcard search on the last element, and matches on the first.  Because CouchDB will keysort [] after a string like &#8216;zzzzzzz&#8217; we are sure to get all our gin drinks back.</p>
+<p>Now let&#8217;s get a little trickier and use the reduce phase as well as a group_level option.</p>
+<div class="highlight"><pre><code class="bash">curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byIngredient?group_level=1&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;angostura bitters&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:3<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;bourbon&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:2<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;dry vermouth&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:2<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;grenadine&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange bitters&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:2<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange peel&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;orange wedge&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;red maraschino cherry&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;sugar&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;sweet vermouth&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;water&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>By default, a view with a reduce specified runs, so we just remove that param from our query.  Also we&#8217;ve added group_level as 1.  This means that we will be adding up the number of rows using the first key element only for our reduce.  The value above is the sum of rows for each key, so there are 3 drinks that use &#8220;angostura bitters&#8221; in them.  Had we used group_level 2, in this case everything would come back with value &#8220;1&#8221; because all our keys in full are unique.</p>
+<p>Now, a natural reaction to searching by ingredient leads to a question:  what if you want to search by two ingredients?  Well, at this point, there are at least two obvious solutions.  First, you could perform 2 queries of the view, 1 for each ingredient, and then do an in app intersection.  A second would be to use <a href="https://github.com/rnewson/couchdb-lucene">couchdb-lucene</a> to enable full text search on your ingredients.  <a href="http://cloudant.com">Cloudant</a> also bakes this straight into their hosted BigCouch offering, you can <a href="https://cloudant.com/for-developers/search/">read their docs here</a> about it if you want to get up and running quickly.</p>
+<p>At the outset I said we&#8217;d make two views.  Let&#8217;s add a bonus one.  Imagine you&#8217;ve got some <em>bizarro</em> recipe that calls for an ingredient of the same name twice (this happens much more in baking than mixology).  An observant eye of our <em class="code">byIngredients</em> view would spot that, we&#8217;d output two rows for the same ingredient, thereby possibly offsetting our results (think pagination) when duplicates are involved.</p>
+<p>We could add another (or tweak our original <em>code()byIngredient</em>) view to include the <em class="code">doc._id</em>.  Let&#8217;s call it <em class="code">byDedupedIngredient</em>:</p>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// map</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&quot;DrinkRecipe&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">doc</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">emit</span><span class="p">([</span><span class="nx">i</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">_id</span><span class="p">],</span> <span class="kc">null</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// reduce</span>
+<span class="nx">_count</span>
+</code></pre>
+</div><p>Now let&#8217;s add a rather contrived &#8220;Extra Gin Martini&#8221; to our book:</p>
+<div class="highlight"><pre><code class="javascript"><span class="p">{</span>
+   <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;DrinkRecipe&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Extra Gin Martini&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;ingredients&quot;</span><span class="o">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Gin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;2 oz&quot;</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Gin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;1 oz&quot;</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Dry Vermouth&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;1/4 oz&quot;</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Orange Bitters&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="s2">&quot;A dash&quot;</span>
+       <span class="p">}</span>
+   <span class="p">],</span>
+   <span class="s2">&quot;note&quot;</span><span class="o">:</span> <span class="s2">&quot;Shake with ice and serve in a martini glass&quot;</span>
+<span class="p">}</span>
+</code></pre>
+</div><p>Let&#8217;s query it twice, first without a reduce, and secondly with a reduce phase</p>
+<div class="highlight"><pre><code class="bash">curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byDedupedIngredient?reduce=false&amp;startkey=\[&quot;gin&quot;\]&amp;endkey=\[&quot;gin&quot;,\[\]\]&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;total_rows&quot;</span>:21,<span class="s2">&quot;offset&quot;</span>:7,<span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700c0fe&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;extra gin martini&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a52700c0fe&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a52700c0fe&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;extra gin martini&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a52700c0fe&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span>,<span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;martini&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:null<span class="o">}</span>
+<span class="o">]}</span>
+
+curl <span class="s1">&#39;http://127.0.0.1:5984/drinks/_design/drinks/_view/byDedupedIngredient?reduce=true&amp;group_level=3&amp;startkey=\[&quot;gin&quot;\]&amp;endkey=\[&quot;gin&quot;,\[\]\]&#39;</span>
+
+<span class="o">{</span><span class="s2">&quot;rows&quot;</span>:<span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;angler&#39;s cocktail&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a527007e2a&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;extra gin martini&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a52700c0fe&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:2<span class="o">}</span>,
+<span class="o">{</span><span class="s2">&quot;key&quot;</span>:<span class="o">[</span><span class="s2">&quot;gin&quot;</span>,<span class="s2">&quot;martini&quot;</span>,<span class="s2">&quot;3b510371b46c2f20cd7d72a527008dd5&quot;</span><span class="o">]</span>,<span class="s2">&quot;value&quot;</span>:1<span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+</div><p>Can you spot the difference?  Look closely for the &#8220;extra gin martini&#8221;.  In the first query, it shows up twice.  In the second, because we are running a reduce and group on the exact key at a group level of 3, it dedupes and returns with a value of 2.</p>
+<p>Hopefully this has been of some help to folks interested in CouchDB, but not familiar with it, especially its map-reduce side.  I should hatch a post in the near future to show you how to make more complicated collated views for returning richer, associated data in a single query.</p>
+
+  <p class="signoff">
+    &mdash;Nov 14, 2013
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+      </section>
+
+      <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+      <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+    </div>
+  </body>
+</html>
