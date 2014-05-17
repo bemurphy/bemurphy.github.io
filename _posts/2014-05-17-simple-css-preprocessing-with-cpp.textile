@@ -1,0 +1,35 @@
+---
+layout: post
+title: "Simple CSS Preprocessing with cpp"
+published: true
+---
+
+Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass's features without everything.  Specially, I love having variables available, and the option to split into multiple files for organization.
+
+Then I read "this post":http://blog.arkency.com/2013/09/throw-away-sprockets-use-unix/ and wondered how I could use cpp towards such a goal.  The answer is pretty simple.  An example app.css file:
+
+{% highlight css %}
+#define $text_color #333
+#define $border_color #eee
+
+#import "comments.css"
+#import "posts.css"
+{% endhighlight %}
+
+And in posts.css:
+
+{% highlight css %}
+.posts .post {
+  border: 1px solid $border_color;
+}
+{% endhighlight %}
+
+Running _(code)cpp -P app.css_ outputs the following:
+
+{% highlight css %}
+.posts .post {
+  border: 1px solid #eee;
+}
+{% endhighlight %}
+
+This is no "replacement" for sprockets or sass, but a nice trick to have up your sleeve!

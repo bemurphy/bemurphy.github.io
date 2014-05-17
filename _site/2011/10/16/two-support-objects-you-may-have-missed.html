@@ -48,13 +48,13 @@
 <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>              <span class="c1"># =&gt; &quot;development&quot;</span>
 <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">class</span>        <span class="c1"># =&gt; ActiveSupport::StringInquirer</span>
 
-<span class="n">si</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="n">si</span> <span class="o">=</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
 <span class="n">si</span><span class="o">.</span><span class="n">foo?</span> <span class="c1"># =&gt; true</span>
 <span class="n">si</span><span class="o">.</span><span class="n">bar?</span> <span class="c1"># =&gt; false</span>
 </code></pre>
 </div><p>I think this is great for two reasons.  First, it&#8217;s a more expressive use of code, and secondly, it implies less coupling to a string outside of an object.  Let&#8217;s take a simple example: a role for a User object.  Imagine you start simple, where role is just a string.  Now let&#8217;s say we&#8217;re using <a href="https://github.com/ryanb/cancan">CanCan</a> to add simple authorization to our app, with an ability class that looks like this:</p>
 <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Ability</span>
-  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
+  <span class="kp">include</span> <span class="ss">CanCan</span><span class="p">:</span><span class="ss">:Ability</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="o">||</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
@@ -68,15 +68,15 @@
 <span class="k">end</span>
 </code></pre>
 </div><p>Note we&#8217;re doing an <em class="code">#==</em> for comparison on that role.  This is a bit ugly and not as expressive as I&#8217;d like.  Let&#8217;s get rid of ugly with the help of the StringInquirer.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
   <span class="k">def</span> <span class="nf">role</span>
     <span class="n">role</span> <span class="o">=</span> <span class="n">read_attribute</span><span class="p">(</span><span class="ss">:role</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span>
-    <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+    <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:StringInquirer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="k">class</span> <span class="nc">Ability</span>
-  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
+  <span class="kp">include</span> <span class="ss">CanCan</span><span class="p">:</span><span class="ss">:Ability</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span> <span class="o">||</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>

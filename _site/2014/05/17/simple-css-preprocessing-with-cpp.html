@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="The online musing of Brendon Murphy" name="description" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+    <link href="/css/screen.css?v=6" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/pygment_trac.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Brendon Murphy - Atom" href="http://feeds.feedburner.com/techfreaknet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Brendon Murphy &ndash; Simple CSS Preprocessing with cpp</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <nav class="two columns">
+        
+
+          <ul data-selected="/2014/05/17/simple-css-preprocessing-with-cpp.html">
+            <li><h3><a href="/">Blog</a></h3></li>
+            <li><h3><a href="/archive.html">Archives</a></h3></li>
+            <li><h3><a href="/about.html">About</a></h3></li>
+            <li><h3><a href="http://feeds.feedburner.com/Techfreaknet" rel="alternate" type="application/rss+xml">Feed</a></h3></li>
+            <li><h3><a href="http://github.com/bemurphy" rel="external">Github</a></h3></li>
+            <li><h3><a href="http://twitter.com/xternal" rel="external">Twitter</a></h3></li>
+          </ul>
+
+          <script type="text/javascript">
+            if ($('nav a[href="/2014/05/17/simple-css-preprocessing-with-cpp.html"]').length) {
+              $('nav a[href="/2014/05/17/simple-css-preprocessing-with-cpp.html"]').closest('li').addClass("selected");
+            } else {
+              $('nav li').first().addClass("selected");
+            }
+          </script>
+      </nav>
+
+      <section id="content" class="thirteen columns offset-by-one">
+        <div class="post">
+  <h1>Simple CSS Preprocessing with cpp</h1>
+
+  <p>Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass&#8217;s features without everything.  Specially, I love having variables available, and the option to split into multiple files for organization.</p>
+<p>Then I read <a href="http://blog.arkency.com/2013/09/throw-away-sprockets-use-unix/">this post</a> and wondered how I could use cpp towards such a goal.  The answer is pretty simple.  An example app.css file:</p>
+<div class="highlight"><pre><code class="css"><span class="nf">#define</span> <span class="err">$</span><span class="nt">text_color</span> <span class="nf">#333</span>
+<span class="nf">#define</span> <span class="err">$</span><span class="nt">border_color</span> <span class="nf">#eee</span>
+
+<span class="nf">#import</span> <span class="s2">&quot;comments.css&quot;</span>
+<span class="nf">#import</span> <span class="s2">&quot;posts.css&quot;</span>
+</code></pre>
+</div><p>And in posts.css:</p>
+<div class="highlight"><pre><code class="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
+  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="err">$</span><span class="n">border_color</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div><p>Running <em class="code">cpp -P app.css</em> outputs the following:</p>
+<div class="highlight"><pre><code class="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
+  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#eee</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div><p>This is no &#8220;replacement&#8221; for sprockets or sass, but a nice trick to have up your sleeve!</p>
+
+  <p class="signoff">
+    &mdash;May 17, 2014
+  </p>
+
+  <hr />
+   <div id="disqus">
+     <script>var no_disqus_developer = 1;</script>
+     <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/techfreak/embed.js"></script><noscript><a href="http://techfreak.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+   </div>
+</div>
+
+
+      </section>
+
+      <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15226195-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+      <script type="text/javascript">
+//<[CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+		if(links[i].href.indexOf('#disqus_thread') >= 0) {
+			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+		}
+	}
+	document.write('<script type="text/javascript" src="http://disqus.com/forums/techfreak/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+    </div>
+  </body>
+</html>

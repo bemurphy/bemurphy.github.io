@@ -1,0 +1,49 @@
+---
+layout: post
+title: "A Heretical Heroku Messaging Setup"
+published: false
+---
+
+A useful pattern I've seen in a few web apps could be called 'behavioral tracking'.  Sometimes it's useful to to get the pulse of an app;  for instance, to know when a signup occurred on a new plan, when a freshly deployed feature gets used, or when a new widget is created.
+
+There's many professional, robust, and still simple ways of doing this.  What you probably want to do is plugin "Segment.io":https://segment.io/ for this, and hook into the multitude of analytics tools they fanout event messages to.
+
+Sometimes though, you want something you control, or maybe you want to avoid YANR (Yet Another Network Request).  Or perhaps you are just bored.
+
+In this spirit, I present to you my DIY Heretical Heroku Messaging Setup.  Here's the basic flow.
+
+1. Add a helper to your Rails app to log data as JSON, prefixed with an easily identified phrase:
+
+{% highlight ruby %}
+def trigger_event(event_name, data)
+  payload = {
+    event_name: event_name,
+    data: data
+  }
+
+  msg = "event-9afc10a1fg1: #{payload.to_json}"
+  Rails.logger.info(msg)
+end
+{% endhighlight %}
+
+2. When interesting events happen in your controllers, call your helper:
+
+{% highlight ruby %}
+trigger_event('new_user.signup', { plan_name: 'UltraBetaMax' })
+{% endhighlight %}
+
+3. Deploy a new Heroku app to act as a "Logplex Drain":https://devcenter.heroku.com/articles/logging#syslog-drains (summary: 'Logplex drains allow you to forward your Heroku logs to an external syslog server for long-term archiving').  I used "heroku-log-store":https://github.com/rwdaigle/heroku-log-store as a guide and rolled a node app for it.  Your log drain receiving app can look for interesting log events containing _(code)event-9afc10a1fg1_ and parse the json.  Use basic auth to stop arbitrary info from getting recorded by your endpoint.
+
+4. Use the heroku cli to setup a log drain:
+
+{% highlight sh %}
+$ heroku drains:add https://user:pass@drain-app.herokuapp.com/drain -a main-app
+{% endhighlight %}
+
+5. Handle messages in your drain app at will.  You can kickoff emails to the team, throw a notification out to Campfire, Zapier, stash in ElasticSearch, or draw fancy charts.
+
+Keep in mind, if you employ this, be ok with possibly losing data.  Heroku log drain makes a best effort at redelivery if a failure occurs, but this is not a real message queue solution.  In other words, don't record financial transactions, update security information, or perform other data integrity related jobs.  Let RabbitMQ or something handle the serious work for you.
+
+It's also not entirely off the wall to track custom metrics in log files.  In fact, it's how "Librato":https://devcenter.heroku.com/articles/librato#custom-log-based-metrics recommends doing it on Heroku.
+
+By all means, have fun and enjoy playing outside the box!

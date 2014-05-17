@@ -46,21 +46,21 @@
 <p>As <em>an experiment</em>, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a <span class="caps">PIN</span> from a SecureID type token, or out-of-band delivery message such as <span class="caps">SMS</span>.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.</p>
 <p>Let&#8217;s break down some of the components of what a simple system might look like.</p>
 <p>First, we&#8217;ll create a basic User model with <a href="http://ohm.keyvalue.org">Ohm</a>, a persistance library backed by Redis.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">Ohm</span><span class="o">::</span><span class="no">Model</span>
-  <span class="kp">include</span> <span class="no">Shield</span><span class="o">::</span><span class="no">Model</span>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">Ohm</span><span class="p">:</span><span class="ss">:Model</span>
+  <span class="kp">include</span> <span class="ss">Shield</span><span class="p">:</span><span class="ss">:Model</span>
 
   <span class="n">attribute</span> <span class="ss">:email</span>
   <span class="n">attribute</span> <span class="ss">:crypted_password</span>
   <span class="n">index</span> <span class="ss">:email</span>
 
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">fetch</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-    <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+    <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">email</span><span class="p">:</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
 </div><p>This is pretty straightforward.  We&#8217;ve established a user with an email, crypted password, and the fetch method Shield expects per its implementation.  Moving on, we&#8217;ll tweak the Shield helpers a little and setup some of our own for handling the second factor.</p>
 <div class="highlight"><pre><code class="ruby"><span class="n">helpers</span> <span class="k">do</span>
-  <span class="kp">include</span> <span class="no">Shield</span><span class="o">::</span><span class="no">Helpers</span>
+  <span class="kp">include</span> <span class="ss">Shield</span><span class="p">:</span><span class="ss">:Helpers</span>
 
   <span class="n">alias_method</span> <span class="ss">:initially_authenticated</span><span class="p">,</span> <span class="ss">:authenticated</span>
 
