@@ -4,7 +4,7 @@
  <title>techfreak.net</title>
  <link href="http://www.techfreak.net/atom.xml" rel="self"/>
  <link href="http://www.techfreak.net/"/>
- <updated>2014-05-17T08:46:48-07:00</updated>
+ <updated>2014-05-17T09:01:24-07:00</updated>
  <id>http://www.techfreak.net/</id>
  <author>
    <name>Brendon Murphy</name>
@@ -15,7 +15,7 @@
    <link href="http://www.techfreak.net/2014/05/17/simple-css-preprocessing-with-cpp.html"/>
    <updated>2014-05-17T00:00:00-07:00</updated>
    <id>http://www.techfreak.net/2014/05/17/simple-css-preprocessing-with-cpp</id>
-   <content type="html">&lt;p&gt;Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass&amp;#8217;s features without everything.  Specially, I love having variables available, and the option to split into multiple files for organization.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass&amp;#8217;s features without everything.  Specifically, I love having variables available, and the option to split into multiple files for organization.&lt;/p&gt;
 &lt;p&gt;Then I read &lt;a href=&quot;http://blog.arkency.com/2013/09/throw-away-sprockets-use-unix/&quot;&gt;this post&lt;/a&gt; and wondered how I could use cpp towards such a goal.  The answer is pretty simple.  An example app.css file:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#define&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;text_color&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#333&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;#define&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;border_color&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#eee&lt;/span&gt;

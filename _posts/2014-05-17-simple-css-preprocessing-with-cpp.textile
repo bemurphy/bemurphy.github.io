@@ -4,7 +4,7 @@ title: "Simple CSS Preprocessing with cpp"
 published: true
 ---
 
-Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass's features without everything.  Specially, I love having variables available, and the option to split into multiple files for organization.
+Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass's features without everything.  Specifically, I love having variables available, and the option to split into multiple files for organization.
 
 Then I read "this post":http://blog.arkency.com/2013/09/throw-away-sprockets-use-unix/ and wondered how I could use cpp towards such a goal.  The answer is pretty simple.  An example app.css file:
 
