@@ -20,7 +20,7 @@
       <nav class="two columns">
         
 
-          <ul data-selected="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html">
+          <ul data-selected="/2013/06/07/redis,-it-s-great-for-small-stuff,-too.html">
             <li><h3><a href="/">Blog</a></h3></li>
             <li><h3><a href="/archive.html">Archives</a></h3></li>
             <li><h3><a href="/about.html">About</a></h3></li>
@@ -30,8 +30,8 @@
           </ul>
 
           <script type="text/javascript">
-            if ($('nav a[href="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html"]').length) {
-              $('nav a[href="/2013/06/07/redis%2C-it-s-great-for-small-stuff%2C-too.html"]').closest('li').addClass("selected");
+            if ($('nav a[href="/2013/06/07/redis,-it-s-great-for-small-stuff,-too.html"]').length) {
+              $('nav a[href="/2013/06/07/redis,-it-s-great-for-small-stuff,-too.html"]').closest('li').addClass("selected");
             } else {
               $('nav li').first().addClass("selected");
             }
@@ -44,20 +44,16 @@
 
   <p>Unless you live under a rock, you&#8217;ve heard of the key-value store <a href="http://redis.io/">Redis</a>.  It&#8217;s possible though, you&#8217;ve never used it.  Maybe you don&#8217;t have giant, loaded site needs like Imgur, so you haven&#8217;t added it to your stack.  That&#8217;s cool.  In fact, I&#8217;m a proponent of not adding an additional cog to a production stack unless it either greatly reduces load on an existing part or makes the code easier to understand.  That said, Redis has a reputation for helping out when your site is under <em>giant load</em>.  But there&#8217;s something I think is great about Redis that makes it useful for small tasks: its simplicity.</p>
 <p>Redis has a few different structure types, take Hashes and Lists.  For example, using the <a href="https://github.com/redis/redis-rb">redis-rb</a> client, you can set values in a Redis hash:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">redis</span><span class="o">.</span><span class="n">hset</span> <span class="s2">&quot;user:1&quot;</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="s2">&quot;Brendon&quot;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">redis</span><span class="o">.</span><span class="n">hset</span> <span class="s2">&quot;user:1&quot;</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="s2">&quot;Brendon&quot;</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">hset</span> <span class="s2">&quot;user:1&quot;</span><span class="p">,</span> <span class="ss">:gender</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">hget</span> <span class="s2">&quot;user:1&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="c1">#=&gt; &quot;Brendon&quot;</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">hgetall</span> <span class="s2">&quot;user:1&quot;</span> <span class="c1"># =&gt; {&quot;gender&quot;=&gt;&quot;male&quot;, &quot;name&quot;=&gt;&quot;Brendon&quot;}</span>
-<span class="n">redis</span><span class="o">.</span><span class="n">hvals</span> <span class="s2">&quot;user:1&quot;</span> <span class="c1"># =&gt; [&quot;male&quot;, &quot;Brendon&quot;]</span>
-</code></pre>
-</div><p>This feels like a simple, hash like primative to work with.  Though it is syntatically different than working with a plain old ruby Hash, the feel is similar.  I think this is a big win;  it&#8217;s easy to understand and feels familiar, plus, it&#8217;s network distributed.</p>
+<span class="n">redis</span><span class="o">.</span><span class="n">hvals</span> <span class="s2">&quot;user:1&quot;</span> <span class="c1"># =&gt; [&quot;male&quot;, &quot;Brendon&quot;]</span></code></pre></div><p>This feels like a simple, hash like primative to work with.  Though it is syntatically different than working with a plain old ruby Hash, the feel is similar.  I think this is a big win;  it&#8217;s easy to understand and feels familiar, plus, it&#8217;s network distributed.</p>
 <p>Check out some List basics:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">redis</span><span class="o">.</span><span class="n">rpush</span> <span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;Awesome&quot;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">redis</span><span class="o">.</span><span class="n">rpush</span> <span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;Awesome&quot;</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">rpush</span> <span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;Super&quot;</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">llen</span> <span class="s2">&quot;comments&quot;</span> <span class="c1"># =&gt; 2</span>
-<span class="n">redis</span><span class="o">.</span><span class="n">lpop</span> <span class="s2">&quot;comments&quot;</span> <span class="c1"># =&gt; &quot;Awesome&quot;</span>
-</code></pre>
-</div><p>Again, syntatically a little different than using an Array, but still familiar.</p>
+<span class="n">redis</span><span class="o">.</span><span class="n">lpop</span> <span class="s2">&quot;comments&quot;</span> <span class="c1"># =&gt; &quot;Awesome&quot;</span></code></pre></div><p>Again, syntatically a little different than using an Array, but still familiar.</p>
 <p>Redis itself is very easy to install.  You can install it from homebrew, or apt-get or just compile from source.  It&#8217;s small, installs quickly, and unless you fill it with gigabytes of data, it&#8217;s likely you will forget it&#8217;s there.  I install it by default on most my systems, even little underpowered ones.  The reason being, I love Redis for my little one off scripting tasks because of a few features:</p>
 <ul>
 	<li>It&#8217;s liteweight</li>
@@ -66,28 +62,22 @@
 </ul>
 <p>Here&#8217;s some examples. I&#8217;m excluding exception handling and Redis watches/multi/transaction concepts to focus on the core idea.</p>
 <p>Redis is great at deduping.  Say you want to write a script that pushes campfire notifications to gently remind the team to keep commit messages under 50 characters, but not resend reminders in the case of forced pushes, rebases, merges, etc:</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Generate your own digest to avoid git hash changing</span>
-<span class="nb">id</span> <span class="o">=</span> <span class="ss">Digest</span><span class="p">:</span><span class="ss">:MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">commit</span><span class="o">.</span><span class="n">author</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">commit</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Generate your own digest to avoid git hash changing</span>
+<span class="nb">id</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">commit</span><span class="o">.</span><span class="n">author</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">commit</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="c1"># unseen will only be true if the id is not already in Redis</span>
 <span class="n">unseen</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
 <span class="c1"># expire after 90 days to save on memory</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">expire</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="mi">7776000</span><span class="p">)</span> <span class="k">if</span> <span class="n">unseen</span>
-<span class="c1"># run notification if unseen</span>
-</code></pre>
-</div><p>Or imagine you have a system that is applying regex to <span class="caps">RSS</span> feeds, and you want to be alerted at most once a day about matches:</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">id</span> <span class="o">=</span> <span class="ss">Digest</span><span class="p">:</span><span class="ss">:MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">regex_pat</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
+<span class="c1"># run notification if unseen</span></code></pre></div><p>Or imagine you have a system that is applying regex to <span class="caps">RSS</span> feeds, and you want to be alerted at most once a day about matches:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">id</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">regex_pat</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
 <span class="c1"># Exclusively set the key, returning false if it already exists</span>
 <span class="n">unseen</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
-<span class="n">redis</span><span class="o">.</span><span class="n">expire</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="mi">86_400</span><span class="p">)</span> <span class="k">if</span> <span class="n">unseen</span>
-</code></pre>
-</div><p>I do this in small scripts all the time.  Now, I could write to sqlite, use the ruby PStore, or maybe a tempfile as lock, etc, but this just feels so dang simple, and I don&#8217;t worry about file locking, sql queries, weird commit code, etc.</p>
+<span class="n">redis</span><span class="o">.</span><span class="n">expire</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="mi">86_400</span><span class="p">)</span> <span class="k">if</span> <span class="n">unseen</span></code></pre></div><p>I do this in small scripts all the time.  Now, I could write to sqlite, use the ruby PStore, or maybe a tempfile as lock, etc, but this just feels so dang simple, and I don&#8217;t worry about file locking, sql queries, weird commit code, etc.</p>
 <p>Maybe you have scripts you want to &#8220;shut up&#8221; for a few hours.  You could write a file and stat it, or you could just set a value to read:</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Don&#39;t bug for 5 minutes</span>
-<span class="n">redis</span><span class="o">.</span><span class="n">setex</span><span class="p">(</span><span class="s2">&quot;shutup&quot;</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
-</code></pre>
-</div><p>Often I have little tasks or cronjob on my home server that I want notifications about.  Currently I use <a href="https://pushover.net/">Pushover</a> for all those notifications.  Someday I might change my mind and switch to email or <span class="caps">SMS</span>.  So what I&#8217;ve done is treat Redis like a good old Unix <a href="https://en.wikipedia.org/wiki/Named_pipe">named pipe</a>.  But now I don&#8217;t have to worry about creating the pipe, or permissions, and I seem to remember Redis commands much easier (pop quiz&#8230;how do you call mkfifo in Ruby without shelling out?).</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Don&#39;t bug for 5 minutes</span>
+<span class="n">redis</span><span class="o">.</span><span class="n">setex</span><span class="p">(</span><span class="s2">&quot;shutup&quot;</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span></code></pre></div><p>Often I have little tasks or cronjob on my home server that I want notifications about.  Currently I use <a href="https://pushover.net/">Pushover</a> for all those notifications.  Someday I might change my mind and switch to email or <span class="caps">SMS</span>.  So what I&#8217;ve done is treat Redis like a good old Unix <a href="https://en.wikipedia.org/wiki/Named_pipe">named pipe</a>.  But now I don&#8217;t have to worry about creating the pipe, or permissions, and I seem to remember Redis commands much easier (pop quiz&#8230;how do you call mkfifo in Ruby without shelling out?).</p>
 <p>If you want to make a <span class="caps">FIFO</span> for notifications, write something like this:</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Producer script, cron job, etc</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Producer script, cron job, etc</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="s2">&quot;notifications&quot;</span><span class="p">,</span> <span class="s2">&quot;You&#39;ve got mail!&quot;</span><span class="p">)</span>
 
 <span class="c1"># Notification daemon</span>
@@ -95,10 +85,8 @@
   <span class="c1"># blpop is a blocking read left pop</span>
   <span class="n">key</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">blpop</span><span class="p">(</span><span class="s2">&quot;notifications&quot;</span><span class="p">)</span>
   <span class="c1"># send message to SMS, email, Pushover, etc</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Sometimes, your notification daemon might die and not restart properly.  Maybe you want to &#8220;catch up&#8221; on messages when you restart it, then the above list use is good.  If you don&#8217;t want to get flooded by those missed notifications, simply switch to pub/sub:</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Producer</span>
+<span class="k">end</span></code></pre></div><p>Sometimes, your notification daemon might die and not restart properly.  Maybe you want to &#8220;catch up&#8221; on messages when you restart it, then the above list use is good.  If you don&#8217;t want to get flooded by those missed notifications, simply switch to pub/sub:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Producer</span>
 <span class="n">redis</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;notifications&quot;</span><span class="p">,</span> <span class="s2">&quot;A wild message arrives!&quot;</span><span class="p">)</span>
 
 <span class="c1"># Notification daemon</span>
@@ -106,12 +94,8 @@
   <span class="n">on</span><span class="o">.</span><span class="n">message</span> <span class="k">do</span> <span class="o">|</span><span class="n">channel</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span>
     <span class="n">send_notification</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Now for one last tip.  Redis provides redis-cli, a command line client for interacting with Redis.  If you fire it up with no commands, you&#8217;ll get an interactive prompt.  However, you can also invoke it with a command to run.  This is <em>great</em> for shell scripts:</p>
-<div class="highlight"><pre><code class="bash">redis-cli publish notifications <span class="s1">&#39;John sent you a private message on irc&#39;</span>
-</code></pre>
-</div><p>If you haven&#8217;t tried Redis yet and program small tasks, you can get started today!</p>
+<span class="k">end</span></code></pre></div><p>Now for one last tip.  Redis provides redis-cli, a command line client for interacting with Redis.  If you fire it up with no commands, you&#8217;ll get an interactive prompt.  However, you can also invoke it with a command to run.  This is <em>great</em> for shell scripts:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">redis-cli publish notifications <span class="s1">&#39;John sent you a private message on irc&#39;</span></code></pre></div><p>If you haven&#8217;t tried Redis yet and program small tasks, you can get started today!</p>
 
   <p class="signoff">
     &mdash;Jun 07, 2013

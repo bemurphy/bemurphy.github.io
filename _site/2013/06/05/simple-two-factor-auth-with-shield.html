@@ -46,8 +46,8 @@
 <p>As <em>an experiment</em>, I wondered what it might look like to layer a simple two-factor authentication scheme on top of Shield.  If you are unfamiliar with two-factor authentication, it typically follows that a user will first log in to a site with their password as usual, and if successful, must pass a second step of entering a <span class="caps">PIN</span> from a SecureID type token, or out-of-band delivery message such as <span class="caps">SMS</span>.  Popular sites implementing two-factor auth include PayPal, Twitter, and Google.</p>
 <p>Let&#8217;s break down some of the components of what a simple system might look like.</p>
 <p>First, we&#8217;ll create a basic User model with <a href="http://ohm.keyvalue.org">Ohm</a>, a persistance library backed by Redis.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">Ohm</span><span class="p">:</span><span class="ss">:Model</span>
-  <span class="kp">include</span> <span class="ss">Shield</span><span class="p">:</span><span class="ss">:Model</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">Ohm</span><span class="o">::</span><span class="no">Model</span>
+  <span class="kp">include</span> <span class="no">Shield</span><span class="o">::</span><span class="no">Model</span>
 
   <span class="n">attribute</span> <span class="ss">:email</span>
   <span class="n">attribute</span> <span class="ss">:crypted_password</span>
@@ -56,11 +56,9 @@
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">fetch</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
     <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">email</span><span class="p">:</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>This is pretty straightforward.  We&#8217;ve established a user with an email, crypted password, and the fetch method Shield expects per its implementation.  Moving on, we&#8217;ll tweak the Shield helpers a little and setup some of our own for handling the second factor.</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">helpers</span> <span class="k">do</span>
-  <span class="kp">include</span> <span class="ss">Shield</span><span class="p">:</span><span class="ss">:Helpers</span>
+<span class="k">end</span></code></pre></div><p>This is pretty straightforward.  We&#8217;ve established a user with an email, crypted password, and the fetch method Shield expects per its implementation.  Moving on, we&#8217;ll tweak the Shield helpers a little and setup some of our own for handling the second factor.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">helpers</span> <span class="k">do</span>
+  <span class="kp">include</span> <span class="no">Shield</span><span class="o">::</span><span class="no">Helpers</span>
 
   <span class="n">alias_method</span> <span class="ss">:initially_authenticated</span><span class="p">,</span> <span class="ss">:authenticated</span>
 
@@ -84,16 +82,12 @@
       <span class="n">session</span><span class="o">[</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">model</span><span class="si">}</span><span class="s2">_secondary_auth&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_s</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>There&#8217;s a few interesting things to note here.  First, we alias Shield&#8217;s <em class="code">authenticated</em> method out to <em class="code">initially_authenticate</em>.  We&#8217;ll use this to check if a user passes the initial password authentication step.  Next, we define our new <em class="code">authenticated</em> method, which will rely on password authentication, and a second check against the session to see if the user has passed the secondary authentication step.  Sprinkle in some methods around checking our challenge authentication (more details on that in a minute) and our helpers are good to go.</p>
+<span class="k">end</span></code></pre></div><p>There&#8217;s a few interesting things to note here.  First, we alias Shield&#8217;s <em class="code">authenticated</em> method out to <em class="code">initially_authenticate</em>.  We&#8217;ll use this to check if a user passes the initial password authentication step.  Next, we define our new <em class="code">authenticated</em> method, which will rely on password authentication, and a second check against the session to see if the user has passed the secondary authentication step.  Sprinkle in some methods around checking our challenge authentication (more details on that in a minute) and our helpers are good to go.</p>
 <p>Now let&#8217;s move on to some simple Sinatra app and routing setup.  First, we&#8217;ll handle 401 Unauthorized errors by redirecting to the <em class="code">/login</em> path:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">error</span> <span class="mi">401</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">error</span> <span class="mi">401</span> <span class="k">do</span>
   <span class="n">redirect</span> <span class="s1">&#39;/login&#39;</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Next, add in the <em class="code">/login</em> routes Shield typically expects, however, instead of redirecting on success to the main page, we&#8217;ll redirect the browser on to a verification step:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">get</span> <span class="s1">&#39;/login&#39;</span> <span class="k">do</span>
+<span class="k">end</span></code></pre></div><p>Next, add in the <em class="code">/login</em> routes Shield typically expects, however, instead of redirecting on success to the main page, we&#8217;ll redirect the browser on to a verification step:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get</span> <span class="s1">&#39;/login&#39;</span> <span class="k">do</span>
   <span class="n">erb</span> <span class="ss">:login</span>
 <span class="k">end</span>
 
@@ -105,11 +99,9 @@
   <span class="k">else</span>
     <span class="n">redirect</span> <span class="s1">&#39;/login&#39;</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Note that when a user passes the first login stage, we&#8217;ll send them the challenge for the verification step.</p>
+<span class="k">end</span></code></pre></div><p>Note that when a user passes the first login stage, we&#8217;ll send them the challenge for the verification step.</p>
 <p>Now we&#8217;ll get into the meat of the routing and diverge from the vanilla Shield login flow a bit.  Setup the verification handling:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">get</span> <span class="s1">&#39;/login_verification&#39;</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get</span> <span class="s1">&#39;/login_verification&#39;</span> <span class="k">do</span>
   <span class="n">error</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span> <span class="k">unless</span> <span class="n">initially_authenticated</span><span class="p">(</span><span class="no">User</span><span class="p">)</span>
 
   <span class="n">erb</span> <span class="ss">:login_verification</span>
@@ -123,11 +115,9 @@
   <span class="k">else</span>
     <span class="n">redirect</span> <span class="s1">&#39;/login_verification&#39;</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>For either action to succeed, first the user must be initially authenticated.  If so, we&#8217;ll verify the challenge presented, in this case a randomly assigned 6 digit <span class="caps">PIN</span>, matches up.  Then we&#8217;ll let the user proceed on to the app.</p>
+<span class="k">end</span></code></pre></div><p>For either action to succeed, first the user must be initially authenticated.  If so, we&#8217;ll verify the challenge presented, in this case a randomly assigned 6 digit <span class="caps">PIN</span>, matches up.  Then we&#8217;ll let the user proceed on to the app.</p>
 <p>The core of the challenge authentication is handled in a <em class="code">ChallengeAuthentication</em> class:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">ChallengeAuthentication</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ChallengeAuthentication</span>
   <span class="no">EXPIRE_TIME</span> <span class="o">=</span> <span class="mi">300</span>
 
   <span class="kp">attr_reader</span> <span class="ss">:user</span>
@@ -169,9 +159,7 @@
   <span class="k">def</span> <span class="nf">deliver_challenge</span><span class="p">(</span><span class="n">challenge</span><span class="p">)</span>
     <span class="c1"># send an out of band challenge like SMS or Pushover here</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>The flow of the challenge check is fairly simple.  First, we can push a new challenge by setting a random 6 digit pin for the user, and deliver that out of band.  This can be easily accomplished via <span class="caps">SMS</span> with a provider such as <a href="http://twilio.com">Twilio</a>, or my favorite push notification service <a href="http://pushover.net">Pushover</a>.  Checkout my <a href="https://rubygems.org/gems/rushover">Rushover gem</a> as a simple client for sending to Pushover.  We&#8217;ll toss that <span class="caps">PIN</span> into Redis with a 5 minute expiration;  this provides a simple limited window for which the <span class="caps">PIN</span> is valid.  Likewise, if you want to implement this on top of a <span class="caps">SQL</span> <span class="caps">ORM</span>, you could add challenge and expiration timestamps on to your User model.</p>
+<span class="k">end</span></code></pre></div><p>The flow of the challenge check is fairly simple.  First, we can push a new challenge by setting a random 6 digit pin for the user, and deliver that out of band.  This can be easily accomplished via <span class="caps">SMS</span> with a provider such as <a href="http://twilio.com">Twilio</a>, or my favorite push notification service <a href="http://pushover.net">Pushover</a>.  Checkout my <a href="https://rubygems.org/gems/rushover">Rushover gem</a> as a simple client for sending to Pushover.  We&#8217;ll toss that <span class="caps">PIN</span> into Redis with a 5 minute expiration;  this provides a simple limited window for which the <span class="caps">PIN</span> is valid.  Likewise, if you want to implement this on top of a <span class="caps">SQL</span> <span class="caps">ORM</span>, you could add challenge and expiration timestamps on to your User model.</p>
 <p>For checking that the user has provided a valid challenge <span class="caps">PIN</span>, we can compare against the value in Redis if it exists.   Upon match, we&#8217;ll delete the <span class="caps">PIN</span> from redis to invalidate it and confirm the challenge is accepted.</p>
 <p>You can find the <a href="https://gist.github.com/bemurphy/831e6c3cf4d40060ed49">complete code</a> for this example as a gist.  Hopefully it&#8217;s easy enough to follow, and now you can provide an extra level of security for your social cat-video apps!</p>
 <p>Until next time&#8230;</p>

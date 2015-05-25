@@ -1,13 +1,6 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem "rack", '1.2.1'
-gem "liquid", '2.2.0'
-gem "rack-jekyll", :git => "git://github.com/bemurphy/rack-jekyll.git"
-gem "rack-rewrite"
-gem "RedCloth"
-
-gem "sinatra", "1.1.2"
-gem "rack-cache", "1.0"
+gem 'github-pages'
 
 group :development do
   gem "rake"

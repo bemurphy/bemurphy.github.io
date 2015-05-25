@@ -44,11 +44,9 @@
 
   <p>As a slight extension to the previous post, I wanted to make a quick point about authorization failures.</p>
 <p>Given you&#8217;ve raised <em class="code">SomeAuthorizationFailure</em> exception in a controller action, you might have a general rescue handling it:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">rescue_from</span> <span class="s1">&#39;SomeAuthorizationFailure&#39;</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rescue_from</span> <span class="s1">&#39;SomeAuthorizationFailure&#39;</span> <span class="k">do</span>
   <span class="n">render</span> <span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bad user!&quot;</span><span class="p">,</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">403</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.</p>
+<span class="k">end</span></code></pre></div><p>The key here is the 403 status, Forbidden.  This is a pretty natural, and technically correct status to feed the client.</p>
 <p>Cool, let&#8217;s wrap that up, it&#8217;s done!  Hold on, not so fast.</p>
 <p>If you use Github (<em>if?</em>), you may have noticed something that struck you as curious the first time it happened.  Say you&#8217;re hanging in the dev campfire room, and somebody pastes a link to a line of code for you to checkout (like /foocorp/awesomeproject/config/application.rb#L7).  You clicked on the link but forgot you&#8217;ve logged out.  Boom&#8230;.403 Forbidden.</p>
 <p>Wait..no that&#8217;s not a 403, it&#8217;s a 404.  What the heck?</p>

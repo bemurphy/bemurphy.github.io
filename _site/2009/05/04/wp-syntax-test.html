@@ -43,7 +43,7 @@
   <h1>wp-syntax test</h1>
 
   <p>Just testing out wp-syntax highlighting, and demoing it for some friends.  Colorful ruby code!</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s2">&quot;date&quot;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;date&quot;</span>
 
 <span class="k">class</span> <span class="nc">DateReformatter</span>
   <span class="kp">attr_reader</span> <span class="ss">:date</span>
@@ -54,9 +54,9 @@
   
   <span class="k">def</span> <span class="nf">date</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
     <span class="k">begin</span>
-      <span class="vi">@date</span> <span class="o">=</span> <span class="ss">DateTime</span><span class="p">:</span><span class="ss">:parse</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
     <span class="k">rescue</span>
-      <span class="vi">@date</span> <span class="o">=</span> <span class="ss">DateTime</span><span class="p">:</span><span class="ss">:now</span><span class="p">()</span>
+      <span class="vi">@date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">::</span><span class="n">now</span><span class="p">()</span>
     <span class="k">end</span>
   <span class="k">end</span>
   
@@ -73,9 +73,7 @@
   <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>
+<span class="k">end</span></code></pre></div>
 
   <p class="signoff">
     &mdash;May 04, 2009

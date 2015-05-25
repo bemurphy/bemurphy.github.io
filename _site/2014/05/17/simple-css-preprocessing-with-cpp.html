@@ -44,23 +44,17 @@
 
   <p>Sometimes when prototyping a quick, small app, I find myself wanting a subset of Sass&#8217;s features without everything.  Specifically, I love having variables available, and the option to split into multiple files for organization.</p>
 <p>Then I read <a href="http://blog.arkency.com/2013/09/throw-away-sprockets-use-unix/">this post</a> and wondered how I could use cpp towards such a goal.  The answer is pretty simple.  An example app.css file:</p>
-<div class="highlight"><pre><code class="css"><span class="nf">#define</span> <span class="err">$</span><span class="nt">text_color</span> <span class="nf">#333</span>
-<span class="nf">#define</span> <span class="err">$</span><span class="nt">border_color</span> <span class="nf">#eee</span>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#define</span> <span class="o">$</span><span class="nt">text_color</span> <span class="nf">#333</span>
+<span class="nf">#define</span> <span class="o">$</span><span class="nt">border_color</span> <span class="nf">#eee</span>
 
 <span class="nf">#import</span> <span class="s2">&quot;comments.css&quot;</span>
-<span class="nf">#import</span> <span class="s2">&quot;posts.css&quot;</span>
-</code></pre>
-</div><p>And in posts.css:</p>
-<div class="highlight"><pre><code class="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
+<span class="nf">#import</span> <span class="s2">&quot;posts.css&quot;</span></code></pre></div><p>And in posts.css:</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
   <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="err">$</span><span class="n">border_color</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div><p>Running <em class="code">cpp -P app.css</em> outputs the following:</p>
-<div class="highlight"><pre><code class="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></div><p>Running <em class="code">cpp -P app.css</em> outputs the following:</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.posts</span> <span class="nc">.post</span> <span class="p">{</span>
   <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#eee</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div><p>This is no &#8220;replacement&#8221; for sprockets or sass, but a nice trick to have up your sleeve!</p>
+<span class="p">}</span></code></pre></div><p>This is no &#8220;replacement&#8221; for sprockets or sass, but a nice trick to have up your sleeve!</p>
 
   <p class="signoff">
     &mdash;May 17, 2014

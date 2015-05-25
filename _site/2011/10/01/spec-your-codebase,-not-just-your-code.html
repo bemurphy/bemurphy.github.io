@@ -20,7 +20,7 @@
       <nav class="two columns">
         
 
-          <ul data-selected="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html">
+          <ul data-selected="/2011/10/01/spec-your-codebase,-not-just-your-code.html">
             <li><h3><a href="/">Blog</a></h3></li>
             <li><h3><a href="/archive.html">Archives</a></h3></li>
             <li><h3><a href="/about.html">About</a></h3></li>
@@ -30,8 +30,8 @@
           </ul>
 
           <script type="text/javascript">
-            if ($('nav a[href="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html"]').length) {
-              $('nav a[href="/2011/10/01/spec-your-codebase%2C-not-just-your-code.html"]').closest('li').addClass("selected");
+            if ($('nav a[href="/2011/10/01/spec-your-codebase,-not-just-your-code.html"]').length) {
+              $('nav a[href="/2011/10/01/spec-your-codebase,-not-just-your-code.html"]').closest('li').addClass("selected");
             } else {
               $('nav li').first().addClass("selected");
             }
@@ -44,26 +44,20 @@
 
   <p>Many rubyists are familiar with using Test::Unit, RSpec, or MiniTest for specifying the behavior of their application code.  Over the past year, I&#8217;ve discovered a novel and less conventional use of testing tools I like to call &#8220;specifying the codebase&#8221;.  Let me show you what I mean.</p>
 <p>If you&#8217;ve ever worked on a sizeable Rails project, you&#8217;ve probably experienced some codebase quirks at some point.  For example, I&#8217;ve got an application that had issues when the <a href="http://liquidmarkup.org/">Liquid Templating engine</a> was loaded as a gem.  The fix was to include a specific version as a plugin.  While it&#8217;s usually best to get to the root of the problem, sometimes it&#8217;s not feasible or expedient and such measures must suffice.  Once Liquid was included as a gem, we noticed some failing tests, and then pieced together that, oops, Liquid had been reconfigured as a gem.  A code review may have caught this, or perhaps not, since it&#8217;s a little quirky.  Now the second time we made the mistake, it dawned on me, write a spec to send up a red flag and make it easier to spot the immediate problem when tests fail in the future:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="s2">&quot;The codebase&quot;</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">describe</span> <span class="s2">&quot;The codebase&quot;</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s2">&quot;doesn&#39;t load the liquid gem&quot;</span> <span class="k">do</span>
     <span class="no">Gem</span><span class="o">.</span><span class="n">loaded_specs</span><span class="o">.</span><span class="n">any?</span> <span class="p">{</span><span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">first</span> <span class="o">==</span> <span class="s2">&quot;liquid&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">should</span> <span class="n">be_false</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>It&#8217;s pretty easy to make the mistake of not properly compressing or optimizing assets, especially images, in your app&#8217;s public directory.  Code review or possibly even your vcs can help prevent such problems, but you can also let your specifications alert you to the problem:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">it</span> <span class="s2">&quot;/public directory includes files less than 1MB&quot;</span> <span class="k">do</span>
+<span class="k">end</span></code></pre></div><p>It&#8217;s pretty easy to make the mistake of not properly compressing or optimizing assets, especially images, in your app&#8217;s public directory.  Code review or possibly even your vcs can help prevent such problems, but you can also let your specifications alert you to the problem:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">it</span> <span class="s2">&quot;/public directory includes files less than 1MB&quot;</span> <span class="k">do</span>
   <span class="n">files</span> <span class="o">=</span> <span class="sb">`find </span><span class="si">#{</span><span class="no">File</span><span class="o">.</span><span class="n">join</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;public&quot;</span><span class="si">}</span><span class="sb"> -type f -size +1M`</span>
   <span class="n">files</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/\n/</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[]</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>The pattern emerging here is pretty simple:  if you or your teammates make any repeat mistakes with your codebase, write a spec to prevent further repeats.  By all means, make sure to communicate and talk out application guidelines, yet, nothing says &#8220;hey, over here!&#8221; like a failing test.</p>
+<span class="k">end</span></code></pre></div><p>The pattern emerging here is pretty simple:  if you or your teammates make any repeat mistakes with your codebase, write a spec to prevent further repeats.  By all means, make sure to communicate and talk out application guidelines, yet, nothing says &#8220;hey, over here!&#8221; like a failing test.</p>
 <p>The applications here are pretty endless.  Maybe you&#8217;ve got a Sinatra app on Heroku where you precompile dynamic stylesheets, and have made the mistake of checking in a busted css one too many times;  there&#8217;s a spec for that!  Or perhaps you&#8217;ve got an overzealous teammate adding or removing crazy things from git file index.  First, do better code review and, secondly, there&#8217;s a spec for that:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">it</span> <span class="s2">&quot;leaves config/database.yml out of the repository&quot;</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">it</span> <span class="s2">&quot;leaves config/database.yml out of the repository&quot;</span> <span class="k">do</span>
   <span class="n">git</span> <span class="o">=</span> <span class="no">Git</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
   <span class="n">git</span><span class="o">.</span><span class="n">ls_files</span><span class="p">(</span><span class="s2">&quot;config/database.yml&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="n">be_empty</span>
-<span class="k">end</span>
-</code></pre>
-</div><p>Finally, there&#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&#8217;re confident you&#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&#8217;t trickle this practice over towards reusable code, like gems you write and share with the world.  It&#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&#8217;t share this behavior with your application or gem code, but rather, use gems like <a href="https://github.com/defunkt/fakefs">FakeFS</a> for testing in isolation of the filesystem.</p>
+<span class="k">end</span></code></pre></div><p>Finally, there&#8217;s some important safety notes for techniques like this.  First, you may find yourself using system commands like find or grep.  If you&#8217;re confident you&#8217;ve got a fairly consistent environment your application is developed and run on (i.e. *nix boxes) this is probably OK.  However, don&#8217;t trickle this practice over towards reusable code, like gems you write and share with the world.  It&#8217;s not kind to Windows users out there.  Secondly, tests like this are often going to integrate with a real filesystem, so for goodness sake stick to read only operations.   Don&#8217;t touch, rm, cp, or mv files about.  If you find yourself wanting to perform destructive operation, the rakefiles are that-a-way.  And again, don&#8217;t share this behavior with your application or gem code, but rather, use gems like <a href="https://github.com/defunkt/fakefs">FakeFS</a> for testing in isolation of the filesystem.</p>
 
   <p class="signoff">
     &mdash;Oct 01, 2011
